@@ -1,0 +1,63 @@
+temple
+{
+    elder squire x = 10;
+    elder squire y = 25;
+    elder squire z = 5;
+    elder squire max_val;
+
+    elder scroll name = "Sir Arthur";
+    elder scroll title = " the Brave";
+    elder scroll full_title;
+    elder rune sym = 'a';
+    confessionRune(sym);
+
+    elder honor equal_check = faith;
+
+    greet(name);
+
+    full_title = unite_scrolls(name, title);
+    confessionScroll(full_title);
+
+    equal_check = compare_scrolls(name, title);
+
+    charge [equal_check and exile]
+    {
+        confessionScroll("Titles differ.");
+    }
+    backup
+    {
+        confessionScroll("Titles are equal.");
+    }
+
+    patrol [x < y]
+    {
+        x = x + 5;
+        confessionSquire(x);
+    }
+    max_val = max_three(12, 44, 33);
+    confessionSquire(max_val);
+    elder squire bit_or;
+    elder squire bit_and;
+    elder squire bit_not;
+
+    bit_or = x ally z;
+    confessionSquire(bit_or);
+    bit_and = x bind z;
+    confessionSquire(bit_and);
+    bit_not = banish x;
+    confessionSquire(bit_not);
+
+    council [x]
+    {
+       path 1{
+           confessionScroll("Path one taken.");
+       }
+       path 2{
+           confessionScroll("Path two taken.");
+       }
+       tiresome{
+           confessionScroll("No matching path -- tiresome.");
+       }
+    }
+    confessionScroll("End of demonstration.");
+}

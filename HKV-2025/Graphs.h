@@ -1,0 +1,441 @@
+#pragma once
+#include "FST.h"
+
+#define N_GRAPHS 33
+
+#define GRAPH_SEPARATORS 2,\
+	FST::NODE(21,\
+			FST::RELATION(';',1), FST::RELATION('=',1),\
+			FST::RELATION(',',1), FST::RELATION('[',1),\
+			FST::RELATION(']',1), FST::RELATION('(',1),\
+			FST::RELATION(')',1), FST::RELATION('*',1),\
+			FST::RELATION('+',1), FST::RELATION('-',1),\
+			FST::RELATION('#',1), FST::RELATION('/',1),\
+			FST::RELATION('<',1), FST::RELATION('>',1),\
+			FST::RELATION('{',1), FST::RELATION('}',1),\
+			FST::RELATION('&',1), FST::RELATION('!',1),\
+			FST::RELATION('%',1), FST::RELATION('~',1),\
+			FST::RELATION('@',1)),\
+	FST::NODE()
+
+
+#define GRAPH_ID 2, \
+	FST::NODE(26,FST::RELATION('a',1),  FST::RELATION('b',1), \
+			FST::RELATION('c', 1),  FST::RELATION('d', 1), \
+			FST::RELATION('e', 1),  FST::RELATION('f', 1), \
+			FST::RELATION('g', 1),  FST::RELATION('h', 1), \
+			FST::RELATION('i', 1),  FST::RELATION('j', 1), \
+			FST::RELATION('k', 1),  FST::RELATION('l', 1), \
+			FST::RELATION('m', 1),  FST::RELATION('n', 1), \
+			FST::RELATION('o', 1),  FST::RELATION('p', 1), \
+			FST::RELATION('q', 1),  FST::RELATION('r', 1), \
+			FST::RELATION('s', 1),  FST::RELATION('t', 1), \
+			FST::RELATION('u', 1),  FST::RELATION('v', 1), \
+			FST::RELATION('w', 1),  FST::RELATION('x', 1), \
+			FST::RELATION('y', 1),  FST::RELATION('z', 1)), \
+	FST::NODE(37, FST::RELATION('a',1),  FST::RELATION('b',1), \
+			FST::RELATION('c', 1),  FST::RELATION('d', 1), \
+			FST::RELATION('e', 1),  FST::RELATION('f', 1), \
+			FST::RELATION('g', 1),  FST::RELATION('h', 1), \
+			FST::RELATION('i', 1),  FST::RELATION('j', 1), \
+			FST::RELATION('k', 1),  FST::RELATION('l', 1), \
+			FST::RELATION('m', 1),  FST::RELATION('n', 1), \
+			FST::RELATION('o', 1),  FST::RELATION('p', 1), \
+			FST::RELATION('q', 1),  FST::RELATION('r', 1), \
+			FST::RELATION('s', 1),  FST::RELATION('t', 1), \
+			FST::RELATION('u', 1),  FST::RELATION('v', 1), \
+			FST::RELATION('w', 1),  FST::RELATION('x', 1), \
+			FST::RELATION('y', 1),  FST::RELATION('z', 1), \
+			FST::RELATION('_', 1),  FST::RELATION('0', 1), \
+			FST::RELATION('1', 1),  FST::RELATION('2', 1), \
+			FST::RELATION('3', 1),  FST::RELATION('4', 1), \
+			FST::RELATION('5', 1),  FST::RELATION('6', 1), \
+			FST::RELATION('7', 1),  FST::RELATION('8', 1), \
+			FST::RELATION('9', 1))
+
+#define GRAPH_STRING_LITERAL 3,\
+	FST::NODE(1, FST::RELATION('\"', 1)),\
+	FST::NODE(88, \
+			FST::RELATION('a', 1), FST::RELATION('b', 1), FST::RELATION('c', 1), FST::RELATION('d', 1),\
+			FST::RELATION('e', 1), FST::RELATION('f', 1), FST::RELATION('g', 1), FST::RELATION('h', 1),\
+			FST::RELATION('i', 1), FST::RELATION('j', 1), FST::RELATION('k', 1), FST::RELATION('l', 1),\
+			FST::RELATION('m', 1), FST::RELATION('n', 1), FST::RELATION('o', 1), FST::RELATION('p', 1),\
+			FST::RELATION('q', 1), FST::RELATION('r', 1), FST::RELATION('s', 1), FST::RELATION('t', 1),\
+			FST::RELATION('u', 1), FST::RELATION('v', 1), FST::RELATION('w', 1), FST::RELATION('x', 1),\
+			FST::RELATION('y', 1), FST::RELATION('z', 1),\
+			FST::RELATION('A', 1), FST::RELATION('B', 1), FST::RELATION('C', 1), FST::RELATION('D', 1),\
+			FST::RELATION('E', 1), FST::RELATION('F', 1), FST::RELATION('G', 1), FST::RELATION('H', 1),\
+			FST::RELATION('I', 1), FST::RELATION('J', 1), FST::RELATION('K', 1), FST::RELATION('L', 1),\
+			FST::RELATION('M', 1), FST::RELATION('N', 1), FST::RELATION('O', 1), FST::RELATION('P', 1),\
+			FST::RELATION('Q', 1), FST::RELATION('R', 1), FST::RELATION('S', 1), FST::RELATION('T', 1),\
+			FST::RELATION('U', 1), FST::RELATION('V', 1), FST::RELATION('W', 1), FST::RELATION('X', 1),\
+			FST::RELATION('Y', 1), FST::RELATION('Z', 1),\
+			FST::RELATION('0', 1), FST::RELATION('1', 1), FST::RELATION('2', 1), FST::RELATION('3', 1),\
+			FST::RELATION('4', 1), FST::RELATION('5', 1), FST::RELATION('6', 1), FST::RELATION('7', 1),\
+			FST::RELATION('8', 1), FST::RELATION('9', 1),\
+			FST::RELATION(' ', 1), FST::RELATION(',', 1), FST::RELATION('.', 1), FST::RELATION(';', 1),\
+			FST::RELATION('-', 1), FST::RELATION('+', 1), FST::RELATION('*', 1), FST::RELATION('/', 1),\
+			FST::RELATION('=', 1), FST::RELATION(':', 1), FST::RELATION(')', 1), FST::RELATION('(', 1),\
+			FST::RELATION('}', 1), FST::RELATION('{', 1), FST::RELATION(']', 1), FST::RELATION('[', 1),\
+			FST::RELATION('!', 1), FST::RELATION('?', 1), FST::RELATION('#', 1), FST::RELATION('&', 1),\
+			FST::RELATION('>', 1), FST::RELATION('<', 1), FST::RELATION('[', 1), FST::RELATION(']', 1), FST::RELATION('%', 1),\
+			FST::RELATION('\"', 2)), \
+	FST::NODE()
+
+#define GRAPH_CHAR_LITERAL 4,\
+	FST::NODE(1, FST::RELATION('\'', 1)),\
+	FST::NODE(88, \
+			FST::RELATION('a', 2), FST::RELATION('b', 2), FST::RELATION('c', 2), FST::RELATION('d', 2),\
+			FST::RELATION('e', 2), FST::RELATION('f', 2), FST::RELATION('g', 2), FST::RELATION('h', 2),\
+			FST::RELATION('i', 2), FST::RELATION('j', 2), FST::RELATION('k', 2), FST::RELATION('l', 2),\
+			FST::RELATION('m', 2), FST::RELATION('n', 2), FST::RELATION('o', 2), FST::RELATION('p', 2),\
+			FST::RELATION('q', 2), FST::RELATION('r', 2), FST::RELATION('s', 2), FST::RELATION('t', 2),\
+			FST::RELATION('u', 2), FST::RELATION('v', 2), FST::RELATION('w', 2), FST::RELATION('x', 2),\
+			FST::RELATION('y', 2), FST::RELATION('z', 2),\
+			FST::RELATION('A', 2), FST::RELATION('B', 2), FST::RELATION('C', 2), FST::RELATION('D', 2),\
+			FST::RELATION('E', 2), FST::RELATION('F', 2), FST::RELATION('G', 2), FST::RELATION('H', 2),\
+			FST::RELATION('I', 2), FST::RELATION('J', 2), FST::RELATION('K', 2), FST::RELATION('L', 2),\
+			FST::RELATION('M', 2), FST::RELATION('N', 2), FST::RELATION('O', 2), FST::RELATION('P', 2),\
+			FST::RELATION('Q', 2), FST::RELATION('R', 2), FST::RELATION('S', 2), FST::RELATION('T', 2),\
+			FST::RELATION('U', 2), FST::RELATION('V', 2), FST::RELATION('W', 2), FST::RELATION('X', 2),\
+			FST::RELATION('Y', 2), FST::RELATION('Z', 2),\
+			FST::RELATION('0', 2), FST::RELATION('1', 2), FST::RELATION('2', 2), FST::RELATION('3', 2),\
+			FST::RELATION('4', 2), FST::RELATION('5', 2), FST::RELATION('6', 2), FST::RELATION('7', 2),\
+			FST::RELATION('8', 2), FST::RELATION('9', 2),\
+			FST::RELATION(' ', 2), FST::RELATION(',', 2), FST::RELATION('.', 2), FST::RELATION(';', 2),\
+			FST::RELATION('-', 2), FST::RELATION('+', 2), FST::RELATION('*', 2), FST::RELATION('/', 2),\
+			FST::RELATION('=', 2), FST::RELATION(':', 2), FST::RELATION(')', 2), FST::RELATION('(', 2),\
+			FST::RELATION('}', 2), FST::RELATION('{', 2), FST::RELATION(']', 2), FST::RELATION('[', 2),\
+			FST::RELATION('!', 2), FST::RELATION('?', 2), FST::RELATION('#', 2), FST::RELATION('&', 2),\
+			FST::RELATION('>', 2), FST::RELATION('<', 2), FST::RELATION('[', 2), FST::RELATION(']', 2), FST::RELATION('%', 2)),\
+	FST::NODE(1, FST::RELATION('\'', 3)), \
+	FST::NODE()
+
+#define GRAPH_INT_LITERAL 3, \
+	FST::NODE(11, \
+			FST::RELATION('-', 1),\
+			FST::RELATION('0', 2), \
+			FST::RELATION('1',2),FST::RELATION('2',2),FST::RELATION('3',2),\
+			FST::RELATION('4',2),FST::RELATION('5',2),\
+			FST::RELATION('6',2),FST::RELATION('7',2),\
+			FST::RELATION('8',2),FST::RELATION('9',2)),\
+	FST::NODE(9,\
+			FST::RELATION('1',2),\
+			FST::RELATION('2',2),FST::RELATION('3',2),\
+			FST::RELATION('4',2),FST::RELATION('5',2),\
+			FST::RELATION('6',2),FST::RELATION('7',2),\
+			FST::RELATION('8',2),FST::RELATION('9',2)),\
+	FST::NODE(10,\
+			FST::RELATION('0',2),FST::RELATION('1',2),\
+			FST::RELATION('2',2),FST::RELATION('3',2),\
+			FST::RELATION('4',2),FST::RELATION('5',2),\
+			FST::RELATION('6',2),FST::RELATION('7',2),\
+			FST::RELATION('8',2),FST::RELATION('9',2))
+
+
+#define GRAPH_OCTAL_LIT 3, \
+	FST::NODE(1, FST::RELATION('o', 1)),\
+	FST::NODE(7, \
+		FST::RELATION('1', 2), FST::RELATION('2', 2),\
+		FST::RELATION('3', 2), FST::RELATION('4', 2),\
+		FST::RELATION('5', 2), FST::RELATION('6', 2),\
+		FST::RELATION('7', 2)),\
+	FST::NODE(8, \
+		FST::RELATION('1', 2), FST::RELATION('2', 2), \
+		FST::RELATION('3', 2), FST::RELATION('4', 2), \
+		FST::RELATION('5', 2), FST::RELATION('6', 2), \
+		FST::RELATION('7', 2), FST::RELATION('0', 2))
+
+
+#define GRAPH_SCROLL 7,\
+	FST::NODE(1, FST::RELATION('s', 1)),\
+	FST::NODE(1, FST::RELATION('c', 2)),\
+	FST::NODE(1, FST::RELATION('r', 3)),\
+	FST::NODE(1, FST::RELATION('o', 4)),\
+	FST::NODE(1, FST::RELATION('l', 5)),\
+	FST::NODE(1, FST::RELATION('l', 6)),\
+	FST::NODE()
+
+#define GRAPH_ACTION 7,\
+	FST::NODE(1, FST::RELATION('a', 1)),\
+	FST::NODE(1, FST::RELATION('c', 2)),\
+	FST::NODE(1, FST::RELATION('t', 3)),\
+	FST::NODE(1, FST::RELATION('i', 4)),\
+	FST::NODE(1, FST::RELATION('o', 5)),\
+	FST::NODE(1, FST::RELATION('n', 6)),\
+	FST::NODE()
+
+#define GRAPH_SQUIRE 7,\
+	FST::NODE(1, FST::RELATION('s', 1)),\
+	FST::NODE(1, FST::RELATION('q', 2)),\
+	FST::NODE(1, FST::RELATION('u', 3)),\
+	FST::NODE(1, FST::RELATION('i', 4)),\
+	FST::NODE(1, FST::RELATION('r', 5)),\
+	FST::NODE(1, FST::RELATION('e', 6)),\
+	FST::NODE()
+
+#define GRAPH_MIGHTINESS 11,\
+	FST::NODE(1, FST::RELATION('m', 1)),\
+	FST::NODE(1, FST::RELATION('i', 2)),\
+	FST::NODE(1, FST::RELATION('g', 3)),\
+	FST::NODE(1, FST::RELATION('h', 4)),\
+	FST::NODE(1, FST::RELATION('t', 5)),\
+	FST::NODE(1, FST::RELATION('i', 6)),\
+	FST::NODE(1, FST::RELATION('n', 7)),\
+	FST::NODE(1, FST::RELATION('e', 8)),\
+	FST::NODE(1, FST::RELATION('s', 9)),\
+	FST::NODE(1, FST::RELATION('s', 10)),\
+	FST::NODE()
+
+#define GRAPH_COMEBACK 9, \
+	FST::NODE(1, FST::RELATION('c', 1)),\
+	FST::NODE(1, FST::RELATION('o', 2)),\
+	FST::NODE(1, FST::RELATION('m', 3)),\
+	FST::NODE(1, FST::RELATION('e', 4)),\
+	FST::NODE(1, FST::RELATION('b', 5)),\
+	FST::NODE(1, FST::RELATION('a', 6)),\
+	FST::NODE(1, FST::RELATION('c', 7)),\
+	FST::NODE(1, FST::RELATION('k', 8)),\
+	FST::NODE()
+
+#define GRAPH_HOLLOW 7,\
+	FST::NODE(1, FST::RELATION('h', 1)),\
+	FST::NODE(1, FST::RELATION('o', 2)),\
+	FST::NODE(1, FST::RELATION('l', 3)),\
+	FST::NODE(1, FST::RELATION('l', 4)),\
+	FST::NODE(1, FST::RELATION('o', 5)),\
+	FST::NODE(1, FST::RELATION('w', 6)),\
+	FST::NODE()
+
+#define GRAPH_ELDER 6,\
+	FST::NODE(1, FST::RELATION('e', 1)),\
+	FST::NODE(1, FST::RELATION('l', 2)),\
+	FST::NODE(1, FST::RELATION('d', 3)),\
+	FST::NODE(1, FST::RELATION('e', 4)),\
+	FST::NODE(1, FST::RELATION('r', 5)),\
+	FST::NODE()
+
+#define GRAPH_FILAMENT 9,\
+	FST::NODE(1, FST::RELATION('f', 1)),\
+	FST::NODE(1, FST::RELATION('i', 2)),\
+	FST::NODE(1, FST::RELATION('l', 3)),\
+	FST::NODE(1, FST::RELATION('a', 4)),\
+	FST::NODE(1, FST::RELATION('m', 5)),\
+	FST::NODE(1, FST::RELATION('e', 6)),\
+	FST::NODE(1, FST::RELATION('n', 7)),\
+	FST::NODE(1, FST::RELATION('t', 8)),\
+	FST::NODE()
+
+#define GRAPH_CHARGE 7, \
+	FST::NODE(1, FST::RELATION('c', 1)),\
+	FST::NODE(1, FST::RELATION('h', 2)),\
+	FST::NODE(1, FST::RELATION('a', 3)),\
+	FST::NODE(1, FST::RELATION('r', 4)),\
+	FST::NODE(1, FST::RELATION('g', 5)),\
+	FST::NODE(1, FST::RELATION('e', 6)),\
+	FST::NODE()
+
+#define GRAPH_BACKUP 7, \
+	FST::NODE(1, FST::RELATION('b', 1)),\
+	FST::NODE(1, FST::RELATION('a', 2)),\
+	FST::NODE(1, FST::RELATION('c', 3)),\
+	FST::NODE(1, FST::RELATION('k', 4)),\
+	FST::NODE(1, FST::RELATION('u', 5)),\
+	FST::NODE(1, FST::RELATION('p', 6)),\
+	FST::NODE()
+
+#define GRAPH_PATROL 7,\
+	FST::NODE(1, FST::RELATION('p', 1)),\
+	FST::NODE(1, FST::RELATION('a', 2)),\
+	FST::NODE(1, FST::RELATION('t', 3)),\
+	FST::NODE(1, FST::RELATION('r', 4)),\
+	FST::NODE(1, FST::RELATION('o', 5)),\
+	FST::NODE(1, FST::RELATION('l', 6)),\
+	FST::NODE()
+
+#define GRAPH_RUNE 5, \
+	FST::NODE(1, FST::RELATION('r', 1)),\
+	FST::NODE(1, FST::RELATION('u', 2)),\
+	FST::NODE(1, FST::RELATION('n', 3)),\
+	FST::NODE(1, FST::RELATION('e', 4)),\
+	FST::NODE()
+
+#define GRAPH_HONOR 6, \
+	FST::NODE(1, FST::RELATION('h', 1)),\
+	FST::NODE(1, FST::RELATION('o', 2)),\
+	FST::NODE(1, FST::RELATION('n', 3)),\
+	FST::NODE(1, FST::RELATION('o', 4)),\
+	FST::NODE(1, FST::RELATION('r', 5)),\
+	FST::NODE()
+
+#define GRAPH_FAITH 6, \
+	FST::NODE(1, FST::RELATION('f', 1)),\
+	FST::NODE(1, FST::RELATION('a', 2)),\
+	FST::NODE(1, FST::RELATION('i', 3)),\
+	FST::NODE(1, FST::RELATION('t', 4)),\
+	FST::NODE(1, FST::RELATION('h', 5)),\
+	FST::NODE()
+
+#define GRAPH_EXILE 6, \
+	FST::NODE(1, FST::RELATION('e', 1)),\
+	FST::NODE(1, FST::RELATION('x', 2)),\
+	FST::NODE(1, FST::RELATION('i', 3)),\
+	FST::NODE(1, FST::RELATION('l', 4)),\
+	FST::NODE(1, FST::RELATION('e', 5)),\
+	FST::NODE()
+
+#define GRAPH_TEMPLE 7, \
+	FST::NODE(1, FST::RELATION('t', 1)),\
+	FST::NODE(1, FST::RELATION('e', 2)),\
+	FST::NODE(1, FST::RELATION('m', 3)),\
+	FST::NODE(1, FST::RELATION('p', 4)),\
+	FST::NODE(1, FST::RELATION('l', 5)),\
+	FST::NODE(1, FST::RELATION('e', 6)),\
+	FST::NODE()
+
+#define GRAPN_BANISH 7,\
+	FST::NODE(1, FST::RELATION('b', 1)),\
+	FST::NODE(1, FST::RELATION('a', 2)),\
+	FST::NODE(1, FST::RELATION('n', 3)),\
+	FST::NODE(1, FST::RELATION('i', 4)),\
+	FST::NODE(1, FST::RELATION('s', 5)),\
+	FST::NODE(1, FST::RELATION('h', 6)),\
+	FST::NODE()
+
+
+#define GRAPH_COUNCIL 8,\
+	FST::NODE(1, FST::RELATION('c', 1)),\
+	FST::NODE(1, FST::RELATION('o', 2)),\
+	FST::NODE(1, FST::RELATION('u', 3)),\
+	FST::NODE(1, FST::RELATION('n', 4)),\
+	FST::NODE(1, FST::RELATION('c', 5)),\
+	FST::NODE(1, FST::RELATION('i', 6)),\
+	FST::NODE(1, FST::RELATION('l', 7)),\
+	FST::NODE()
+
+#define GRAPH_PATH 5, \
+	FST::NODE(1, FST::RELATION('p', 1)),\
+	FST::NODE(1, FST::RELATION('a', 2)),\
+	FST::NODE(1, FST::RELATION('t', 3)),\
+	FST::NODE(1, FST::RELATION('h', 4)),\
+	FST::NODE()
+
+
+#define GRAPH_TIRESOME 9,\
+	FST::NODE(1, FST::RELATION('t', 1)),\
+	FST::NODE(1, FST::RELATION('i', 2)),\
+	FST::NODE(1, FST::RELATION('r', 3)),\
+	FST::NODE(1, FST::RELATION('e', 4)),\
+	FST::NODE(1, FST::RELATION('s', 5)),\
+	FST::NODE(1, FST::RELATION('o', 6)),\
+	FST::NODE(1, FST::RELATION('m', 7)),\
+	FST::NODE(1, FST::RELATION('e', 8)),\
+	FST::NODE()
+
+
+#define GRAPH_BIND 5,\
+	FST::NODE(1, FST::RELATION('b', 1)),\
+	FST::NODE(1, FST::RELATION('i', 2)),\
+	FST::NODE(1, FST::RELATION('n', 3)),\
+	FST::NODE(1, FST::RELATION('d', 4)),\
+	FST::NODE()
+
+
+#define GRAPH_ALLY 5, \
+	FST::NODE(1, FST::RELATION('a', 1)),\
+	FST::NODE(1, FST::RELATION('l', 2)),\
+	FST::NODE(1, FST::RELATION('l', 3)),\
+	FST::NODE(1, FST::RELATION('y', 4)),\
+	FST::NODE()
+
+
+#define GRAPH_COMPSCROLL 16, \
+	FST::NODE(1, FST::RELATION('c', 1)),\
+	FST::NODE(1, FST::RELATION('o', 2)),\
+	FST::NODE(1, FST::RELATION('m', 3)),\
+	FST::NODE(1, FST::RELATION('p', 4)),\
+	FST::NODE(1, FST::RELATION('a', 5)),\
+	FST::NODE(1, FST::RELATION('r', 6)),\
+	FST::NODE(1, FST::RELATION('e', 7)),\
+	FST::NODE(1, FST::RELATION('_', 8)),\
+	FST::NODE(1, FST::RELATION('s', 9)),\
+	FST::NODE(1, FST::RELATION('c', 10)),\
+	FST::NODE(1, FST::RELATION('r', 11)),\
+	FST::NODE(1, FST::RELATION('o', 12)),\
+	FST::NODE(1, FST::RELATION('l', 13)),\
+	FST::NODE(1, FST::RELATION('l', 14)),\
+	FST::NODE(1, FST::RELATION('s', 15)),\
+	FST::NODE()
+
+
+#define GRAPH_CONSOLIDATE 12,\
+	FST::NODE(1, FST::RELATION('c', 1)),\
+	FST::NODE(1, FST::RELATION('o', 2)),\
+	FST::NODE(1, FST::RELATION('n', 3)),\
+	FST::NODE(1, FST::RELATION('s', 4)),\
+	FST::NODE(1, FST::RELATION('o', 5)),\
+	FST::NODE(1, FST::RELATION('l', 6)),\
+	FST::NODE(1, FST::RELATION('i', 7)),\
+	FST::NODE(1, FST::RELATION('d', 8)),\
+	FST::NODE(1, FST::RELATION('a', 9)),\
+	FST::NODE(1, FST::RELATION('t', 10)),\
+	FST::NODE(1, FST::RELATION('e', 11)),\
+	FST::NODE()
+
+
+#define GRAPH_CONFSCR 17,\
+	FST::NODE(1, FST::RELATION('c', 1)),\
+	FST::NODE(1, FST::RELATION('o', 2)),\
+	FST::NODE(1, FST::RELATION('n', 3)),\
+	FST::NODE(1, FST::RELATION('f', 4)),\
+	FST::NODE(1, FST::RELATION('e', 5)),\
+	FST::NODE(1, FST::RELATION('s', 6)),\
+	FST::NODE(1, FST::RELATION('s', 7)),\
+	FST::NODE(1, FST::RELATION('i', 8)),\
+	FST::NODE(1, FST::RELATION('o', 9)),\
+	FST::NODE(1, FST::RELATION('n', 10)),\
+	FST::NODE(1, FST::RELATION('S', 11)),\
+	FST::NODE(1, FST::RELATION('c', 12)),\
+	FST::NODE(1, FST::RELATION('r', 13)),\
+	FST::NODE(1, FST::RELATION('o', 14)),\
+	FST::NODE(1, FST::RELATION('l', 15)),\
+	FST::NODE(1, FST::RELATION('l', 16)),\
+	FST::NODE()
+
+
+#define GRAPH_CONFSQU 17, \
+	FST::NODE(1, FST::RELATION('c', 1)),\
+	FST::NODE(1, FST::RELATION('o', 2)),\
+	FST::NODE(1, FST::RELATION('n', 3)),\
+	FST::NODE(1, FST::RELATION('f', 4)),\
+	FST::NODE(1, FST::RELATION('e', 5)),\
+	FST::NODE(1, FST::RELATION('s', 6)),\
+	FST::NODE(1, FST::RELATION('s', 7)),\
+	FST::NODE(1, FST::RELATION('i', 8)),\
+	FST::NODE(1, FST::RELATION('o', 9)),\
+	FST::NODE(1, FST::RELATION('n', 10)),\
+	FST::NODE(1, FST::RELATION('S', 11)),\
+	FST::NODE(1, FST::RELATION('q', 12)),\
+	FST::NODE(1, FST::RELATION('u', 13)),\
+	FST::NODE(1, FST::RELATION('i', 14)),\
+	FST::NODE(1, FST::RELATION('r', 15)),\
+	FST::NODE(1, FST::RELATION('e', 16)),\
+	FST::NODE()
+
+
+#define GRAPH_CONFRUNE 15, \
+	FST::NODE(1, FST::RELATION('c', 1)),\
+	FST::NODE(1, FST::RELATION('o', 2)),\
+	FST::NODE(1, FST::RELATION('n', 3)),\
+	FST::NODE(1, FST::RELATION('f', 4)),\
+	FST::NODE(1, FST::RELATION('e', 5)),\
+	FST::NODE(1, FST::RELATION('s', 6)),\
+	FST::NODE(1, FST::RELATION('s', 7)),\
+	FST::NODE(1, FST::RELATION('i', 8)),\
+	FST::NODE(1, FST::RELATION('o', 9)),\
+	FST::NODE(1, FST::RELATION('n', 10)),\
+	FST::NODE(1, FST::RELATION('R', 11)),\
+	FST::NODE(1, FST::RELATION('u', 12)),\
+	FST::NODE(1, FST::RELATION('n', 13)),\
+	FST::NODE(1, FST::RELATION('e', 14)),\
+	FST::NODE()
