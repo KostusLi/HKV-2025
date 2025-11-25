@@ -5,7 +5,6 @@
 #include <iomanip>
 #include <sstream>
 #include <string>
-
 using namespace std;
 
 
@@ -67,6 +66,14 @@ int _tmain(int argc, _TCHAR* argv[])
 			return 0;
 		}
 		else Log::writeLine(&std::cout, SYNTGOOD, "");
+		bool sem_ok = Semantic::semanticsCheck(tables, log);					//выполнить семантический анализ
+		if (!sem_ok)
+		{
+			Log::writeLine(log.stream, SEMERROR, "");
+			Log::writeLine(&std::cout, SEMERROR, STOP, "");
+			return 0;
+		}
+		else Log::writeLine(&std::cout, SEMGOOD, "");
 	}
 	catch (Error::ERROR e)
 	{

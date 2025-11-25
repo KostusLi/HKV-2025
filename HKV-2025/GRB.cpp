@@ -30,7 +30,7 @@ namespace GRB
 		),
 
 		// N - тело temple: различные конструкции
-		Rule(NS('N'), GRB_ERROR_SERIES + 14, 36,				// 614 - ошибка в теле программы
+		Rule(NS('N'), GRB_ERROR_SERIES + 14, 28,				// 614 - ошибка в теле программы
 			// Объявления
 			Rule::Chain(4, TS('e'), TS('t'), TS('i'), TS(';')),	// e t i ;
 			Rule::Chain(5, TS('e'), TS('t'), TS('i'), TS(';'), NS('N')),	// e t i ; N
@@ -52,18 +52,10 @@ namespace GRB
 			Rule::Chain(5, TS('i'), TS('('), NS('W'), TS(')'), TS(';')),	// i ( W ) ;
 			Rule::Chain(6, TS('i'), TS('('), NS('W'), TS(')'), TS(';'), NS('N')),	// i ( W ) ; N
 			// Выводы
-			Rule::Chain(5, TS('u'), TS('('), TS('i'), TS(')'), TS(';')),	// u ( i ) ;
-			Rule::Chain(6, TS('u'), TS('('), TS('i'), TS(')'), TS(';'), NS('N')),	// u ( i ) ; N
-			Rule::Chain(5, TS('u'), TS('('), TS('l'), TS(')'), TS(';')),	// u ( l ) ;
-			Rule::Chain(6, TS('u'), TS('('), TS('l'), TS(')'), TS(';'), NS('N')),	// u ( l ) ; N
-			Rule::Chain(5, TS('o'), TS('('), TS('i'), TS(')'), TS(';')),	// o ( i ) ;
-			Rule::Chain(6, TS('o'), TS('('), TS('i'), TS(')'), TS(';'), NS('N')),	// o ( i ) ; N
-			Rule::Chain(5, TS('o'), TS('('), TS('l'), TS(')'), TS(';')),	// o ( l ) ;
-			Rule::Chain(6, TS('o'), TS('('), TS('l'), TS(')'), TS(';'), NS('N')),	// o ( l ) ; N
-			Rule::Chain(5, TS('j'), TS('('), TS('i'), TS(')'), TS(';')),	// j ( i ) ;
-			Rule::Chain(6, TS('j'), TS('('), TS('i'), TS(')'), TS(';'), NS('N')),	// j ( i ) ; N
-			Rule::Chain(5, TS('j'), TS('('), TS('l'), TS(')'), TS(';')),	// j ( l ) ;
-			Rule::Chain(6, TS('j'), TS('('), TS('l'), TS(')'), TS(';'), NS('N')),	// j ( l ) ; N
+			Rule::Chain(3, TS('u'), TS('i'), TS(';')),	// u ( i ) ;
+			Rule::Chain(4, TS('u'), TS('i'), TS(';'), NS('N')),	// u ( i ) ; N
+			Rule::Chain(3, TS('u'), TS('l'), TS(';')),	// u ( l ) ;
+			Rule::Chain(4, TS('u'), TS('l'), TS(';'), NS('N')),	// u ( l ) ; N
 			// Условные конструкции
 			Rule::Chain(2, TS('c'), NS('X')),	// X
 			Rule::Chain(2, TS('w'), NS('X')),
@@ -76,7 +68,7 @@ namespace GRB
 		),
 
 		// T - тело функции (с return)
-		Rule(NS('T'), GRB_ERROR_SERIES + 3, 38,					// 603 - ошибка в теле функции
+		Rule(NS('T'), GRB_ERROR_SERIES + 3, 30,					// 603 - ошибка в теле функции
 			// Объявления
 			Rule::Chain(4, TS('e'), TS('t'), TS('i'), TS(';')),	// e t i ;
 			Rule::Chain(5, TS('e'), TS('t'), TS('i'), TS(';'), NS('T')),	// e t i ; T
@@ -101,18 +93,10 @@ namespace GRB
 			Rule::Chain(5, TS('i'), TS('('), NS('W'), TS(')'), TS(';')),	// i ( W ) ;
 			Rule::Chain(6, TS('i'), TS('('), NS('W'), TS(')'), TS(';'), NS('T')),	// i ( W ) ; T
 			// Выводы
-			Rule::Chain(5, TS('u'), TS('('), TS('i'), TS(')'), TS(';')),	// u ( i ) ;
-			Rule::Chain(6, TS('u'), TS('('), TS('i'), TS(')'), TS(';'), NS('T')),	// u ( i ) ; T
-			Rule::Chain(5, TS('u'), TS('('), TS('l'), TS(')'), TS(';')),	// u ( l ) ;
-			Rule::Chain(6, TS('u'), TS('('), TS('l'), TS(')'), TS(';'), NS('T')),	// u ( l ) ; T
-			Rule::Chain(5, TS('o'), TS('('), TS('i'), TS(')'), TS(';')),	// o ( i ) ;
-			Rule::Chain(6, TS('o'), TS('('), TS('i'), TS(')'), TS(';'), NS('T')),	// o ( i ) ; T
-			Rule::Chain(5, TS('o'), TS('('), TS('l'), TS(')'), TS(';')),	// o ( l ) ;
-			Rule::Chain(6, TS('o'), TS('('), TS('l'), TS(')'), TS(';'), NS('T')),	// o ( l ) ; T
-			Rule::Chain(5, TS('j'), TS('('), TS('i'), TS(')'), TS(';')),	// j ( i ) ;
-			Rule::Chain(6, TS('j'), TS('('), TS('i'), TS(')'), TS(';'), NS('T')),	// j ( i ) ; T
-			Rule::Chain(5, TS('j'), TS('('), TS('l'), TS(')'), TS(';')),	// j ( l ) ;
-			Rule::Chain(6, TS('j'), TS('('), TS('l'), TS(')'), TS(';'), NS('T')),	// j ( l ) ; T
+			Rule::Chain(3, TS('u'), TS('i'), TS(';')),	// u ( i ) ;
+			Rule::Chain(4, TS('u'), TS('i'), TS(';'), NS('T')),	// u ( i ) ; N
+			Rule::Chain(3, TS('u'), TS('l'), TS(';')),	// u ( l ) ;
+			Rule::Chain(4, TS('u'), TS('l'), TS(';'), NS('T')),	// u ( l ) ; N
 			// Условные конструкции
 			Rule::Chain(2, TS('c'), NS('X')),	// X
 			Rule::Chain(2, TS('w'), NS('X')),
@@ -125,7 +109,7 @@ namespace GRB
 		),
 
 		// P - тело процедуры (без return)
-		Rule(NS('P'), GRB_ERROR_SERIES + 3, 36,					// 603 - ошибка в теле функции
+		Rule(NS('P'), GRB_ERROR_SERIES + 3, 28,					// 603 - ошибка в теле функции
 			// Объявления
 			Rule::Chain(4, TS('e'), TS('t'), TS('i'), TS(';')),	// e t i ;
 			Rule::Chain(5, TS('e'), TS('t'), TS('i'), TS(';'), NS('P')),	// e t i ; P
@@ -147,18 +131,10 @@ namespace GRB
 			Rule::Chain(5, TS('i'), TS('('), NS('W'), TS(')'), TS(';')),	// i ( W ) ;
 			Rule::Chain(6, TS('i'), TS('('), NS('W'), TS(')'), TS(';'), NS('P')),	// i ( W ) ; P
 			// Выводы
-			Rule::Chain(5, TS('u'), TS('('), TS('i'), TS(')'), TS(';')),	// u ( i ) ;
-			Rule::Chain(6, TS('u'), TS('('), TS('i'), TS(')'), TS(';'), NS('P')),	// u ( i ) ; P
-			Rule::Chain(5, TS('u'), TS('('), TS('l'), TS(')'), TS(';')),	// u ( l ) ;
-			Rule::Chain(6, TS('u'), TS('('), TS('l'), TS(')'), TS(';'), NS('P')),	// u ( l ) ; P
-			Rule::Chain(5, TS('o'), TS('('), TS('i'), TS(')'), TS(';')),	// o ( i ) ;
-			Rule::Chain(6, TS('o'), TS('('), TS('i'), TS(')'), TS(';'), NS('P')),	// o ( i ) ; P
-			Rule::Chain(5, TS('o'), TS('('), TS('l'), TS(')'), TS(';')),	// o ( l ) ;
-			Rule::Chain(6, TS('o'), TS('('), TS('l'), TS(')'), TS(';'), NS('P')),	// o ( l ) ; P
-			Rule::Chain(5, TS('j'), TS('('), TS('i'), TS(')'), TS(';')),	// j ( i ) ;
-			Rule::Chain(6, TS('j'), TS('('), TS('i'), TS(')'), TS(';'), NS('P')),	// j ( i ) ; P
-			Rule::Chain(5, TS('j'), TS('('), TS('l'), TS(')'), TS(';')),	// j ( l ) ;
-			Rule::Chain(6, TS('j'), TS('('), TS('l'), TS(')'), TS(';'), NS('P')),	// j ( l ) ; P
+			Rule::Chain(3, TS('u'), TS('i'), TS(';')),	// u ( i ) ;
+			Rule::Chain(4, TS('u'), TS('i'), TS(';'), NS('p')),	// u ( i ) ; N
+			Rule::Chain(3, TS('u'), TS('l'), TS(';')),	// u ( l ) ;
+			Rule::Chain(4, TS('u'), TS('l'), TS(';'), NS('P')),	// u ( l ) ; N
 			// Условные конструкции
 			Rule::Chain(2, TS('c'), NS('X')),	// X
 			Rule::Chain(2, TS('w'), NS('X')),
@@ -171,7 +147,7 @@ namespace GRB
 		),
 
 		// C - тело внутри charge/patrol/council/path/tiresome
-		Rule(NS('C'), GRB_ERROR_SERIES + 14, 36,					// 614 - ошибка в теле программы
+		Rule(NS('C'), GRB_ERROR_SERIES + 14, 28,					// 614 - ошибка в теле программы
 			// Объявления
 			Rule::Chain(4, TS('e'), TS('t'), TS('i'), TS(';')),	// e t i ;
 			Rule::Chain(5, TS('e'), TS('t'), TS('i'), TS(';'), NS('C')),	// e t i ; C
@@ -193,18 +169,10 @@ namespace GRB
 			Rule::Chain(5, TS('i'), TS('('), NS('W'), TS(')'), TS(';')),	// i ( W ) ;
 			Rule::Chain(6, TS('i'), TS('('), NS('W'), TS(')'), TS(';'), NS('C')),	// i ( W ) ; C
 			// Выводы
-			Rule::Chain(5, TS('u'), TS('('), TS('i'), TS(')'), TS(';')),	// u ( i ) ;
-			Rule::Chain(6, TS('u'), TS('('), TS('i'), TS(')'), TS(';'), NS('C')),	// u ( i ) ; C
-			Rule::Chain(5, TS('u'), TS('('), TS('l'), TS(')'), TS(';')),	// u ( l ) ;
-			Rule::Chain(6, TS('u'), TS('('), TS('l'), TS(')'), TS(';'), NS('C')),	// u ( l ) ; C
-			Rule::Chain(5, TS('o'), TS('('), TS('i'), TS(')'), TS(';')),	// o ( i ) ;
-			Rule::Chain(6, TS('o'), TS('('), TS('i'), TS(')'), TS(';'), NS('C')),	// o ( i ) ; C
-			Rule::Chain(5, TS('o'), TS('('), TS('l'), TS(')'), TS(';')),	// o ( l ) ;
-			Rule::Chain(6, TS('o'), TS('('), TS('l'), TS(')'), TS(';'), NS('C')),	// o ( l ) ; C
-			Rule::Chain(5, TS('j'), TS('('), TS('i'), TS(')'), TS(';')),	// j ( i ) ;
-			Rule::Chain(6, TS('j'), TS('('), TS('i'), TS(')'), TS(';'), NS('C')),	// j ( i ) ; C
-			Rule::Chain(5, TS('j'), TS('('), TS('l'), TS(')'), TS(';')),	// j ( l ) ;
-			Rule::Chain(6, TS('j'), TS('('), TS('l'), TS(')'), TS(';'), NS('C')),	// j ( l ) ; C
+			Rule::Chain(3, TS('u'), TS('i'), TS(';')),	// u ( i ) ;
+			Rule::Chain(4, TS('u'), TS('i'), TS(';'), NS('C')),	// u ( i ) ; N
+			Rule::Chain(3, TS('u'), TS('l'), TS(';')),	// u ( l ) ;
+			Rule::Chain(4, TS('u'), TS('l'), TS(';'), NS('C')),	// u ( l ) ; N
 			// Условные конструкции
 			Rule::Chain(2, TS('c'), NS('X')),	// X
 			Rule::Chain(2, TS('w'), NS('X')),

@@ -10,8 +10,8 @@
 
 namespace Lexer
 {
-	// !!! �����: ������ ������ ������ ����� ��������������� N_GRAPHS (32) !!!
-	// � ������������ ���� ������� �� LT.h (LEX_TEMPLE, LEX_ELDER...)
+	// !!!      :                                            N_GRAPHS (32) !!!
+	//                                LT.h (LEX_TEMPLE, LEX_ELDER...)
 	Graph graphs[N_GRAPHS] =
 	{
 		{ LEX_SEPARATORS,   FST::FST(GRAPH_SEPARATORS) },   // 1
@@ -24,18 +24,18 @@ namespace Lexer
 		{ LEX_TEMPLE,       FST::FST(GRAPH_TEMPLE) },       // 7
 		{ LEX_ACTION,       FST::FST(GRAPH_ACTION) },       // 8
 
-		// ���� ������
+		//            
 		{ LEX_INTSTRBOOLCHAR, FST::FST(GRAPH_SQUIRE) }, // 9
 		{ LEX_INTSTRBOOLCHAR, FST::FST(GRAPH_SCROLL) }, // 10
 		{ LEX_INTSTRBOOLCHAR, FST::FST(GRAPH_RUNE) },   // 11
 		{ LEX_INTSTRBOOLCHAR, FST::FST(GRAPH_HONOR) },  // 12
 		{ LEX_HOLLOW, FST::FST(GRAPH_HOLLOW) }, // 13
 
-		// ���������� ��������
+		//                    
 		{ LEX_LITERAL,        FST::FST(GRAPH_FAITH) },        // 14
 		{ LEX_LITERAL,        FST::FST(GRAPH_EXILE) },        // 15
 
-		// ���������
+		//          
 		{ LEX_COMEBACK,     FST::FST(GRAPH_COMEBACK) },     // 16
 		{ LEX_CHARGE,       FST::FST(GRAPH_CHARGE) },       // 17
 		{ LEX_BACKUP,       FST::FST(GRAPH_BACKUP) },       // 18
@@ -47,22 +47,20 @@ namespace Lexer
 		{ LEX_ALLY,         FST::FST(GRAPH_ALLY) },         // 24
 		{ LEX_BANISH,		FST::FST(GRAPN_BANISH)},		//25
 
-		// ����������� �������
+		//                    
 		{ LEX_COMPSCROLLS,  FST::FST(GRAPH_COMPSCROLL) },   // 25
 		{ LEX_CONSOLIDATE,  FST::FST(GRAPH_CONSOLIDATE) },  // 26
 		{ LEX_MIGHTINESS,   FST::FST(GRAPH_MIGHTINESS) },   // 27
 		{ LEX_FILAMENT,     FST::FST(GRAPH_FILAMENT) },     // 28
 
-		// ������� ������
-		{ LEX_PRINTSCROLL,      FST::FST(GRAPH_CONFSCR) },  // 29
-		{ LEX_PRINTSQUIREBOOL,  FST::FST(GRAPH_CONFSQU) },  // 30
-		{ LEX_PRINTCHAR,        FST::FST(GRAPH_CONFRUNE) }, // 31
+		//               
+		{ LEX_PRINT,      FST::FST(GRAPH_CONF) },  // 29
 
-		// �������������� (������ ���������, ����� �� ������������� �������� �����)
+		//                (                ,                                      )
 		{ LEX_ID,           FST::FST(GRAPH_ID) }            // 32
 	};
 
-	// --- ��������������� ������� ---
+	// ---                         ---
 
 	char* getScopeName(IT::IdTable idtable, char* prevword)
 	{
@@ -80,48 +78,48 @@ namespace Lexer
 	}
 
 	int DecimicalNotation(std::string input, int scaleofnot) {
-		// 1. ������������� ��������� ��� ������������ �������
+		// 1.                                                 
 		scaleofnot = 8;
 
-		// 2. ����������, �������� �� ����� �������������
+		// 2.           ,                                
 		bool isNegative = !input.empty() && input[0] == '-';
 
-		// 3. ��������� ��������� ������ ��� ���������, ������� ����� ���������������
+		// 3.                                         ,                              
 		size_t startIdx = 0;
 
-		// ���� ���� �����, �������� ����� �������� ����� ����
+		//                ,                                   
 		if (isNegative) {
 			if (input.size() >= 2 && (input[1] == 'o' || input[1] == 'O')) {
-				startIdx = 2; // ���������� '-' � 'o'/'O'
+				startIdx = 2; //            '-'   'o'/'O'
 			}
 			else {
-				// ���� �������������, �� ��� 'o', ������������, ��� ��� ������ ��� ���������� �����,
-				// �� ��� ������������ ������� ��� ����� ���������� ������ '-'
+				//                   ,        'o',             ,                                    ,
+				//                                                         '-'
 				startIdx = 1;
 			}
 		}
 		else {
-			// ���� ��� ������, ���� ������� � ������ ������
+			//                ,                             
 			if (input.size() >= 1 && (input[0] == 'o' || input[0] == 'O')) {
-				startIdx = 1; // ���������� 'o'/'O'
+				startIdx = 1; //            'o'/'O'
 			}
 		}
 
-		// ���� ����� �������� ��� ����, std::stoi ������� ����������, ��� ����� ���������� ����.
+		//                             , std::stoi                   ,                          .
 
 		try {
-			// ����������� ���������, ���������� ������ �����, � int � ���������� 8.
+			//                      ,                        ,   int              8.
 			int value = std::stoi(input.substr(startIdx), nullptr, scaleofnot);
 
-			// ���������� ���������, �������� ���� �����, ���� �� ���.
+			//                     ,                    ,            .
 			return isNegative ? -value : value;
 		}
 		catch (const std::out_of_range&) {
-			// ��������� ������������ (�� ��������� ��������� int, TI_INT_MINSIZE/MAXSIZE)
+			//                        (                       int, TI_INT_MINSIZE/MAXSIZE)
 			return isNegative ? TI_INT_MINSIZE : TI_INT_MAXSIZE;
 		}
 		catch (const std::invalid_argument&) {
-			// ���������, ���� � ��������� ��� ���� (��������, ���� "-o")
+			//          ,                           (        ,      "-o")
 			return 0;
 		}
 	}
@@ -140,9 +138,11 @@ namespace Lexer
 					int valueInt;
 					if (!strcmp(value, "exile")) {
 						valueInt = 1;
-					} else if (!strcmp(value, "faith")) {
+					}
+					else if (!strcmp(value, "faith")) {
 						valueInt = 0;
-					} else {
+					}
+					else {
 						valueInt = atoi(value);
 					}
 					if (valueInt == idtable.table[i].value.vint) return i;
@@ -221,37 +221,48 @@ namespace Lexer
 	// Поиск переменной по локальному имени во всех scope
 	// Ищет переменную, которая заканчивается на ".localName" или равна "localName"
 	// Возвращает индекс последней найденной переменной (самой недавно объявленной)
+	// ВАЖНО: ищет переменные во всех scope, чтобы найти правильную переменную
 	int findVariableByLocalName(IT::IdTable& idtable, char* localName)
 	{
 		if (!localName || strlen(localName) == 0) return TI_NULLIDX;
-		
-		// Сначала проверяем точное совпадение
+
+		// Сначала проверяем точное совпадение (для глобальных переменных)
 		int idx = IT::isId(idtable, localName);
 		if (idx != TI_NULLIDX) return idx;
-		
+
 		// Затем ищем переменные, которые заканчиваются на ".localName"
 		// Ищем с конца таблицы, чтобы найти самую недавно объявленную переменную
+		// Это важно для правильного разрешения scope - более глубокий scope имеет приоритет
 		char searchPattern[SCOPED_ID_MAXSIZE];
 		sprintf_s(searchPattern, SCOPED_ID_MAXSIZE, ".%s", localName);
 		size_t patternLen = strlen(searchPattern);
-		
-		// Ищем с конца, чтобы найти самую недавно объявленную переменную
+
+		// Ищем с конца таблицы - это гарантирует, что найдем самую недавно объявленную переменную
+		// в самом глубоком доступном scope
 		for (int i = idtable.size - 1; i >= 0; i--)
 		{
-			if (idtable.table[i].idtype == IT::IDTYPE::V)
+			if (idtable.table[i].idtype == IT::IDTYPE::V || idtable.table[i].idtype == IT::IDTYPE::P)
 			{
-				size_t idLen = strlen(idtable.table[i].id);
+				const char* id = idtable.table[i].id;
+				size_t idLen = strlen(id);
+				
+				// Проверяем точное совпадение
+				if (strcmp(id, localName) == 0)
+				{
+					return i;
+				}
+				
+				// Проверяем, заканчивается ли имя на ".localName"
 				if (idLen >= patternLen)
 				{
-					// Проверяем, заканчивается ли имя на ".localName"
-					if (strcmp(idtable.table[i].id + idLen - patternLen, searchPattern) == 0)
+					if (strcmp(id + idLen - patternLen, searchPattern) == 0)
 					{
 						return i;
 					}
 				}
 			}
 		}
-		
+
 		return TI_NULLIDX;
 	}
 
@@ -263,13 +274,13 @@ namespace Lexer
 		IT::IDDATATYPE type = getType(id, idtype);
 		int index = TI_NULLIDX;
 
-		// �������� �� �������������
+		//                          
 		if (lex == LEX_LITERAL)
 			index = getLiteralIndex(tables.idtable, id, type);
 		else
 			index = IT::isId(tables.idtable, id);
 
-		if (index != TI_NULLIDX) return nullptr; // ��� ����
+		if (index != TI_NULLIDX) return nullptr; //         
 
 		IT::Entry* itentry = new IT::Entry;
 		itentry->iddatatype = type;
@@ -277,7 +288,7 @@ namespace Lexer
 
 		if (lex == LEX_LITERAL)
 		{
-			// �������
+			//        
 			bool set_ok = IT::SetValue(itentry, id);
 			if (!set_ok) {
 				Log::writeError(log.stream, Error::GetError(313, line, 0));
@@ -293,7 +304,7 @@ namespace Lexer
 		}
 		else
 		{
-			// �������������
+			//              
 			if (isFunc)
 			{
 				itentry->idtype = IT::IDTYPE::F;
@@ -308,7 +319,7 @@ namespace Lexer
 						itentry->iddatatype = MIGHTINESS_TYPE;
 						itentry->value.params.count = MIGHTINESS_PARAMS_CNT;
 						itentry->value.params.types = new IT::IDDATATYPE[MIGHTINESS_PARAMS_CNT];
-						itentry->value.params.names = new char*[MIGHTINESS_PARAMS_CNT];
+						itentry->value.params.names = new char* [MIGHTINESS_PARAMS_CNT];
 						for (int k = 0; k < MIGHTINESS_PARAMS_CNT; ++k) {
 							itentry->value.params.types[k] = IT::MIGHTINESS_PARAMS[k];
 							itentry->value.params.names[k] = nullptr;
@@ -318,7 +329,7 @@ namespace Lexer
 						itentry->iddatatype = COMP_SCROL_TYPE;
 						itentry->value.params.count = COMP_SCROL_PARAMS_CNT;
 						itentry->value.params.types = new IT::IDDATATYPE[COMP_SCROL_PARAMS_CNT];
-						itentry->value.params.names = new char*[COMP_SCROL_PARAMS_CNT];
+						itentry->value.params.names = new char* [COMP_SCROL_PARAMS_CNT];
 						for (int k = 0; k < COMP_SCROL_PARAMS_CNT; ++k) {
 							itentry->value.params.types[k] = IT::COMP_SCROL_PARAMS[k];
 							itentry->value.params.names[k] = nullptr;
@@ -328,7 +339,7 @@ namespace Lexer
 						itentry->iddatatype = CONSOLIDATE_TYPE;
 						itentry->value.params.count = CONSOLIDATE_PARAMS_CNT;
 						itentry->value.params.types = new IT::IDDATATYPE[CONSOLIDATE_PARAMS_CNT];
-						itentry->value.params.names = new char*[CONSOLIDATE_PARAMS_CNT];
+						itentry->value.params.names = new char* [CONSOLIDATE_PARAMS_CNT];
 						for (int k = 0; k < CONSOLIDATE_PARAMS_CNT; ++k) {
 							itentry->value.params.types[k] = IT::CONSOLIDATE_PARAMS[k];
 							itentry->value.params.names[k] = nullptr;
@@ -338,7 +349,7 @@ namespace Lexer
 						itentry->iddatatype = FILAMENT_TYPE;
 						itentry->value.params.count = FILAMENT_PARAMS_CNT;
 						itentry->value.params.types = new IT::IDDATATYPE[FILAMENT_PARAMS_CNT];
-						itentry->value.params.names = new char*[FILAMENT_PARAMS_CNT];
+						itentry->value.params.names = new char* [FILAMENT_PARAMS_CNT];
 						for (int k = 0; k < FILAMENT_PARAMS_CNT; ++k) {
 							itentry->value.params.types[k] = IT::FILAMENT_PARAMS[k];
 							itentry->value.params.names[k] = nullptr;
@@ -348,7 +359,7 @@ namespace Lexer
 						itentry->iddatatype = CONF_SCROLL_TYPE;
 						itentry->value.params.count = CONF_SCROLL_PARAMS_CNT;
 						itentry->value.params.types = new IT::IDDATATYPE[CONF_SCROLL_PARAMS_CNT];
-						itentry->value.params.names = new char*[CONF_SCROLL_PARAMS_CNT];
+						itentry->value.params.names = new char* [CONF_SCROLL_PARAMS_CNT];
 						itentry->value.params.types[0] = IT::CONF_SCROLL_PARAMS[0];
 						itentry->value.params.names[0] = nullptr;
 						break;
@@ -356,7 +367,7 @@ namespace Lexer
 						itentry->iddatatype = CONF_SQUIREHON_TYPE;
 						itentry->value.params.count = CONF_SQUIREHON_PARAMS_CNT;
 						itentry->value.params.types = new IT::IDDATATYPE[CONF_SQUIREHON_PARAMS_CNT];
-						itentry->value.params.names = new char*[CONF_SQUIREHON_PARAMS_CNT];
+						itentry->value.params.names = new char* [CONF_SQUIREHON_PARAMS_CNT];
 						itentry->value.params.types[0] = IT::CONF_SQUIREHON_PARAMS[0];
 						itentry->value.params.names[0] = nullptr;
 						break;
@@ -364,7 +375,7 @@ namespace Lexer
 						itentry->iddatatype = CONF_RUNE_TYPE;
 						itentry->value.params.count = CONF_RUNE_PARAMS_CNT;
 						itentry->value.params.types = new IT::IDDATATYPE[CONF_RUNE_PARAMS_CNT];
-						itentry->value.params.names = new char*[CONF_RUNE_PARAMS_CNT];
+						itentry->value.params.names = new char* [CONF_RUNE_PARAMS_CNT];
 						itentry->value.params.types[0] = IT::CONF_RUNE_PARAMS[0];
 						itentry->value.params.names[0] = nullptr;
 						break;
@@ -374,7 +385,7 @@ namespace Lexer
 				{
 					itentry->value.params.count = 0;
 					itentry->value.params.types = new IT::IDDATATYPE[MAX_PARAMS_COUNT];
-					itentry->value.params.names = new char*[MAX_PARAMS_COUNT];
+					itentry->value.params.names = new char* [MAX_PARAMS_COUNT];
 					for (int k = 0; k < MAX_PARAMS_COUNT; k++) {
 						itentry->value.params.names[k] = nullptr;
 					}
@@ -386,7 +397,8 @@ namespace Lexer
 				// Но это должно быть проверено в вызывающем коде
 				itentry->idtype = isParam ? IT::IDTYPE::P : IT::IDTYPE::V;
 			}
-			strncpy_s(itentry->id, id, ID_MAXSIZE);
+			// Копируем id в поле структуры, используя правильный размер буфера
+			strncpy_s(itentry->id, SCOPED_ID_MAXSIZE, id, _TRUNCATE);
 		}
 		return itentry;
 	}
@@ -406,6 +418,8 @@ namespace Lexer
 		char nextword[TI_STR_MAXSIZE];
 		int curline;
 		std::stack<char*> scopes;
+		int braceDepth = 0; // Счетчик глубины вложенности ВСЕХ блоков (включая вложенные)
+		int scopeDepth = 0; // Счетчик глубины блоков, которые создали scope (только temple и функции)
 
 		for (int i = 0; i < In::InWord::size; i++)
 		{
@@ -417,8 +431,8 @@ namespace Lexer
 			int idxTI = TI_NULLIDX;
 			bool recognized = false;
 
-			// --- �������� ��� ��� ������� ---
-			std::cout << "DEBUG: ���������� �����: [" << curword << "]" << std::endl;
+			// ---                          ---
+			std::cout << "DEBUG:                 : [" << curword << "]" << std::endl;
 
 			for (int j = 0; j < N_GRAPHS; j++)
 			{
@@ -435,23 +449,41 @@ namespace Lexer
 						switch (curword[0])
 						{
 						case LEX_LEFTHESIS:
-							isParam = true;
-							// Сохраняем индекс функции, для которой начинаем обрабатывать параметры
-							// Ищем последнюю функцию в таблице (которая была создана перед [)
-							// ВАЖНО: сбрасываем предыдущее значение перед установкой нового
+							// КРИТИЧЕСКИ ВАЖНО: [ может быть для параметров функции ИЛИ для условий циклов
+							// Проверяем: если перед [ стоит имя функции (ID с типом F), то это параметры
+							// Иначе (если patrol, charge, council), то это условие - НЕ параметры!
+							isParam = false;
 							currentFuncIndex = TI_NULLIDX;
-							if (tables.idtable.size > 0) {
-								for (int k = tables.idtable.size - 1; k >= 0; k--) {
-									if (tables.idtable.table[k].idtype == IT::IDTYPE::F) {
-										currentFuncIndex = k;
-										break;
+							
+							// Сначала проверяем, что перед [ стоит ключевое слово циклов
+							if (i > 0) {
+								char* prevWord = in.words[i - 1].word;
+								// Если перед [ стоит ключевое слово patrol, charge, council - это условие, НЕ параметры
+								if (strcmp(prevWord, "patrol") == 0 || 
+									strcmp(prevWord, "charge") == 0 || 
+									strcmp(prevWord, "council") == 0) {
+									isParam = false; // Условие цикла - НЕ параметры
+									currentFuncIndex = TI_NULLIDX;
+								}
+								// Иначе проверяем, что перед [ стоит функция
+								else if (tables.idtable.size > 0) {
+									// Проверяем, что предыдущее слово было ID и это функция
+									// Ищем последнюю функцию в таблице (она должна быть создана перед [)
+									for (int k = tables.idtable.size - 1; k >= 0; k--) {
+										if (tables.idtable.table[k].idtype == IT::IDTYPE::F) {
+											// Проверяем, совпадает ли имя функции с предыдущим словом
+											if (strcmp(tables.idtable.table[k].id, prevWord) == 0) {
+												// Нашли функцию - значит это параметры функции
+												isParam = true;
+												currentFuncIndex = k;
+												break;
+											}
+										}
 									}
 								}
 							}
-							// ������ ���������� ����� ������� � ���� ������ ���� ����� ��� ��� �������� {
-							// � ���������� ������ � ��������� ��������� ���, �������� � ���� ������ ��� {
 							break;
-// LEX_RIGHTTHESIS
+							// LEX_RIGHTTHESIS
 						case LEX_RIGHTTHESIS:
 							// КРИТИЧЕСКИ ВАЖНО: сбрасываем флаги ДО обработки следующих токенов
 							isParam = false;
@@ -463,27 +495,64 @@ namespace Lexer
 							break;
 
 						case LEX_LEFTBRACE: // '{'
-							// ���� ����� '{' ���� "temple"
+						{
+							// ВАЖНО: scope добавляется ТОЛЬКО для:
+							// 1. Блока temple: если перед { стоит "temple"
+							// 2. Блока функции: если последняя запись в таблице - функция (F)
+							// Вложенные блоки (charge { }, patrol { }, backup { }) НЕ создают новый scope!
+							// Они используют текущий scope из стека
+							bool scopeAdded = false;
 							if (i > 0 && strcmp(in.words[i - 1].word, KW_TEMPLE) == 0) {
+								// Блок temple - добавляем scope "temple"
 								char* t = new char[7];
 								strcpy_s(t, 7, KW_TEMPLE);
 								scopes.push(t);
+								scopeAdded = true;
 							}
-							// ���� ����� '{' ���� ���������� ������� (] {) ��� (id [params] {)
-							// ����� ����� ����� ��� ��������� ������� �� IT
-							else if (tables.idtable.size > 0 && tables.idtable.table[tables.idtable.size - 1].idtype == IT::IDTYPE::F)
+							// Проверяем, что перед { стоит функция
+							// ВАЖНО: функция может быть не последней записью, если после нее были созданы параметры!
+							// Ищем последнюю функцию в таблице
+							else if (tables.idtable.size > 0)
 							{
-								// ��� ����� �������
-								char* fName = new char[ID_MAXSIZE];
-								strcpy_s(fName, ID_MAXSIZE, tables.idtable.table[tables.idtable.size - 1].id);
-								scopes.push(fName);
+								// Ищем последнюю функцию в таблице (она должна быть создана перед [)
+								int lastFuncIdx = TI_NULLIDX;
+								for (int k = tables.idtable.size - 1; k >= 0; k--) {
+									if (tables.idtable.table[k].idtype == IT::IDTYPE::F) {
+										lastFuncIdx = k;
+										break;
+									}
+								}
+								
+								// Если нашли функцию, добавляем её имя в scope
+								if (lastFuncIdx != TI_NULLIDX) {
+									char* fName = new char[ID_MAXSIZE];
+									strcpy_s(fName, ID_MAXSIZE, tables.idtable.table[lastFuncIdx].id);
+									scopes.push(fName);
+									scopeAdded = true;
+								}
+							}
+							// Для вложенных блоков (charge { }, patrol { }, backup { }, council { })
+							// НЕ добавляем новый scope - они используют текущий scope из стека
+							// Увеличиваем счетчики глубины
+							braceDepth++; // Увеличиваем для ВСЕХ блоков
+							if (scopeAdded) {
+								scopeDepth++; // Увеличиваем только для блоков, которые создали scope
 							}
 							break;
+						}
 
 						case LEX_BRACELET: // '}'
-							if (!scopes.empty()) {
-								delete[] scopes.top();
-								scopes.pop();
+							// ВАЖНО: удаляем scope ТОЛЬКО если это был блок функции или temple
+							// Вложенные блоки не создают scope, поэтому и не удаляют
+							// Используем отдельные счетчики для отслеживания
+							if (braceDepth > 0) {
+								braceDepth--; // Уменьшаем для ВСЕХ блоков
+								// Удаляем scope только если это был блок, который создал scope
+								if (scopeDepth > 0 && !scopes.empty()) {
+									delete[] scopes.top();
+									scopes.pop();
+									scopeDepth--;
+								}
 							}
 							break;
 						}
@@ -498,39 +567,94 @@ namespace Lexer
 						if (nextword[0] == LEX_LEFTHESIS || nextword[0] == LEX_LEFTBRAC) isFunc = true;
 						if (i > 0) typeKeywords = in.words[i - 1].word;
 
-						if (!isFunc && !isLiteral(curword) && !scopes.empty()) {
-							strncpy_s(fullId, scopes.top(), ID_MAXSIZE);
-							strncat(fullId, ".", SCOPED_ID_MAXSIZE);
-						}
-						strncat(fullId, curword, ID_MAXSIZE);
-
-						if (isLiteral(curword)) strcpy_s(fullId, curword);
-
-						// Проверяем, существует ли идентификатор
-						int existingIdx = TI_NULLIDX;
-						if (lexema == LEX_LITERAL)
-							existingIdx = getLiteralIndex(tables.idtable, fullId, getType(fullId, typeKeywords));
-						else {
-							// Сначала ищем по полному имени (с scope)
-							existingIdx = IT::isId(tables.idtable, fullId);
-							// Если не найдено, ищем по локальному имени во всех scope
-							if (existingIdx == TI_NULLIDX && !isLiteral(curword) && !isFunc && !isParam) {
-								existingIdx = findVariableByLocalName(tables.idtable, curword);
+						// КРИТИЧЕСКИ ВАЖНО: параметр может быть ТОЛЬКО если:
+						// 1. isParam == true (мы внутри [ и ])
+						// 2. currentFuncIndex != TI_NULLIDX (есть функция для параметров)
+						// 3. предыдущее слово - это тип данных (squire, scroll, rune, honor, hollow)
+						// 4. это НЕ функция
+						bool isActuallyParam = false;
+						if (isParam && currentFuncIndex != TI_NULLIDX && !isFunc && i > 0 && typeKeywords) {
+							if (ISTYPE(typeKeywords)) {
+								isActuallyParam = true;
 							}
 						}
-						
+
+						// Проверяем, существует ли идентификатор
+						// ВАЖНО: сначала формируем fullId, потом ищем по нему
+						int existingIdx = TI_NULLIDX;
+						if (lexema == LEX_LITERAL) {
+							// Для литералов формируем fullId
+							strcpy_s(fullId, curword);
+							existingIdx = getLiteralIndex(tables.idtable, fullId, getType(fullId, typeKeywords));
+						}
+						else {
+							// Для идентификаторов: формируем fullId с учетом scope
+							// ВАЖНО: 
+							// 1. Функции НЕ должны получать scope префикс (они глобальные)
+							// 2. Параметры функций НЕ должны получать scope префикс
+							// 3. ВСЕ переменные внутри блоков (temple, функции) ДОЛЖНЫ получать scope префикс
+							// 4. При использовании переменных (не объявлении) они тоже должны получать префикс
+							if (isFunc) {
+								// Функции создаются без префикса scope (глобальные)
+								strcpy_s(fullId, SCOPED_ID_MAXSIZE, curword);
+							}
+							else if (isActuallyParam) {
+								// Параметры функций не получают scope префикс
+								strcpy_s(fullId, SCOPED_ID_MAXSIZE, curword);
+							}
+							else if (!scopes.empty()) {
+								// ВСЕ остальные переменные в блоках получают scope префикс
+								// Это включает:
+								// - Объявления переменных (elder squire x)
+								// - Использование переменных (x = 10, confession x)
+								// - Переменные в условиях циклов (patrol [x < y])
+								strcpy_s(fullId, SCOPED_ID_MAXSIZE, scopes.top());
+								strcat_s(fullId, SCOPED_ID_MAXSIZE, ".");
+								strcat_s(fullId, SCOPED_ID_MAXSIZE, curword);
+							}
+							else {
+								// Если нет scope, используем просто локальное имя (глобальные переменные)
+								// Это может быть только для переменных вне блоков (что не должно происходить)
+								strcpy_s(fullId, SCOPED_ID_MAXSIZE, curword);
+							}
+							
+							// Теперь ищем существующие переменные:
+							// 1. Сначала по полному имени (с scope, например "temple.x")
+							existingIdx = IT::isId(tables.idtable, fullId);
+							
+							// 2. Если не нашли по полному имени, ищем по локальному имени
+							// ВАЖНО: это нужно для использования переменных в условиях циклов!
+							// Например, когда обрабатывается "patrol [x < y]", переменные x и y уже записаны
+							// как "temple.x" и "temple.y", и мы должны их найти по локальному имени
+							// НО: не ищем для параметров функций (они создаются без префикса)
+							if (existingIdx == TI_NULLIDX && !isLiteral(curword) && !isFunc && !isActuallyParam) {
+								existingIdx = findVariableByLocalName(tables.idtable, curword);
+								if (existingIdx != TI_NULLIDX) {
+									// Нашли существующую переменную - используем её полное имя из таблицы
+									strcpy_s(fullId, SCOPED_ID_MAXSIZE, tables.idtable.table[existingIdx].id);
+								}
+								else {
+									// Если findVariableByLocalName не нашел, пробуем точное совпадение
+									existingIdx = IT::isId(tables.idtable, curword);
+									if (existingIdx != TI_NULLIDX) {
+										strcpy_s(fullId, SCOPED_ID_MAXSIZE, tables.idtable.table[existingIdx].id);
+									}
+								}
+							}
+						}
+
 						// Если идентификатор уже существует, обновляем его значение вместо создания новой записи
 						if (existingIdx != TI_NULLIDX) {
 							idxTI = existingIdx;
 							IT::Entry* existingEntry = &tables.idtable.table[existingIdx];
-							
+
 							// Обновляем тип переменной, если он изменился или если новый тип не UNDEFINED
 							if (existingEntry->idtype == IT::IDTYPE::V && !isFunc && !isParam) {
 								IT::IDDATATYPE newType = getType(fullId, typeKeywords);
 								// Обновляем тип только если:
 								// 1. Новый тип не UNDEFINED (т.е. переменная объявляется с типом)
 								// 2. И старый тип был UNDEFINED (т.е. переменная была использована без типа, а теперь объявляется с типом)
-								if (newType != IT::IDDATATYPE::UNDEF && 
+								if (newType != IT::IDDATATYPE::UNDEF &&
 									existingEntry->iddatatype == IT::IDDATATYPE::UNDEF) {
 									existingEntry->iddatatype = newType;
 								}
@@ -540,40 +664,37 @@ namespace Lexer
 								}
 							}
 							// Для литералов не обновляем - они должны быть уникальными
-							
+
 							// Параметры не добавляем для существующих идентификаторов
 						}
 						else {
 							// Создаем новую запись
-							IT::Entry* entry = getEntry(tables, lexema, fullId, typeKeywords, isParam, isFunc, log, curline, lex_ok);
+							// Используем isActuallyParam вместо isParam - это гарантирует, что только
+							// идентификаторы после типа данных внутри [ ] будут параметрами
+							IT::Entry* entry = getEntry(tables, lexema, fullId, typeKeywords, isActuallyParam, isFunc, log, curline, lex_ok);
 
 							if (entry) {
 								IT::Add(tables.idtable, *entry);
 								idxTI = tables.idtable.size - 1;
-								
+
 								// Если это параметр функции, добавляем его тип и имя в массив параметров функции
-								// Параметры добавляются только если мы внутри списка параметров (между [ и ])
-								// и currentFuncIndex установлен (т.е. мы действительно внутри списка параметров функции)
-								// И только для новых записей (не существующих)
-								// ВАЖНО: Проверяем, что isParam == true И currentFuncIndex != TI_NULLIDX
-								// Это гарантирует, что мы действительно внутри списка параметров
-								// ДОПОЛНИТЕЛЬНО: Проверяем, что entry->idtype == IT::IDTYPE::P (это действительно параметр)
-								// КРИТИЧЕСКАЯ ПРОВЕРКА: все три условия должны быть true одновременно:
-								// 1. isParam == true (мы внутри списка параметров между [ и ])
+								// Параметры добавляются только если:
+								// 1. isActuallyParam == true (это действительно параметр - после типа данных внутри [ ])
 								// 2. entry->idtype == IT::IDTYPE::P (это действительно параметр, созданный в getEntry)
 								// 3. currentFuncIndex != TI_NULLIDX (индекс функции установлен)
+								// КРИТИЧЕСКАЯ ПРОВЕРКА: все три условия должны быть true одновременно
 								// Если любое из условий false, параметры НЕ добавляются
-								if (isParam && entry->idtype == IT::IDTYPE::P && currentFuncIndex != TI_NULLIDX) {
+								if (isActuallyParam && entry->idtype == IT::IDTYPE::P && currentFuncIndex != TI_NULLIDX) {
 									// Используем currentFuncIndex - индекс функции, для которой открыт список параметров
 									int funcIdx = currentFuncIndex;
-									
+
 									// Проверяем, что индекс функции валиден
 									if (funcIdx >= 0 && funcIdx < tables.idtable.size) {
 										IT::Entry* funcEntry = &tables.idtable.table[funcIdx];
 										// Проверяем, что это действительно функция и массив параметров выделен
 										// И что это именно та функция, для которой мы обрабатываем параметры
-										if (funcEntry->idtype == IT::IDTYPE::F && 
-											funcEntry->value.params.types != nullptr && 
+										if (funcEntry->idtype == IT::IDTYPE::F &&
+											funcEntry->value.params.types != nullptr &&
 											funcEntry->value.params.names != nullptr) {
 											// Дополнительная проверка: убеждаемся, что мы все еще внутри списка параметров
 											// (isParam должен быть true, что уже проверено выше)
@@ -614,7 +735,7 @@ namespace Lexer
 		LT::Entry endEntry('$', curline, TI_NULLIDX);
 		LT::Add(tables.lextable, endEntry);
 
-		// ������� �����
+		//              
 		while (!scopes.empty()) {
 			delete[] scopes.top();
 			scopes.pop();

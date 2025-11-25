@@ -2,7 +2,7 @@
 #include <iostream>
 #include <cstring>
 
-#define ID_MAXSIZE 110
+#define ID_MAXSIZE 20
 #define SCOPED_ID_MAXSIZE   ID_MAXSIZE*2
 #define TI_MAXSIZE 2000
 #define TI_INT_DEFAULT 0x00000000		

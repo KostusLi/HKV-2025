@@ -1,0 +1,27 @@
+﻿Build started 25.11.2025 11:52:12.
+Logging verbosity is set to: Normal.     1>Project "C:\Users\user\OneDrive\Рабочий стол\HKV-2025\Assembler\Assembler.vcxproj" on node 2 (Build target(s)).
+     1>PrepareForBuild:
+         Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
+         Creating directory "x64\Debug\Assembler.tlog\".
+       InitializeBuildStatus:
+         Creating "x64\Debug\Assembler.tlog\unsuccessfulbuild" because "AlwaysCreate" was specified.
+         Touching "x64\Debug\Assembler.tlog\unsuccessfulbuild".
+       _MASM:
+         Assembling out.asm...
+         cmd.exe /C "C:\Users\user\AppData\Local\Temp\tmp59b4a83622bd438190f09342ac438834.cmd"
+         ml64.exe /c /nologo /Zi /Fo"x64\Debug\out.obj" /Fl"x64\Debug\\" /W3 /errorReport:prompt  /Taout.asm
+     1>out.asm(1): error A2088: END directive required at end of file
+     1>C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\BuildCustomizations\masm.targets(70,5): error MSB3721: The command "ml64.exe /c /nologo /Zi /Fo"x64\Debug\out.obj" /Fl"x64\Debug\\" /W3 /errorReport:prompt  /Taout.asm" exited with code 1.
+     1>Done Building Project "C:\Users\user\OneDrive\Рабочий стол\HKV-2025\Assembler\Assembler.vcxproj" (Build target(s)) -- FAILED.
+
+Build FAILED.
+
+       "C:\Users\user\OneDrive\Рабочий стол\HKV-2025\Assembler\Assembler.vcxproj" (Build target) (1) ->
+       (_MASM target) -> 
+         out.asm(1): error A2088: END directive required at end of file
+         C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\BuildCustomizations\masm.targets(70,5): error MSB3721: The command "ml64.exe /c /nologo /Zi /Fo"x64\Debug\out.obj" /Fl"x64\Debug\\" /W3 /errorReport:prompt  /Taout.asm" exited with code 1.
+
+    0 Warning(s)
+    2 Error(s)
+
+Time Elapsed 00:00:02.79

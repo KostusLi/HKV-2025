@@ -1,7 +1,7 @@
 #pragma once
 #include "FST.h"
 
-#define N_GRAPHS 33
+#define N_GRAPHS 31
 
 #define GRAPH_SEPARATORS 2,\
 	FST::NODE(21,\
@@ -383,7 +383,7 @@
 	FST::NODE()
 
 
-#define GRAPH_CONFSCR 17,\
+#define GRAPH_CONF 11,\
 	FST::NODE(1, FST::RELATION('c', 1)),\
 	FST::NODE(1, FST::RELATION('o', 2)),\
 	FST::NODE(1, FST::RELATION('n', 3)),\
@@ -394,48 +394,4 @@
 	FST::NODE(1, FST::RELATION('i', 8)),\
 	FST::NODE(1, FST::RELATION('o', 9)),\
 	FST::NODE(1, FST::RELATION('n', 10)),\
-	FST::NODE(1, FST::RELATION('S', 11)),\
-	FST::NODE(1, FST::RELATION('c', 12)),\
-	FST::NODE(1, FST::RELATION('r', 13)),\
-	FST::NODE(1, FST::RELATION('o', 14)),\
-	FST::NODE(1, FST::RELATION('l', 15)),\
-	FST::NODE(1, FST::RELATION('l', 16)),\
-	FST::NODE()
-
-
-#define GRAPH_CONFSQU 17, \
-	FST::NODE(1, FST::RELATION('c', 1)),\
-	FST::NODE(1, FST::RELATION('o', 2)),\
-	FST::NODE(1, FST::RELATION('n', 3)),\
-	FST::NODE(1, FST::RELATION('f', 4)),\
-	FST::NODE(1, FST::RELATION('e', 5)),\
-	FST::NODE(1, FST::RELATION('s', 6)),\
-	FST::NODE(1, FST::RELATION('s', 7)),\
-	FST::NODE(1, FST::RELATION('i', 8)),\
-	FST::NODE(1, FST::RELATION('o', 9)),\
-	FST::NODE(1, FST::RELATION('n', 10)),\
-	FST::NODE(1, FST::RELATION('S', 11)),\
-	FST::NODE(1, FST::RELATION('q', 12)),\
-	FST::NODE(1, FST::RELATION('u', 13)),\
-	FST::NODE(1, FST::RELATION('i', 14)),\
-	FST::NODE(1, FST::RELATION('r', 15)),\
-	FST::NODE(1, FST::RELATION('e', 16)),\
-	FST::NODE()
-
-
-#define GRAPH_CONFRUNE 15, \
-	FST::NODE(1, FST::RELATION('c', 1)),\
-	FST::NODE(1, FST::RELATION('o', 2)),\
-	FST::NODE(1, FST::RELATION('n', 3)),\
-	FST::NODE(1, FST::RELATION('f', 4)),\
-	FST::NODE(1, FST::RELATION('e', 5)),\
-	FST::NODE(1, FST::RELATION('s', 6)),\
-	FST::NODE(1, FST::RELATION('s', 7)),\
-	FST::NODE(1, FST::RELATION('i', 8)),\
-	FST::NODE(1, FST::RELATION('o', 9)),\
-	FST::NODE(1, FST::RELATION('n', 10)),\
-	FST::NODE(1, FST::RELATION('R', 11)),\
-	FST::NODE(1, FST::RELATION('u', 12)),\
-	FST::NODE(1, FST::RELATION('n', 13)),\
-	FST::NODE(1, FST::RELATION('e', 14)),\
 	FST::NODE()

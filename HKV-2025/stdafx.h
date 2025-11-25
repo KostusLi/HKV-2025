@@ -20,3 +20,5 @@
 #include "Graphs.h"
 #include "MFST.h"
 #include "GRB.h"
+#include "SemanticAnalyze.h"
+#include "PolishNotation.h"
