@@ -11,6 +11,7 @@ action scroll unite_scrolls [scroll s1, scroll s2]
     elder squire len1;
     len1 = filament(s1);
     confession len1;
+    newleaf;
     result = consolidate(s1, s2);
     comeback result;
 }
@@ -20,6 +21,7 @@ action hollow greet [scroll name]
     hello = "Greetings, ";
     hello = consolidate(hello, name);
     confession hello;
+    newleaf;
     comeback;
 }
 
@@ -35,7 +37,8 @@ temple
     elder scroll full_title;
     elder rune sym = 'a';
     confession sym;
-
+    newleaf;
+	
     elder honor equal_check = faith;
 
     greet(name);
@@ -54,7 +57,7 @@ temple
         confession "Titles are equal.";
     }
 
-    patrol [x < y]
+    patrol [x @ y]
     {
         x = x + 5;
         confession x;
@@ -71,6 +74,8 @@ temple
     confession bit_and;
     bit_not = banish x;
     confession bit_not;
+
+    elder squire t = (x + y)*42 + mightiness(x, y);
 
     council [x]
     {

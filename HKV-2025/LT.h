@@ -43,6 +43,9 @@
 #define LEX_LEFTBRAC '('
 #define LEX_RIGHTBRAC ')'
 #define LEX_LITERAL_OCTAL 'k'
+#define LEX_MOREEQUALS '#'
+#define LEX_LESSEQUALS '@'
+#define LEX_NEWLINE '^'
 #define	LEXEMA_FIXSIZE 1	    
 #define	LT_MAXSIZE 6000	
 #define	NULLDX_TI 0xffffffff

@@ -1,5 +1,5 @@
 #include "LexAnalysis.h"
-#include "Graphs.h" 
+#include "Graphs.h"
 #include "Error.h"
 #include "Log.h"
 #include <stack>
@@ -11,7 +11,7 @@
 namespace Lexer
 {
 	// !!!      :                                            N_GRAPHS (32) !!!
-	//                                LT.h (LEX_TEMPLE, LEX_ELDER...)
+	//                                LT.h (LEX_TEMPLE, LEX_ELDER, LEX_NEWLINE...)
 	Graph graphs[N_GRAPHS] =
 	{
 		{ LEX_SEPARATORS,   FST::FST(GRAPH_SEPARATORS) },   // 1
@@ -48,13 +48,16 @@ namespace Lexer
 		{ LEX_BANISH,		FST::FST(GRAPN_BANISH)},		//25
 
 		//                    
-		{ LEX_COMPSCROLLS,  FST::FST(GRAPH_COMPSCROLL) },   // 25
-		{ LEX_CONSOLIDATE,  FST::FST(GRAPH_CONSOLIDATE) },  // 26
-		{ LEX_MIGHTINESS,   FST::FST(GRAPH_MIGHTINESS) },   // 27
-		{ LEX_FILAMENT,     FST::FST(GRAPH_FILAMENT) },     // 28
+		{ LEX_COMPSCROLLS,  FST::FST(GRAPH_COMPSCROLL) },   // 26
+		{ LEX_CONSOLIDATE,  FST::FST(GRAPH_CONSOLIDATE) },  // 27
+		{ LEX_MIGHTINESS,   FST::FST(GRAPH_MIGHTINESS) },   // 28
+		{ LEX_FILAMENT,     FST::FST(GRAPH_FILAMENT) },     // 29
 
 		//               
-		{ LEX_PRINT,      FST::FST(GRAPH_CONF) },  // 29
+		{ LEX_PRINT,      FST::FST(GRAPH_CONF) },  // 30
+		
+		// newleaf для перевода строки
+		{ LEX_NEWLINE,    FST::FST(GRAPH_NEWLEAF) },  // 31
 
 		//                (                ,                                      )
 		{ LEX_ID,           FST::FST(GRAPH_ID) }            // 32
@@ -324,7 +327,7 @@ namespace Lexer
 							itentry->value.params.types[k] = IT::MIGHTINESS_PARAMS[k];
 							itentry->value.params.names[k] = nullptr;
 						}
-						break;
+					break;
 					case IT::STDFNC::F_COMPSCR:
 						itentry->iddatatype = COMP_SCROL_TYPE;
 						itentry->value.params.count = COMP_SCROL_PARAMS_CNT;
@@ -334,7 +337,7 @@ namespace Lexer
 							itentry->value.params.types[k] = IT::COMP_SCROL_PARAMS[k];
 							itentry->value.params.names[k] = nullptr;
 						}
-						break;
+					break;
 					case IT::STDFNC::F_CONS:
 						itentry->iddatatype = CONSOLIDATE_TYPE;
 						itentry->value.params.count = CONSOLIDATE_PARAMS_CNT;
@@ -344,7 +347,7 @@ namespace Lexer
 							itentry->value.params.types[k] = IT::CONSOLIDATE_PARAMS[k];
 							itentry->value.params.names[k] = nullptr;
 						}
-						break;
+					break;
 					case IT::STDFNC::F_FILAM:
 						itentry->iddatatype = FILAMENT_TYPE;
 						itentry->value.params.count = FILAMENT_PARAMS_CNT;
@@ -378,8 +381,8 @@ namespace Lexer
 						itentry->value.params.names = new char* [CONF_RUNE_PARAMS_CNT];
 						itentry->value.params.types[0] = IT::CONF_RUNE_PARAMS[0];
 						itentry->value.params.names[0] = nullptr;
-						break;
-					}
+					break;
+				}
 				}
 				else
 				{
@@ -406,8 +409,22 @@ namespace Lexer
 	bool analyze(LEX& tables, In::IN& in, Log::LOG& log, Parm::PARM& parm)
 	{
 		bool lex_ok = true;
-		tables.lextable = LT::Create(LT_MAXSIZE);
-		tables.idtable = IT::Create(TI_MAXSIZE);
+		try {
+			tables.lextable = LT::Create(LT_MAXSIZE);
+		}
+		catch (Error::ERROR error) {
+			Log::writeError(log.stream, Error::GetError(202, 0, 0));
+			lex_ok = false;
+			return lex_ok;
+		}
+		try {
+			tables.idtable = IT::Create(TI_MAXSIZE);
+		}
+		catch (Error::ERROR error) {
+			Log::writeError(log.stream, Error::GetError(203, 0, 0));
+			lex_ok = false;
+			return lex_ok;
+		}
 
 		bool isParam = false;
 		bool isFunc = false;
@@ -474,9 +491,9 @@ namespace Lexer
 											// Проверяем, совпадает ли имя функции с предыдущим словом
 											if (strcmp(tables.idtable.table[k].id, prevWord) == 0) {
 												// Нашли функцию - значит это параметры функции
-												isParam = true;
+							isParam = true;
 												currentFuncIndex = k;
-												break;
+									break;
 											}
 										}
 									}
@@ -519,7 +536,7 @@ namespace Lexer
 								for (int k = tables.idtable.size - 1; k >= 0; k--) {
 									if (tables.idtable.table[k].idtype == IT::IDTYPE::F) {
 										lastFuncIdx = k;
-										break;
+								break;
 									}
 								}
 								
@@ -563,6 +580,14 @@ namespace Lexer
 					{
 						char fullId[SCOPED_ID_MAXSIZE] = "";
 						char* typeKeywords = nullptr;
+
+						// Проверка длины идентификатора (ошибка 204)
+						if (lexema == LEX_ID && strlen(curword) > ID_MAXSIZE) {
+							Log::writeError(log.stream, Error::GetError(204, curline, 0));
+							lex_ok = false;
+							// Продолжаем обработку, но обрезаем идентификатор
+							curword[ID_MAXSIZE] = '\0';
+						}
 
 						if (nextword[0] == LEX_LEFTHESIS || nextword[0] == LEX_LEFTBRAC) isFunc = true;
 						if (i > 0) typeKeywords = in.words[i - 1].word;
@@ -674,8 +699,15 @@ namespace Lexer
 							IT::Entry* entry = getEntry(tables, lexema, fullId, typeKeywords, isActuallyParam, isFunc, log, curline, lex_ok);
 
 							if (entry) {
-								IT::Add(tables.idtable, *entry);
-								idxTI = tables.idtable.size - 1;
+								try {
+									IT::Add(tables.idtable, *entry);
+									idxTI = tables.idtable.size - 1;
+								}
+								catch (Error::ERROR error) {
+									Log::writeError(log.stream, Error::GetError(203, curline, 0));
+									lex_ok = false;
+									idxTI = TI_NULLIDX;
+								}
 
 								// Если это параметр функции, добавляем его тип и имя в массив параметров функции
 								// Параметры добавляются только если:
@@ -721,16 +753,22 @@ namespace Lexer
 					}
 
 					LT::Entry ltEntry(lexema, curline, idxTI);
-					LT::Add(tables.lextable, ltEntry);
+					try {
+						LT::Add(tables.lextable, ltEntry);
+					}
+					catch (Error::ERROR error) {
+						Log::writeError(log.stream, Error::GetError(202, curline, 0));
+						lex_ok = false;
+					}
 					break;
 				}
 			}
 
 			if (!recognized) {
-				Log::writeError(log.stream, Error::GetError(201, curline, 0));
-				lex_ok = false;
+					Log::writeError(log.stream, Error::GetError(201, curline, 0));
+					lex_ok = false;
+				}
 			}
-		}
 
 		LT::Entry endEntry('$', curline, TI_NULLIDX);
 		LT::Add(tables.lextable, endEntry);

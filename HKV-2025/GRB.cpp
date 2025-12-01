@@ -11,6 +11,7 @@ namespace GRB
 	// e(elder), t(type), i(id), l(literal), r(return/comeback), c(charge), b(backup),
 	// w(patrol), s(council), p(path), d(tiresome), o/confessionScroll, u/confessionSquire, j/confessionRune,
 	// x,y,z,n - stdlib funcs; &,|,~ - bit ops; !,? - equality/inequality
+	// ^ - newleaf (перевод строки)
 	// Скобки: [ ] - параметры и условия / вызовы; ( ) - вызовы для функций; { } - тело функции
 
 	Greibach greibach(NS('S'), TS('$'), 16,
@@ -30,7 +31,7 @@ namespace GRB
 		),
 
 		// N - тело temple: различные конструкции
-		Rule(NS('N'), GRB_ERROR_SERIES + 14, 28,				// 614 - ошибка в теле программы
+		Rule(NS('N'), GRB_ERROR_SERIES + 14, 30,				// 614 - ошибка в теле программы
 			// Объявления
 			Rule::Chain(4, TS('e'), TS('t'), TS('i'), TS(';')),	// e t i ;
 			Rule::Chain(5, TS('e'), TS('t'), TS('i'), TS(';'), NS('N')),	// e t i ; N
@@ -56,6 +57,9 @@ namespace GRB
 			Rule::Chain(4, TS('u'), TS('i'), TS(';'), NS('N')),	// u ( i ) ; N
 			Rule::Chain(3, TS('u'), TS('l'), TS(';')),	// u ( l ) ;
 			Rule::Chain(4, TS('u'), TS('l'), TS(';'), NS('N')),	// u ( l ) ; N
+			// Перевод строки
+			Rule::Chain(2, TS('^'), TS(';')),	// ^ ;  (newleaf)
+			Rule::Chain(3, TS('^'), TS(';'), NS('N')),	// ^ ; N
 			// Условные конструкции
 			Rule::Chain(2, TS('c'), NS('X')),	// X
 			Rule::Chain(2, TS('w'), NS('X')),
@@ -68,7 +72,7 @@ namespace GRB
 		),
 
 		// T - тело функции (с return)
-		Rule(NS('T'), GRB_ERROR_SERIES + 3, 30,					// 603 - ошибка в теле функции
+		Rule(NS('T'), GRB_ERROR_SERIES + 3, 32,					// 603 - ошибка в теле функции
 			// Объявления
 			Rule::Chain(4, TS('e'), TS('t'), TS('i'), TS(';')),	// e t i ;
 			Rule::Chain(5, TS('e'), TS('t'), TS('i'), TS(';'), NS('T')),	// e t i ; T
@@ -97,6 +101,9 @@ namespace GRB
 			Rule::Chain(4, TS('u'), TS('i'), TS(';'), NS('T')),	// u ( i ) ; N
 			Rule::Chain(3, TS('u'), TS('l'), TS(';')),	// u ( l ) ;
 			Rule::Chain(4, TS('u'), TS('l'), TS(';'), NS('T')),	// u ( l ) ; N
+			// Перевод строки
+			Rule::Chain(2, TS('^'), TS(';')),	// ^ ;  (newleaf)
+			Rule::Chain(3, TS('^'), TS(';'), NS('T')),	// ^ ; T
 			// Условные конструкции
 			Rule::Chain(2, TS('c'), NS('X')),	// X
 			Rule::Chain(2, TS('w'), NS('X')),
@@ -109,7 +116,7 @@ namespace GRB
 		),
 
 		// P - тело процедуры (без return)
-		Rule(NS('P'), GRB_ERROR_SERIES + 3, 28,					// 603 - ошибка в теле функции
+		Rule(NS('P'), GRB_ERROR_SERIES + 3, 30,					// 603 - ошибка в теле функции
 			// Объявления
 			Rule::Chain(4, TS('e'), TS('t'), TS('i'), TS(';')),	// e t i ;
 			Rule::Chain(5, TS('e'), TS('t'), TS('i'), TS(';'), NS('P')),	// e t i ; P
@@ -132,9 +139,12 @@ namespace GRB
 			Rule::Chain(6, TS('i'), TS('('), NS('W'), TS(')'), TS(';'), NS('P')),	// i ( W ) ; P
 			// Выводы
 			Rule::Chain(3, TS('u'), TS('i'), TS(';')),	// u ( i ) ;
-			Rule::Chain(4, TS('u'), TS('i'), TS(';'), NS('p')),	// u ( i ) ; N
+			Rule::Chain(4, TS('u'), TS('i'), TS(';'), NS('P')),	// u ( i ) ; N
 			Rule::Chain(3, TS('u'), TS('l'), TS(';')),	// u ( l ) ;
 			Rule::Chain(4, TS('u'), TS('l'), TS(';'), NS('P')),	// u ( l ) ; N
+			// Перевод строки
+			Rule::Chain(2, TS('^'), TS(';')),	// ^ ;  (newleaf)
+			Rule::Chain(3, TS('^'), TS(';'), NS('P')),	// ^ ; P
 			// Условные конструкции
 			Rule::Chain(2, TS('c'), NS('X')),	// X
 			Rule::Chain(2, TS('w'), NS('X')),
@@ -147,7 +157,7 @@ namespace GRB
 		),
 
 		// C - тело внутри charge/patrol/council/path/tiresome
-		Rule(NS('C'), GRB_ERROR_SERIES + 14, 28,					// 614 - ошибка в теле программы
+		Rule(NS('C'), GRB_ERROR_SERIES + 14, 30,					// 614 - ошибка в теле программы
 			// Объявления
 			Rule::Chain(4, TS('e'), TS('t'), TS('i'), TS(';')),	// e t i ;
 			Rule::Chain(5, TS('e'), TS('t'), TS('i'), TS(';'), NS('C')),	// e t i ; C
@@ -173,6 +183,9 @@ namespace GRB
 			Rule::Chain(4, TS('u'), TS('i'), TS(';'), NS('C')),	// u ( i ) ; N
 			Rule::Chain(3, TS('u'), TS('l'), TS(';')),	// u ( l ) ;
 			Rule::Chain(4, TS('u'), TS('l'), TS(';'), NS('C')),	// u ( l ) ; N
+			// Перевод строки
+			Rule::Chain(2, TS('^'), TS(';')),	// ^ ;  (newleaf)
+			Rule::Chain(3, TS('^'), TS(';'), NS('C')),	// ^ ; C
 			// Условные конструкции
 			Rule::Chain(2, TS('c'), NS('X')),	// X
 			Rule::Chain(2, TS('w'), NS('X')),
@@ -248,10 +261,10 @@ namespace GRB
 			Rule::Chain(3, TS('i'), TS('>'), TS('l')),	// i > l
 			Rule::Chain(3, TS('i'), TS('<'), TS('i')),	// i < i
 			Rule::Chain(3, TS('i'), TS('<'), TS('l')),	// i < l
-			Rule::Chain(4, TS('i'), TS('>'), TS('='), TS('i')),	// i > = i
-			Rule::Chain(4, TS('i'), TS('>'), TS('='), TS('l')),	// i > = l
-			Rule::Chain(4, TS('i'), TS('<'), TS('='), TS('i')),	// i < = i
-			Rule::Chain(4, TS('i'), TS('<'), TS('='), TS('l'))	// i < = l
+			Rule::Chain(3, TS('i'), TS('#'), TS('i')),	// i > = i
+			Rule::Chain(3, TS('i'), TS('#'), TS('l')),	// i > = l
+			Rule::Chain(3, TS('i'), TS('@'), TS('i')),	// i < = i
+			Rule::Chain(3, TS('i'), TS('@'), TS('l'))	// i < = l
 		),
 
 		// L - битовые операции: i=i&i | i=l&l | i=i|i | i=l|l | i=~i | i=~l | i=i&l | i=l&i | i=i|l | i=l|i

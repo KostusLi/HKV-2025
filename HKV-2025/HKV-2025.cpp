@@ -74,6 +74,28 @@ int _tmain(int argc, _TCHAR* argv[])
 			return 0;
 		}
 		else Log::writeLine(&std::cout, SEMGOOD, "");
+
+		bool polish_ok = Polish::PolishNotation(tables, log);					//выполнить преобразование выражений в ПОЛИЗ
+		if (!polish_ok)
+		{
+			Log::writeLine(log.stream, POLISHERROR, "");
+			Log::writeLine(&std::cout, POLISHERROR, STOP, "");
+			return 0;
+		}
+		else Log::writeLine(&std::cout, POLISHGOOD, "");
+		Log::writeLine(log.stream, MESSAGE, "");
+		LT::writeLexTable(log.stream, tables.lextable);							//записать в журнал новые таблицы лексем и идентификаторов
+		IT::writeIdTable(log.stream, tables.idtable);
+		LT::writeLexemsOnLines(log.stream, tables.lextable);
+		//Log::writeLine(&std::cout, MESSAGE, "");
+		//IT::writeIdTable(&std::cout, tables.idtable);							//записать в командную строку новые таблицы лексем и идентификаторов 
+		//LT::writeLexTable(&std::cout, tables.lextable);							//а также соответствие токенов и лексем
+		//LT::writeLexemsOnLines(&std::cout, tables.lextable);
+
+		Gener::CodeGeneration(tables, parm, log);								//выполнить генерацию кода
+		Log::writeLine(log.stream, ALLGOOD, "");									//итог работы программы
+		Log::writeLine(&std::cout, ALLGOOD, "");
+		Log::Close(log);													    //закрыть журнал
 	}
 	catch (Error::ERROR e)
 	{
