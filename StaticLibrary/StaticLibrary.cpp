@@ -1,54 +1,66 @@
-﻿// StaticLibrary.cpp : Defines the functions for the static library.
-//
-
-#include "pch.h"
-#include "framework.h"
+﻿#include "pch.h"
 #include <cstring>
-#include <algorithm>
+#include <cstdio>
 
-// filament → strlen
-extern "C" __declspec(dllexport) int filament(char* str, int* result)
+// Force rebuild - updated for stdcall compatibility
+
+extern "C" int __stdcall filament(char* str, int* result)
 {
-	if (str == nullptr)
-	{
-		*result = 0;
-		return 0;
-	}
-	*result = (int)strlen(str);
-	return 0;
+    if (!str) { *result = 0; return 0; }
+    *result = (int)strlen(str);
+    return 0;
 }
 
-// consolidate → strcat
-extern "C" __declspec(dllexport) int consolidate(char* dest, char* src, char* result)
+extern "C" int __stdcall consolidate(char* dest, char* src, char* result)
 {
-	if (dest == nullptr || src == nullptr || result == nullptr)
-		return -1;
-	strcpy_s(result, 256, dest);
-	strcat_s(result, 256, src);
-	return 0;
+    if (!dest || !src || !result) return -1;
+    strcpy_s(result, 256, dest);
+    strcat_s(result, 256, src);
+    return 0;
 }
 
-// compare_scrolls → strcmp
-extern "C" __declspec(dllexport) int compare_scrolls(char* str1, char* str2, int* result)
+extern "C" int __stdcall compare_scrolls(char* a, char* b, int* result)
 {
-	if (str1 == nullptr || str2 == nullptr)
-	{
-		*result = 0;
-		return -1;
-	}
-	int cmp = strcmp(str1, str2);
-	*result = (cmp == 0) ? 1 : 0; // возвращаем 1 если равны, 0 если не равны
-	return 0;
+    if (!a || !b) { *result = 0; return -1; }
+    *result = (strcmp(a, b) == 0) ? 1 : 0;
+    return 0;
 }
 
-// mightiness → max
-extern "C" __declspec(dllexport) int mightiness(int a, int b, int* result)
+extern "C" int __stdcall mightiness(int a, int b, int* result)
 {
-	*result = (a > b) ? a : b;
-	return 0;
+    *result = (a > b) ? a : b;
+    return 0;
 }
 
-// TODO: This is an example of a library function
-void fnStaticLibrary()
+extern "C" void __stdcall outrad(char* str)
 {
+    if (str) {
+        printf("%s", str);
+        fflush(stdout);
+    }
+}
+
+extern "C" void __stdcall confession(int data, int type)
+{
+    switch (type)
+    {
+    case 1: // INT (squire) - целое число
+        printf("%d", data);
+        break;
+    case 2: // STR (scroll) - строка
+        // data интерпретируется как указатель на строку
+        if ((char*)data != nullptr)
+        {
+            printf("%s", (char*)data);
+        }
+        break;
+    case 4: // CHAR (rune) - символ
+        // data интерпретируется как указатель на строку с одним символом
+        if ((char*)data != nullptr)
+        {
+            printf("%c", ((char*)data)[0]);
+        }
+        break;
+    }
+    fflush(stdout);
 }

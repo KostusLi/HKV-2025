@@ -24,10 +24,16 @@ int _tmain(int argc, _TCHAR* argv[])
 	setlocale(LC_ALL, "Russian");
 	Log::LOG log;
 
+	wchar_t* test_argv[] = {
+	argv[0],                    // имя программы
+	_wcsdup(L"-in:in.txt")      // ваш параметр
+	};
+	int test_argc = 2;
+
 	try
 	{
 
-		Parm::PARM parm = Parm::getparm(argc, argv);                            //получить параметры
+		Parm::PARM parm = Parm::getparm(test_argc, test_argv);                            //получить параметры
 		log = Log::getstream(parm.log);
 		Log::writeLog(log);														//написать заголовок журнала
 		Log::writeParm(log, parm);												//записать в журнал параметры

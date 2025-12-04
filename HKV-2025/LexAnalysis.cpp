@@ -5,6 +5,7 @@
 #include <stack>
 #include <string>
 #include <iostream>
+#include <vector>
 
 #pragma warning(disable : 4996)
 
@@ -222,26 +223,42 @@ namespace Lexer
 	}
 
 	// Поиск переменной по локальному имени во всех scope
-	// Ищет переменную, которая заканчивается на ".localName" или равна "localName"
+	// Ищет переменную, которая заканчивается на "_localName" или равна "localName"
 	// Возвращает индекс последней найденной переменной (самой недавно объявленной)
-	// ВАЖНО: ищет переменные во всех scope, чтобы найти правильную переменную
-	int findVariableByLocalName(IT::IdTable& idtable, char* localName)
+	// ВАЖНО: ищет переменные во всех доступных scope, начиная с текущего и поднимаясь вверх
+	// Используется подчеркивание вместо точки для совместимости с MASM
+	// Ищем переменные во всех родительских областях видимости
+	int findVariableByLocalName(IT::IdTable& idtable, char* localName, std::stack<char*>& scopes)
 	{
 		if (!localName || strlen(localName) == 0) return TI_NULLIDX;
 
-		// Сначала проверяем точное совпадение (для глобальных переменных)
-		int idx = IT::isId(idtable, localName);
-		if (idx != TI_NULLIDX) return idx;
+		// Если нет scope, ищем только глобальные переменные (без префикса)
+		if (scopes.empty()) {
+			int idx = IT::isId(idtable, localName);
+			if (idx != TI_NULLIDX && (idtable.table[idx].idtype == IT::IDTYPE::V || idtable.table[idx].idtype == IT::IDTYPE::P)) {
+				return idx;
+			}
+			return TI_NULLIDX;
+		}
 
-		// Затем ищем переменные, которые заканчиваются на ".localName"
-		// Ищем с конца таблицы, чтобы найти самую недавно объявленную переменную
-		// Это важно для правильного разрешения scope - более глубокий scope имеет приоритет
+		// Копируем стек для обхода (чтобы не изменять оригинальный)
+		std::stack<char*> tempScopes = scopes;
+		std::vector<char*> scopeList;
+		while (!tempScopes.empty()) {
+			scopeList.push_back(tempScopes.top());
+			tempScopes.pop();
+		}
+
+		// Ищем переменные, начиная с самого глубокого scope и поднимаясь вверх
+		// Например, если scopeList = [patrol1, temple], ищем:
+		// 1. temple_patrol1_x (полный путь)
+		// 2. temple_x (родительский scope)
+		// 3. x (глобальный, если нет scope)
 		char searchPattern[SCOPED_ID_MAXSIZE];
-		sprintf_s(searchPattern, SCOPED_ID_MAXSIZE, ".%s", localName);
+		sprintf_s(searchPattern, SCOPED_ID_MAXSIZE, "_%s", localName);
 		size_t patternLen = strlen(searchPattern);
 
 		// Ищем с конца таблицы - это гарантирует, что найдем самую недавно объявленную переменную
-		// в самом глубоком доступном scope
 		for (int i = idtable.size - 1; i >= 0; i--)
 		{
 			if (idtable.table[i].idtype == IT::IDTYPE::V || idtable.table[i].idtype == IT::IDTYPE::P)
@@ -249,18 +266,33 @@ namespace Lexer
 				const char* id = idtable.table[i].id;
 				size_t idLen = strlen(id);
 				
-				// Проверяем точное совпадение
-				if (strcmp(id, localName) == 0)
-				{
-					return i;
-				}
-				
-				// Проверяем, заканчивается ли имя на ".localName"
-				if (idLen >= patternLen)
-				{
+				// Проверяем, заканчивается ли имя на "_localName"
+				if (idLen >= patternLen) {
 					if (strcmp(id + idLen - patternLen, searchPattern) == 0)
 					{
-						return i;
+						// Проверяем, что имя начинается с одного из доступных scope
+						// Проверяем все возможные комбинации scope, начиная с полного пути
+						for (int startIdx = 0; startIdx < scopeList.size(); startIdx++) {
+							// Формируем scope путь от startIdx до конца
+							char testScope[SCOPED_ID_MAXSIZE] = "";
+							for (int j = startIdx; j < scopeList.size(); j++) {
+								if (strlen(testScope) > 0) {
+									strcat_s(testScope, SCOPED_ID_MAXSIZE, "_");
+								}
+								strcat_s(testScope, SCOPED_ID_MAXSIZE, scopeList[j]);
+							}
+							
+							// Проверяем, начинается ли имя переменной с этого scope
+							size_t testScopeLen = strlen(testScope);
+							if (testScopeLen > 0 && idLen >= testScopeLen + patternLen) {
+								if (strncmp(id, testScope, testScopeLen) == 0) {
+									// Проверяем, что после scope идет "_"
+									if (id[testScopeLen] == '_') {
+										return i;
+									}
+								}
+							}
+						}
 					}
 				}
 			}
@@ -437,6 +469,8 @@ namespace Lexer
 		std::stack<char*> scopes;
 		int braceDepth = 0; // Счетчик глубины вложенности ВСЕХ блоков (включая вложенные)
 		int scopeDepth = 0; // Счетчик глубины блоков, которые создали scope (только temple и функции)
+		int nestedBlockCounter = 0; // Счетчик для вложенных блоков (patrol, charge, backup, council, path, tiresome)
+		char* currentNestedBlock = nullptr; // Текущий вложенный блок (patrol, charge, backup, council, path, tiresome)
 
 		for (int i = 0; i < In::InWord::size; i++)
 		{
@@ -460,6 +494,24 @@ namespace Lexer
 					char lexema = graphs[j].lexema;
 
 					if (lexema == LEX_TEMPLE) enterPoint++;
+
+					// Обработка вложенных блоков (patrol, charge, backup, council, path, tiresome)
+					// Эти блоки создают дополнительный scope для переменных внутри них
+					if (lexema == LEX_PATROL || lexema == LEX_CHARGE || lexema == LEX_BACKUP || 
+						lexema == LEX_COUNCIL || lexema == LEX_PATH || lexema == LEX_TIRESOME)
+					{
+						// Сохраняем тип текущего вложенного блока
+						if (currentNestedBlock != nullptr) {
+							delete[] currentNestedBlock;
+						}
+						currentNestedBlock = new char[20];
+						if (lexema == LEX_PATROL) strcpy_s(currentNestedBlock, 20, "patrol");
+						else if (lexema == LEX_CHARGE) strcpy_s(currentNestedBlock, 20, "charge");
+						else if (lexema == LEX_BACKUP) strcpy_s(currentNestedBlock, 20, "backup");
+						else if (lexema == LEX_COUNCIL) strcpy_s(currentNestedBlock, 20, "council");
+						else if (lexema == LEX_PATH) strcpy_s(currentNestedBlock, 20, "path");
+						else if (lexema == LEX_TIRESOME) strcpy_s(currentNestedBlock, 20, "tiresome");
+					}
 
 					if (lexema == LEX_SEPARATORS || lexema == LEX_LEFTBRAC || lexema == LEX_RIGHTBRAC || lexema == LEX_LEFTHESIS || lexema == LEX_RIGHTTHESIS)
 					{
@@ -513,11 +565,11 @@ namespace Lexer
 
 						case LEX_LEFTBRACE: // '{'
 						{
-							// ВАЖНО: scope добавляется ТОЛЬКО для:
+							// ВАЖНО: scope добавляется для:
 							// 1. Блока temple: если перед { стоит "temple"
 							// 2. Блока функции: если последняя запись в таблице - функция (F)
-							// Вложенные блоки (charge { }, patrol { }, backup { }) НЕ создают новый scope!
-							// Они используют текущий scope из стека
+							// 3. Вложенных блоков (charge { }, patrol { }, backup { }, council { }, path { }, tiresome { })
+							//    - они создают дополнительный scope с префиксом типа блока
 							bool scopeAdded = false;
 							if (i > 0 && strcmp(in.words[i - 1].word, KW_TEMPLE) == 0) {
 								// Блок temple - добавляем scope "temple"
@@ -548,8 +600,18 @@ namespace Lexer
 									scopeAdded = true;
 								}
 							}
-							// Для вложенных блоков (charge { }, patrol { }, backup { }, council { })
-							// НЕ добавляем новый scope - они используют текущий scope из стека
+							// Для вложенных блоков (charge { }, patrol { }, backup { }, council { }, path { }, tiresome { })
+							// добавляем дополнительный scope с префиксом типа блока и номером
+							if (!scopeAdded && currentNestedBlock != nullptr) {
+								nestedBlockCounter++;
+								char* nestedScope = new char[50];
+								sprintf_s(nestedScope, 50, "%s%d", currentNestedBlock, nestedBlockCounter);
+								scopes.push(nestedScope);
+								scopeAdded = true;
+								// Сбрасываем указатель на текущий блок после создания scope
+								delete[] currentNestedBlock;
+								currentNestedBlock = nullptr;
+							}
 							// Увеличиваем счетчики глубины
 							braceDepth++; // Увеличиваем для ВСЕХ блоков
 							if (scopeAdded) {
@@ -559,8 +621,9 @@ namespace Lexer
 						}
 
 						case LEX_BRACELET: // '}'
-							// ВАЖНО: удаляем scope ТОЛЬКО если это был блок функции или temple
-							// Вложенные блоки не создают scope, поэтому и не удаляют
+							// ВАЖНО: удаляем scope для блоков, которые создали scope:
+							// - Блоки функций и temple
+							// - Вложенные блоки (patrol, charge, backup, council, path, tiresome)
 							// Используем отдельные счетчики для отслеживания
 							if (braceDepth > 0) {
 								braceDepth--; // Уменьшаем для ВСЕХ блоков
@@ -592,6 +655,16 @@ namespace Lexer
 						if (nextword[0] == LEX_LEFTHESIS || nextword[0] == LEX_LEFTBRAC) isFunc = true;
 						if (i > 0) typeKeywords = in.words[i - 1].word;
 
+						// Проверяем, является ли это объявлением переменной (elder тип имя)
+						// Для этого проверяем, что перед типом стоит "elder"
+						bool isVariableDeclaration = false;
+						if (i >= 2 && typeKeywords && ISTYPE(typeKeywords)) {
+							char* prevPrevWord = in.words[i - 2].word;
+							if (strcmp(prevPrevWord, "elder") == 0) {
+								isVariableDeclaration = true;
+							}
+						}
+
 						// КРИТИЧЕСКИ ВАЖНО: параметр может быть ТОЛЬКО если:
 						// 1. isParam == true (мы внутри [ и ])
 						// 2. currentFuncIndex != TI_NULLIDX (есть функция для параметров)
@@ -616,15 +689,50 @@ namespace Lexer
 							// Для идентификаторов: формируем fullId с учетом scope
 							// ВАЖНО: 
 							// 1. Функции НЕ должны получать scope префикс (они глобальные)
-							// 2. Параметры функций НЕ должны получать scope префикс
+							// 2. Параметры функций НЕ должны получать scope префикс (ни при объявлении, ни при использовании)
 							// 3. ВСЕ переменные внутри блоков (temple, функции) ДОЛЖНЫ получать scope префикс
 							// 4. При использовании переменных (не объявлении) они тоже должны получать префикс
+							
+							// КРИТИЧЕСКИ ВАЖНО: проверяем, является ли это существующим параметром функции
+							// Параметры создаются без префикса и должны оставаться без префикса при использовании
+							// ВАЖНО: параметр должен принадлежать текущей функции (если мы внутри функции)
+							// НО: при объявлении переменной параметры не используются
+							bool isExistingParam = false;
+							if (!isFunc && !isActuallyParam && !isVariableDeclaration && !scopes.empty()) {
+								// Проверяем, существует ли идентификатор как параметр (без префикса)
+								int paramIdx = IT::isId(tables.idtable, curword);
+								if (paramIdx != TI_NULLIDX && tables.idtable.table[paramIdx].idtype == IT::IDTYPE::P) {
+									// Проверяем, что мы внутри функции (верхний scope в стеке должен быть именем функции)
+									// Параметры принадлежат функции, которая находится в верхнем scope стека
+									char* topScope = scopes.top();
+									// Ищем функцию с именем topScope в таблице
+									bool paramBelongsToCurrentFunction = false;
+									for (int k = tables.idtable.size - 1; k >= 0; k--) {
+										if (tables.idtable.table[k].idtype == IT::IDTYPE::F && 
+											strcmp(tables.idtable.table[k].id, topScope) == 0) {
+											// Нашли функцию - проверяем, что параметр был создан после этой функции
+											// Параметры создаются сразу после функции, поэтому их индекс должен быть больше
+											if (paramIdx > k) {
+												paramBelongsToCurrentFunction = true;
+											}
+											break;
+										}
+									}
+									// Если не нашли функцию в верхнем scope, возможно это temple или вложенный блок
+									// В этом случае параметры не должны использоваться
+									if (paramBelongsToCurrentFunction) {
+										isExistingParam = true;
+									}
+								}
+							}
+							// Если мы не внутри функции (нет scope), параметры не могут использоваться
+							
 							if (isFunc) {
 								// Функции создаются без префикса scope (глобальные)
 								strcpy_s(fullId, SCOPED_ID_MAXSIZE, curword);
 							}
-							else if (isActuallyParam) {
-								// Параметры функций не получают scope префикс
+							else if (isActuallyParam || isExistingParam) {
+								// Параметры функций не получают scope префикс (ни при объявлении, ни при использовании)
 								strcpy_s(fullId, SCOPED_ID_MAXSIZE, curword);
 							}
 							else if (!scopes.empty()) {
@@ -633,8 +741,25 @@ namespace Lexer
 								// - Объявления переменных (elder squire x)
 								// - Использование переменных (x = 10, confession x)
 								// - Переменные в условиях циклов (patrol [x < y])
-								strcpy_s(fullId, SCOPED_ID_MAXSIZE, scopes.top());
-								strcat_s(fullId, SCOPED_ID_MAXSIZE, ".");
+								// Используем подчеркивание вместо точки для совместимости с MASM
+								// ВАЖНО: формируем полный путь scope из всего стека (от корня к листу)
+								// Например, если стек = [patrol1, temple], то fullId = "temple_patrol1_x"
+								char fullScope[SCOPED_ID_MAXSIZE] = "";
+								std::stack<char*> tempScopes = scopes; // Копируем стек для обхода
+								std::vector<char*> scopeList;
+								while (!tempScopes.empty()) {
+									scopeList.push_back(tempScopes.top());
+									tempScopes.pop();
+								}
+								// Формируем полное имя scope в обратном порядке (от корня к листу)
+								for (int j = scopeList.size() - 1; j >= 0; j--) {
+									if (strlen(fullScope) > 0) {
+										strcat_s(fullScope, SCOPED_ID_MAXSIZE, "_");
+									}
+									strcat_s(fullScope, SCOPED_ID_MAXSIZE, scopeList[j]);
+								}
+								strcpy_s(fullId, SCOPED_ID_MAXSIZE, fullScope);
+								strcat_s(fullId, SCOPED_ID_MAXSIZE, "_");
 								strcat_s(fullId, SCOPED_ID_MAXSIZE, curword);
 							}
 							else {
@@ -643,54 +768,92 @@ namespace Lexer
 								strcpy_s(fullId, SCOPED_ID_MAXSIZE, curword);
 							}
 							
-							// Теперь ищем существующие переменные:
-							// 1. Сначала по полному имени (с scope, например "temple.x")
-							existingIdx = IT::isId(tables.idtable, fullId);
+							// Теперь ищем существующие переменные ПОСЛЕ формирования fullId:
+							// 1. Сначала по полному имени (с scope, например "temple_x")
+							// Если это существующий параметр, он уже найден выше, иначе ищем по fullId
+							if (!isExistingParam) {
+								existingIdx = IT::isId(tables.idtable, fullId);
+							}
+							else {
+								// Для существующих параметров используем их индекс из таблицы
+								existingIdx = IT::isId(tables.idtable, curword);
+							}
 							
 							// 2. Если не нашли по полному имени, ищем по локальному имени
 							// ВАЖНО: это нужно для использования переменных в условиях циклов!
 							// Например, когда обрабатывается "patrol [x < y]", переменные x и y уже записаны
-							// как "temple.x" и "temple.y", и мы должны их найти по локальному имени
+							// как "temple_x" и "temple_y", и мы должны их найти по локальному имени
 							// НО: не ищем для параметров функций (они создаются без префикса)
-							if (existingIdx == TI_NULLIDX && !isLiteral(curword) && !isFunc && !isActuallyParam) {
-								existingIdx = findVariableByLocalName(tables.idtable, curword);
+							// НО: при объявлении переменной (elder тип имя) не ищем параметры из других областей видимости
+							if (existingIdx == TI_NULLIDX && !isLiteral(curword) && !isFunc && !isActuallyParam && !isVariableDeclaration && !isExistingParam) {
+								existingIdx = findVariableByLocalName(tables.idtable, curword, scopes);
 								if (existingIdx != TI_NULLIDX) {
-									// Нашли существующую переменную - используем её полное имя из таблицы
-									strcpy_s(fullId, SCOPED_ID_MAXSIZE, tables.idtable.table[existingIdx].id);
-								}
-								else {
-									// Если findVariableByLocalName не нашел, пробуем точное совпадение
-									existingIdx = IT::isId(tables.idtable, curword);
-									if (existingIdx != TI_NULLIDX) {
+									// Нашли существующую переменную - проверяем, что она в той же области видимости
+									// Если это объявление переменной, не используем параметры из других областей
+									IT::Entry* foundEntry = &tables.idtable.table[existingIdx];
+									if (foundEntry->idtype == IT::IDTYPE::P) {
+										// Найден параметр - не используем его при объявлении переменной
+										existingIdx = TI_NULLIDX;
+									}
+									else {
+										// Нашли переменную - используем её полное имя из таблицы
 										strcpy_s(fullId, SCOPED_ID_MAXSIZE, tables.idtable.table[existingIdx].id);
+									}
+								}
+								if (existingIdx == TI_NULLIDX) {
+									// Если findVariableByLocalName не нашел или нашел параметр, пробуем точное совпадение
+									// НО: при объявлении переменной не ищем параметры
+									if (!isVariableDeclaration) {
+										existingIdx = IT::isId(tables.idtable, curword);
+										if (existingIdx != TI_NULLIDX) {
+											// Проверяем, что это не параметр из другой области видимости
+											IT::Entry* foundEntry = &tables.idtable.table[existingIdx];
+											if (foundEntry->idtype == IT::IDTYPE::P) {
+												// Это параметр - используем его без префикса (только если не объявление переменной)
+												strcpy_s(fullId, SCOPED_ID_MAXSIZE, curword);
+											}
+											else {
+												strcpy_s(fullId, SCOPED_ID_MAXSIZE, tables.idtable.table[existingIdx].id);
+											}
+										}
 									}
 								}
 							}
 						}
 
 						// Если идентификатор уже существует, обновляем его значение вместо создания новой записи
+						// НО: если это объявление переменной и найден параметр, создаем новую переменную
 						if (existingIdx != TI_NULLIDX) {
-							idxTI = existingIdx;
 							IT::Entry* existingEntry = &tables.idtable.table[existingIdx];
-
-							// Обновляем тип переменной, если он изменился или если новый тип не UNDEFINED
-							if (existingEntry->idtype == IT::IDTYPE::V && !isFunc && !isParam) {
-								IT::IDDATATYPE newType = getType(fullId, typeKeywords);
-								// Обновляем тип только если:
-								// 1. Новый тип не UNDEFINED (т.е. переменная объявляется с типом)
-								// 2. И старый тип был UNDEFINED (т.е. переменная была использована без типа, а теперь объявляется с типом)
-								if (newType != IT::IDDATATYPE::UNDEF &&
-									existingEntry->iddatatype == IT::IDDATATYPE::UNDEF) {
-									existingEntry->iddatatype = newType;
-								}
-								// Обновляем значение, если присваивается литерал
-								if (lexema == LEX_LITERAL) {
-									IT::SetValue(existingEntry, fullId);
-								}
+							
+							// КРИТИЧЕСКИ ВАЖНО: при объявлении переменной не используем найденные параметры
+							// Параметры из других функций не должны использоваться при объявлении переменных
+							if (isVariableDeclaration && existingEntry->idtype == IT::IDTYPE::P) {
+								// Найден параметр при объявлении переменной - не используем его, создаем новую переменную
+								existingIdx = TI_NULLIDX;
 							}
-							// Для литералов не обновляем - они должны быть уникальными
+							else {
+								idxTI = existingIdx;
 
-							// Параметры не добавляем для существующих идентификаторов
+								// Обновляем тип переменной, если он изменился или если новый тип не UNDEFINED
+								if (existingEntry->idtype == IT::IDTYPE::V && !isFunc && !isParam) {
+									IT::IDDATATYPE newType = getType(fullId, typeKeywords);
+									// Обновляем тип только если:
+									// 1. Новый тип не UNDEFINED (т.е. переменная объявляется с типом)
+									// 2. И старый тип был UNDEFINED (т.е. переменная была использована без типа, а теперь объявляется с типом)
+									if (newType != IT::IDDATATYPE::UNDEF &&
+										existingEntry->iddatatype == IT::IDDATATYPE::UNDEF) {
+										existingEntry->iddatatype = newType;
+									}
+									// Обновляем значение, если присваивается литерал
+									if (lexema == LEX_LITERAL) {
+										IT::SetValue(existingEntry, fullId);
+									}
+								}
+								// Для литералов не обновляем - они должны быть уникальными
+
+								// Параметры не добавляем для существующих идентификаторов
+							}
 						}
 						else {
 							// Создаем новую запись

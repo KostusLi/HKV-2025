@@ -1,16 +1,114 @@
-﻿Build started 25.11.2025 11:52:12.
+﻿Build started 03.12.2025 1:10:23.
 Logging verbosity is set to: Normal.     1>Project "C:\Users\user\OneDrive\Рабочий стол\HKV-2025\Assembler\Assembler.vcxproj" on node 2 (Build target(s)).
      1>PrepareForBuild:
          Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
-         Creating directory "x64\Debug\Assembler.tlog\".
        InitializeBuildStatus:
-         Creating "x64\Debug\Assembler.tlog\unsuccessfulbuild" because "AlwaysCreate" was specified.
          Touching "x64\Debug\Assembler.tlog\unsuccessfulbuild".
        _MASM:
          Assembling out.asm...
-         cmd.exe /C "C:\Users\user\AppData\Local\Temp\tmp59b4a83622bd438190f09342ac438834.cmd"
+         cmd.exe /C "C:\Users\user\AppData\Local\Temp\tmp569c533a93c0495db6ee8aa0c9cafd4f.cmd"
          ml64.exe /c /nologo /Zi /Fo"x64\Debug\out.obj" /Fl"x64\Debug\\" /W3 /errorReport:prompt  /Taout.asm
-     1>out.asm(1): error A2088: END directive required at end of file
+     1>out.asm(2): error A2008: syntax error : .
+     1>out.asm(3): error A2008: syntax error : .
+     1>out.asm(55): error A2070: invalid instruction operands
+     1>out.asm(62): error A2008: syntax error : .
+     1>out.asm(63): error A2070: invalid instruction operands
+     1>out.asm(70): error A2070: invalid instruction operands
+     1>out.asm(73): error A2070: invalid instruction operands
+     1>out.asm(77): error A2070: invalid instruction operands
+     1>out.asm(84): error A2070: invalid instruction operands
+     1>out.asm(90): error A2070: invalid instruction operands
+     1>out.asm(91): error A2070: invalid instruction operands
+     1>out.asm(92): error A2070: invalid instruction operands
+     1>out.asm(98): error A2070: invalid instruction operands
+     1>out.asm(99): error A2070: invalid instruction operands
+     1>out.asm(104): error A2070: invalid instruction operands
+     1>out.asm(105): error A2070: invalid instruction operands
+     1>out.asm(111): error A2070: invalid instruction operands
+     1>out.asm(118): error A2070: invalid instruction operands
+     1>out.asm(122): error A2070: invalid instruction operands
+     1>out.asm(123): error A2070: invalid instruction operands
+     1>out.asm(128): error A2070: invalid instruction operands
+     1>out.asm(134): error A2070: invalid instruction operands
+     1>out.asm(137): error A2070: invalid instruction operands
+     1>out.asm(141): error A2070: invalid instruction operands
+     1>out.asm(147): error A2070: invalid instruction operands
+     1>out.asm(150): error A2070: invalid instruction operands
+     1>out.asm(154): error A2070: invalid instruction operands
+     1>out.asm(166): error A2070: invalid instruction operands
+     1>out.asm(171): error A2070: invalid instruction operands
+     1>out.asm(172): error A2070: invalid instruction operands
+     1>out.asm(173): error A2070: invalid instruction operands
+     1>out.asm(175): error A2070: invalid instruction operands
+     1>out.asm(176): error A2070: invalid instruction operands
+     1>out.asm(179): error A2070: invalid instruction operands
+     1>out.asm(180): error A2070: invalid instruction operands
+     1>out.asm(185): error A2070: invalid instruction operands
+     1>out.asm(186): error A2070: invalid instruction operands
+     1>out.asm(190): error A2070: invalid instruction operands
+     1>out.asm(196): error A2070: invalid instruction operands
+     1>out.asm(201): error A2070: invalid instruction operands
+     1>out.asm(206): error A2070: invalid instruction operands
+     1>out.asm(212): error A2070: invalid instruction operands
+     1>out.asm(213): error A2070: invalid instruction operands
+     1>out.asm(218): error A2070: invalid instruction operands
+     1>out.asm(223): error A2070: invalid instruction operands
+     1>out.asm(228): error A2070: invalid instruction operands
+     1>out.asm(229): error A2070: invalid instruction operands
+     1>out.asm(233): error A2070: invalid instruction operands
+     1>out.asm(234): error A2070: invalid instruction operands
+     1>out.asm(239): error A2070: invalid instruction operands
+     1>out.asm(240): error A2070: invalid instruction operands
+     1>out.asm(245): error A2070: invalid instruction operands
+     1>out.asm(246): error A2070: invalid instruction operands
+     1>out.asm(255): error A2070: invalid instruction operands
+     1>out.asm(256): error A2070: invalid instruction operands
+     1>out.asm(260): error A2008: syntax error : .
+     1>out.asm(261): error A2070: invalid instruction operands
+     1>out.asm(262): error A2070: invalid instruction operands
+     1>out.asm(265): error A2008: syntax error : .
+     1>out.asm(276): error A2070: invalid instruction operands
+     1>out.asm(277): error A2070: invalid instruction operands
+     1>out.asm(280): error A2008: syntax error : .
+     1>out.asm(291): error A2070: invalid instruction operands
+     1>out.asm(292): error A2070: invalid instruction operands
+     1>out.asm(300): error A2070: invalid instruction operands
+     1>out.asm(301): error A2070: invalid instruction operands
+     1>out.asm(309): error A2070: invalid instruction operands
+     1>out.asm(310): error A2070: invalid instruction operands
+     1>out.asm(318): error A2070: invalid instruction operands
+     1>out.asm(319): error A2070: invalid instruction operands
+     1>out.asm(327): error A2070: invalid instruction operands
+     1>out.asm(328): error A2070: invalid instruction operands
+     1>out.asm(338): error A2008: syntax error : .
+     1>out.asm(348): error A2008: syntax error : .
+     1>out.asm(360): error A2070: invalid instruction operands
+     1>out.asm(361): error A2070: invalid instruction operands
+     1>out.asm(365): error A2008: syntax error : .
+     1>out.asm(366): error A2070: invalid instruction operands
+     1>out.asm(367): error A2070: invalid instruction operands
+     1>out.asm(371): error A2008: syntax error : .
+     1>out.asm(372): error A2070: invalid instruction operands
+     1>out.asm(373): error A2070: invalid instruction operands
+     1>out.asm(376): error A2008: syntax error : .
+     1>out.asm(379): error A2070: invalid instruction operands
+     1>out.asm(380): error A2070: invalid instruction operands
+     1>out.asm(388): error A2070: invalid instruction operands
+     1>out.asm(397): error A2008: syntax error : main
+     1>out.asm(397): error A2088: END directive required at end of file
+     1>out.asm(60): error A2006: undefined symbol : L_a_is_ge
+     1>out.asm(138): error A2070: invalid instruction operands
+     1>out.asm(151): error A2070: invalid instruction operands
+     1>out.asm(200): error A2070: invalid instruction operands
+     1>out.asm(205): error A2070: invalid instruction operands
+     1>out.asm(253): error A2006: undefined symbol : titles_differ
+     1>out.asm(259): error A2006: undefined symbol : after_titles
+     1>out.asm(270): error A2006: undefined symbol : skip_patrol
+     1>out.asm(336): error A2006: undefined symbol : t_a_ge_b
+     1>out.asm(346): error A2006: undefined symbol : mx1
+     1>out.asm(356): error A2006: undefined symbol : path1
+     1>out.asm(358): error A2006: undefined symbol : path2
+     1>out.asm(364): fatal error A1012: error count exceeds 100; stopping assembly
      1>C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\BuildCustomizations\masm.targets(70,5): error MSB3721: The command "ml64.exe /c /nologo /Zi /Fo"x64\Debug\out.obj" /Fl"x64\Debug\\" /W3 /errorReport:prompt  /Taout.asm" exited with code 1.
      1>Done Building Project "C:\Users\user\OneDrive\Рабочий стол\HKV-2025\Assembler\Assembler.vcxproj" (Build target(s)) -- FAILED.
 
@@ -18,10 +116,110 @@ Build FAILED.
 
        "C:\Users\user\OneDrive\Рабочий стол\HKV-2025\Assembler\Assembler.vcxproj" (Build target) (1) ->
        (_MASM target) -> 
-         out.asm(1): error A2088: END directive required at end of file
+         out.asm(2): error A2008: syntax error : .
+         out.asm(3): error A2008: syntax error : .
+         out.asm(55): error A2070: invalid instruction operands
+         out.asm(62): error A2008: syntax error : .
+         out.asm(63): error A2070: invalid instruction operands
+         out.asm(70): error A2070: invalid instruction operands
+         out.asm(73): error A2070: invalid instruction operands
+         out.asm(77): error A2070: invalid instruction operands
+         out.asm(84): error A2070: invalid instruction operands
+         out.asm(90): error A2070: invalid instruction operands
+         out.asm(91): error A2070: invalid instruction operands
+         out.asm(92): error A2070: invalid instruction operands
+         out.asm(98): error A2070: invalid instruction operands
+         out.asm(99): error A2070: invalid instruction operands
+         out.asm(104): error A2070: invalid instruction operands
+         out.asm(105): error A2070: invalid instruction operands
+         out.asm(111): error A2070: invalid instruction operands
+         out.asm(118): error A2070: invalid instruction operands
+         out.asm(122): error A2070: invalid instruction operands
+         out.asm(123): error A2070: invalid instruction operands
+         out.asm(128): error A2070: invalid instruction operands
+         out.asm(134): error A2070: invalid instruction operands
+         out.asm(137): error A2070: invalid instruction operands
+         out.asm(141): error A2070: invalid instruction operands
+         out.asm(147): error A2070: invalid instruction operands
+         out.asm(150): error A2070: invalid instruction operands
+         out.asm(154): error A2070: invalid instruction operands
+         out.asm(166): error A2070: invalid instruction operands
+         out.asm(171): error A2070: invalid instruction operands
+         out.asm(172): error A2070: invalid instruction operands
+         out.asm(173): error A2070: invalid instruction operands
+         out.asm(175): error A2070: invalid instruction operands
+         out.asm(176): error A2070: invalid instruction operands
+         out.asm(179): error A2070: invalid instruction operands
+         out.asm(180): error A2070: invalid instruction operands
+         out.asm(185): error A2070: invalid instruction operands
+         out.asm(186): error A2070: invalid instruction operands
+         out.asm(190): error A2070: invalid instruction operands
+         out.asm(196): error A2070: invalid instruction operands
+         out.asm(201): error A2070: invalid instruction operands
+         out.asm(206): error A2070: invalid instruction operands
+         out.asm(212): error A2070: invalid instruction operands
+         out.asm(213): error A2070: invalid instruction operands
+         out.asm(218): error A2070: invalid instruction operands
+         out.asm(223): error A2070: invalid instruction operands
+         out.asm(228): error A2070: invalid instruction operands
+         out.asm(229): error A2070: invalid instruction operands
+         out.asm(233): error A2070: invalid instruction operands
+         out.asm(234): error A2070: invalid instruction operands
+         out.asm(239): error A2070: invalid instruction operands
+         out.asm(240): error A2070: invalid instruction operands
+         out.asm(245): error A2070: invalid instruction operands
+         out.asm(246): error A2070: invalid instruction operands
+         out.asm(255): error A2070: invalid instruction operands
+         out.asm(256): error A2070: invalid instruction operands
+         out.asm(260): error A2008: syntax error : .
+         out.asm(261): error A2070: invalid instruction operands
+         out.asm(262): error A2070: invalid instruction operands
+         out.asm(265): error A2008: syntax error : .
+         out.asm(276): error A2070: invalid instruction operands
+         out.asm(277): error A2070: invalid instruction operands
+         out.asm(280): error A2008: syntax error : .
+         out.asm(291): error A2070: invalid instruction operands
+         out.asm(292): error A2070: invalid instruction operands
+         out.asm(300): error A2070: invalid instruction operands
+         out.asm(301): error A2070: invalid instruction operands
+         out.asm(309): error A2070: invalid instruction operands
+         out.asm(310): error A2070: invalid instruction operands
+         out.asm(318): error A2070: invalid instruction operands
+         out.asm(319): error A2070: invalid instruction operands
+         out.asm(327): error A2070: invalid instruction operands
+         out.asm(328): error A2070: invalid instruction operands
+         out.asm(338): error A2008: syntax error : .
+         out.asm(348): error A2008: syntax error : .
+         out.asm(360): error A2070: invalid instruction operands
+         out.asm(361): error A2070: invalid instruction operands
+         out.asm(365): error A2008: syntax error : .
+         out.asm(366): error A2070: invalid instruction operands
+         out.asm(367): error A2070: invalid instruction operands
+         out.asm(371): error A2008: syntax error : .
+         out.asm(372): error A2070: invalid instruction operands
+         out.asm(373): error A2070: invalid instruction operands
+         out.asm(376): error A2008: syntax error : .
+         out.asm(379): error A2070: invalid instruction operands
+         out.asm(380): error A2070: invalid instruction operands
+         out.asm(388): error A2070: invalid instruction operands
+         out.asm(397): error A2008: syntax error : main
+         out.asm(397): error A2088: END directive required at end of file
+         out.asm(60): error A2006: undefined symbol : L_a_is_ge
+         out.asm(138): error A2070: invalid instruction operands
+         out.asm(151): error A2070: invalid instruction operands
+         out.asm(200): error A2070: invalid instruction operands
+         out.asm(205): error A2070: invalid instruction operands
+         out.asm(253): error A2006: undefined symbol : titles_differ
+         out.asm(259): error A2006: undefined symbol : after_titles
+         out.asm(270): error A2006: undefined symbol : skip_patrol
+         out.asm(336): error A2006: undefined symbol : t_a_ge_b
+         out.asm(346): error A2006: undefined symbol : mx1
+         out.asm(356): error A2006: undefined symbol : path1
+         out.asm(358): error A2006: undefined symbol : path2
+         out.asm(364): fatal error A1012: error count exceeds 100; stopping assembly
          C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\BuildCustomizations\masm.targets(70,5): error MSB3721: The command "ml64.exe /c /nologo /Zi /Fo"x64\Debug\out.obj" /Fl"x64\Debug\\" /W3 /errorReport:prompt  /Taout.asm" exited with code 1.
 
     0 Warning(s)
-    2 Error(s)
+    102 Error(s)
 
-Time Elapsed 00:00:02.79
+Time Elapsed 00:00:00.49

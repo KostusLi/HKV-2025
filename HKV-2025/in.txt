@@ -1,25 +1,27 @@
-action squire max_three [squire a, squire b, squire c]
+action squire maxthree [squire a, squire b, squire c1]
 {
     elder squire temp;
     temp = mightiness(a, b);
-    temp = mightiness(temp, c);
+    temp = mightiness(temp, c1);
     comeback temp;
 }
-action scroll unite_scrolls [scroll s1, scroll s2]
+action scroll unitescrolls [scroll s1, scroll s2]
 {
     elder scroll result;
     elder squire len1;
     len1 = filament(s1);
     confession len1;
+    newleaf;
     result = consolidate(s1, s2);
     comeback result;
 }
-action hollow greet [scroll name]
+action hollow greet [scroll name1]
 {
     elder scroll hello;
     hello = "Greetings, ";
-    hello = consolidate(hello, name);
+    hello = consolidate(hello, name1);
     confession hello;
+    newleaf;
     comeback;
 }
 
@@ -28,61 +30,75 @@ temple
     elder squire x = 10;
     elder squire y = 25;
     elder squire z = 5;
-    elder squire max_val;
+    elder squire maxval;
 
-    elder scroll name = "Sir Arthur";
-    elder scroll title = " the Brave";
-    elder scroll full_title;
+    elder scroll name1 = "Sir Arthur";
+    elder scroll title1 = " the Brave";
+    elder scroll fulltitle;
     elder rune sym = 'a';
     confession sym;
+    newleaf;
+	
+    elder honor equalcheck = faith;
 
-    elder honor equal_check = faith;
+    greet(name1);
 
-    greet(name);
+    fulltitle = unitescrolls(name1, title1);
+    confession fulltitle;
+    newleaf;
 
-    full_title = unite_scrolls(name, title);
-    confession full_title;
+    equalcheck = compare_scrolls(name1, title1);
 
-    equal_check = compare_scrolls(name, title);
-
-    charge [equal_check ! exile]
+    charge [equalcheck ! exile]
     {
         confession "Titles differ.";
+	newleaf;
     }
     backup
     {
         confession "Titles are equal.";
+        newleaf;
     }
 
-    patrol [x < y]
+    patrol [x @ y]
     {
         x = x + 5;
         confession x;
+	newleaf;
     }
-    max_val = max_three(12, 44, 33);
-    confession max_val;
-    elder squire bit_or;
-    elder squire bit_and;
-    elder squire bit_not;
+    maxval = maxthree(12, 44, 33);
+    confession maxval;
+    newleaf;
+    elder squire bitor;
+    elder squire bitand;
+    elder squire bitnot;
 
-    bit_or = x ally z;
-    confession bit_or;
-    bit_and = x bind z;
-    confession bit_and;
-    bit_not = banish x;
-    confession bit_not;
+    bitor = x ally z;
+    confession bitor;
+    newleaf;
+    bitand = x bind z;
+    confession bitand;
+    newleaf;
+    bitnot = banish x;
+    confession bitnot;
+    newleaf;
+    elder squire t = (x + y)*42 + mightiness(x, y);
 
     council [x]
     {
        path 1{
            confession "Path one taken.";
+	   newleaf;
        }
        path 2{
            confession "Path two taken.";
+	   newleaf;
        }
        tiresome{
            confession "No matching path -- tiresome.";
+	   newleaf;
        }
     }
     confession "End of demonstration.";
+    newleaf;
 }

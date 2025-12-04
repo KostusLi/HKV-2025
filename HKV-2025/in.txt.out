@@ -1,0 +1,347 @@
+.586
+.model flat, stdcall
+includelib libucrt.lib
+includelib kernel32.lib
+includelib "../Debug/StaticLibrary.lib
+ExitProcess PROTO:DWORD 
+.stack 4096
+
+
+ outlich PROTO : DWORD
+
+ outrad PROTO : DWORD
+
+ consolidate PROTO : DWORD, : DWORD, : DWORD
+
+ mightiness PROTO : DWORD, : DWORD, : DWORD
+
+ compare_scrolls PROTO : DWORD, : DWORD, : DWORD
+
+ filament PROTO : DWORD, : DWORD
+
+.const
+		newline byte 13, 10, 0
+		LTRL1 byte 'Greetings, ', 0
+		LTRL2 sdword 10
+		LTRL3 sdword 25
+		LTRL4 sdword 5
+		LTRL5 byte 'Sir Arthur', 0
+		LTRL6 byte ' the Brave', 0
+		LTRL7 byte 'a', 0
+		LTRL8
+		LTRL9
+		LTRL10 byte 'Titles differ.', 0
+		LTRL11 byte 'Titles are equal.', 0
+		LTRL12 sdword 12
+		LTRL13 sdword 44
+		LTRL14 sdword 33
+		LTRL15 sdword 42
+		LTRL16 sdword 1
+		LTRL17 byte 'Path one taken.', 0
+		LTRL18 sdword 2
+		LTRL19 byte 'Path two taken.', 0
+		LTRL20 byte 'No matching path -- tiresome.', 0
+		LTRL21 byte 'End of demonstration.', 0
+.data
+		temp sdword ?
+		buffer byte 256 dup(0)
+		max_three.temp dword 0
+		unite_scrolls.result dword ?
+		unite_scrolls.len1 dword 0
+		greet.hello dword ?
+		temple.x dword 0
+		temple.y dword 0
+		temple.z dword 0
+		temple.max_val dword 0
+		temple.title dword ?
+		temple.full_title dword ?
+		temple.sym dword ?
+		temple.equal_check
+		temple.bit_or dword 0
+		temple.bit_and dword 0
+		temple.bit_not dword 0
+		temple.t dword 0
+.code
+push a
+push b
+call mightiness
+push offset buffer
+push eax
+
+pop ebx
+mov max_three.temp, ebx
+
+push max_three.temp
+push c
+call mightiness
+push offset buffer
+push eax
+
+pop ebx
+mov max_three.temp, ebx
+
+; --- restore registers ---
+pop edx
+pop ebx
+; -------------------------
+mov eax, max_three.temp
+ret
+ ENDP
+;------------------------------
+
+push s1
+call filament
+push offset buffer
+push eax
+
+pop ebx
+mov unite_scrolls.len1, ebx
+
+
+push unite_scrolls.len1
+call outlich
+
+push offset newline
+call outrad
+
+mov ecx, s1
+mov unite_scrolls.result, ecx
+; --- restore registers ---
+pop edx
+pop ebx
+; -------------------------
+mov eax, unite_scrolls.result
+ret
+ ENDP
+;------------------------------
+
+mov greet.hello, offset LTRL1
+mov ecx, greet.hello
+mov greet.hello, ecx
+
+push greet.hello
+call outrad
+
+push offset newline
+call outrad
+
+; --- restore registers ---
+pop edx
+pop ebx
+; -------------------------
+mov eax, ³
+ret
+ ENDP
+;------------------------------
+
+
+;----------- MAIN ------------
+main PROC
+push LTRL2
+
+pop ebx
+mov temple.x, ebx
+
+push LTRL3
+
+pop ebx
+mov temple.y, ebx
+
+push LTRL4
+
+pop ebx
+mov temple.z, ebx
+
+mov name, offset LTRL5
+mov temple.title, offset LTRL6
+mov temple.sym, offset LTRL7
+
+push temple.sym
+call outrad
+
+push offset newline
+call outrad
+
+
+push name
+call greet
+
+mov ecx, name
+mov temple.full_title, ecx
+
+push temple.full_title
+call outrad
+
+mov edx, ³
+cmp edx, ³
+
+ patrol_start1_body
+jmp cyclenext1
+patrol_start1_body:
+
+
+push offset LTRL10
+call outrad
+
+
+push offset LTRL11
+call outrad
+
+patrol_start1:
+
+push temple.x
+push LTRL4
+pop ebx
+pop eax
+add eax, ebx
+push eax
+
+pop ebx
+mov temple.x, ebx
+
+
+push temple.x
+call outlich
+
+push LTRL12
+push LTRL13
+push LTRL14
+
+push offset LTRL21
+push offset LTRL20
+push offset LTRL19
+push LTRL18
+push offset LTRL17
+push LTRL16
+push temple.x
+push temple.y
+push temple.x
+push LTRL15
+push temple.y
+push temple.x
+push temple.t
+push temple.bit_not
+push temple.x
+push temple.bit_not
+push temple.bit_and
+push temple.z
+push temple.x
+push temple.bit_and
+push temple.bit_or
+push temple.z
+push temple.x
+push temple.bit_or
+push temple.bit_not
+push temple.bit_and
+push temple.bit_or
+push temple.max_val
+call max_three
+push eax
+
+pop ebx
+mov temple.max_val, ebx
+
+
+push temple.max_val
+call outlich
+
+push temple.x
+push temple.z
+pop ebx
+pop eax
+or eax, ebx
+push eax
+
+pop ebx
+mov temple.bit_or, ebx
+
+
+push temple.bit_or
+call outlich
+
+push temple.x
+push temple.z
+pop ebx
+pop eax
+and eax, ebx
+push eax
+
+pop ebx
+mov temple.bit_and, ebx
+
+
+push temple.bit_and
+call outlich
+
+push temple.x
+pop eax
+not eax
+push eax
+
+pop ebx
+mov temple.bit_not, ebx
+
+
+push temple.bit_not
+call outlich
+
+push temple.x
+push temple.y
+pop ebx
+pop eax
+add eax, ebx
+push eax
+push LTRL15
+pop ebx
+pop eax
+imul eax, ebx
+push eax
+push temple.x
+push temple.y
+call mightiness
+push offset buffer
+push eax
+pop ebx
+pop eax
+add eax, ebx
+push eax
+
+pop ebx
+mov temple.t, ebx
+
+mov edx, temple.x
+
+cmp edx, LTRL16
+jz path2_281
+
+path2_281:
+
+
+push offset LTRL17
+call outrad
+
+cmp edx, LTRL18
+jz path2_288
+
+path2_288:
+
+
+push offset LTRL19
+call outrad
+
+tiresome_2:
+
+
+push offset LTRL20
+call outrad
+
+jmp council_end2
+
+
+push offset LTRL21
+call outrad
+
+push 0
+call ExitProcess
+main ENDP
+end main

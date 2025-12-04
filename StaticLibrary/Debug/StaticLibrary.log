@@ -1,0 +1,26 @@
+﻿Build started 04.12.2025 15:39:44.
+Logging verbosity is set to: Normal.     1>Project "C:\Users\user\OneDrive\Рабочий стол\HKV-2025\StaticLibrary\StaticLibrary.vcxproj" on node 2 (Rebuild target(s)).
+     1>PrepareForBuild:
+         Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
+       InitializeBuildStatus:
+         Creating "Debug\StaticLibrary.tlog\unsuccessfulbuild" because "AlwaysCreate" was specified.
+         Touching "Debug\StaticLibrary.tlog\unsuccessfulbuild".
+       ClCompile:
+         C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\bin\HostX86\x86\CL.exe /c /ZI /JMC /nologo /W3 /WX- /diagnostics:column /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _LIB /D _UNICODE /D UNICODE /Gm- /EHsc /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /std:c++17 /permissive- /Yc"pch.h" /Fp"Debug\StaticLibrary.pch" /Fo"Debug\\" /Fd"C:\Users\user\OneDrive\Рабочий стол\HKV-2025\HKV-2025\Debug\StaticLibrary.pdb" /external:W3 /Gd /TP /analyze- /FC /errorReport:prompt pch.cpp
+         pch.cpp
+         C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\bin\HostX86\x86\CL.exe /c /ZI /JMC /nologo /W3 /WX- /diagnostics:column /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _LIB /D _UNICODE /D UNICODE /Gm- /EHsc /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /std:c++17 /permissive- /Yu"pch.h" /Fp"Debug\StaticLibrary.pch" /Fo"Debug\\" /Fd"C:\Users\user\OneDrive\Рабочий стол\HKV-2025\HKV-2025\Debug\StaticLibrary.pdb" /external:W3 /Gd /TP /analyze- /FC /errorReport:prompt StaticLibrary.cpp
+         StaticLibrary.cpp
+       Lib:
+         C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\bin\HostX86\x86\Lib.exe /OUT:"C:\Users\user\OneDrive\Рабочий стол\HKV-2025\HKV-2025\Debug\StaticLibrary.lib" /NOLOGO /MACHINE:X86 Debug\pch.obj
+         Debug\StaticLibrary.obj
+         StaticLibrary.vcxproj -> C:\Users\user\OneDrive\Рабочий стол\HKV-2025\HKV-2025\Debug\StaticLibrary.lib
+       FinalizeBuildStatus:
+         Deleting file "Debug\StaticLibrary.tlog\unsuccessfulbuild".
+         Touching "Debug\StaticLibrary.tlog\StaticLibrary.lastbuildstate".
+     1>Done Building Project "C:\Users\user\OneDrive\Рабочий стол\HKV-2025\StaticLibrary\StaticLibrary.vcxproj" (Rebuild target(s)).
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:00.89
