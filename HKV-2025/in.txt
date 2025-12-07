@@ -10,14 +10,20 @@ squire action min(squire x, squire y)
 hollow action stand(scroll a, scroll b)
 [
 	elder scroll str;
-	str = concat(a,b);
+	str = consolidate(a, b);
         confession "Result: ";
 	confession str;
 	newleaf;
 	comeback;
 ]
 
-main[
+temple[
+	confession "=========================================================";
+	newleaf;
+	confession "      Demostration programming language --SQUIRE--    ";
+	newleaf;
+	confession "=========================================================";
+	newleaf;
 	confession "Number at sixteen format: ";
 	elder squire six = 0x4a;
 	confession six;
@@ -56,7 +62,7 @@ main[
 	confession stroka;
 	newleaf;
 	elder scroll strochka;
-	strochka = copystr(stroka);
+	strochka = oblivion(stroka);
 	confession "----------------------";
 	newleaf;
 
@@ -76,7 +82,7 @@ main[
 	elder scroll ytr = "False";
 	confession "Compare: ";
 	elder squire  asd;
-	asd=compare(dsa,ytr);
+	asd=comparescrolls(dsa,ytr);
 	check: asd & 1 #
 	charge [confession "The lines are the same";]
 	backup [confession "The lines are not the same";]#
@@ -86,7 +92,7 @@ main[
 	
 	confession "Exponentiation of a number: ";
 	elder squire  p = 6;
-	p = poww(2,p);
+	p = power(2,p);
 	confession p;
 	newleaf;
 	confession "----------------------";
@@ -95,7 +101,7 @@ main[
 
 	confession "Random number: ";
 	elder squire x;
-	x = rnd(1, 10);
+	x = fortune(1, 10);
 	confession x;
 	newleaf;
 	confession "----------------------";
@@ -115,7 +121,7 @@ main[
 	elder scroll c = "123";
 	elder squire e;	
     	confession "Converting a string to a number: ";
-    	e = atoii(c);
+    	e = transmute(c);
     	confession e;
     	newleaf;
 	confession "----------------------";
@@ -124,11 +130,11 @@ main[
 	
 	council(23)[
 	path 23[
-	    confession "pizda";
+	    confession "Domain expension";
 	    newleaf;
 	]
 	path 6[
-	    confession "fuck you";
+	    confession "shut up";
 	    newleaf;
 	]
 	path e[
@@ -139,7 +145,7 @@ main[
 
 	elder squire k;
 	elder scroll len="I love SE";
-	k = slength(len);
+	k = filament(len);
     	confession "Line length: ";
 	confession k;
     	newleaf;
@@ -177,7 +183,7 @@ main[
 	confession "Sum of octal(o45) and decimal(123): ";
 	confession e;
 	newleaf;
-	e = o123 + (45 - 5);
+	e=o123 + (45 - 5);
 	confession e;
 	newleaf;
 

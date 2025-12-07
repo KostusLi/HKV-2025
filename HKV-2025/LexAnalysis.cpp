@@ -68,11 +68,13 @@ namespace Lexer
 	char* getScopeName(IT::IdTable idtable, char* prevword) // ��� ������� ������� ��������� (���� ��������� ������ �����)
 	{
 		char* a = new char[5];
-		a[0] = 'm';
-		a[1] = 'a';
-		a[2] = 'i';
-		a[3] = 'n';
-		a[4] = '\0';
+		a[0] = 't';
+		a[1] = 'e';
+		a[2] = 'm';
+		a[3] = 'p';
+		a[4] = 'l';
+		a[5] = 'e';
+		a[6] = '\0';
 		if (strcmp(prevword, MAIN) == 0)
 			return a;
 		for (int i = idtable.size - 1; i >= 0; i--)

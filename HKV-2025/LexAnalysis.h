@@ -9,14 +9,14 @@
 #define TYPE_STRING		"scroll"
 #define TYPE_CHAR		"rune"
 #define TYPE_VOID		"hollow"
-#define CONCAT			"concat"
-#define POW				"poww"
-#define COMPARE			"compare"
-#define RANDOM			"rnd"
-#define ATOII			"atoii"
-#define MAIN			"main"
-#define LENGHT			"slength"
-#define COPY			"copystr"
+#define CONCAT			"consolidate"
+#define POW				"power"
+#define COMPARE			"comparescrolls"
+#define RANDOM			"fortune"
+#define ATOII			"transmute"
+#define MAIN			"temple"
+#define LENGHT			"filament"
+#define COPY			"oblivion"
 
 
 #define ISTYPE(str) ( !strcmp(str, TYPE_DIGIT) || !strcmp(str, TYPE_STRING)|| !strcmp(str, TYPE_CHAR) )

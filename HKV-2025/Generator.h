@@ -19,13 +19,13 @@
 
 #define EXTERN "\n outlich PROTO : DWORD\n"\
 "\n outrad PROTO : DWORD\n"\
-"\n concat PROTO : DWORD, : DWORD, : DWORD\n"\
-"\n poww PROTO : DWORD, : DWORD, : DWORD\n"\
-"\n compare PROTO : DWORD, : DWORD, : DWORD\n"\
-"\n rnd PROTO : DWORD, : DWORD, : DWORD\n"\
-"\n slength PROTO : DWORD, : DWORD\n"\
-"\n atoii  PROTO : DWORD,  : DWORD\n"\
-"\n copystr PROTO : DWORD, : DWORD\n"
+"\n consolidate PROTO : DWORD, : DWORD, : DWORD\n"\
+"\n power PROTO : DWORD, : DWORD, : DWORD\n"\
+"\n comparescrolls PROTO : DWORD, : DWORD, : DWORD\n"\
+"\n fortune PROTO : DWORD, : DWORD, : DWORD\n"\
+"\n filament PROTO : DWORD, : DWORD\n"\
+"\n transmute  PROTO : DWORD,  : DWORD\n"\
+"\n oblivion PROTO : DWORD, : DWORD\n"
 
 #define ITENTRY(x) tables.idtable.table[tables.lextable.table[x].idxTI]
 #define LEXEMA(x) tables.lextable.table[x].lexema
