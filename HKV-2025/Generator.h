@@ -9,33 +9,31 @@
 
 #define BEGIN ".586\n"\
 ".model flat, stdcall\n"\
-"option casemap:none\n"\
-"includelib msvcrt.lib\n"\
-"includelib legacy_stdio_definitions.lib\n"\
-"includelib vcruntimed.lib\n"\
-"includelib ucrtd.lib\n"\
+"includelib libucrt.lib\n"\
 "includelib kernel32.lib\n"\
 "includelib \"../HKV-2025/Debug/StaticLibrary.lib\"\n"\
-"ExitProcess PROTO :DWORD\n"\
+"ExitProcess PROTO:DWORD \n"\
 ".stack 4096\n"
 
 #define END "push 0\ncall ExitProcess\nmain ENDP\nend main"
 
-#define EXTERN "\n outrad PROTO STDCALL :DWORD\n"\
-"\n consolidate PROTO STDCALL :DWORD, :DWORD, :DWORD\n"\
-"\n mightiness PROTO STDCALL :DWORD, :DWORD, :DWORD\n"\
-"\n compare_scrolls PROTO STDCALL :DWORD, :DWORD, :DWORD\n"\
-"\n filament PROTO STDCALL :DWORD, :DWORD\n"\
-"\n confession PROTO STDCALL :DWORD, :DWORD\n"
+#define EXTERN "\n outlich PROTO : DWORD\n"\
+"\n outrad PROTO : DWORD\n"\
+"\n concat PROTO : DWORD, : DWORD, : DWORD\n"\
+"\n poww PROTO : DWORD, : DWORD, : DWORD\n"\
+"\n compare PROTO : DWORD, : DWORD, : DWORD\n"\
+"\n rnd PROTO : DWORD, : DWORD, : DWORD\n"\
+"\n slength PROTO : DWORD, : DWORD\n"\
+"\n atoii  PROTO : DWORD,  : DWORD\n"\
+"\n copystr PROTO : DWORD, : DWORD\n"
 
 #define ITENTRY(x) tables.idtable.table[tables.lextable.table[x].idxTI]
 #define LEXEMA(x) tables.lextable.table[x].lexema
 
 #define CONST ".const\n\t\tnewline byte 13, 10, 0"
-#define DATA ".data\n\t\ttemp dword ?\n\t\tbuffer byte 256 dup(0)"
+#define DATA ".data\n\t\ttemp sdword ?\n\t\tbuffer byte 256 dup(0)"
 #define CODE ".code"
 
 namespace Gener {
     void CodeGeneration(Lexer::LEX& tables, Parm::PARM& parm, Log::LOG& log);
 };
-

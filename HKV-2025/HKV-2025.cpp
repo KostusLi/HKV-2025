@@ -1,14 +1,8 @@
-﻿#include "stdafx.h"
-#include <iostream>
-#include <locale>
-#include <cwchar>
-#include <iomanip>
-#include <sstream>
-#include <string>
-using namespace std;
+﻿#include <iostream>
+#include "Header.h"
 
 
-int _tmain(int argc, _TCHAR* argv[])
+int wmain(int argc, wchar_t* argv[])
 {
 	char LEXERROR[] = "Лексический анализ завершен с ошибками";
 	char SYNTERROR[] = "Синтаксический анализ завершен с ошибками";
@@ -24,27 +18,16 @@ int _tmain(int argc, _TCHAR* argv[])
 	setlocale(LC_ALL, "Russian");
 	Log::LOG log;
 
-	wchar_t* test_argv[] = {
-	argv[0],                    // имя программы
-	_wcsdup(L"-in:in.txt")      // ваш параметр
-	};
-	int test_argc = 2;
-
 	try
 	{
-
-		Parm::PARM parm = Parm::getparm(test_argc, test_argv);                            //получить параметры
+		Parm::PARM parm = Parm::getparm(argc, argv);                            //получить параметры
 		log = Log::getstream(parm.log);
 		Log::writeLog(log);														//написать заголовок журнала
 		Log::writeParm(log, parm);												//записать в журнал параметры
 		In::IN in = In::getin(parm.in, log.stream);
 		Log::writeIn(log.stream, in);
 
-		cout << in.text << endl;
-
 		in.words = In::getWordsTable(log.stream, in.text, in.code, in.size);	//разобрать на токены
-		In::printTable(in.words);
-
 		Lexer::LEX tables;
 		bool lex_ok = Lexer::analyze(tables, in, log, parm);					//выполнить лексический анализ
 		LT::writeLexTable(log.stream, tables.lextable);							//записать в журнал таблицы лексем и идентификаторов 
@@ -80,7 +63,6 @@ int _tmain(int argc, _TCHAR* argv[])
 			return 0;
 		}
 		else Log::writeLine(&std::cout, SEMGOOD, "");
-
 		bool polish_ok = Polish::PolishNotation(tables, log);					//выполнить преобразование выражений в ПОЛИЗ
 		if (!polish_ok)
 		{
@@ -92,22 +74,21 @@ int _tmain(int argc, _TCHAR* argv[])
 		Log::writeLine(log.stream, MESSAGE, "");
 		LT::writeLexTable(log.stream, tables.lextable);							//записать в журнал новые таблицы лексем и идентификаторов
 		IT::writeIdTable(log.stream, tables.idtable);
-		LT::writeLexemsOnLines(log.stream, tables.lextable);
+		LT::writeLexemsOnLines(log.stream, tables.lextable);					//а также соответствие токенов и лексем
 		//Log::writeLine(&std::cout, MESSAGE, "");
 		//IT::writeIdTable(&std::cout, tables.idtable);							//записать в командную строку новые таблицы лексем и идентификаторов 
 		//LT::writeLexTable(&std::cout, tables.lextable);							//а также соответствие токенов и лексем
 		//LT::writeLexemsOnLines(&std::cout, tables.lextable);
 
 		Gener::CodeGeneration(tables, parm, log);								//выполнить генерацию кода
-		Log::writeLine(log.stream, ALLGOOD, "");									//итог работы программы
-		Log::writeLine(&std::cout, ALLGOOD, "");
-		Log::Close(log);													    //закрыть журнал
+		//Log::writeLine(log.stream, ALLGOOD, "");									//итог работы программы
+		//Log::writeLine(&std::cout, ALLGOOD, "");
+		//Log::Close(log);													    //закрыть журнал
 	}
 	catch (Error::ERROR e)
 	{
 		std::cout << "Ошибка " << e.id << ": " << e.message << ", строка " << e.position.line << ", позиция " << e.position.col << std::endl;
 		system("pause");
 	}
-
-    return 0;
+	return 0;
 }

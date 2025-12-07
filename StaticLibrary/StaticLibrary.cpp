@@ -1,66 +1,118 @@
 ﻿#include "pch.h"
-#include <cstring>
-#include <cstdio>
+#include <iostream>
+#include <time.h>
 
-// Force rebuild - updated for stdcall compatibility
-
-extern "C" int __stdcall filament(char* str, int* result)
-{
-    if (!str) { *result = 0; return 0; }
-    *result = (int)strlen(str);
-    return 0;
-}
-
-extern "C" int __stdcall consolidate(char* dest, char* src, char* result)
-{
-    if (!dest || !src || !result) return -1;
-    strcpy_s(result, 256, dest);
-    strcat_s(result, 256, src);
-    return 0;
-}
-
-extern "C" int __stdcall compare_scrolls(char* a, char* b, int* result)
-{
-    if (!a || !b) { *result = 0; return -1; }
-    *result = (strcmp(a, b) == 0) ? 1 : 0;
-    return 0;
-}
-
-extern "C" int __stdcall mightiness(int a, int b, int* result)
-{
-    *result = (a > b) ? a : b;
-    return 0;
-}
-
-extern "C" void __stdcall outrad(char* str)
-{
-    if (str) {
-        printf("%s", str);
-        fflush(stdout);
-    }
-}
-
-extern "C" void __stdcall confession(int data, int type)
-{
-    switch (type)
+extern "C" {
+    int __stdcall slength(char* buffer, char* str) // функция вычисления длины строки
     {
-    case 1: // INT (squire) - целое число
-        printf("%d", data);
-        break;
-    case 2: // STR (scroll) - строка
-        // data интерпретируется как указатель на строку
-        if ((char*)data != nullptr)
-        {
-            printf("%s", (char*)data);
-        }
-        break;
-    case 4: // CHAR (rune) - символ
-        // data интерпретируется как указатель на строку с одним символом
-        if ((char*)data != nullptr)
-        {
-            printf("%c", ((char*)data)[0]);
-        }
-        break;
+        if (str == nullptr)
+            return 0;
+        int len = 0;
+        for (int i = 0; i < 256; i++)
+            if (str[i] == '\0')
+            {
+                len = i; break;
+            }
+        return len;
     }
-    fflush(stdout);
+
+    int __stdcall atoii(char* buffer, char* ptr) // функция перевода из строки в число
+    {
+        int n = 0;
+        while (*ptr >= '0' && *ptr <= '9') {
+            n *= 10;
+            n += *ptr++;
+            n -= '0';
+        }
+        return n;
+
+    }
+
+    int __stdcall outrad(char* ptr) // функция вывода строковых литералов/идентификаторов
+    {
+        if (ptr == nullptr)
+        {
+            std::cout << std::endl;
+        }
+        for (int i = 0; ptr[i] != '\0'; i++)
+            std::cout << ptr[i];
+        return 0;
+    }
+
+    char* __stdcall copystr(char* buffer, char* str) // функция копирования строки
+    {
+        int i = NULL, len1 = NULL, len2 = NULL;
+        for (int j = 0; str[j] != '\0'; j++)
+        {
+            if (i == 255)
+                break;
+            buffer[i++] = str[j];
+        }
+        buffer[i] = '\0';
+        return buffer;
+    }
+
+    int __stdcall compare(char* ptr, char* a, char* b) // функция сравнения
+    {
+        if (strcmp(a, b) < 0)
+            return 0;
+        if (strcmp(a, b) == 0)
+            return 1;
+        if (strcmp(a, b) > 0)
+            return 2;
+        return 0;
+    }
+
+    char* __stdcall concat(char* buffer, char* str1, char* str2) // функция конкатенации строк
+    {
+        int i = 0;
+        for (int j = 0; str1[j] != '\0'; j++)
+        {
+            if (i == 255)
+                break;
+            buffer[i++] = str1[j];
+        }
+        for (int j = 0; str2[j] != '\0'; j++)
+        {
+            if (i == 255)
+                break;
+            buffer[i++] = str2[j];
+        }
+        buffer[i] = '\0';
+        return buffer;
+    }
+
+    int __stdcall poww(char* ptr, int num, int exponent) // функция возведения в степень
+    {
+        int res = 1;
+        for (int i = 0; i < exponent; i++)
+        {
+            if (res * num > 4294967295)
+            {
+                std::cout << "Переполнение в степени" << std::endl;
+                throw - 1;
+            }
+            res *= num;
+        }
+        return res;
+    }
+
+    int __stdcall rnd(char* ptr, int a, int b) // функция рандома
+    {
+        srand(time(NULL));
+        int res;
+        res = rand() % b + a;
+        return res;
+    }
+
+    void _pause() // функция остановки выполнения программы
+    {
+        system("pause");
+    }
+
+    int __stdcall outlich(int value) // функция вывода целочисленного идентификатора/литерала
+    {
+        std::cout << value;
+        return 0;
+    }
 }

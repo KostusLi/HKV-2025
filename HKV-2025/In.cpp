@@ -2,7 +2,6 @@
 #include "Parm.h"
 #include "In.h"
 #include "Log.h"
-#include <iostream>
 #define	LEX_MINUS		 '-'	// вычитание
 #define	MAXSIZE_LT		 4096	    //максимальное количество строк в ТЛ
 

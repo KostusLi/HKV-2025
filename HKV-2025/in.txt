@@ -1,104 +1,235 @@
-action squire maxthree [squire a, squire b, squire c1]
-{
-    elder squire temp;
-    temp = mightiness(a, b);
-    temp = mightiness(temp, c1);
-    comeback temp;
-}
-action scroll unitescrolls [scroll s1, scroll s2]
-{
-    elder scroll result;
-    elder squire len1;
-    len1 = filament(s1);
-    confession len1;
-    newleaf;
-    result = consolidate(s1, s2);
-    comeback result;
-}
-action hollow greet [scroll name1]
-{
-    elder scroll hello;
-    hello = "Greetings, ";
-    hello = consolidate(hello, name1);
-    confession hello;
-    newleaf;
-    comeback;
-}
+squire action min(squire x, squire y)
+[
+	elder squire  res;
+	check: x > y #
+	charge [res = x;]
+	backup [res = y;]#
+	comeback res;
+]
 
-temple
-{
-    elder squire x = 10;
-    elder squire y = 25;
-    elder squire z = 5;
-    elder squire maxval;
+hollow action stand(scroll a, scroll b)
+[
+	elder scroll str;
+	str = concat(a,b);
+        confession "Result: ";
+	confession str;
+	newleaf;
+	comeback;
+]
 
-    elder scroll name1 = "Sir Arthur";
-    elder scroll title1 = " the Brave";
-    elder scroll fulltitle;
-    elder rune sym = 'a';
-    confession sym;
-    newleaf;
+main[
+	confession "Number at sixteen format: ";
+	elder squire six = 0x4a;
+	confession six;
+	newleaf;
+	confession "----------------------";
+	newleaf;
+
+
+	elder scroll str;
+	elder squire abc = 2;
+	elder squire abcd = 4;
+
+
+	elder squire f = -4;
+	elder squire s = 2;
+	elder squire finish;
+	finish = f / s;
+	confession "result of division: "; 
+	confession finish;
+	newleaf;
+	confession "----------------------";
+	newleaf;
 	
-    elder honor equalcheck = faith;
-
-    greet(name1);
-
-    fulltitle = unitescrolls(name1, title1);
-    confession fulltitle;
-    newleaf;
-
-    equalcheck = compare_scrolls(name1, title1);
-
-    charge [equalcheck ! exile]
-    {
-        confession "Titles differ.";
+	confession "("; confession abc; confession ">="; confession abcd; confession ") :";
+	check: abc ~ abcd #
+	charge [str="True";]
+	backup [str="False";]#
+	confession str;
 	newleaf;
-    }
-    backup
-    {
-        confession "Titles are equal.";
-        newleaf;
-    }
-
-    patrol [x @ y]
-    {
-        x = x + 5;
-        confession x;
+	confession "----------------------";
 	newleaf;
-    }
-    maxval = maxthree(12, 44, 33);
-    confession maxval;
-    newleaf;
-    elder squire bitor;
-    elder squire bitand;
-    elder squire bitnot;
 
-    bitor = x ally z;
-    confession bitor;
-    newleaf;
-    bitand = x bind z;
-    confession bitand;
-    newleaf;
-    bitnot = banish x;
-    confession bitnot;
-    newleaf;
-    elder squire t = (x + y)*42 + mightiness(x, y);
 
-    council [x]
-    {
-       path 1{
-           confession "Path one taken.";
-	   newleaf;
-       }
-       path 2{
-           confession "Path two taken.";
-	   newleaf;
-       }
-       tiresome{
-           confession "No matching path -- tiresome.";
-	   newleaf;
-       }
-    }
-    confession "End of demonstration.";
-    newleaf;
-}
+	confession "Copited string: ";
+	elder scroll stroka = "lipupu";
+	confession stroka;
+	newleaf;
+	elder scroll strochka;
+	strochka = copystr(stroka);
+	confession "----------------------";
+	newleaf;
+
+
+	elder rune mh = 'H';
+	elder rune mi = 'i';
+	elder rune miv = '!';
+	confession mh;
+	confession mi;
+	confession miv;
+	newleaf;
+	confession "----------------------";
+	newleaf;
+
+
+	elder scroll dsa = "False";
+	elder scroll ytr = "False";
+	confession "Compare: ";
+	elder squire  asd;
+	asd=compare(dsa,ytr);
+	check: asd & 1 #
+	charge [confession "The lines are the same";]
+	backup [confession "The lines are not the same";]#
+	newleaf;
+	confession "----------------------";
+	newleaf;
+	
+	confession "Exponentiation of a number: ";
+	elder squire  p = 6;
+	p = poww(2,p);
+	confession p;
+	newleaf;
+	confession "----------------------";
+	newleaf;
+
+
+	confession "Random number: ";
+	elder squire x;
+	x = rnd(1, 10);
+	confession x;
+	newleaf;
+	confession "----------------------";
+	newleaf;
+	
+	elder squire  u = 5;
+	elder squire  v = 7;
+	elder squire  r;
+	confession "Arithmetic expression:  ";
+	r=u+v*2-(4+4)/2 + min(5, 8);
+	confession r;
+	newleaf;
+	confession "----------------------";
+	newleaf;
+
+
+	elder scroll c = "123";
+	elder squire e;	
+    	confession "Converting a string to a number: ";
+    	e = atoii(c);
+    	confession e;
+    	newleaf;
+	confession "----------------------";
+	newleaf;
+
+	
+	council(23)[
+	path 23[
+	    confession "pizda";
+	    newleaf;
+	]
+	path 6[
+	    confession "fuck you";
+	    newleaf;
+	]
+	path e[
+  	confession "g";
+	newleaf;
+	]
+	]
+
+	elder squire k;
+	elder scroll len="I love SE";
+	k = slength(len);
+    	confession "Line length: ";
+	confession k;
+    	newleaf;
+	confession "----------------------";
+	newleaf;
+
+        
+    	elder squire numb = 127;
+	elder squire remainder;
+	remainder = numb % 3;
+	confession "Remainder after division 54 by 3: ";
+	confession remainder;
+	newleaf;
+	confession "----------------------";
+	newleaf;
+
+
+	elder squire  result;
+	elder squire sdv=3;
+    	result = sdv{2;
+	confession "Number after shifted to the left : "; 
+	confession result;
+   	newleaf;
+	confession "----------------------";
+	newleaf;
+	
+	
+	elder scroll name ="KostusLi - ";
+	elder scroll surname ="David goggins";
+
+	elder squire im = o45;
+	confession im;
+	newleaf;
+	e = im + e;
+	confession "Sum of octal(o45) and decimal(123): ";
+	confession e;
+	newleaf;
+	e = o123 + (45 - 5);
+	confession e;
+	newleaf;
+
+	elder squire frigh = (5 bitand 3)+2;
+	confession frigh;
+	newleaf;
+	elder squire bip = bitnot frigh;
+	confession bip;
+	newleaf;
+	elder squire cup = frigh bitor bip;
+	confession cup;
+	newleaf;
+
+
+	elder squire poi = 4;
+	elder squire isi = 4;
+	check: poi @ isi #
+	charge [stand(name,surname);]
+	backup [confession "Error";]#
+	confession "----------------------";
+	newleaf;
+
+
+ 	elder squire  ab = 2;
+	confession "Cycle from 2 to 10: ";
+	check: ab ! 10 #
+	patrol [
+		confession ab;
+		confession " ";
+		ab = ab + 2;
+	]#
+	confession ab;
+	check: ab ! 20 #
+	patrol [
+	    confession "penis";
+	    ab = ab + 1;
+	]#
+	newleaf;
+
+	council(4)[
+		path 3[
+		confession "Choose 3";
+		newleaf;
+		]
+		path 1[
+		confession "Choose 1";
+		newleaf;
+		]
+		tiresome[
+		confession "have not path";
+		newleaf;
+		]
+	]
+]
+

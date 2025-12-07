@@ -2,346 +2,397 @@
 .model flat, stdcall
 includelib libucrt.lib
 includelib kernel32.lib
-includelib "../Debug/StaticLibrary.lib
-ExitProcess PROTO:DWORD 
+includelib "../Debug/StaticLib.lib"
+
+ExitProcess PROTO :DWORD
+
+; Lib Functions
+compare_scrolls PROTO :DWORD, :DWORD
+consolidate PROTO :DWORD, :DWORD
+mightiness PROTO :DWORD, :DWORD
+filament PROTO :DWORD
+confession PROTO :DWORD, :DWORD
+newleaf PROTO
+
 .stack 4096
 
-
- outlich PROTO : DWORD
-
- outrad PROTO : DWORD
-
- consolidate PROTO : DWORD, : DWORD, : DWORD
-
- mightiness PROTO : DWORD, : DWORD, : DWORD
-
- compare_scrolls PROTO : DWORD, : DWORD, : DWORD
-
- filament PROTO : DWORD, : DWORD
-
 .const
-		newline byte 13, 10, 0
-		LTRL1 byte 'Greetings, ', 0
-		LTRL2 sdword 10
-		LTRL3 sdword 25
-		LTRL4 sdword 5
-		LTRL5 byte 'Sir Arthur', 0
-		LTRL6 byte ' the Brave', 0
-		LTRL7 byte 'a', 0
-		LTRL8
-		LTRL9
-		LTRL10 byte 'Titles differ.', 0
-		LTRL11 byte 'Titles are equal.', 0
-		LTRL12 sdword 12
-		LTRL13 sdword 44
-		LTRL14 sdword 33
-		LTRL15 sdword 42
-		LTRL16 sdword 1
-		LTRL17 byte 'Path one taken.', 0
-		LTRL18 sdword 2
-		LTRL19 byte 'Path two taken.', 0
-		LTRL20 byte 'No matching path -- tiresome.', 0
-		LTRL21 byte 'End of demonstration.', 0
+	newline db 13, 10, 0
+	LTRL1 DB "Greetings, ", 0
+	LTRL5 DB "Sir Arthur", 0
+	LTRL6 DB " the Brave", 0
+	LTRL10 DB "Titles differ.", 0
+	LTRL11 DB "Titles are equal.", 0
+	LTRL17 DB "Path one taken.", 0
+	LTRL19 DB "Path two taken.", 0
+	LTRL20 DB "No matching path -- tiresome.", 0
+	LTRL21 DB "End of demonstration.", 0
+
 .data
-		temp sdword ?
-		buffer byte 256 dup(0)
-		max_three.temp dword 0
-		unite_scrolls.result dword ?
-		unite_scrolls.len1 dword 0
-		greet.hello dword ?
-		temple.x dword 0
-		temple.y dword 0
-		temple.z dword 0
-		temple.max_val dword 0
-		temple.title dword ?
-		temple.full_title dword ?
-		temple.sym dword ?
-		temple.equal_check
-		temple.bit_or dword 0
-		temple.bit_and dword 0
-		temple.bit_not dword 0
-		temple.t dword 0
+	temp_buffer SDWORD 0
+	maxthree_temp SDWORD 0
+	unitescrolls_result DWORD 0
+	unitescrolls_len1 SDWORD 0
+	greet_hello DWORD 0
+	temple_x SDWORD 0
+	temple_y SDWORD 0
+	temple_z SDWORD 0
+	temple_maxval SDWORD 0
+	temple_name1 DWORD 0
+	temple_title1 DWORD 0
+	temple_fulltitle DWORD 0
+	temple_sym DWORD 0
+	temple_equalcheck SDWORD 0
+	temple_charge1_bim SDWORD 0
+	temple_bitor SDWORD 0
+	temple_bitand SDWORD 0
+	temple_bitnot SDWORD 0
+	temple_t SDWORD 0
+
 .code
-push a
-push b
-call mightiness
-push offset buffer
-push eax
 
-pop ebx
-mov max_three.temp, ebx
+maxthree PROC
+	push ebp
+	mov ebp, esp
+	push maxthree_temp
+	push OFFSET maxthree_temp
+	push [ebp+8]
+	push [ebp+12]
+	call mightiness
+	push eax
+	pop eax
+	pop ebx
+	mov [ebx], eax
+	push OFFSET maxthree_temp
+	push maxthree_temp
+	push [ebp+16]
+	call mightiness
+	push eax
+	pop eax
+	pop ebx
+	mov [ebx], eax
+	push maxthree_temp
+	pop eax
+	pop ebp
+	ret 12
+	pop ebp
+	ret 12
+maxthree ENDP
 
-push max_three.temp
-push c
-call mightiness
-push offset buffer
-push eax
+unitescrolls PROC
+	push ebp
+	mov ebp, esp
+	push unitescrolls_result
+	push unitescrolls_len1
+	push OFFSET unitescrolls_len1
+	push [ebp+8]
+	call filament
+	push eax
+	pop eax
+	pop ebx
+	mov [ebx], eax
+	pop eax
+	push 1
+	push eax
+	call confession
+	push unitescrolls_len1
+	call newleaf
+	push OFFSET unitescrolls_result
+	push [ebp+8]
+	push [ebp+12]
+	call consolidate
+	push eax
+	pop eax
+	pop ebx
+	mov [ebx], eax
+	push unitescrolls_result
+	pop eax
+	pop ebp
+	ret 8
+	pop ebp
+	ret 8
+unitescrolls ENDP
 
-pop ebx
-mov max_three.temp, ebx
+greet PROC
+	push ebp
+	mov ebp, esp
+	push greet_hello
+	push OFFSET greet_hello
+	push OFFSET LTRL1
+	pop eax
+	pop ebx
+	mov [ebx], eax
+	push OFFSET greet_hello
+	push greet_hello
+	push [ebp+8]
+	call consolidate
+	push eax
+	pop eax
+	pop ebx
+	mov [ebx], eax
+	pop eax
+	push 2
+	push eax
+	call confession
+	push greet_hello
+	call newleaf
+	pop eax
+	pop ebp
+	ret 4
+	pop ebp
+	ret 4
+greet ENDP
 
-; --- restore registers ---
-pop edx
-pop ebx
-; -------------------------
-mov eax, max_three.temp
-ret
- ENDP
-;------------------------------
-
-push s1
-call filament
-push offset buffer
-push eax
-
-pop ebx
-mov unite_scrolls.len1, ebx
-
-
-push unite_scrolls.len1
-call outlich
-
-push offset newline
-call outrad
-
-mov ecx, s1
-mov unite_scrolls.result, ecx
-; --- restore registers ---
-pop edx
-pop ebx
-; -------------------------
-mov eax, unite_scrolls.result
-ret
- ENDP
-;------------------------------
-
-mov greet.hello, offset LTRL1
-mov ecx, greet.hello
-mov greet.hello, ecx
-
-push greet.hello
-call outrad
-
-push offset newline
-call outrad
-
-; --- restore registers ---
-pop edx
-pop ebx
-; -------------------------
-mov eax, ³
-ret
- ENDP
-;------------------------------
-
-
-;----------- MAIN ------------
 main PROC
-push LTRL2
-
-pop ebx
-mov temple.x, ebx
-
-push LTRL3
-
-pop ebx
-mov temple.y, ebx
-
-push LTRL4
-
-pop ebx
-mov temple.z, ebx
-
-mov name, offset LTRL5
-mov temple.title, offset LTRL6
-mov temple.sym, offset LTRL7
-
-push temple.sym
-call outrad
-
-push offset newline
-call outrad
-
-
-push name
-call greet
-
-mov ecx, name
-mov temple.full_title, ecx
-
-push temple.full_title
-call outrad
-
-mov edx, ³
-cmp edx, ³
-
- patrol_start1_body
-jmp cyclenext1
-patrol_start1_body:
-
-
-push offset LTRL10
-call outrad
-
-
-push offset LTRL11
-call outrad
-
-patrol_start1:
-
-push temple.x
-push LTRL4
-pop ebx
-pop eax
-add eax, ebx
-push eax
-
-pop ebx
-mov temple.x, ebx
-
-
-push temple.x
-call outlich
-
-push LTRL12
-push LTRL13
-push LTRL14
-
-push offset LTRL21
-push offset LTRL20
-push offset LTRL19
-push LTRL18
-push offset LTRL17
-push LTRL16
-push temple.x
-push temple.y
-push temple.x
-push LTRL15
-push temple.y
-push temple.x
-push temple.t
-push temple.bit_not
-push temple.x
-push temple.bit_not
-push temple.bit_and
-push temple.z
-push temple.x
-push temple.bit_and
-push temple.bit_or
-push temple.z
-push temple.x
-push temple.bit_or
-push temple.bit_not
-push temple.bit_and
-push temple.bit_or
-push temple.max_val
-call max_three
-push eax
-
-pop ebx
-mov temple.max_val, ebx
-
-
-push temple.max_val
-call outlich
-
-push temple.x
-push temple.z
-pop ebx
-pop eax
-or eax, ebx
-push eax
-
-pop ebx
-mov temple.bit_or, ebx
-
-
-push temple.bit_or
-call outlich
-
-push temple.x
-push temple.z
-pop ebx
-pop eax
-and eax, ebx
-push eax
-
-pop ebx
-mov temple.bit_and, ebx
-
-
-push temple.bit_and
-call outlich
-
-push temple.x
-pop eax
-not eax
-push eax
-
-pop ebx
-mov temple.bit_not, ebx
-
-
-push temple.bit_not
-call outlich
-
-push temple.x
-push temple.y
-pop ebx
-pop eax
-add eax, ebx
-push eax
-push LTRL15
-pop ebx
-pop eax
-imul eax, ebx
-push eax
-push temple.x
-push temple.y
-call mightiness
-push offset buffer
-push eax
-pop ebx
-pop eax
-add eax, ebx
-push eax
-
-pop ebx
-mov temple.t, ebx
-
-mov edx, temple.x
-
-cmp edx, LTRL16
-jz path2_281
-
-path2_281:
-
-
-push offset LTRL17
-call outrad
-
-cmp edx, LTRL18
-jz path2_288
-
-path2_288:
-
-
-push offset LTRL19
-call outrad
-
-tiresome_2:
-
-
-push offset LTRL20
-call outrad
-
-jmp council_end2
-
-
-push offset LTRL21
-call outrad
-
-push 0
-call ExitProcess
+	push OFFSET temple_x
+	push 10
+	pop eax
+	pop ebx
+	mov [ebx], eax
+	push OFFSET temple_y
+	push 25
+	pop eax
+	pop ebx
+	mov [ebx], eax
+	push OFFSET temple_z
+	push 5
+	pop eax
+	pop ebx
+	mov [ebx], eax
+	push temple_maxval
+	push OFFSET temple_name1
+	push OFFSET LTRL5
+	pop eax
+	pop ebx
+	mov [ebx], eax
+	push OFFSET temple_title1
+	push OFFSET LTRL6
+	pop eax
+	pop ebx
+	mov [ebx], eax
+	push temple_fulltitle
+	push OFFSET temple_sym
+	push 97
+	pop eax
+	pop ebx
+	mov [ebx], eax
+	pop eax
+	push 2
+	push eax
+	call confession
+	push temple_sym
+	call newleaf
+	push OFFSET temple_equalcheck
+	push 0
+	pop eax
+	pop ebx
+	mov [ebx], eax
+	push temple_name1
+	call greet
+	push eax
+	push OFFSET temple_fulltitle
+	push temple_name1
+	push temple_title1
+	call unitescrolls
+	push eax
+	pop eax
+	pop ebx
+	mov [ebx], eax
+	pop eax
+	push 2
+	push eax
+	call confession
+	push temple_fulltitle
+	call newleaf
+	push OFFSET temple_equalcheck
+	push temple_name1
+	push temple_title1
+	call compare_scrolls
+	push eax
+	pop eax
+	pop ebx
+	mov [ebx], eax
+	pop eax
+	cmp eax, 0
+	je lbl_else_1
+	push temple_equalcheck
+	push 1
+	pop ebx
+	pop eax
+	cmp eax, ebx
+	sete al
+	movzx eax, al
+	push eax
+	pop eax
+	push 3
+	push eax
+	call confession
+	push OFFSET LTRL10
+	call newleaf
+	push OFFSET temple_charge1_bim
+	push 10
+	pop eax
+	pop ebx
+	mov [ebx], eax
+lbl_else_1:
+lbl_endcharge_1:
+	pop eax
+	push 2
+	push eax
+	call confession
+	push OFFSET LTRL11
+	call newleaf
+	push 0
+	call ExitProcess
 main ENDP
+lbl_loop_2:
+	push temple_x
+	push temple_y
+	pop eax
+	cmp eax, 0
+	je lbl_endloop_2
+	push OFFSET temple_x
+	push temple_x
+	push 5
+	pop ebx
+	pop eax
+	add eax, ebx
+	push eax
+	pop eax
+	pop ebx
+	mov [ebx], eax
+	pop eax
+	push 1
+	push eax
+	call confession
+	push temple_x
+	call newleaf
+	jmp lbl_loop_2
+lbl_endloop_2:
+	push OFFSET temple_maxval
+	push 12
+	push 44
+	push 33
+	call maxthree
+	push eax
+	pop eax
+	pop ebx
+	mov [ebx], eax
+	pop eax
+	push 1
+	push eax
+	call confession
+	push temple_maxval
+	call newleaf
+	push temple_bitor
+	push temple_bitand
+	push temple_bitnot
+	push OFFSET temple_bitor
+	push temple_x
+	push temple_z
+	pop ebx
+	pop eax
+	or eax, ebx
+	push eax
+	pop eax
+	pop ebx
+	mov [ebx], eax
+	pop eax
+	push 1
+	push eax
+	call confession
+	push temple_bitor
+	call newleaf
+	push OFFSET temple_bitand
+	push temple_x
+	push temple_z
+	pop ebx
+	pop eax
+	and eax, ebx
+	push eax
+	pop eax
+	pop ebx
+	mov [ebx], eax
+	pop eax
+	push 1
+	push eax
+	call confession
+	push temple_bitand
+	call newleaf
+	push OFFSET temple_bitnot
+	push temple_x
+	pop eax
+	not eax
+	push eax
+	pop eax
+	pop ebx
+	mov [ebx], eax
+	pop eax
+	push 1
+	push eax
+	call confession
+	push temple_bitnot
+	call newleaf
+	push OFFSET temple_t
+	push temple_x
+	push temple_y
+	pop ebx
+	pop eax
+	add eax, ebx
+	push eax
+	push 42
+	pop ebx
+	pop eax
+	imul eax, ebx
+	push eax
+	push temple_x
+	push temple_y
+	call mightiness
+	push eax
+	pop ebx
+	pop eax
+	add eax, ebx
+	push eax
+	pop eax
+	pop ebx
+	mov [ebx], eax
+	pop eax
+	push 1
+	push eax
+	call confession
+	push temple_t
+	call newleaf
+	pop eax
+	mov temp_buffer, eax
+	push temple_x
+	mov eax, temp_buffer
+	cmp eax, 1
+	jne lbl_skipcase_4
+	pop eax
+	push 1
+	push eax
+	call confession
+	push OFFSET LTRL17
+	call newleaf
+	mov eax, temp_buffer
+	cmp eax, 2
+	jne lbl_skipcase_5
+	pop eax
+	push 2
+	push eax
+	call confession
+	push OFFSET LTRL19
+	call newleaf
+	pop eax
+	push 2
+	push eax
+	call confession
+	push OFFSET LTRL20
+	call newleaf
+	pop eax
+	push 2
+	push eax
+	call confession
+	push OFFSET LTRL21
+	call newleaf
 end main

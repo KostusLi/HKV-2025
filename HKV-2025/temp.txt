@@ -1,0 +1,152 @@
+--------------------------------------------------------------------------------------------------------
+|  N  |Stroke in TL|ID type                   |Name                         |Variable (parameters)        |
+--------------------------------------------------------------------------------------------------------
+|0    |2           |squire function           |maxthree                       |P0:squire, P1:squire, P2:squire |
+|1    |5           |squire parameter          |a                              |0                              |
+|2    |8           |squire parameter          |b                              |0                              |
+|3    |11          |squire parameter          |c1                             |0                              |
+|4    |16          |squire variable           |maxthree_temp                  |0                              |
+|5    |36          |scroll function           |unitescrolls                   |P0:scroll, P1:scroll           |
+|6    |39          |scroll parameter          |s1                             |[0]                            |
+|7    |42          |scroll parameter          |s2                             |[0]                            |
+|8    |47          |scroll variable           |unitescrolls_result            |[0]                            |
+|9    |51          |squire variable           |unitescrolls_len1              |0                              |
+|10   |75          |hollow function           |greet                          |P0:scroll                      |
+|11   |78          |scroll parameter          |name1                          |[0]                            |
+|12   |83          |scroll variable           |greet_hello                    |[0]                            |
+|13   |86          |scroll literal            |LTRL1                          |[11]Greetings,                 |
+|14   |107         |squire variable           |temple_x                       |0                              |
+|15   |108         |squire literal            |LTRL2                          |10                             |
+|16   |113         |squire variable           |temple_y                       |0                              |
+|17   |114         |squire literal            |LTRL3                          |25                             |
+|18   |119         |squire variable           |temple_z                       |0                              |
+|19   |120         |squire literal            |LTRL4                          |5                              |
+|20   |125         |squire variable           |temple_maxval                  |0                              |
+|21   |129         |scroll variable           |temple_name1                   |[0]                            |
+|22   |130         |scroll literal            |LTRL5                          |[10]Sir Arthur                 |
+|23   |135         |scroll variable           |temple_title1                  |[0]                            |
+|24   |136         |scroll literal            |LTRL6                          |[10] the Brave                 |
+|25   |141         |scroll variable           |temple_fulltitle               |[0]                            |
+|26   |145         |rune variable             |temple_sym                     |[0]                            |
+|27   |146         |rune literal              |LTRL7                          |[1]a                           |
+|28   |156         |honor variable            |temple_equalcheck              |[0]                            |
+|29   |157         |honor literal             |LTRL8                          |[0]                            |
+|30   |188         |scroll literal            |LTRL9                          |[14]Titles differ.             |
+|31   |194         |squire variable           |temple_charge1_bim             |0                              |
+|32   |202         |scroll literal            |LTRL10                         |[17]Titles are equal.          |
+|33   |227         |squire literal            |LTRL11                         |12                             |
+|34   |228         |squire literal            |LTRL12                         |44                             |
+|35   |229         |squire literal            |LTRL13                         |33                             |
+|36   |240         |squire variable           |temple_bitor                   |0                              |
+|37   |244         |squire variable           |temple_bitand                  |0                              |
+|38   |248         |squire variable           |temple_bitnot                  |0                              |
+|39   |284         |squire variable           |temple_t                       |0                              |
+|40   |288         |squire literal            |LTRL14                         |42                             |
+|41   |307         |squire literal            |LTRL15                         |1                              |
+|42   |310         |scroll literal            |LTRL16                         |[15]Path one taken.            |
+|43   |316         |squire literal            |LTRL17                         |2                              |
+|44   |319         |scroll literal            |LTRL18                         |[15]Path two taken.            |
+|45   |327         |scroll literal            |LTRL19                         |[29]No matching path -- tiresome. |
+|46   |334         |scroll literal            |LTRL20                         |[21]End of demonstration.      |
+--------------------------------------------------------------------------------------------------------
+
+
+-----------------  ЛЕКСЕМЫ СООТВЕТСТВУЮЩИЕ ИСХОДНОМУ КОДУ ---------------------
+
+1   | ati[0][ti[1],ti[2],ti[3]]
+2   | {
+3   | eti[4];
+4   | q[4]i[1]i[2]z=;
+5   | q[4]i[4]i[3]z=;
+6   | i[4]r;
+7   | }
+8   | ati[5][ti[6],ti[7]]
+9   | {
+10  | eti[8];
+11  | eti[9];
+12  | q[9]i[6]n=;
+13  | ui[9];
+14  | ^;
+15  | q[8]i[6]i[7]y=;
+16  | i[8]r;
+17  | }
+18  | ahi[10][ti[11]]
+19  | {
+20  | eti[12];
+21  | q[12]l[13]=;
+22  | q[12]i[12]i[11]y=;
+23  | ui[12];
+24  | ^;
+25  | r;
+26  | }
+28  | m
+29  | {
+30  | etq[14]l[15]=;
+31  | etq[16]l[17]=;
+32  | etq[18]l[19]=;
+33  | eti[20];
+35  | etq[21]l[22]=;
+36  | etq[23]l[24]=;
+37  | eti[25];
+38  | etq[26]l[27]=;
+39  | ui[26];
+40  | ^;
+42  | etq[28]l[29]=;
+44  | i[21]i[10];
+46  | q[25]i[21]i[23]i[5]=;
+47  | ui[25];
+48  | ^;
+50  | q[28]i[21]i[23]x=;
+52  | c[i[28]l[29]!]
+53  | {
+54  | ul[30];
+55  | ^;
+56  | etq[31]l[15]=;
+57  | }
+58  | b
+59  | {
+60  | ul[32];
+61  | ^;
+62  | }
+64  | w[i[14]i[16]@]
+65  | {
+66  | q[14]i[14]l[19]+=;
+67  | ui[14];
+68  | ^;
+69  | }
+70  | q[20]l[33]l[34]l[35]i[0]=;
+71  | ui[20];
+72  | ^;
+73  | eti[36];
+74  | eti[37];
+75  | eti[38];
+77  | q[36]i[14]i[18]|=;
+78  | ui[36];
+79  | ^;
+80  | q[37]i[14]i[18]&=;
+81  | ui[37];
+82  | ^;
+83  | q[38]i[14]~=;
+84  | ui[38];
+85  | ^;
+86  | etq[39]i[14]i[16]+l[40]*i[14]i[16]z+=;
+87  | ui[39];
+88  | ^;
+91  | s[i[14]]
+92  | {
+93  | pl[41]{
+94  | ul[42];
+95  | ^;
+96  | }
+97  | pl[43]{
+98  | ul[44];
+99  | ^;
+100 | }
+101 | d{
+102 | ul[45];
+103 | ^;
+104 | }
+105 | }
+106 | ul[46];
+107 | ^;
+108 | }$

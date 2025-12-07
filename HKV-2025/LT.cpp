@@ -22,12 +22,12 @@ namespace LT
 
 	LexTable Create(int size)
 	{
-		if (size > LT_MAXSIZE)
+		if (size > MAXSIZE_LT)
 			throw ERROR_THROW(202);
 		LexTable lextable;
 		lextable.table = new Entry[lextable.maxsize = size];
 		lextable.size = NULL;
-		return lextable;
+		return  lextable;
 	}
 
 	void Add(LexTable& lextable, Entry entry)
