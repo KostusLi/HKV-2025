@@ -1,4 +1,4 @@
-﻿Build started 08.12.2025 0:36:10.
+﻿Build started 08.12.2025 16:01:12.
 Logging verbosity is set to: Normal.     1>Project "C:\Users\user\OneDrive\Рабочий стол\HKV-2025\StaticLibrary\StaticLibrary.vcxproj" on node 2 (Rebuild target(s)).
      1>_PrepareForClean:
          Deleting file "Debug\StaticLibrary.tlog\StaticLibrary.lastbuildstate".
@@ -39,4 +39,4 @@ Build succeeded.
     2 Warning(s)
     0 Error(s)
 
-Time Elapsed 00:00:01.42
+Time Elapsed 00:00:01.46

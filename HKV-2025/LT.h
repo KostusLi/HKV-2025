@@ -4,14 +4,12 @@
 #define	LEX_ID_TYPE    	 't'	// ���� ������		
 #define	LEX_ID			 'i'	// ��������������		
 #define	LEX_LITERAL		 'l'	// ��������		
-#define	LEX_FUNCTION     'f'	// function		
-#define	LEX_MAIN		 'm'	// main		
+#define	LEX_ACTION     'f'	// function		
+#define	LEX_TEMPLE		 'm'	// main		
 #define	LEX_SEPARATOR	 ';'	// ����������� ����������
 #define	LEX_COMMA		 ','	// ����������� ���������� 		
 #define	LEX_LEFTBRACE	 '['	// ������ �����		
 #define	LEX_BRACELET	 ']'	// ����� �����		
-#define LEX_LEFT         '{'    // ����� �����
-#define LEX_RIGHT        '}'    // ����� ������
 #define	LEX_LEFTHESIS	 '('	// ������ ������ ����������		
 #define	LEX_RIGHTTHESIS	 ')'	// ����� ������ ����������		
 #define	LEX_PLUS		 '+'	// ��������	
@@ -22,15 +20,15 @@
 #define	LEX_EQUAL		 '='	// ������������				
 #define LEX_CONDITION	 '?'	// is:, ������ �����/�������� �����������
 #define LEX_DIEZ		 '#'	// ����������� ������ �����/ ���.���������
-#define LEX_LITERAL_HEX	 'h'	// ����������������� �������
-#define LEX_ISTRUE		 'w'	// �������� ����
-#define LEX_ISFALSE		 'r'	// ������ ����
-#define LEX_CYCLE		 'c'	// ����
-#define LEX_WRITE		 'o'	// �����
-#define LEX_NEWLINE		 '^'	// ������� ������
-#define LEX_RETURN		 'e'	// ����� �� ���������/�������
-#define LEX_VOID		 'p'	// �������� ����� ���������
-#define LEX_VAR			 'n'	// ���������� ����������
+#define LEX_CHARGE		 'w'	// �������� ����
+#define LEX_BACKUP		 'r'	// ������ ����
+#define LEX_PATROL		 'c'	// ����
+#define LEX_CONFESSION		 'o'	// �����
+#define LEX_ESCAPE       'g'    // escape (break)
+#define LEX_NEWLEAF		 '^'	// ������� ������
+#define LEX_COMEBACK		 'e'
+#define LEX_HOLLOW		 'p'	// �������� ����� ���������
+#define LEX_ELDER			 'n'	// ���������� ����������
 #define LEX_MORE		 '>'	// �������� �� ������
 #define LEX_LESS		 '<'	// �������� �� ������
 #define LEX_EQUALS		 '&'	// �������� �� ���������

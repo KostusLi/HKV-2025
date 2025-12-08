@@ -18,18 +18,6 @@ hollow action stand(scroll a, scroll b)
 ]
 
 temple[
-	confession "=========================================================";
-	newleaf;
-	confession "      Demostration programming language --SQUIRE--    ";
-	newleaf;
-	confession "=========================================================";
-	newleaf;
-	confession "Number at sixteen format: ";
-	elder squire six = 0x4a;
-	confession six;
-	newleaf;
-	confession "----------------------";
-	newleaf;
 
 
 	elder scroll str;
@@ -90,13 +78,6 @@ temple[
 	confession "----------------------";
 	newleaf;
 	
-	confession "Exponentiation of a number: ";
-	elder squire  p = 6;
-	p = power(2,p);
-	confession p;
-	newleaf;
-	confession "----------------------";
-	newleaf;
 
 
 	confession "Random number: ";
@@ -165,7 +146,6 @@ temple[
 
 	elder squire  result;
 	elder squire sdv=3;
-    	result = sdv{2;
 	confession "Number after shifted to the left : "; 
 	confession result;
    	newleaf;
@@ -223,7 +203,7 @@ temple[
 	]#
 	newleaf;
 
-	council(4)[
+	council(3)[
 		path 3[
 		confession "Choose 3";
 		newleaf;
@@ -231,10 +211,12 @@ temple[
 		path 1[
 		confession "Choose 1";
 		newleaf;
+		escape;
 		]
 		tiresome[
 		confession "have not path";
 		newleaf;
+		escape;
 		]
 	]
 ]

@@ -28,7 +28,7 @@ extern "C" {
 
     }
 
-    int __stdcall outrad(char* ptr) // функция вывода строковых литералов/идентификаторов
+    int __stdcall confessionscroll(char* ptr) // функция вывода строковых литералов/идентификаторов
     {
         if (ptr == nullptr)
         {
@@ -82,21 +82,6 @@ extern "C" {
         return buffer;
     }
 
-    int __stdcall power(char* ptr, int num, int exponent) // функция возведения в степень
-    {
-        int res = 1;
-        for (int i = 0; i < exponent; i++)
-        {
-            if (res * num > 4294967295)
-            {
-                std::cout << "Переполнение в степени" << std::endl;
-                throw - 1;
-            }
-            res *= num;
-        }
-        return res;
-    }
-
     int __stdcall fortune(char* ptr, int a, int b) // функция рандома
     {
         srand(time(NULL));
@@ -110,7 +95,7 @@ extern "C" {
         system("pause");
     }
 
-    int __stdcall outlich(int value) // функция вывода целочисленного идентификатора/литерала
+    int __stdcall confessionsquire(int value) // функция вывода целочисленного идентификатора/литерала
     {
         std::cout << value;
         return 0;

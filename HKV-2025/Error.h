@@ -1,6 +1,6 @@
 #pragma once
 
-#define ERROR_MAXSIZE_MESSAGE 200	
+#define ERROR_MAXSIZE_MESSAGE 300	
 #define ERROR_MAX_ENTRY 1000		
 
 #define ERROR_THROW(id) Error::GetError(id);				

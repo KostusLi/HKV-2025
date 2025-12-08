@@ -81,9 +81,9 @@ int wmain(int argc, wchar_t* argv[])
 		//LT::writeLexemsOnLines(&std::cout, tables.lextable);
 
 		Gener::CodeGeneration(tables, parm, log);								//выполнить генерацию кода
-		//Log::writeLine(log.stream, ALLGOOD, "");									//итог работы программы
-		//Log::writeLine(&std::cout, ALLGOOD, "");
-		//Log::Close(log);													    //закрыть журнал
+		Log::writeLine(log.stream, ALLGOOD, "");									//итог работы программы
+		Log::writeLine(&std::cout, ALLGOOD, "");
+		Log::Close(log);													    //закрыть журнал
 	}
 	catch (Error::ERROR e)
 	{

@@ -17,10 +17,9 @@
 
 #define END "push 0\ncall ExitProcess\nmain ENDP\nend main"
 
-#define EXTERN "\n outlich PROTO : DWORD\n"\
-"\n outrad PROTO : DWORD\n"\
+#define EXTERN "\n confessionsquire PROTO : DWORD\n"\
+"\n confessionscroll PROTO : DWORD\n"\
 "\n consolidate PROTO : DWORD, : DWORD, : DWORD\n"\
-"\n power PROTO : DWORD, : DWORD, : DWORD\n"\
 "\n comparescrolls PROTO : DWORD, : DWORD, : DWORD\n"\
 "\n fortune PROTO : DWORD, : DWORD, : DWORD\n"\
 "\n filament PROTO : DWORD, : DWORD\n"\

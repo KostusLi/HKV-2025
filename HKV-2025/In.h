@@ -9,7 +9,7 @@
 #define IN_CODE_QUOTE2 '\''
 #include <fstream>
 
-#define IN_CODE_TABLE	{\
+#define IN_TABLE	{\
 		IN::F, IN::F, IN::F, IN::F,  IN::F, IN::F, IN::F, IN::F,   IN::F, IN::P, IN::N, IN::F,  IN::F, IN::F, IN::F, IN::F,\
 		IN::F, IN::F, IN::F, IN::F,  IN::F, IN::F, IN::F, IN::F,   IN::F, IN::F, IN::F, IN::F,  IN::F, IN::F, IN::F, IN::F,\
 		IN::P, IN::S, IN::Q, IN::S,  IN::T, IN::T, IN::S, IN::Q,   IN::S, IN::S, IN::S, IN::S,  IN::S, IN::S, IN::T, IN::S,\
@@ -51,7 +51,7 @@ namespace In
 		Q - "
 		*/
 		enum { T = 1024, F = 2048, I = 4096, S, Q, P, N };
-		int code[256] = IN_CODE_TABLE;
+		int code[256] = IN_TABLE;
 		int size = 0;
 		int lines = 1;
 		int ignor = 0;

@@ -40,29 +40,29 @@ namespace Lexer
 		{ LEX_LITERAL, FST::FST(GRAPH_INT_LITERAL) },
 		{ LEX_LITERAL, FST::FST(GRAPH_STRING_LITERAL) },
 		{ LEX_LITERAL, FST::FST(GRAPH_CHAR_LITERAL) },
-		{ LEX_VAR, FST::FST(GRAPH_VAR) },
-		{ LEX_MAIN, FST::FST(GRAPH_MAIN) },
+		{ LEX_ELDER, FST::FST(GRAPH_VAR) },
+		{ LEX_TEMPLE, FST::FST(GRAPH_MAIN) },
 		{ LEX_ID_TYPE, FST::FST(GRAPH_NUMBER) },
 		{ LEX_ID_TYPE, FST::FST(GRAPH_STRING) },
 		{ LEX_ID_TYPE, FST::FST(GRAPH_CHAR) },
-		{ LEX_FUNCTION, FST::FST(GRAPH_FUNCTION) },
-		{ LEX_VOID, FST::FST(GRAPH_VOID) },
-		{ LEX_RETURN, FST::FST(GRAPH_RETURN) },
-		{ LEX_WRITE, FST::FST(GRAPH_WRITE) },
-		{ LEX_NEWLINE, FST::FST(GRAPH_NEWLINE) },
+		{ LEX_ACTION, FST::FST(GRAPH_FUNCTION) },
+		{ LEX_HOLLOW, FST::FST(GRAPH_VOID) },
+		{ LEX_COMEBACK, FST::FST(GRAPH_RETURN) },
+		{ LEX_CONFESSION, FST::FST(GRAPH_WRITE) },
+		{ LEX_NEWLEAF, FST::FST(GRAPH_NEWLINE) },
 		{ LEX_CONDITION, FST::FST(GRAPH_CONDITION) },
 		{ LEX_CHECK, FST::FST(GRAPH_SWITCH) },
 		{ LEX_CASE, FST::FST(GRAPH_CASE) },
+		{ LEX_ESCAPE, FST::FST(GRAPH_ESCAPE) },
 		{ LEX_DEFAULT, FST::FST(GRAPH_DEFAULT) },
-		{ LEX_CYCLE, FST::FST(GRAPH_CYCLE) },
+		{ LEX_PATROL, FST::FST(GRAPH_CYCLE) },
 		{ LEX_BITAND, FST::FST(GRAPH_BITAND) },
 		{ LEX_BITOR, FST::FST(GRAPH_BITOR) },
 		{ LEX_BITNOT, FST::FST(GRAPH_BITNOT) },
-		{ LEX_ISFALSE, FST::FST(GRAPH_ISFALSE) },
-		{ LEX_ISTRUE, FST::FST(GRAPH_ISTRUE) },
+		{ LEX_BACKUP, FST::FST(GRAPH_ISFALSE) },
+		{ LEX_CHARGE, FST::FST(GRAPH_ISTRUE) },
 		{ LEX_ID, FST::FST(GRAPH_ID) },
-		{ LEX_LITERAL_OCT, FST::FST(GRAPH_OCT_LITERAL) },
-		{ LEX_LITERAL_HEX, FST::FST(GRAPH_HEX_LITERAL) }
+		{ LEX_LITERAL_OCT, FST::FST(GRAPH_OCT_LITERAL) }
 	};
 
 	char* getScopeName(IT::IdTable idtable, char* prevword) // ��� ������� ������� ��������� (���� ��������� ������ �����)
@@ -157,8 +157,6 @@ namespace Lexer
 
 	IT::STDFNC getStandFunction(char* id)
 	{
-		if (!strcmp(POW, id))
-			return IT::STDFNC::F_POW;
 		if (!strcmp(COMPARE, id))
 			return IT::STDFNC::F_COMPARE;
 		if (!strcmp(RANDOM, id))
@@ -259,16 +257,6 @@ namespace Lexer
 			{
 				switch (getStandFunction(id))
 				{
-				case IT::STDFNC::F_POW:
-				{
-					itentry->idtype = IT::IDTYPE::S;
-					itentry->iddatatype = POW_TYPE;
-					itentry->value.params.count = POW_PARAMS_CNT;
-					itentry->value.params.types = new IT::IDDATATYPE[POW_PARAMS_CNT];
-					for (int k = 0; k < POW_PARAMS_CNT; k++)
-						itentry->value.params.types[k] = IT::POW_PARAMS[k];
-					break;
-				}
 				case IT::STDFNC::F_RANDOM:
 				{
 					itentry->idtype = IT::IDTYPE::S;
@@ -343,13 +331,13 @@ namespace Lexer
 		// -------------------------------------------------------
 		int i = tables.lextable.size; // ������ � �� �������� ��
 
-		if (i > 1 && itentry->idtype == IT::IDTYPE::V && tables.lextable.table[i - 2].lexema != LEX_VAR)
+		if (i > 1 && itentry->idtype == IT::IDTYPE::V && tables.lextable.table[i - 2].lexema != LEX_ELDER)
 		{
 			// � ���������� ����������� �������� ����� new
 			Log::writeError(log.stream, Error::GetError(304, line, 0));
 			lex_ok = false;
 		}
-		if (i > 1 && itentry->idtype == IT::IDTYPE::F && tables.lextable.table[i - 1].lexema != LEX_FUNCTION)
+		if (i > 1 && itentry->idtype == IT::IDTYPE::F && tables.lextable.table[i - 1].lexema != LEX_ACTION)
 		{
 			// � ���������� �� ������ ��� �������
 			Log::writeError(log.stream, Error::GetError(303, line, 0));
@@ -409,7 +397,7 @@ namespace Lexer
 					char lexema = graphs[j].lexema;
 					switch (lexema)
 					{
-					case LEX_MAIN:
+					case LEX_TEMPLE:
 						enterPoint++;
 						break;
 					case LEX_SEPARATORS:
@@ -441,7 +429,7 @@ namespace Lexer
 						}
 						case LEX_LEFTBRACE:		// ������ ������� ���������
 						{
-							if (i > 0 && *in.words[i - 1].word == LEX_ISFALSE || *in.words[i - 1].word == LEX_ISTRUE || *in.words[i - 1].word == LEX_CYCLE)
+							if (i > 0 && *in.words[i - 1].word == LEX_BACKUP || *in.words[i - 1].word == LEX_CHARGE || *in.words[i - 1].word == LEX_PATROL)
 								break;
 							char* functionname = new char[MAXSIZE_ID];
 							char* scopename = getScopeName(tables.idtable, in.words[i - 1].word);
@@ -453,7 +441,7 @@ namespace Lexer
 						case LEX_BRACELET:		// ����� ������� ���������
 						{
 							// ������ � ���� ������ ��������� ������� ���������
-							if (*in.words[i + 1].word == LEX_ID_TYPE || *in.words[i + 1].word == LEX_VOID || *in.words[i + 1].word == LEX_MAIN)
+							if (*in.words[i + 1].word == LEX_ID_TYPE || *in.words[i + 1].word == LEX_HOLLOW || *in.words[i + 1].word == LEX_TEMPLE)
 							{
 								if (!scopes.empty())
 									scopes.pop();
@@ -464,15 +452,11 @@ namespace Lexer
 						lexema = *curword;
 						break;
 					}
-
-					case LEX_LITERAL_HEX:
 					case LEX_LITERAL_OCT:
 					{
 						int value;
-						if (lexema == LEX_LITERAL_HEX)
-							value = DecimicalNotation(curword, 16);
-						else
-							value = DecimicalNotation(curword, 8);
+						value = DecimicalNotation(curword, 8);
+							
 						tables.idtable.table[tables.idtable.size - 1].value.vint = value;
 						bool isNegative = value < 0;
 						if (isNegative) {
@@ -558,10 +542,10 @@ namespace Lexer
 						else // ��������� ������������� (��� ����)
 						{
 							int i = tables.lextable.size - 1; // ������� �������������� �������������
-							if (i > 0 && tables.lextable.table[i - 1].lexema == LEX_VAR || tables.lextable.table[i].lexema == LEX_VAR
-								|| tables.lextable.table[i - 1].lexema == LEX_FUNCTION || tables.lextable.table[i].lexema == LEX_FUNCTION
+							if (i > 0 && tables.lextable.table[i - 1].lexema == LEX_ELDER || tables.lextable.table[i].lexema == LEX_ELDER
+								|| tables.lextable.table[i - 1].lexema == LEX_ACTION || tables.lextable.table[i].lexema == LEX_ACTION
 								|| tables.lextable.table[i - 1].lexema == LEX_ID_TYPE || tables.lextable.table[i].lexema == LEX_ID_TYPE
-								|| tables.lextable.table[i - 1].lexema == LEX_VOID || tables.lextable.table[i].lexema == LEX_VOID)
+								|| tables.lextable.table[i - 1].lexema == LEX_HOLLOW || tables.lextable.table[i].lexema == LEX_HOLLOW)
 							{
 								Log::writeError(log.stream, Error::GetError(305, curline, 0));
 								std::cout << "[LEXDBG] duplicate id near declaration, word=" << curword << " line=" << curline << std::endl;

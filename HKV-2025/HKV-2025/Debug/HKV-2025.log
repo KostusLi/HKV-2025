@@ -1,4 +1,4 @@
-﻿Build started 08.12.2025 0:38:22.
+﻿Build started 08.12.2025 20:38:35.
 Logging verbosity is set to: Normal.     1>Project "C:\Users\user\OneDrive\Рабочий стол\HKV-2025\HKV-2025\HKV-2025.vcxproj" on node 2 (Build target(s)).
      1>PrepareForBuild:
          Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
@@ -6,29 +6,15 @@ Logging verbosity is set to: Normal.     1>Project "C:\Users\user\OneDrive\Ра�
          Creating "HKV-2025\Debug\HKV-2025.tlog\unsuccessfulbuild" because "AlwaysCreate" was specified.
          Touching "HKV-2025\Debug\HKV-2025.tlog\unsuccessfulbuild".
        ClCompile:
-         C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\bin\HostX86\x86\CL.exe /c /ZI /JMC /nologo /W3 /WX- /diagnostics:column /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /permissive- /Fo"HKV-2025\Debug\\" /Fd"HKV-2025\Debug\vc143.pdb" /external:W3 /Gd /TP /analyze- /FC /errorReport:prompt FST.cpp GRB.cpp Generator.cpp "HKV-2025.cpp" IT.cpp LexAnalysis.cpp MFST.cpp PolishNotation.cpp SemanticAnalyze.cpp
+         C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\bin\HostX86\x86\CL.exe /c /ZI /JMC /nologo /W3 /WX- /diagnostics:column /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /permissive- /Fo"HKV-2025\Debug\\" /Fd"HKV-2025\Debug\vc143.pdb" /external:W3 /Gd /TP /analyze- /FC /errorReport:prompt FST.cpp GRB.cpp "HKV-2025.cpp" IT.cpp LexAnalysis.cpp MFST.cpp PolishNotation.cpp SemanticAnalyze.cpp
          FST.cpp
          GRB.cpp
-         Generator.cpp
          HKV-2025.cpp
          IT.cpp
          LexAnalysis.cpp
          MFST.cpp
          PolishNotation.cpp
-     1>C:\Users\user\OneDrive\Рабочий стол\HKV-2025\HKV-2025\PolishNotation.cpp(42,39): warning C4018: '<': signed/unsigned mismatch
-     1>C:\Users\user\OneDrive\Рабочий стол\HKV-2025\HKV-2025\PolishNotation.cpp(179,46): warning C4554: '&': check operator precedence for possible error; use parentheses to clarify precedence
-     1>C:\Users\user\OneDrive\Рабочий стол\HKV-2025\HKV-2025\PolishNotation.cpp(179,79): warning C4554: '&': check operator precedence for possible error; use parentheses to clarify precedence
-     1>C:\Users\user\OneDrive\Рабочий стол\HKV-2025\HKV-2025\PolishNotation.cpp(179,105): warning C4554: '&': check operator precedence for possible error; use parentheses to clarify precedence
-     1>C:\Users\user\OneDrive\Рабочий стол\HKV-2025\HKV-2025\PolishNotation.cpp(179,132): warning C4554: '&': check operator precedence for possible error; use parentheses to clarify precedence
-     1>C:\Users\user\OneDrive\Рабочий стол\HKV-2025\HKV-2025\PolishNotation.cpp(179,158): warning C4554: '&': check operator precedence for possible error; use parentheses to clarify precedence
-     1>C:\Users\user\OneDrive\Рабочий стол\HKV-2025\HKV-2025\PolishNotation.cpp(179,188): warning C4554: '&': check operator precedence for possible error; use parentheses to clarify precedence
-     1>C:\Users\user\OneDrive\Рабочий стол\HKV-2025\HKV-2025\PolishNotation.cpp(179,217): warning C4554: '&': check operator precedence for possible error; use parentheses to clarify precedence
-     1>C:\Users\user\OneDrive\Рабочий стол\HKV-2025\HKV-2025\PolishNotation.cpp(179,241): warning C4554: '&': check operator precedence for possible error; use parentheses to clarify precedence
-     1>C:\Users\user\OneDrive\Рабочий стол\HKV-2025\HKV-2025\PolishNotation.cpp(179,270): warning C4554: '&': check operator precedence for possible error; use parentheses to clarify precedence
-     1>C:\Users\user\OneDrive\Рабочий стол\HKV-2025\HKV-2025\PolishNotation.cpp(179,296): warning C4554: '&': check operator precedence for possible error; use parentheses to clarify precedence
-     1>C:\Users\user\OneDrive\Рабочий стол\HKV-2025\HKV-2025\PolishNotation.cpp(179,323): warning C4554: '&': check operator precedence for possible error; use parentheses to clarify precedence
-     1>C:\Users\user\OneDrive\Рабочий стол\HKV-2025\HKV-2025\PolishNotation.cpp(179,351): warning C4554: '&': check operator precedence for possible error; use parentheses to clarify precedence
-     1>C:\Users\user\OneDrive\Рабочий стол\HKV-2025\HKV-2025\PolishNotation.cpp(179,378): warning C4554: '&': check operator precedence for possible error; use parentheses to clarify precedence
+     1>C:\Users\user\OneDrive\Рабочий стол\HKV-2025\HKV-2025\PolishNotation.cpp(41,39): warning C4018: '<': signed/unsigned mismatch
          SemanticAnalyze.cpp
          Generating Code...
        Link:
@@ -57,22 +43,9 @@ Build succeeded.
 
        "C:\Users\user\OneDrive\Рабочий стол\HKV-2025\HKV-2025\HKV-2025.vcxproj" (Build target) (1) ->
        (ClCompile target) -> 
-         C:\Users\user\OneDrive\Рабочий стол\HKV-2025\HKV-2025\PolishNotation.cpp(42,39): warning C4018: '<': signed/unsigned mismatch
-         C:\Users\user\OneDrive\Рабочий стол\HKV-2025\HKV-2025\PolishNotation.cpp(179,46): warning C4554: '&': check operator precedence for possible error; use parentheses to clarify precedence
-         C:\Users\user\OneDrive\Рабочий стол\HKV-2025\HKV-2025\PolishNotation.cpp(179,79): warning C4554: '&': check operator precedence for possible error; use parentheses to clarify precedence
-         C:\Users\user\OneDrive\Рабочий стол\HKV-2025\HKV-2025\PolishNotation.cpp(179,105): warning C4554: '&': check operator precedence for possible error; use parentheses to clarify precedence
-         C:\Users\user\OneDrive\Рабочий стол\HKV-2025\HKV-2025\PolishNotation.cpp(179,132): warning C4554: '&': check operator precedence for possible error; use parentheses to clarify precedence
-         C:\Users\user\OneDrive\Рабочий стол\HKV-2025\HKV-2025\PolishNotation.cpp(179,158): warning C4554: '&': check operator precedence for possible error; use parentheses to clarify precedence
-         C:\Users\user\OneDrive\Рабочий стол\HKV-2025\HKV-2025\PolishNotation.cpp(179,188): warning C4554: '&': check operator precedence for possible error; use parentheses to clarify precedence
-         C:\Users\user\OneDrive\Рабочий стол\HKV-2025\HKV-2025\PolishNotation.cpp(179,217): warning C4554: '&': check operator precedence for possible error; use parentheses to clarify precedence
-         C:\Users\user\OneDrive\Рабочий стол\HKV-2025\HKV-2025\PolishNotation.cpp(179,241): warning C4554: '&': check operator precedence for possible error; use parentheses to clarify precedence
-         C:\Users\user\OneDrive\Рабочий стол\HKV-2025\HKV-2025\PolishNotation.cpp(179,270): warning C4554: '&': check operator precedence for possible error; use parentheses to clarify precedence
-         C:\Users\user\OneDrive\Рабочий стол\HKV-2025\HKV-2025\PolishNotation.cpp(179,296): warning C4554: '&': check operator precedence for possible error; use parentheses to clarify precedence
-         C:\Users\user\OneDrive\Рабочий стол\HKV-2025\HKV-2025\PolishNotation.cpp(179,323): warning C4554: '&': check operator precedence for possible error; use parentheses to clarify precedence
-         C:\Users\user\OneDrive\Рабочий стол\HKV-2025\HKV-2025\PolishNotation.cpp(179,351): warning C4554: '&': check operator precedence for possible error; use parentheses to clarify precedence
-         C:\Users\user\OneDrive\Рабочий стол\HKV-2025\HKV-2025\PolishNotation.cpp(179,378): warning C4554: '&': check operator precedence for possible error; use parentheses to clarify precedence
+         C:\Users\user\OneDrive\Рабочий стол\HKV-2025\HKV-2025\PolishNotation.cpp(41,39): warning C4018: '<': signed/unsigned mismatch
 
-    14 Warning(s)
+    1 Warning(s)
     0 Error(s)
 
-Time Elapsed 00:00:09.27
+Time Elapsed 00:00:10.11

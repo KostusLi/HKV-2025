@@ -27,7 +27,7 @@ namespace IT
 		idtable.table[idtable.size++] = entry;
 	}
 
-	// Ğ²Ğ¾Ğ·Ğ²Ñ€Ğ°Ñ‚: Ğ½Ğ¾Ğ¼ĞµÑ€ ÑÑ‚Ñ€Ğ¾ĞºĞ¸(ĞµÑĞ»Ğ¸ ĞµÑÑ‚ÑŒ), TI_NULLIDX(ĞµÑĞ»Ğ¸ Ğ½ĞµÑ‚)
+	// âîçâğàò: íîìåğ ñòğîêè(åñëè åñòü), TI_NULLIDX(åñëè íåò)
 	int isId(IdTable& idtable, char id[SCOPED_ID_MAXSIZE])
 	{
 		for (int i = 0; i < idtable.size; i++)
@@ -43,7 +43,7 @@ namespace IT
 		return SetValue(&(idtable.table[index]), value);
 	}
 
-	bool SetValue(IT::Entry* entry, char* value) // ÑƒÑÑ‚Ğ°Ğ½Ğ¾Ğ²ĞºĞ° Ğ·Ğ½Ğ°Ñ‡ĞµĞ½Ğ¸Ñ Ğ¿ĞµÑ€ĞµĞ¼ĞµĞ½Ğ½Ğ¾Ğ¹
+	bool SetValue(IT::Entry* entry, char* value) // óñòàíîâêà çíà÷åíèÿ ïåğåìåííîé
 	{
 		bool rc = true;
 		if (entry->iddatatype == INT)
@@ -61,7 +61,7 @@ namespace IT
 		}
 		else
 		{
-			for (unsigned i = 1; i < strlen(value) - 1; i++)	// Ğ±ĞµĞ· ĞºĞ°Ğ²Ñ‹Ñ‡ĞµĞº
+			for (unsigned i = 1; i < strlen(value) - 1; i++)	// áåç êàâû÷åê
 				entry->value.vstr.str[i - 1] = value[i];
 			entry->value.vstr.str[strlen(value) - 2] = '\0';
 			entry->value.vstr.len = strlen(value) - 2;
@@ -70,8 +70,8 @@ namespace IT
 	}
 	void writeIdTable(std::ostream* stream, IT::IdTable& idtable)
 	{
-		*stream << "---------------------------- Ğ¢ĞĞ‘Ğ›Ğ˜Ğ¦Ğ Ğ˜Ğ”Ğ•ĞĞ¢Ğ˜Ğ¤Ğ˜ĞšĞĞ¢ĞĞ ĞĞ’ ------------------------\n" << std::endl;
-		*stream << "|  N  |Ğ¡Ğ¢Ğ ĞĞšĞ Ğ’ Ğ¢Ğ›| Ğ¢Ğ˜ĞŸ Ğ˜Ğ”Ğ•ĞĞ¢Ğ˜Ğ¤Ğ˜ĞšĞĞ¢ĞĞ Ğ |        Ğ˜ĞœĞ¯        | Ğ—ĞĞĞ§Ğ•ĞĞ˜Ğ• (ĞŸĞĞ ĞĞœĞ•Ğ¢Ğ Ğ«)" << std::endl;
+		*stream << "---------------------------- ÒÀÁËÈÖÀ ÈÄÅÍÒÈÔÈÊÀÒÎĞÎÂ ------------------------\n" << std::endl;
+		*stream << "|  N  |ÑÒĞÎÊÀ Â ÒË| ÒÈÏ ÈÄÅÍÒÈÔÈÊÀÒÎĞÀ |        ÈÌß             \t| ÇÍÀ×ÅÍÈÅ (ÏÀĞÀÌÅÒĞÛ)" << std::endl;
 		for (int i = 0; i < idtable.size; i++)
 		{
 			IT::Entry* e = &idtable.table[i];
@@ -80,16 +80,16 @@ namespace IT
 			switch (e->iddatatype)
 			{
 			case IT::IDDATATYPE::INT:
-				strcat(type, " number");
+				strcat(type, " squire");
 				break;
 			case IT::IDDATATYPE::STR:
-				strcat(type, "   line");
+				strcat(type, " scroll");
 				break;
 			case IT::IDDATATYPE::PROC:
-				strcat(type, "   proc");
+				strcat(type, " hollow");
 				break;
 			case IT::IDDATATYPE::CHAR:
-				strcat(type, "   char");
+				strcat(type, "   rune");
 				break;
 			case IT::IDDATATYPE::UNDEF:
 				strcat(type, "UNDEFINED");
@@ -131,13 +131,13 @@ namespace IT
 					switch (e->value.params.types[i])
 					{
 					case IT::IDDATATYPE::INT:
-						*stream << "number |";
+						*stream << "squire |";
 						break;
 					case IT::IDDATATYPE::STR:
-						*stream << "line |";
+						*stream << "scroll |";
 						break;
 					case IT::IDDATATYPE::CHAR:
-						*stream << "char |";
+						*stream << "rune |";
 						break;
 					case IT::IDDATATYPE::PROC:
 					case IT::IDDATATYPE::UNDEF:

@@ -7,13 +7,11 @@ ExitProcess PROTO:DWORD
 .stack 4096
 
 
- outlich PROTO : DWORD
+ confessionsquire PROTO : DWORD
 
- outrad PROTO : DWORD
+ confessionscroll PROTO : DWORD
 
  consolidate PROTO : DWORD, : DWORD, : DWORD
-
- power PROTO : DWORD, : DWORD, : DWORD
 
  comparescrolls PROTO : DWORD, : DWORD, : DWORD
 
@@ -28,69 +26,63 @@ ExitProcess PROTO:DWORD
 .const
 		newline byte 13, 10, 0
 		LTRL1 byte 'Result: ', 0
-		LTRL2 byte '=========================================================', 0
-		LTRL3 byte '      Demostration programming language --SQUIRE--    ', 0
-		LTRL4 byte 'Number at sixteen format: ', 0
-		LTRL5 sdword 74
+		LTRL2 sdword 2
+		LTRL3 sdword 4
+		LTRL4 sdword -4
+		LTRL5 byte 'result of division: ', 0
 		LTRL6 byte '----------------------', 0
-		LTRL7 sdword 2
-		LTRL8 sdword 4
-		LTRL9 sdword -4
-		LTRL10 byte 'result of division: ', 0
-		LTRL11 byte '(', 0
-		LTRL12 byte '>=', 0
-		LTRL13 byte ') :', 0
-		LTRL14 byte 'True', 0
-		LTRL15 byte 'False', 0
-		LTRL16 byte 'Copited string: ', 0
-		LTRL17 byte 'lipupu', 0
-		LTRL18 byte 'H', 0
-		LTRL19 byte 'i', 0
-		LTRL20 byte '!', 0
-		LTRL21 byte 'Compare: ', 0
-		LTRL22 sdword 1
-		LTRL23 byte 'The lines are the same', 0
-		LTRL24 byte 'The lines are not the same', 0
-		LTRL25 byte 'Exponentiation of a number: ', 0
-		LTRL26 sdword 6
-		LTRL27 byte 'Random number: ', 0
-		LTRL28 sdword 10
-		LTRL29 sdword 5
-		LTRL30 sdword 7
-		LTRL31 byte 'Arithmetic expression:  ', 0
-		LTRL32 sdword 8
-		LTRL33 byte '123', 0
-		LTRL34 byte 'Converting a string to a number: ', 0
-		LTRL35 sdword 23
-		LTRL36 byte 'Domain expension', 0
-		LTRL37 byte 'shut up', 0
-		LTRL38 byte 'g', 0
-		LTRL39 byte 'I love SE', 0
-		LTRL40 byte 'Line length: ', 0
-		LTRL41 sdword 127
-		LTRL42 sdword 3
-		LTRL43 byte 'Remainder after division 54 by 3: ', 0
-		LTRL44 byte 'Number after shifted to the left : ', 0
-		LTRL45 byte 'KostusLi - ', 0
-		LTRL46 byte 'David goggins', 0
-		LTRL47 sdword 37
-		LTRL48 byte 'Sum of octal(o45) and decimal(123): ', 0
-		LTRL49 sdword 83
-		LTRL50 sdword 45
-		LTRL51 byte 'Error', 0
-		LTRL52 byte 'Cycle from 2 to 10: ', 0
-		LTRL53 byte ' ', 0
-		LTRL54 sdword 20
-		LTRL55 byte 'penis', 0
-		LTRL56 byte 'Choose 3', 0
-		LTRL57 byte 'Choose 1', 0
-		LTRL58 byte 'have not path', 0
+		LTRL7 byte '(', 0
+		LTRL8 byte '>=', 0
+		LTRL9 byte ') :', 0
+		LTRL10 byte 'True', 0
+		LTRL11 byte 'False', 0
+		LTRL12 byte 'Copited string: ', 0
+		LTRL13 byte 'lipupu', 0
+		LTRL14 byte 'H', 0
+		LTRL15 byte 'i', 0
+		LTRL16 byte '!', 0
+		LTRL17 byte 'Compare: ', 0
+		LTRL18 sdword 1
+		LTRL19 byte 'The lines are the same', 0
+		LTRL20 byte 'The lines are not the same', 0
+		LTRL21 byte 'Random number: ', 0
+		LTRL22 sdword 10
+		LTRL23 sdword 5
+		LTRL24 sdword 7
+		LTRL25 byte 'Arithmetic expression:  ', 0
+		LTRL26 sdword 8
+		LTRL27 byte '123', 0
+		LTRL28 byte 'Converting a string to a number: ', 0
+		LTRL29 sdword 23
+		LTRL30 byte 'Domain expension', 0
+		LTRL31 sdword 6
+		LTRL32 byte 'shut up', 0
+		LTRL33 byte 'g', 0
+		LTRL34 byte 'I love SE', 0
+		LTRL35 byte 'Line length: ', 0
+		LTRL36 sdword 127
+		LTRL37 sdword 3
+		LTRL38 byte 'Remainder after division 54 by 3: ', 0
+		LTRL39 byte 'Number after shifted to the left : ', 0
+		LTRL40 byte 'KostusLi - ', 0
+		LTRL41 byte 'David goggins', 0
+		LTRL42 sdword 37
+		LTRL43 byte 'Sum of octal(o45) and decimal(123): ', 0
+		LTRL44 sdword 83
+		LTRL45 sdword 45
+		LTRL46 byte 'Error', 0
+		LTRL47 byte 'Cycle from 2 to 10: ', 0
+		LTRL48 byte ' ', 0
+		LTRL49 sdword 20
+		LTRL50 byte 'penis', 0
+		LTRL51 byte 'Choose 3', 0
+		LTRL52 byte 'Choose 1', 0
+		LTRL53 byte 'have not path', 0
 .data
 		temp sdword ?
 		buffer byte 256 dup(0)
 		minres dword 0
 		standstr dword ?
-		templesix dword 0
 		templestr dword ?
 		templeabc dword 0
 		templeabcd dword 0
@@ -105,7 +97,6 @@ ExitProcess PROTO:DWORD
 		standdsa dword ?
 		standytr dword ?
 		standasd dword 0
-		standp dword 0
 		standx dword 0
 		standu dword 0
 		standv dword 0
@@ -180,14 +171,14 @@ call consolidate
 mov standstr, eax
 
 push offset LTRL1
-call outrad
+call confessionscroll
 
 
 push standstr
-call outrad
+call confessionscroll
 
 push offset newline
-call outrad
+call confessionscroll
 
 ; --- restore registers ---
 pop edx
@@ -200,66 +191,22 @@ stand ENDP
 
 ;----------- MAIN ------------
 main PROC
-
-push offset LTRL2
-call outrad
-
-push offset newline
-call outrad
-
-
-push offset LTRL3
-call outrad
-
-push offset newline
-call outrad
-
-
-push offset LTRL2
-call outrad
-
-push offset newline
-call outrad
-
-
-push offset LTRL4
-call outrad
-
-push LTRL5
-
-pop ebx
-mov templesix, ebx
-
-
-push templesix
-call outlich
-
-push offset newline
-call outrad
-
-
-push offset LTRL6
-call outrad
-
-push offset newline
-call outrad
-
-push LTRL7
+push LTRL2
 
 pop ebx
 mov templeabc, ebx
 
-push LTRL8
+push LTRL3
 
 pop ebx
 mov templeabcd, ebx
 
-push LTRL9
+push LTRL4
 
 pop ebx
 mov templef, ebx
 
-push LTRL7
+push LTRL2
 
 pop ebx
 mov temples, ebx
@@ -276,42 +223,42 @@ pop ebx
 mov templefinish, ebx
 
 
-push offset LTRL10
-call outrad
+push offset LTRL5
+call confessionscroll
 
 
 push templefinish
-call outlich
+call confessionsquire
 
 push offset newline
-call outrad
+call confessionscroll
 
 
 push offset LTRL6
-call outrad
+call confessionscroll
 
 push offset newline
-call outrad
+call confessionscroll
 
 
-push offset LTRL11
-call outrad
+push offset LTRL7
+call confessionscroll
 
 
 push templeabc
-call outlich
+call confessionsquire
 
 
-push offset LTRL12
-call outrad
+push offset LTRL8
+call confessionscroll
 
 
 push templeabcd
-call outlich
+call confessionsquire
 
 
-push offset LTRL13
-call outrad
+push offset LTRL9
+call confessionscroll
 
 mov edx, templeabc
 cmp edx, templeabcd
@@ -320,36 +267,36 @@ jz right2
 jg right2
 jnz wrong2
 right2:
-mov templestr, offset LTRL14
+mov templestr, offset LTRL10
 jmp next2
 wrong2:
-mov standstr, offset LTRL15
+mov standstr, offset LTRL11
 next2:
 
 push standstr
-call outrad
+call confessionscroll
 
 push offset newline
-call outrad
+call confessionscroll
 
 
 push offset LTRL6
-call outrad
+call confessionscroll
 
 push offset newline
-call outrad
+call confessionscroll
 
 
-push offset LTRL16
-call outrad
+push offset LTRL12
+call confessionscroll
 
-mov standstroka, offset LTRL17
+mov standstroka, offset LTRL13
 
 push standstroka
-call outrad
+call confessionscroll
 
 push offset newline
-call outrad
+call confessionscroll
 
 
 push standstroka
@@ -358,41 +305,41 @@ call oblivion
 mov standstrochka, eax
 
 push offset LTRL6
-call outrad
+call confessionscroll
 
 push offset newline
-call outrad
+call confessionscroll
 
-mov standmh, offset LTRL18
-mov standmi, offset LTRL19
-mov standmiv, offset LTRL20
+mov standmh, offset LTRL14
+mov standmi, offset LTRL15
+mov standmiv, offset LTRL16
 
 push standmh
-call outrad
+call confessionscroll
 
 
 push standmi
-call outrad
+call confessionscroll
 
 
 push standmiv
-call outrad
+call confessionscroll
 
 push offset newline
-call outrad
+call confessionscroll
 
 
 push offset LTRL6
-call outrad
+call confessionscroll
 
 push offset newline
-call outrad
+call confessionscroll
 
-mov standdsa, offset LTRL15
-mov standytr, offset LTRL15
+mov standdsa, offset LTRL11
+mov standytr, offset LTRL11
 
-push offset LTRL21
-call outrad
+push offset LTRL17
+call confessionscroll
 
 
 push standytr
@@ -405,72 +352,39 @@ pop ebx
 mov standasd, ebx
 
 mov edx, standasd
-cmp edx, LTRL22
+cmp edx, LTRL18
 
 jz right3
 jnz wrong3
 right3:
 
-push offset LTRL23
-call outrad
+push offset LTRL19
+call confessionscroll
 
 jmp next3
 wrong3:
 
-push offset LTRL24
-call outrad
+push offset LTRL20
+call confessionscroll
 
 next3:
 push offset newline
-call outrad
+call confessionscroll
 
 
 push offset LTRL6
-call outrad
+call confessionscroll
 
 push offset newline
-call outrad
+call confessionscroll
 
 
-push offset LTRL25
-call outrad
-
-push LTRL26
-
-pop ebx
-mov standp, ebx
+push offset LTRL21
+call confessionscroll
 
 
-push standp
-push LTRL7
-push offset buffer
-call power
-push eax
-
-pop ebx
-mov standp, ebx
-
-
-push standp
-call outlich
-
-push offset newline
-call outrad
-
-
-push offset LTRL6
-call outrad
-
-push offset newline
-call outrad
-
-
-push offset LTRL27
-call outrad
-
-
-push LTRL28
 push LTRL22
+push LTRL18
 push offset buffer
 call fortune
 push eax
@@ -480,35 +394,35 @@ mov standx, ebx
 
 
 push standx
-call outlich
+call confessionsquire
 
 push offset newline
-call outrad
+call confessionscroll
 
 
 push offset LTRL6
-call outrad
+call confessionscroll
 
 push offset newline
-call outrad
+call confessionscroll
 
-push LTRL29
+push LTRL23
 
 pop ebx
 mov standu, ebx
 
-push LTRL30
+push LTRL24
 
 pop ebx
 mov standv, ebx
 
 
-push offset LTRL31
-call outrad
+push offset LTRL25
+call confessionscroll
 
 push standu
 push standv
-push LTRL7
+push LTRL2
 pop ebx
 pop eax
 imul eax, ebx
@@ -517,13 +431,13 @@ pop ebx
 pop eax
 add eax, ebx
 push eax
-push LTRL8
-push LTRL8
+push LTRL3
+push LTRL3
 pop ebx
 pop eax
 add eax, ebx
 push eax
-push LTRL7
+push LTRL2
 pop ebx
 pop eax
 cdq
@@ -537,8 +451,8 @@ neg eax
 bk: 
 push eax
 
-push LTRL32
-push LTRL29
+push LTRL26
+push LTRL23
 call min
 push eax
 pop ebx
@@ -551,22 +465,22 @@ mov standr, ebx
 
 
 push standr
-call outlich
+call confessionsquire
 
 push offset newline
-call outrad
+call confessionscroll
 
 
 push offset LTRL6
-call outrad
+call confessionscroll
 
 push offset newline
-call outrad
+call confessionscroll
 
-mov standc, offset LTRL33
+mov standc, offset LTRL27
 
-push offset LTRL34
-call outrad
+push offset LTRL28
+call confessionscroll
 
 
 push standc
@@ -579,22 +493,22 @@ mov stande, ebx
 
 
 push stande
-call outlich
+call confessionsquire
 
 push offset newline
-call outrad
+call confessionscroll
 
 
 push offset LTRL6
-call outrad
+call confessionscroll
 
 push offset newline
-call outrad
+call confessionscroll
 
-mov eax, LTRL35
-cmp eax, LTRL35
+mov eax, LTRL29
+cmp eax, LTRL29
 je case1_1
-cmp eax, LTRL26
+cmp eax, LTRL31
 je case1_2
 cmp eax, stande
 je case1_3
@@ -602,36 +516,30 @@ jmp switch_end1
 
 case1_1:
 
-push offset LTRL36
-call outrad
+push offset LTRL30
+call confessionscroll
 
 push offset newline
-call outrad
-
-jmp switch_end1
+call confessionscroll
 
 case1_2:
 
-push offset LTRL37
-call outrad
+push offset LTRL32
+call confessionscroll
 
 push offset newline
-call outrad
-
-jmp switch_end1
+call confessionscroll
 
 case1_3:
 
-push offset LTRL38
-call outrad
+push offset LTRL33
+call confessionscroll
 
 push offset newline
-call outrad
-
-jmp switch_end1
+call confessionscroll
 
 switch_end1:
-mov standlen, offset LTRL39
+mov standlen, offset LTRL34
 
 push standlen
 push offset buffer
@@ -642,30 +550,30 @@ pop ebx
 mov standk, ebx
 
 
-push offset LTRL40
-call outrad
+push offset LTRL35
+call confessionscroll
 
 
 push standk
-call outlich
+call confessionsquire
 
 push offset newline
-call outrad
+call confessionscroll
 
 
 push offset LTRL6
-call outrad
+call confessionscroll
 
 push offset newline
-call outrad
+call confessionscroll
 
-push LTRL41
+push LTRL36
 
 pop ebx
 mov standnumb, ebx
 
 push standnumb
-push LTRL42
+push LTRL37
 pop ebx
 pop eax
 cdq
@@ -677,70 +585,59 @@ pop ebx
 mov standremainder, ebx
 
 
-push offset LTRL43
-call outrad
+push offset LTRL38
+call confessionscroll
 
 
 push standremainder
-call outlich
+call confessionsquire
 
 push offset newline
-call outrad
+call confessionscroll
 
 
 push offset LTRL6
-call outrad
+call confessionscroll
 
 push offset newline
-call outrad
+call confessionscroll
 
-push LTRL42
+push LTRL37
 
 pop ebx
 mov standsdv, ebx
 
-push standsdv
-push LTRL7
-pop ebx 
-pop eax 
-mov cl, bl 
-shl eax, cl
-push eax
 
-pop ebx
-mov standresult, ebx
-
-
-push offset LTRL44
-call outrad
+push offset LTRL39
+call confessionscroll
 
 
 push standresult
-call outlich
+call confessionsquire
 
 push offset newline
-call outrad
+call confessionscroll
 
 
 push offset LTRL6
-call outrad
+call confessionscroll
 
 push offset newline
-call outrad
+call confessionscroll
 
-mov standname, offset LTRL45
-mov standsurname, offset LTRL46
-push LTRL47
+mov standname, offset LTRL40
+mov standsurname, offset LTRL41
+push LTRL42
 
 pop ebx
 mov standim, ebx
 
 
 push standim
-call outlich
+call confessionsquire
 
 push offset newline
-call outrad
+call confessionscroll
 
 push standim
 push stande
@@ -753,19 +650,19 @@ pop ebx
 mov stande, ebx
 
 
-push offset LTRL48
-call outrad
+push offset LTRL43
+call confessionscroll
 
 
 push stande
-call outlich
+call confessionsquire
 
 push offset newline
-call outrad
+call confessionscroll
 
-push LTRL49
-push LTRL50
-push LTRL29
+push LTRL44
+push LTRL45
+push LTRL23
 pop ebx
 pop eax
 sub eax, ebx
@@ -783,18 +680,18 @@ mov stande, ebx
 
 
 push stande
-call outlich
+call confessionsquire
 
 push offset newline
-call outrad
+call confessionscroll
 
-push LTRL29
-push LTRL42
+push LTRL23
+push LTRL37
 pop ebx
 pop eax
 and eax, ebx
 push eax
-push LTRL7
+push LTRL2
 pop ebx
 pop eax
 add eax, ebx
@@ -805,10 +702,10 @@ mov standfrigh, ebx
 
 
 push standfrigh
-call outlich
+call confessionsquire
 
 push offset newline
-call outrad
+call confessionscroll
 
 push standfrigh
 pop eax
@@ -820,10 +717,10 @@ mov standbip, ebx
 
 
 push standbip
-call outlich
+call confessionsquire
 
 push offset newline
-call outrad
+call confessionscroll
 
 push standfrigh
 push standbip
@@ -837,17 +734,17 @@ mov standcup, ebx
 
 
 push standcup
-call outlich
+call confessionsquire
 
 push offset newline
-call outrad
+call confessionscroll
 
-push LTRL8
+push LTRL3
 
 pop ebx
 mov standpoi, ebx
 
-push LTRL8
+push LTRL3
 
 pop ebx
 mov standisi, ebx
@@ -867,42 +764,42 @@ call stand
 jmp next4
 wrong4:
 
-push offset LTRL51
-call outrad
+push offset LTRL46
+call confessionscroll
 
 next4:
 
 push offset LTRL6
-call outrad
+call confessionscroll
 
 push offset newline
-call outrad
+call confessionscroll
 
-push LTRL7
+push LTRL2
 
 pop ebx
 mov standab, ebx
 
 
-push offset LTRL52
-call outrad
+push offset LTRL47
+call confessionscroll
 
 mov edx, standab
-cmp edx, LTRL28
+cmp edx, LTRL22
 
 jnz cycle5
 jmp cyclenext5
 cycle5:
 
 push standab
-call outlich
+call confessionsquire
 
 
-push offset LTRL53
-call outrad
+push offset LTRL48
+call confessionscroll
 
 push standab
-push LTRL7
+push LTRL2
 pop ebx
 pop eax
 add eax, ebx
@@ -912,26 +809,26 @@ pop ebx
 mov standab, ebx
 
 mov edx, standab
-cmp edx, LTRL28
+cmp edx, LTRL22
 
 jnz cycle5
 cyclenext5:
 
 push standab
-call outlich
+call confessionsquire
 
 mov edx, standab
-cmp edx, LTRL54
+cmp edx, LTRL49
 
 jnz cycle6
 jmp cyclenext6
 cycle6:
 
-push offset LTRL55
-call outrad
+push offset LTRL50
+call confessionscroll
 
 push standab
-push LTRL22
+push LTRL18
 pop ebx
 pop eax
 add eax, ebx
@@ -941,47 +838,47 @@ pop ebx
 mov standab, ebx
 
 mov edx, standab
-cmp edx, LTRL54
+cmp edx, LTRL49
 
 jnz cycle6
 cyclenext6:
 push offset newline
-call outrad
+call confessionscroll
 
-mov eax, LTRL8
-cmp eax, LTRL42
+mov eax, LTRL37
+cmp eax, LTRL37
 je case2_1
-cmp eax, LTRL22
+cmp eax, LTRL18
 je case2_2
 jmp default2
 
 case2_1:
 
-push offset LTRL56
-call outrad
+push offset LTRL51
+call confessionscroll
 
 push offset newline
-call outrad
-
-jmp switch_end2
+call confessionscroll
 
 case2_2:
 
-push offset LTRL57
-call outrad
+push offset LTRL52
+call confessionscroll
 
 push offset newline
-call outrad
+call confessionscroll
 
 jmp switch_end2
 
 default2:
 
-push offset LTRL58
-call outrad
+push offset LTRL53
+call confessionscroll
 
 push offset newline
-call outrad
+call confessionscroll
+
+jmp switch_end2
 
 switch_end2:
 push 0

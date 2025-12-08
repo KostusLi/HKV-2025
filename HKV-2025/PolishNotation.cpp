@@ -15,7 +15,6 @@ namespace Polish
         case LEX_PLUS: case LEX_MINUS: return 1;
         case LEX_BITNOT: return 2;
         case LEX_STAR: case LEX_DIRSLASH: case LEX_PERSENT: return 2;
-        case LEX_LEFT: case LEX_RIGHT: return 3;
         default: return -1;
         }
     }
@@ -141,7 +140,7 @@ namespace Polish
             }
             int priority = getPriority(v[i]); // ��� ���������
 
-            if (v[i].lexema == LEX_LEFTHESIS || v[i].lexema == LEX_RIGHTTHESIS || v[i].lexema == LEX_PLUS || v[i].lexema == LEX_MINUS || v[i].lexema == LEX_STAR || v[i].lexema == LEX_DIRSLASH || v[i].lexema == LEX_PERSENT || v[i].lexema == LEX_LEFT || v[i].lexema == LEX_RIGHT || v[i].lexema == LEX_BITAND || v[i].lexema == LEX_BITOR || v[i].lexema == LEX_BITNOT)
+            if (v[i].lexema == LEX_LEFTHESIS || v[i].lexema == LEX_RIGHTTHESIS || v[i].lexema == LEX_PLUS || v[i].lexema == LEX_MINUS || v[i].lexema == LEX_STAR || v[i].lexema == LEX_DIRSLASH || v[i].lexema == LEX_PERSENT || v[i].lexema == LEX_BITAND || v[i].lexema == LEX_BITOR || v[i].lexema == LEX_BITNOT)
             {
                 if (s.empty() || v[i].lexema == LEX_LEFTHESIS)
                 {
@@ -176,7 +175,7 @@ namespace Polish
                     ignore = true;
                 result.push_back(v[i]); // ������� ������� � �������������� ������
             }
-            if (v[i].lexema != LEX_LEFTHESIS & v[i].lexema != LEX_RIGHTTHESIS & v[i].lexema != LEX_PLUS & v[i].lexema != LEX_MINUS & v[i].lexema != LEX_STAR & v[i].lexema != LEX_DIRSLASH & v[i].lexema != LEX_PERSENT & v[i].lexema != LEX_ID & v[i].lexema != LEX_LITERAL & v[i].lexema != LEX_LEFT & v[i].lexema != LEX_RIGHT & v[i].lexema != LEX_BITAND & v[i].lexema != LEX_BITOR & v[i].lexema != LEX_BITNOT)
+            if (v[i].lexema != LEX_LEFTHESIS && v[i].lexema != LEX_RIGHTTHESIS && v[i].lexema != LEX_PLUS && v[i].lexema != LEX_MINUS && v[i].lexema != LEX_STAR && v[i].lexema != LEX_DIRSLASH && v[i].lexema != LEX_PERSENT && v[i].lexema != LEX_ID && v[i].lexema != LEX_LITERAL && v[i].lexema != LEX_BITAND && v[i].lexema != LEX_BITOR && v[i].lexema != LEX_BITNOT)
             {
                 Log::writeError(log.stream, Error::GetError(1));
                 return false;

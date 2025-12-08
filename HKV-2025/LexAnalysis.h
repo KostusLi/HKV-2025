@@ -10,7 +10,6 @@
 #define TYPE_CHAR		"rune"
 #define TYPE_VOID		"hollow"
 #define CONCAT			"consolidate"
-#define POW				"power"
 #define COMPARE			"comparescrolls"
 #define RANDOM			"fortune"
 #define ATOII			"transmute"

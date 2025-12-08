@@ -86,10 +86,6 @@ namespace Gener
 					str = str + "pop ebx\npop eax\ncdq\nidiv ebx\npush eax\n"; break;
 				case LEX_PERSENT:
 					str = str + "pop ebx\npop eax\ncdq\nmov edx,0\nidiv ebx\npush edx\n"; break;
-				case LEX_RIGHT:
-					str = str + "pop ebx \npop eax \nmov cl, bl \nshr eax, cl\npush eax\n"; break;
-				case LEX_LEFT:
-					str = str + "pop ebx \npop eax \nmov cl, bl \nshl eax, cl\npush eax\n"; break;
 				case LEX_BITAND:
 					str = str + "pop ebx\npop eax\nand eax, ebx\npush eax\n"; break;
 				case LEX_BITOR:
@@ -189,9 +185,9 @@ namespace Gener
 
 		for (int j = i + 5; LEXEMA(j) != LEX_DIEZ; j++) // ���������� ����������� �������
 		{
-			if (LEXEMA(j) == LEX_ISTRUE) r = true;
-			if (LEXEMA(j) == LEX_ISFALSE) w = true;
-			if (LEXEMA(j) == LEX_CYCLE) c = true;
+			if (LEXEMA(j) == LEX_CHARGE) r = true;
+			if (LEXEMA(j) == LEX_BACKUP) w = true;
+			if (LEXEMA(j) == LEX_PATROL) c = true;
 		}
 		str = str + "mov edx, " + lft.id + "\ncmp edx, " + rgt.id + "\n";
 		switch (LEXEMA(i + 2))
@@ -265,7 +261,6 @@ namespace Gener
 	{
 		vector <string> v = startFillVector(tables);
 		ofstream ofile(parm.out);
-		ofstream asmfile("../Assembler/out.asm");
 		string funcname;	// ��� ������� ������
 		string cyclecode;	// ������ �����: cmp + j
 		int pcount;			// ���������� ���������� ������� �������
@@ -279,7 +274,6 @@ namespace Gener
 			string defaultLabel;
 			bool hasDefault;
 			std::map<int, std::pair<int, string>> cases; // pos -> (idxTI,label)
-			std::unordered_map<int, bool> blockEnds;      // ']' position -> isDefaultBlock
 		};
 		std::stack<SwitchCtx> switchStack;
 		std::unordered_set<std::string> emittedLabels;
@@ -336,41 +330,11 @@ namespace Gener
 						string lbl = "case" + itoS(ctx.id) + "_" + itoS(++caseNum);
 						int valIdx = tables.lextable.table[p + 1].idxTI;
 						ctx.cases[p] = { valIdx, lbl };
-						// найти конец блока этого case
-						int d2 = 0;
-						for (int t = p; t < tables.lextable.size; ++t)
-						{
-							if (LEXEMA(t) == LEX_LEFTBRACE) d2++;
-							if (LEXEMA(t) == LEX_BRACELET)
-							{
-								if (--d2 == 0)
-								{
-									ctx.blockEnds[t] = false; // обычный case
-									break;
-								}
-							}
-							if (LEXEMA(t) == LEX_DIEZ && d2 == 0) break;
-						}
 					}
 					if (LEXEMA(p) == LEX_DEFAULT)
 					{
 						ctx.hasDefault = true;
 						ctx.defaultLabel = "default" + itoS(ctx.id);
-						// конец блока default
-						int d2 = 0;
-						for (int t = p; t < tables.lextable.size; ++t)
-						{
-							if (LEXEMA(t) == LEX_LEFTBRACE) d2++;
-							if (LEXEMA(t) == LEX_BRACELET)
-							{
-								if (--d2 == 0)
-								{
-									ctx.blockEnds[t] = true; // default
-									break;
-								}
-							}
-							if (LEXEMA(t) == LEX_DIEZ && d2 == 0) break;
-						}
 					}
 				}
 				if (ctx.endPos == 0) ctx.endPos = tables.lextable.size - 1;
@@ -393,26 +357,26 @@ namespace Gener
 				switchStack.push(ctx);
 				break;
 			}
-			case LEX_MAIN:
+			case LEX_TEMPLE:
 			{
 				str = str + SEPSTR("MAIN") + "main PROC";
 				break;
 			}
-			case LEX_FUNCTION:
+			case LEX_ACTION:
 			{
 				funcname = ITENTRY(i + 1).id;
 				pcount = ITENTRY(i + 1).value.params.count;
 				str = genFunctionCode(tables, i, funcname, pcount);
 				break;
 			}
-			case LEX_RETURN:
+			case LEX_COMEBACK:
 			{
 				str = genExitCode(tables, i, funcname, pcount);
 				break;
 			}
 			case LEX_ID: // ����� �������
 			{
-				if (LEXEMA(i + 1) == LEX_LEFTHESIS && LEXEMA(i - 1) != LEX_FUNCTION) // �� ����������, � �����
+				if (LEXEMA(i + 1) == LEX_LEFTHESIS && LEXEMA(i - 1) != LEX_ACTION) // �� ����������, � �����
 					str = genCallFuncCode(tables, log, i);
 				break;
 			}
@@ -423,25 +387,6 @@ namespace Gener
 			}
 			case LEX_BRACELET:	// ������� �� ����� � ����� ��������
 			{
-				// если это конец блока case/default внутри switch
-				if (!switchStack.empty())
-				{
-					auto& ctx = switchStack.top();
-					auto itEnd = ctx.blockEnds.find(i);
-					if (itEnd != ctx.blockEnds.end())
-					{
-						// после обычного case делаем implicit break -> jump end switch
-						if (!itEnd->second)
-						{
-							std::string lbl = ctx.endLabel;
-							if (emittedLabels.find(lbl + ":") == emittedLabels.end())
-								str = str + "jmp " + lbl + "\n";
-							else
-								str = str + "jmp " + lbl + "\n";
-						}
-						break;
-					}
-				}
 				if (!switchStack.empty() && i == switchStack.top().endPos)
 				{
 					std::string lbl = switchStack.top().endLabel + ":";
@@ -452,7 +397,7 @@ namespace Gener
 					switchStack.pop();
 					break;
 				}
-				if (LEXEMA(i + 1) == LEX_ISFALSE || LEXEMA(i + 1) == LEX_ISTRUE)
+				if (LEXEMA(i + 1) == LEX_BACKUP || LEXEMA(i + 1) == LEX_CHARGE)
 					str = str + "jmp next" + itoS(conditionnum);
 			}
 			case LEX_DIEZ:		// ��������� ����� � ����� ��������
@@ -461,7 +406,7 @@ namespace Gener
 				{
 					bool c = false;
 					for (int j = i; j > 0 && LEXEMA(j) != LEX_CONDITION; j--)
-						if (LEXEMA(j) == LEX_CYCLE)
+						if (LEXEMA(j) == LEX_PATROL)
 							c = true;
 					if (c)
 					{
@@ -482,7 +427,7 @@ namespace Gener
 				}
 				break;
 			}
-			case LEX_ISTRUE: // ������� �����(�����)
+			case LEX_CHARGE: // ������� �����(�����)
 			{
 				std::string lbl = "right" + itoS(conditionnum) + ":";
 				if (emittedLabels.insert(lbl).second)
@@ -501,13 +446,19 @@ namespace Gener
 				}
 				break;
 			}
+			case LEX_ESCAPE:
+			{
+				if (!switchStack.empty())
+					str = str + "jmp " + switchStack.top().endLabel + "\n";
+				break;
+			}
 			case LEX_DEFAULT:
 			{
 				if (!switchStack.empty() && switchStack.top().hasDefault)
 					str = str + switchStack.top().defaultLabel + ":";
 				break;
 			}
-			case LEX_ISFALSE: // ������� �������(�����)
+			case LEX_BACKUP: // ������� �������(�����)
 			{
 				std::string lbl = "wrong" + itoS(conditionnum) + ":";
 				if (emittedLabels.insert(lbl).second)
@@ -516,7 +467,7 @@ namespace Gener
 					str.clear();
 				break;
 			}
-			case LEX_CYCLE: // ���� � �������� (�����)
+			case LEX_PATROL: // ���� � �������� (�����)
 			{
 				std::string lbl = "cycle" + itoS(conditionnum) + ":";
 				if (emittedLabels.insert(lbl).second)
@@ -531,26 +482,26 @@ namespace Gener
 				while (LEXEMA(++i) != LEX_SEPARATOR);	// ���������� ���������
 				break;
 			}
-			case LEX_NEWLINE: // ������� ������ 
+			case LEX_NEWLEAF: // ������� ������ 
 			{
-				str = str + "push offset newline\ncall outrad\n";
+				str = str + "push offset newline\ncall confessionscroll\n";
 				break;
 			}
-			case LEX_WRITE: // �����
+			case LEX_CONFESSION: // �����
 			{
 				IT::Entry e = ITENTRY(i + 1);
 				switch (e.iddatatype)
 				{
 				case IT::IDDATATYPE::INT:
-					str = str + "\npush " + e.id + "\ncall outlich\n";
+					str = str + "\npush " + e.id + "\ncall confessionsquire\n";
 					break;
 				case IT::IDDATATYPE::STR:
-					if (e.idtype == IT::IDTYPE::L)  str = str + "\npush offset " + e.id + "\ncall outrad\n";
-					else  str = str + "\npush " + e.id + "\ncall outrad\n";
+					if (e.idtype == IT::IDTYPE::L)  str = str + "\npush offset " + e.id + "\ncall confessionscroll\n";
+					else  str = str + "\npush " + e.id + "\ncall confessionscroll\n";
 					break;
 				case IT::IDDATATYPE::CHAR:
-					if (e.idtype == IT::IDTYPE::L)  str = str + "\npush offset " + e.id + "\ncall outrad\n";
-					else  str = str + "\npush " + e.id + "\ncall outrad\n";
+					if (e.idtype == IT::IDTYPE::L)  str = str + "\npush offset " + e.id + "\ncall confessionscroll\n";
+					else  str = str + "\npush " + e.id + "\ncall confessionscroll\n";
 					break;
 				}
 				break;
@@ -563,11 +514,7 @@ namespace Gener
 		v.push_back(END);
 		// ����� � ����
 		for (auto x : v)
-		{
 			ofile << x << endl;
-			asmfile << x << endl;
-		}
 		ofile.close();
-		asmfile.close();
 	}
 };

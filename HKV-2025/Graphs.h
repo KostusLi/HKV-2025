@@ -4,7 +4,7 @@
 
 // ����� ��������� 
 #define GRAPH_SEPARATORS 2,\
-	FST::NODE(21,\
+	FST::NODE(19,\
 			FST::RELATION(';',1), FST::RELATION('=',1),\
 			FST::RELATION(',',1), FST::RELATION('[',1),\
 			FST::RELATION(']',1), FST::RELATION('(',1),\
@@ -12,7 +12,6 @@
 			FST::RELATION('+',1), FST::RELATION('-',1),\
 			FST::RELATION('#',1), FST::RELATION('/',1),\
 			FST::RELATION('<',1), FST::RELATION('>',1),\
-			FST::RELATION('{',1), FST::RELATION('}',1),\
 			FST::RELATION('&',1), FST::RELATION('!',1),\
 			FST::RELATION('%',1), FST::RELATION('~',1),\
 			FST::RELATION('@',1), FST::RELATION(':',1)),\
@@ -135,6 +134,15 @@ FST::NODE(1, FST::RELATION('k',4)),\
 FST::NODE(1, FST::RELATION('u',5)),\
 FST::NODE(1, FST::RELATION('p',6)),\
 FST::NODE()
+
+#define GRAPH_ESCAPE 7, \
+	FST::NODE(1, FST::RELATION('e',1)),\
+	FST::NODE(1, FST::RELATION('s',2)),\
+	FST::NODE(1, FST::RELATION('c',3)),\
+	FST::NODE(1, FST::RELATION('a',4)),\
+	FST::NODE(1, FST::RELATION('p',5)),\
+	FST::NODE(1, FST::RELATION('e',6)),\
+	FST::NODE()
 
 #define GRAPH_ISTRUE 7, \
 FST::NODE(1, FST::RELATION('c',1)),\
@@ -310,25 +318,6 @@ FST::NODE()
 	FST::NODE(1, FST::RELATION('o',5)),\
 	FST::NODE(1, FST::RELATION('t',6)),\
 	FST::NODE()
-
-#define GRAPH_HEX_LITERAL 4, \
-    FST::NODE(2, FST::RELATION('-', 0), FST::RELATION('0', 1)), \
-    FST::NODE(1, FST::RELATION('x', 2)), \
-    FST::NODE(44, \
-		FST::RELATION('0', 2), FST::RELATION('1', 2), FST::RELATION('2', 2), FST::RELATION('3', 2), \
-        FST::RELATION('4', 2), FST::RELATION('5', 2), FST::RELATION('6', 2), FST::RELATION('7', 2), \
-        FST::RELATION('8', 2), FST::RELATION('9', 2), FST::RELATION('A', 2), FST::RELATION('B', 2), \
-        FST::RELATION('C', 2), FST::RELATION('D', 2), FST::RELATION('E', 2), FST::RELATION('F', 2), \
-        FST::RELATION('a', 2), FST::RELATION('b', 2), FST::RELATION('c', 2), FST::RELATION('d', 2), \
-        FST::RELATION('e', 2), FST::RELATION('f', 2) ,\
-        FST::RELATION('0', 3), FST::RELATION('1', 3), FST::RELATION('2', 3), FST::RELATION('3', 3), \
-        FST::RELATION('4', 3), FST::RELATION('5', 3), FST::RELATION('6', 3), FST::RELATION('7', 3), \
-        FST::RELATION('8', 3), FST::RELATION('9', 3), FST::RELATION('A', 3), FST::RELATION('B', 3), \
-        FST::RELATION('C', 3), FST::RELATION('D', 3), FST::RELATION('E', 3), FST::RELATION('F', 3), \
-        FST::RELATION('a', 3), FST::RELATION('b', 3), FST::RELATION('c', 3), FST::RELATION('d', 3), \
-        FST::RELATION('e', 3), FST::RELATION('f', 3) \
-    ), \
-    FST::NODE()
 
 #define GRAPH_OCT_LITERAL 4, \
     FST::NODE(4, \

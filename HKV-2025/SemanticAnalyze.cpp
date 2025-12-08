@@ -15,7 +15,7 @@ namespace Semantic
 		{
 			switch (tables.lextable.table[i].lexema)
 			{
-			case LEX_VAR:
+			case LEX_ELDER:
 			{
 				if (tables.lextable.table[i + 1].lexema != LEX_ID_TYPE)
 				{
@@ -108,14 +108,14 @@ namespace Semantic
 			{
 				IT::Entry e = tables.idtable.table[tables.lextable.table[i].idxTI];
 
-				if (i > 0 && tables.lextable.table[i - 1].lexema == LEX_FUNCTION)
+				if (i > 0 && tables.lextable.table[i - 1].lexema == LEX_ACTION)
 				{
 					if (e.idtype == IT::IDTYPE::F) //�������, �� ���������
 					{
 						for (int k = i + 1; ; k++)
 						{
 							char l = tables.lextable.table[k].lexema;
-							if (l == LEX_RETURN)
+							if (l == LEX_COMEBACK)
 							{
 								int next = tables.lextable.table[k + 1].idxTI; // ����. �� return
 								if (next != NULLIDX_TI)
@@ -135,7 +135,7 @@ namespace Semantic
 						}
 					}
 				}
-				if (tables.lextable.table[i + 1].lexema == LEX_LEFTHESIS && tables.lextable.table[i - 1].lexema != LEX_FUNCTION) // ������ �����
+				if (tables.lextable.table[i + 1].lexema == LEX_LEFTHESIS && tables.lextable.table[i - 1].lexema != LEX_ACTION) // ������ �����
 				{
 					if (e.idtype == IT::IDTYPE::F || e.idtype == IT::IDTYPE::S) // ����� �������
 					{
