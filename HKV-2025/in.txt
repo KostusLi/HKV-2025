@@ -69,6 +69,10 @@ temple[
 	newleaf;
 
 
+	dsa = ytr;
+	confession dsa;
+	newleaf;
+
 	confession "Random number: ";
 	elder squire x;
 	x = fortune(1, 10);

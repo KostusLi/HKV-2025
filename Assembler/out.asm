@@ -342,6 +342,15 @@ next3:
 push offset newline
 call confessionscroll
 
+mov ecx, castleytr
+mov castledsa, ecx
+
+push castledsa
+call confessionscroll
+
+push offset newline
+call confessionscroll
+
 
 push offset LTRL21
 call confessionscroll
