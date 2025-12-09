@@ -5,17 +5,17 @@
 #include "Log.h"
 #include "FST.h"
 
-#define TYPE_DIGIT		"squire"
-#define TYPE_STRING		"scroll"
-#define TYPE_CHAR		"rune"
-#define TYPE_VOID		"hollow"
-#define CONCAT			"consolidate"
-#define COMPARE			"comparescrolls"
-#define RANDOM			"fortune"
-#define ATOII			"transmute"
-#define MAIN			"temple"
-#define LENGHT			"filament"
-#define COPY			"oblivion"
+#define TYPE_DIGIT	"squire"
+#define TYPE_STRING	"scroll"
+#define TYPE_CHAR	"rune"
+#define TYPE_VOID	"hollow"
+#define CONSOLIDATE	"consolidate"
+#define COMPARESCROLLS	"comparescrolls"
+#define FORTUNE	"fortune"
+#define TRANSMUTE	"transmute"
+#define MAIN	"temple"
+#define FILAMENT "filament"
+#define OBLIVION "oblivion"
 
 
 #define ISTYPE(str) ( !strcmp(str, TYPE_DIGIT) || !strcmp(str, TYPE_STRING)|| !strcmp(str, TYPE_CHAR) )

@@ -19,7 +19,7 @@
 #define LEX_PERSENT	'%'
 #define	LEX_EQUAL	'='
 #define LEX_CONDITION	'?'
-#define LEX_DIEZ	'#'
+#define LEX_STENKA	'#'
 #define LEX_CHARGE	'w'
 #define LEX_BACKUP	'r'
 #define LEX_PATROL	'c'
@@ -38,9 +38,9 @@
 #define LEX_BITAND 'z'
 #define LEX_BITOR 'x'
 #define LEX_BITNOT 'j'
-#define LEX_CHECK 'q'
-#define LEX_CASE 'v'
-#define LEX_DEFAULT 'd'
+#define LEX_COUNCIL 'q'
+#define LEX_PATH 'v'
+#define LEX_TIRESOME 'd'
 #define	LEXEMA_FIXSIZE   1
 #define	MAXSIZE_LT		 4096
 #define	NULLDX_TI	 0xffffffff

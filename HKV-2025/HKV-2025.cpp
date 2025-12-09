@@ -1,26 +1,29 @@
 ﻿#include <iostream>
-#include "Header.h"
+#include "stdafx.h"
 
 
 int wmain(int argc, wchar_t* argv[])
 {
-	char LEXERROR[] = "Лексический анализ завершен с ошибками";
-	char SYNTERROR[] = "Синтаксический анализ завершен с ошибками";
-	char SEMERROR[] = "Обнаружены семантические ошибки";
-	char POLISHERROR[] = "Ошибка при попытке преобразования выражения";
-	char LEXGOOD[] = "Лексический анализ завершен без ошибок";
-	char SYNTGOOD[] = "Синтаксический анализ завершен без ошибок";
-	char SEMGOOD[] = "Семантический анализ завершен без ошибок";
-	char POLISHGOOD[] = "Преобразование выражений завершено без ошибок";
-	char MESSAGE[] = "--------------------КОНЕЧНЫЕ ТАБЛИЦЫ ЛЕКСЕМ И ИДЕНТИФИКАТОРОВ-------------------";
-	char STOP[] = "\nВыполние программы остановлено";
-	char ALLGOOD[] = "Программа успешно завершена!";
+	char SCRIBE_KRASH[] = "Поражение Скаутов (Лексический анализ завершен с ошибками)";
+	char TEMPLE_KRASH[] = "Падение Храма (Синтаксический анализ завершен с ошибками)";
+	char SOVET_KRASH[] = "Крах Совета (Семантические ошибки)";
+	char BRAND_KRASH[] = "Крах Клеймения (Ошибка при преобразовании выражения)";
+
+	char SCRIBE_TRIUMPH[] = "Победа Скаутов (Лексический анализ завершен без ошибок)";
+	char TEMPLE_TRIUMPH[] = "Триумф в Храме (Синтаксический анализ завершен без ошибок)";
+	char SOVET_TRIUMPH[] = "Триумф в Совете (Семантический анализ завершен без ошибок)";
+	char BRAND_TRIUMPH[] = "Триумф после Клеймения (Преобразование выражений завершено без ошибок)";
+
+	char SVOD[] = "--------------------СВОД КОНЕЧНЫХ СВИКОВ И ТАБЛИЦ РОДОВ-------------------";
+	char STOP_ORDER[] = "\nПриказ: Выполнение программы остановлено";
+	char GLORY_ORDER[] = "ПРОГРАММА УСПЕШНО ЗАВЕРШЕНА! Слава Империи!";
+
 	setlocale(LC_ALL, "Russian");
 	Log::LOG log;
 
 	try
 	{
-		Parm::PARM parm = Parm::getparm(argc, argv);                            //получить параметры
+		Parm::PARM parm = Parm::getparm(argc, argv);
 		log = Log::getstream(parm.log);
 		Log::writeLog(log);														//написать заголовок журнала
 		Log::writeParm(log, parm);												//записать в журнал параметры
@@ -30,18 +33,18 @@ int wmain(int argc, wchar_t* argv[])
 		in.words = In::getWordsTable(log.stream, in.text, in.code, in.size);	//разобрать на токены
 		Lexer::LEX tables;
 		bool lex_ok = Lexer::analyze(tables, in, log, parm);					//выполнить лексический анализ
-		LT::writeLexTable(log.stream, tables.lextable);							//записать в журнал таблицы лексем и идентификаторов 
+		LT::writeLexTable(log.stream, tables.lextable);							//записать в журнал таблицы лексем и идентификаторов 
 		IT::writeIdTable(log.stream, tables.idtable);							//а также соответствие токенов и лексем
 		LT::writeLexemsOnLines(log.stream, tables.lextable);
 		if (!lex_ok)
 		{
-			Log::writeLine(log.stream, LEXERROR, "");
-			Log::writeLine(&std::cout, LEXERROR, STOP, "");
+			Log::writeLine(log.stream, SCRIBE_KRASH, "");
+			Log::writeLine(&std::cout, SCRIBE_KRASH, STOP_ORDER, "");
 			return 0;
 		}
 		else
 		{
-			Log::writeLine(&std::cout, LEXGOOD, "");
+			Log::writeLine(&std::cout, SCRIBE_TRIUMPH, "");
 		}
 		MFST_TRACE_START(log.stream);
 		MFST::Mfst mfst(tables, GRB::getGreibach());							//выполнить синтаксический анализ
@@ -50,40 +53,40 @@ int wmain(int argc, wchar_t* argv[])
 		mfst.printrules(log);													//вывести дерево разбора
 		if (!synt_ok)
 		{
-			Log::writeLine(log.stream, SYNTERROR, "");
-			Log::writeLine(&std::cout, SYNTERROR, STOP, "");
+			Log::writeLine(log.stream, TEMPLE_KRASH, "");
+			Log::writeLine(&std::cout, TEMPLE_KRASH, STOP_ORDER, "");
 			return 0;
 		}
-		else Log::writeLine(&std::cout, SYNTGOOD, "");
+		else Log::writeLine(&std::cout, TEMPLE_TRIUMPH, "");
 		bool sem_ok = Semantic::semanticsCheck(tables, log);					//выполнить семантический анализ
 		if (!sem_ok)
 		{
-			Log::writeLine(log.stream, SEMERROR, "");
-			Log::writeLine(&std::cout, SEMERROR, STOP, "");
+			Log::writeLine(log.stream, SOVET_KRASH, "");
+			Log::writeLine(&std::cout, SOVET_KRASH, STOP_ORDER, "");
 			return 0;
 		}
-		else Log::writeLine(&std::cout, SEMGOOD, "");
+		else Log::writeLine(&std::cout, SOVET_TRIUMPH, "");
 		bool polish_ok = Polish::PolishNotation(tables, log);					//выполнить преобразование выражений в ПОЛИЗ
 		if (!polish_ok)
 		{
-			Log::writeLine(log.stream, POLISHERROR, "");
-			Log::writeLine(&std::cout, POLISHERROR, STOP, "");
+			Log::writeLine(log.stream, BRAND_KRASH, "");
+			Log::writeLine(&std::cout, BRAND_KRASH, STOP_ORDER, "");
 			return 0;
 		}
-		else Log::writeLine(&std::cout, POLISHGOOD, "");
-		Log::writeLine(log.stream, MESSAGE, "");
+		else Log::writeLine(&std::cout, BRAND_TRIUMPH, "");
+		Log::writeLine(log.stream, SVOD, "");
 		LT::writeLexTable(log.stream, tables.lextable);							//записать в журнал новые таблицы лексем и идентификаторов
 		IT::writeIdTable(log.stream, tables.idtable);
 		LT::writeLexemsOnLines(log.stream, tables.lextable);					//а также соответствие токенов и лексем
 		//Log::writeLine(&std::cout, MESSAGE, "");
-		//IT::writeIdTable(&std::cout, tables.idtable);							//записать в командную строку новые таблицы лексем и идентификаторов 
+		//IT::writeIdTable(&std::cout, tables.idtable);							//записать в командную строку новые таблицы лексем и идентификаторов 
 		//LT::writeLexTable(&std::cout, tables.lextable);							//а также соответствие токенов и лексем
 		//LT::writeLexemsOnLines(&std::cout, tables.lextable);
 
 		Gener::CodeGeneration(tables, parm, log);								//выполнить генерацию кода
-		Log::writeLine(log.stream, ALLGOOD, "");									//итог работы программы
-		Log::writeLine(&std::cout, ALLGOOD, "");
-		Log::Close(log);													    //закрыть журнал
+		Log::writeLine(log.stream, GLORY_ORDER, "");									//итог работы программы
+		Log::writeLine(&std::cout, GLORY_ORDER, "");
+		Log::Close(log);
 	}
 	catch (Error::ERROR e)
 	{

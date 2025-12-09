@@ -1,7 +1,7 @@
-#include "Header.h"
+#include "stdafx.h"
 #include <stack>
 #include <cstring>
-#include <iostream> // ��� ������
+#include <iostream>
 
 using namespace std;
 namespace Polish
@@ -22,30 +22,28 @@ namespace Polish
     bool PolishNotation(Lexer::LEX& tbls, Log::LOG& log)
     {
         unsigned curExprBegin = 0;
-        ltvec v; // ������ ��������� ������� ������
+        ltvec v;
         LT::LexTable new_table = LT::Create(tbls.lextable.maxsize);
-        intvec vpositions = getExprPositions(tbls); // ������� ������ ���������
+        intvec vpositions = getExprPositions(tbls);
 
         for (int i = 0; i < tbls.lextable.size; i++)
         {
-            if (curExprBegin < vpositions.size() && i == vpositions[curExprBegin]) // ����� �� ���������� ������ ���������
+            if (curExprBegin < vpositions.size() && i == vpositions[curExprBegin])
             {
-                int lexcount = fillVector(vpositions[curExprBegin], tbls.lextable, v); // ��������� ������ �������� �� � ������ �������
+                int lexcount = fillVector(vpositions[curExprBegin], tbls.lextable, v);
                 if (lexcount > 1)
                 {
-                    bool rc = setPolishNotation(tbls.idtable, log, vpositions[curExprBegin], v); // �������� ������ � �������� �������
+                    bool rc = setPolishNotation(tbls.idtable, log, vpositions[curExprBegin], v);
                     if (!rc)
                         return false;
-
-                    // ����� ���������������� ���������
-                    for (int i = 0; i < v.size(); i++)
-                    {
-                        cout << v[i].lexema;
-                    }
-                    cout << endl;
+                    //for (int i = 0; i < v.size(); i++)
+                    //{
+                    //    cout << v[i].lexema;
+                    //}
+                    //cout << endl;
                 }
 
-                addToTable(new_table, tbls.idtable, v); // ��������� ����p������ ������ � �� + ������������� ��
+                addToTable(new_table, tbls.idtable, v);
                 i += lexcount - 1;
                 curExprBegin++;
                 continue;
@@ -81,7 +79,6 @@ namespace Polish
         for (unsigned i = 0; i < v.size(); i++)
         {
             LT::Add(new_table, v[i]);
-            // ���������� �������� ����� ����� �� � ��
             if (v[i].lexema == LEX_ID || v[i].lexema == LEX_LITERAL)
             {
                 int firstind = Lexer::getIndexInLT(new_table, v[i].idxTI);
@@ -93,25 +90,25 @@ namespace Polish
     intvec getExprPositions(Lexer::LEX& tbls)
     {
         intvec v;
-        bool f_begin = false; // ������� ���������� ����� ���������
-        bool f_end = false;  // ������� ���������� ������ ���������
+        bool f_begin = false;
+        bool f_end = false;
         int begin = 0;  int end = 0;
 
         for (int i = 0; i < tbls.lextable.size; i++)
         {
-            if (tbls.lextable.table[i].lexema == LEX_EQUAL) // ������ ���������
+            if (tbls.lextable.table[i].lexema == LEX_EQUAL)
             {
                 begin = i + 1;
                 f_begin = true;
                 continue;
             }
-            if (f_begin && tbls.lextable.table[i].lexema == LEX_SEPARATOR) // ����� ���������
+            if (f_begin && tbls.lextable.table[i].lexema == LEX_SEPARATOR)
             {
                 end = i;
                 f_end = true;
                 continue;
             }
-            if (f_begin && f_end) // �������� ������ � ����� ��������� � ������
+            if (f_begin && f_end)
             {
                 v.push_back(begin);
                 f_begin = f_end = false;
@@ -122,23 +119,20 @@ namespace Polish
 
     bool __cdecl setPolishNotation(IT::IdTable& idtable, Log::LOG& log, int lextable_pos, ltvec& v)
     {
-        // �������������� ������
         vector<LT::Entry> result;
-        // ���� ��� ���������� ����������
         stack<LT::Entry> s;
-        // ���� ������ �������
         bool ignore = false;
 
         for (unsigned i = 0; i < v.size(); i++)
         {
-            if (ignore) // ����� ������� ������� ������������� ��������� � ������� � ���������
+            if (ignore)
             {
                 result.push_back(v[i]);
                 if (v[i].lexema == LEX_RIGHTTHESIS)
                     ignore = false;
                 continue;
             }
-            int priority = getPriority(v[i]); // ��� ���������
+            int priority = getPriority(v[i]);
 
             if (v[i].lexema == LEX_LEFTHESIS || v[i].lexema == LEX_RIGHTTHESIS || v[i].lexema == LEX_PLUS || v[i].lexema == LEX_MINUS || v[i].lexema == LEX_STAR || v[i].lexema == LEX_DIRSLASH || v[i].lexema == LEX_PERSENT || v[i].lexema == LEX_BITAND || v[i].lexema == LEX_BITOR || v[i].lexema == LEX_BITNOT)
             {
@@ -150,7 +144,6 @@ namespace Polish
 
                 if (v[i].lexema == LEX_RIGHTTHESIS)
                 {
-                    // ������������ ��������� �� ������
                     while (!s.empty() && s.top().lexema != LEX_LEFTHESIS)
                     {
                         result.push_back(s.top());
@@ -160,7 +153,6 @@ namespace Polish
                         s.pop();
                     continue;
                 }
-                // ������������ ��������� � �������/������ ����������� � ���������
                 while (!s.empty() && getPriority(s.top()) >= priority)
                 {
                     result.push_back(s.top());
@@ -169,11 +161,11 @@ namespace Polish
                 s.push(v[i]);
             }
 
-            if (v[i].lexema == LEX_LITERAL || v[i].lexema == LEX_ID) // �������������, ������������� ������� ��� �������
+            if (v[i].lexema == LEX_LITERAL || v[i].lexema == LEX_ID)
             {
                 if (idtable.table[v[i].idxTI].idtype == IT::IDTYPE::F || idtable.table[v[i].idxTI].idtype == IT::IDTYPE::S)
                     ignore = true;
-                result.push_back(v[i]); // ������� ������� � �������������� ������
+                result.push_back(v[i]);
             }
             if (v[i].lexema != LEX_LEFTHESIS && v[i].lexema != LEX_RIGHTTHESIS && v[i].lexema != LEX_PLUS && v[i].lexema != LEX_MINUS && v[i].lexema != LEX_STAR && v[i].lexema != LEX_DIRSLASH && v[i].lexema != LEX_PERSENT && v[i].lexema != LEX_ID && v[i].lexema != LEX_LITERAL && v[i].lexema != LEX_BITAND && v[i].lexema != LEX_BITOR && v[i].lexema != LEX_BITNOT)
             {

@@ -1,11 +1,11 @@
-#include "Header.h"
+#include "stdafx.h"
 #include <iomanip>
 
 #pragma warning(disable : 4996)
 #define W(x, y)\
 		<< std::setw(x) << (y) <<
 #define STR(n, line, type, id)\
-		"|" W(4,n) " |  " W(5,line) "    |" W(17,type) " |  " W(SCOPED_ID_MAXSIZE, id) " |"
+		"|" W(4,n) "   |  " W(4,line) "     |" W(14,type) " |  " W(SCOPED_ID_MAXSIZE, id) " |"
 
 
 namespace IT
@@ -27,7 +27,6 @@ namespace IT
 		idtable.table[idtable.size++] = entry;
 	}
 
-	// âîçâðàò: íîìåð ñòðîêè(åñëè åñòü), TI_NULLIDX(åñëè íåò)
 	int isId(IdTable& idtable, char id[SCOPED_ID_MAXSIZE])
 	{
 		for (int i = 0; i < idtable.size; i++)
@@ -43,10 +42,10 @@ namespace IT
 		return SetValue(&(idtable.table[index]), value);
 	}
 
-	bool SetValue(IT::Entry* entry, char* value) // óñòàíîâêà çíà÷åíèÿ ïåðåìåííîé
+	bool SetValue(IT::Entry* entry, char* value)
 	{
 		bool rc = true;
-		if (entry->iddatatype == INT)
+		if (entry->iddatatype == SQUIRE)
 		{
 			int temp = atoi(value);
 			if (temp > INT_MAXSIZE || temp < INT_MINSIZE)
@@ -61,7 +60,7 @@ namespace IT
 		}
 		else
 		{
-			for (unsigned i = 1; i < strlen(value) - 1; i++)	// áåç êàâû÷åê
+			for (unsigned i = 1; i < strlen(value) - 1; i++)
 				entry->value.vstr.str[i - 1] = value[i];
 			entry->value.vstr.str[strlen(value) - 2] = '\0';
 			entry->value.vstr.len = strlen(value) - 2;
@@ -70,8 +69,8 @@ namespace IT
 	}
 	void writeIdTable(std::ostream* stream, IT::IdTable& idtable)
 	{
-		*stream << "---------------------------- ÒÀÁËÈÖÀ ÈÄÅÍÒÈÔÈÊÀÒÎÐÎÂ ------------------------\n" << std::endl;
-		*stream << "|  N  |ÑÒÐÎÊÀ Â ÒË| ÒÈÏ ÈÄÅÍÒÈÔÈÊÀÒÎÐÀ |        ÈÌß             \t| ÇÍÀ×ÅÍÈÅ (ÏÀÐÀÌÅÒÐÛ)" << std::endl;
+		*stream << "---------------------------- ÒÓÐÍÈÐÍÀß ÒÀÁËÈÖÀ ------------------------\n" << std::endl;
+		*stream << "|  ¹¹ |ÑÒÐÎÊÀ Â ÒÒ| ÎÏÈÑÀÍÈÅ Ó×ÀÑÒÍÈÊÀ |       ÐÎÄÎÂÎÅ ÈÌß                 | ÐÎÄÎÂÎÅ ÄÅÐÅÂÎ (ÒÅÊÓÙÅÅ ÏÎÊÎËÅÍÈÅ)" << std::endl;
 		for (int i = 0; i < idtable.size; i++)
 		{
 			IT::Entry* e = &idtable.table[i];
@@ -79,20 +78,20 @@ namespace IT
 
 			switch (e->iddatatype)
 			{
-			case IT::IDDATATYPE::INT:
+			case IT::IDDATATYPE::SQUIRE:
 				strcat(type, " squire");
 				break;
-			case IT::IDDATATYPE::STR:
+			case IT::IDDATATYPE::SCROLL:
 				strcat(type, " scroll");
 				break;
-			case IT::IDDATATYPE::PROC:
+			case IT::IDDATATYPE::HOLLOW:
 				strcat(type, " hollow");
 				break;
-			case IT::IDDATATYPE::CHAR:
+			case IT::IDDATATYPE::RUNE:
 				strcat(type, "   rune");
 				break;
-			case IT::IDDATATYPE::UNDEF:
-				strcat(type, "UNDEFINED");
+			case IT::IDDATATYPE::INDIGENT:
+				strcat(type, "NYAMA TIPY");
 				break;
 			}
 			switch (e->idtype)
@@ -109,16 +108,16 @@ namespace IT
 			case IT::IDTYPE::L:
 				strcat(type, "   literal  ");
 				break;
-			case IT::IDTYPE::S: strcat(type, "  LIB FUNC  "); break;
+			case IT::IDTYPE::S: strcat(type, "  KNIGHTFUN "); break;
 			default:
-				strcat(type, "UNDEFINED ");
+				strcat(type, "NYAMA TIPY ");
 				break;
 			}
 
 			*stream << STR(i, e->idxfirstLE, type, e->id);
-			if (e->idtype == IT::IDTYPE::L || e->idtype == IT::IDTYPE::V && e->iddatatype != IT::IDDATATYPE::UNDEF)
+			if (e->idtype == IT::IDTYPE::L || e->idtype == IT::IDTYPE::V && e->iddatatype != IT::IDDATATYPE::INDIGENT)
 			{
-				if (e->iddatatype == IT::IDDATATYPE::INT)
+				if (e->iddatatype == IT::IDDATATYPE::SQUIRE)
 					*stream << e->value.vint;
 				else
 					*stream << "[" << (int)e->value.vstr.len << "]" << e->value.vstr.str;
@@ -130,18 +129,18 @@ namespace IT
 					*stream << " P" << i << ":";
 					switch (e->value.params.types[i])
 					{
-					case IT::IDDATATYPE::INT:
+					case IT::IDDATATYPE::SQUIRE:
 						*stream << "squire |";
 						break;
-					case IT::IDDATATYPE::STR:
+					case IT::IDDATATYPE::SCROLL:
 						*stream << "scroll |";
 						break;
-					case IT::IDDATATYPE::CHAR:
+					case IT::IDDATATYPE::RUNE:
 						*stream << "rune |";
 						break;
-					case IT::IDDATATYPE::PROC:
-					case IT::IDDATATYPE::UNDEF:
-						*stream << "UNDEFINED";
+					case IT::IDDATATYPE::HOLLOW:
+					case IT::IDDATATYPE::INDIGENT:
+						*stream << "NYAMA TIPY";
 						break;
 					}
 				}

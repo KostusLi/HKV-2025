@@ -12,31 +12,31 @@
 #define INT_MAXSIZE   127			//максимальное значение для целочисленного типа
 #define INT_MINSIZE   -128			//минимальное значение для целочисленного типа
 #define MAX_PARAMS_COUNT 3					//максимальное количество параметров у функции
-#define CONCAT_PARAMS_CNT 2					//кол-во параметров у функции concat
-#define RANDOM_PARAMS_CNT 2					//кол-во параметров у функции random
-#define LENGHT_PARAMS_CNT 1					//кол-во параметров у функции lenght
-#define ATOII_PARAMS_CNT 1					//кол-во параметров у функции atoii
-#define COMPARE_PARAMS_CNT 2				//кол-во параметров у функции compare
-#define COPY_PARAMS_CNT 1					//кол-во параметров у функции copystr
-#define CONCAT_TYPE IT::IDDATATYPE::STR
-#define COMPARE_TYPE IT::IDDATATYPE::INT
-#define LENGHT_TYPE IT::IDDATATYPE::INT
-#define RANDOM_TYPE IT::IDDATATYPE::INT
-#define ATOII_TYPE IT::IDDATATYPE::INT
-#define COPY_TYPE IT::IDDATATYPE::STR
+#define CONSOLIDATE_PARAMS_CNT 2					//кол-во параметров у функции concat
+#define FORTUNE_PARAMS_CNT 2					//кол-во параметров у функции random
+#define FILAMENT_PARAMS_CNT 1					//кол-во параметров у функции lenght
+#define TRANSMUTE_PARAMS_CNT 1					//кол-во параметров у функции atoii
+#define COMPARESCROLLS_PARAMS_CNT 2				//кол-во параметров у функции compare
+#define OBLIVION_PARAMS_CNT 1					//кол-во параметров у функции copystr
+#define CONSOLIDATE_TYPE IT::IDDATATYPE::SCROLL
+#define COMPARESCROLLS_TYPE IT::IDDATATYPE::SQUIRE
+#define FILAMENT_TYPE IT::IDDATATYPE::SQUIRE
+#define FORTUNE_TYPE IT::IDDATATYPE::SQUIRE
+#define TRANSMUTE_TYPE IT::IDDATATYPE::SQUIRE
+#define OBLIVION_TYPE IT::IDDATATYPE::SCROLL
 
 
 namespace IT
 {
-	enum IDDATATYPE { INT = 1, STR = 2, PROC = 3, CHAR = 4, UNDEF };//типы данных идентификаторов: числовой, строковый, без типа(для процедур), неопределенный
+	enum IDDATATYPE { SQUIRE = 1, SCROLL = 2, HOLLOW = 3, RUNE = 4, INDIGENT };//типы данных идентификаторов: числовой, строковый, без типа(для процедур), неопределенный
 	enum IDTYPE { V = 1, F = 2, P = 3, L = 4, S = 5 };	//типы идентификаторов: переменная, функция, параметр, литерал, стандартная функция
-	enum STDFNC { F_COMPARE, F_RANDOM, F_CONCAT, F_LENGHT, F_ATOII, F_COPY, F_NOT_STD };	//стандартные функции
-	static const IDDATATYPE CONCAT_PARAMS[] = { IT::IDDATATYPE::STR, IT::IDDATATYPE::STR };//параметры функции  concatstr
-	static const IDDATATYPE LENGHT_PARAMS[] = { IT::IDDATATYPE::STR };//параметры функции strlen
-	static const IDDATATYPE ATOII_PARAMS[] = { IT::IDDATATYPE::STR };//параметры ф-ции atoi
-	static const IDDATATYPE RANDOM_PARAMS[] = { IT::IDDATATYPE::INT, IT::IDDATATYPE::INT };//параметры ф-ции atoi
-	static const IDDATATYPE COMPARE_PARAMS[] = { IT::IDDATATYPE::STR, IT::IDDATATYPE::STR };//параметры ф-ции atoi
-	static const IDDATATYPE COPY_PARAMS[] = { IT::IDDATATYPE::STR }; //параметры функции copystr
+	enum STDFNC { F_COMPARESCROLLS, F_FORTUNE, F_CONSOLIDATE, F_FILAMENT, F_TRANSMUTE, F_OBLIVION, F_FOLK };	//стандартные функции
+	static const IDDATATYPE CONSOLIDATE_PARAMS[] = { IT::IDDATATYPE::SCROLL, IT::IDDATATYPE::SCROLL };//параметры функции  concatstr
+	static const IDDATATYPE FILAMENT_PARAMS[] = { IT::IDDATATYPE::SCROLL };//параметры функции strlen
+	static const IDDATATYPE TRANSMUTE_PARAMS[] = { IT::IDDATATYPE::SCROLL };//параметры ф-ции atoi
+	static const IDDATATYPE FORTUNE_PARAMS[] = { IT::IDDATATYPE::SQUIRE, IT::IDDATATYPE::SQUIRE };//параметры ф-ции atoi
+	static const IDDATATYPE COMPARESCROLLS_PARAMS[] = { IT::IDDATATYPE::SCROLL, IT::IDDATATYPE::SCROLL };//параметры ф-ции atoi
+	static const IDDATATYPE OBLIVION_PARAMS[] = { IT::IDDATATYPE::SCROLL }; //параметры функции copystr
 	struct Entry
 	{
 		union
@@ -63,6 +63,11 @@ namespace IT
 			this->value.vint = INT_DEFAULT;
 			this->value.vstr.len = NULL;
 			this->value.params.count = NULL;
+			this->value.params.types = nullptr;
+			this->idxfirstLE = NULL;
+			this->id[0] = '\0';
+			this->iddatatype = IT::IDDATATYPE::INDIGENT;
+			this->idtype = IT::IDTYPE::V;
 		};
 		Entry(char* id, int idxLT, IDDATATYPE datatype, IDTYPE idtype) //конструктор с параметрами
 		{

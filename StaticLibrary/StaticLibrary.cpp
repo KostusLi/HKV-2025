@@ -18,13 +18,13 @@ extern "C" {
 
     int __stdcall transmute(char* buffer, char* ptr) // функция перевода из строки в число
     {
-        int n = 0;
+        int temp = 0;
         while (*ptr >= '0' && *ptr <= '9') {
-            n *= 10;
-            n += *ptr++;
-            n -= '0';
+            temp *= 10;
+            temp += *ptr++;
+            temp -= '0';
         }
-        return n;
+        return temp;
 
     }
 

@@ -10,9 +10,9 @@ typedef short GRBALPHABET;
 
 
 #define MFST_TRACE_START(LOG) *log.stream << std::setw( 4)<<std::left<<"Шаг"<<":" \
-	<< std::setw(20) << std::left << "Правило"  \
-	<< std::setw(30) << std::left << "Входная лента" \
-	<< std::setw(20) << std::left << "Стек" \
+	<< std::setw(20) << std::left << "Закон"  \
+	<< std::setw(30) << std::left << "Очередь" \
+	<< std::setw(20) << std::left << "Свиток" \
 	<< std::endl;
 
 #define MFST_TRACE1(LOG) *log.stream <<std::setw( 4)<<std::left<<++FST_TRACE_n<<":" \

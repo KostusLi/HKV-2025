@@ -30,17 +30,17 @@ ExitProcess PROTO:DWORD
 		LTRL3 sdword 4
 		LTRL4 sdword -4
 		LTRL5 byte 'result of division: ', 0
-		LTRL6 byte '======================', 0
-		LTRL7 byte '(', 0
-		LTRL8 byte '>=', 0
-		LTRL9 byte ') :', 0
-		LTRL10 byte 'True', 0
-		LTRL11 byte 'False', 0
-		LTRL12 byte 'Copited string: ', 0
-		LTRL13 byte 'lipupu', 0
-		LTRL14 byte 'H', 0
-		LTRL15 byte 'i', 0
-		LTRL16 byte '!', 0
+		LTRL6 byte '(', 0
+		LTRL7 byte '>=', 0
+		LTRL8 byte ') :', 0
+		LTRL9 byte 'True', 0
+		LTRL10 byte 'False', 0
+		LTRL11 byte 'Copited string: ', 0
+		LTRL12 byte 'lipupu', 0
+		LTRL13 byte 'H', 0
+		LTRL14 byte 'i', 0
+		LTRL15 byte '!', 0
+		LTRL16 byte 'F', 0
 		LTRL17 byte 'Compare: ', 0
 		LTRL18 sdword 1
 		LTRL19 byte 'The lines are the same', 0
@@ -63,25 +63,26 @@ ExitProcess PROTO:DWORD
 		LTRL36 sdword 127
 		LTRL37 sdword 3
 		LTRL38 byte 'Remainder after division 54 by 3: ', 0
-		LTRL39 byte 'Number after shifted to the left : ', 0
-		LTRL40 byte 'KostusLi - ', 0
-		LTRL41 byte 'David goggins', 0
-		LTRL42 sdword 37
-		LTRL43 byte 'Sum of octal(o45) and decimal(123): ', 0
-		LTRL44 sdword 83
-		LTRL45 sdword 45
-		LTRL46 byte 'Error', 0
-		LTRL47 byte 'Cycle from 2 to 10: ', 0
-		LTRL48 byte ' ', 0
-		LTRL49 sdword 20
-		LTRL50 byte 'penis', 0
+		LTRL39 byte 'KostusLi - ', 0
+		LTRL40 byte 'David goggins', 0
+		LTRL41 sdword 37
+		LTRL42 byte 'Sum of octal(o45) and decimal(123): ', 0
+		LTRL43 sdword 83
+		LTRL44 sdword 45
+		LTRL45 byte 'Error', 0
+		LTRL46 byte 'Cycle from 2 to 10: ', 0
+		LTRL47 byte ' ', 0
+		LTRL48 sdword 20
+		LTRL49 byte 'hi', 0
+		LTRL50 byte 'a', 0
 		LTRL51 byte 'Choose 3', 0
-		LTRL52 byte 'Choose 1', 0
-		LTRL53 byte 'have not path', 0
+		LTRL52 byte 'g', 0
+		LTRL53 byte 'Choose 1', 0
+		LTRL54 byte 'have not path', 0
 .data
 		temp sdword ?
 		buffer byte 256 dup(0)
-		underprivilegedres dword 0
+		bastardres dword 0
 		castlestr dword ?
 		templestr dword ?
 		templeabc dword 0
@@ -107,8 +108,6 @@ ExitProcess PROTO:DWORD
 		castlelen dword ?
 		castlenumb dword 0
 		castleremainder dword 0
-		castleresult dword 0
-		castlesdv dword 0
 		castlename dword ?
 		castlesurname dword ?
 		castleim dword 0
@@ -117,42 +116,42 @@ ExitProcess PROTO:DWORD
 		castlecup dword 0
 		castlepoi dword 0
 		castleisi dword 0
-		castleab dword 0
+		castlekni dword 0
 .code
 
-;----------- underprivileged ------------
-underprivileged PROC,
-	underprivilegedx : sdword, underprivilegedy : sdword  
+;----------- bastard ------------
+bastard PROC,
+	bastardx : sdword, bastardy : sdword  
 ; --- save registers ---
 push ebx
 push edx
 ; ----------------------
-mov edx, underprivilegedx
-cmp edx, underprivilegedy
+mov edx, bastardx
+cmp edx, bastardy
 
 jg right1
 jl wrong1
 right1:
-push underprivilegedx
+push bastardx
 
 pop ebx
-mov underprivilegedres, ebx
+mov bastardres, ebx
 
 jmp next1
 wrong1:
-push underprivilegedy
+push bastardy
 
 pop ebx
-mov underprivilegedres, ebx
+mov bastardres, ebx
 
 next1:
 ; --- restore registers ---
 pop edx
 pop ebx
 ; -------------------------
-mov eax, underprivilegedres
+mov eax, bastardres
 ret
-underprivileged ENDP
+bastard ENDP
 ;------------------------------
 
 
@@ -237,19 +236,12 @@ call confessionscroll
 push offset LTRL6
 call confessionscroll
 
-push offset newline
-call confessionscroll
-
-
-push offset LTRL7
-call confessionscroll
-
 
 push templeabc
 call confessionsquire
 
 
-push offset LTRL8
+push offset LTRL7
 call confessionscroll
 
 
@@ -257,7 +249,7 @@ push templeabcd
 call confessionsquire
 
 
-push offset LTRL9
+push offset LTRL8
 call confessionscroll
 
 mov edx, templeabc
@@ -267,10 +259,10 @@ jz right2
 jg right2
 jnz wrong2
 right2:
-mov templestr, offset LTRL10
+mov templestr, offset LTRL9
 jmp next2
 wrong2:
-mov castlestr, offset LTRL11
+mov castlestr, offset LTRL10
 next2:
 
 push castlestr
@@ -280,17 +272,10 @@ push offset newline
 call confessionscroll
 
 
-push offset LTRL6
+push offset LTRL11
 call confessionscroll
 
-push offset newline
-call confessionscroll
-
-
-push offset LTRL12
-call confessionscroll
-
-mov castlestroka, offset LTRL13
+mov castlestroka, offset LTRL12
 
 push castlestroka
 call confessionscroll
@@ -303,16 +288,9 @@ push castlestroka
 push offset buffer
 call oblivion
 mov castlestrochka, eax
-
-push offset LTRL6
-call confessionscroll
-
-push offset newline
-call confessionscroll
-
-mov castlemh, offset LTRL14
-mov castlemi, offset LTRL15
-mov castlemiv, offset LTRL16
+mov castlemh, offset LTRL13
+mov castlemi, offset LTRL14
+mov castlemiv, offset LTRL15
 
 push castlemh
 call confessionscroll
@@ -328,15 +306,8 @@ call confessionscroll
 push offset newline
 call confessionscroll
 
-
-push offset LTRL6
-call confessionscroll
-
-push offset newline
-call confessionscroll
-
-mov castledsa, offset LTRL11
-mov castleytr, offset LTRL11
+mov castledsa, offset LTRL16
+mov castleytr, offset LTRL10
 
 push offset LTRL17
 call confessionscroll
@@ -372,13 +343,6 @@ push offset newline
 call confessionscroll
 
 
-push offset LTRL6
-call confessionscroll
-
-push offset newline
-call confessionscroll
-
-
 push offset LTRL21
 call confessionscroll
 
@@ -395,13 +359,6 @@ mov castlex, ebx
 
 push castlex
 call confessionsquire
-
-push offset newline
-call confessionscroll
-
-
-push offset LTRL6
-call confessionscroll
 
 push offset newline
 call confessionscroll
@@ -453,7 +410,7 @@ push eax
 
 push LTRL26
 push LTRL23
-call underprivileged
+call bastard
 push eax
 pop ebx
 pop eax
@@ -466,13 +423,6 @@ mov castler, ebx
 
 push castler
 call confessionsquire
-
-push offset newline
-call confessionscroll
-
-
-push offset LTRL6
-call confessionscroll
 
 push offset newline
 call confessionscroll
@@ -494,13 +444,6 @@ mov castlee, ebx
 
 push castlee
 call confessionsquire
-
-push offset newline
-call confessionscroll
-
-
-push offset LTRL6
-call confessionscroll
 
 push offset newline
 call confessionscroll
@@ -560,13 +503,6 @@ call confessionsquire
 push offset newline
 call confessionscroll
 
-
-push offset LTRL6
-call confessionscroll
-
-push offset newline
-call confessionscroll
-
 push LTRL36
 
 pop ebx
@@ -595,39 +531,9 @@ call confessionsquire
 push offset newline
 call confessionscroll
 
-
-push offset LTRL6
-call confessionscroll
-
-push offset newline
-call confessionscroll
-
-push LTRL37
-
-pop ebx
-mov castlesdv, ebx
-
-
-push offset LTRL39
-call confessionscroll
-
-
-push castleresult
-call confessionsquire
-
-push offset newline
-call confessionscroll
-
-
-push offset LTRL6
-call confessionscroll
-
-push offset newline
-call confessionscroll
-
-mov castlename, offset LTRL40
-mov castlesurname, offset LTRL41
-push LTRL42
+mov castlename, offset LTRL39
+mov castlesurname, offset LTRL40
+push LTRL41
 
 pop ebx
 mov castleim, ebx
@@ -650,7 +556,7 @@ pop ebx
 mov castlee, ebx
 
 
-push offset LTRL43
+push offset LTRL42
 call confessionscroll
 
 
@@ -660,8 +566,8 @@ call confessionsquire
 push offset newline
 call confessionscroll
 
+push LTRL43
 push LTRL44
-push LTRL45
 push LTRL23
 pop ebx
 pop eax
@@ -764,41 +670,34 @@ call castle
 jmp next4
 wrong4:
 
-push offset LTRL46
+push offset LTRL45
 call confessionscroll
 
 next4:
-
-push offset LTRL6
-call confessionscroll
-
-push offset newline
-call confessionscroll
-
 push LTRL2
 
 pop ebx
-mov castleab, ebx
+mov castlekni, ebx
 
 
-push offset LTRL47
+push offset LTRL46
 call confessionscroll
 
-mov edx, castleab
+mov edx, castlekni
 cmp edx, LTRL22
 
 jnz cycle5
 jmp cyclenext5
 cycle5:
 
-push castleab
+push castlekni
 call confessionsquire
 
 
-push offset LTRL48
+push offset LTRL47
 call confessionscroll
 
-push castleab
+push castlekni
 push LTRL2
 pop ebx
 pop eax
@@ -806,28 +705,28 @@ add eax, ebx
 push eax
 
 pop ebx
-mov castleab, ebx
+mov castlekni, ebx
 
-mov edx, castleab
+mov edx, castlekni
 cmp edx, LTRL22
 
 jnz cycle5
 cyclenext5:
 
-push castleab
+push castlekni
 call confessionsquire
 
-mov edx, castleab
-cmp edx, LTRL49
+mov edx, castlekni
+cmp edx, LTRL48
 
 jnz cycle6
 jmp cyclenext6
 cycle6:
 
-push offset LTRL50
+push offset LTRL49
 call confessionscroll
 
-push castleab
+push castlekni
 push LTRL18
 pop ebx
 pop eax
@@ -835,20 +734,20 @@ add eax, ebx
 push eax
 
 pop ebx
-mov castleab, ebx
+mov castlekni, ebx
 
-mov edx, castleab
-cmp edx, LTRL49
+mov edx, castlekni
+cmp edx, LTRL48
 
 jnz cycle6
 cyclenext6:
 push offset newline
 call confessionscroll
 
-mov eax, LTRL37
-cmp eax, LTRL37
+mov eax, offset LTRL50
+cmp eax, offset LTRL50
 je case2_1
-cmp eax, LTRL18
+cmp eax, offset LTRL52
 je case2_2
 jmp default2
 
@@ -862,7 +761,7 @@ call confessionscroll
 
 case2_2:
 
-push offset LTRL52
+push offset LTRL53
 call confessionscroll
 
 push offset newline
@@ -872,7 +771,7 @@ jmp switch_end2
 
 default2:
 
-push offset LTRL53
+push offset LTRL54
 call confessionscroll
 
 push offset newline

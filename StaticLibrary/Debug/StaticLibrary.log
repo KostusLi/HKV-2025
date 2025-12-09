@@ -1,4 +1,4 @@
-﻿Build started 08.12.2025 16:01:12.
+﻿Build started 09.12.2025 17:57:46.
 Logging verbosity is set to: Normal.     1>Project "C:\Users\user\OneDrive\Рабочий стол\HKV-2025\StaticLibrary\StaticLibrary.vcxproj" on node 2 (Rebuild target(s)).
      1>_PrepareForClean:
          Deleting file "Debug\StaticLibrary.tlog\StaticLibrary.lastbuildstate".
@@ -12,12 +12,7 @@ Logging verbosity is set to: Normal.     1>Project "C:\Users\user\OneDrive\Ра�
          pch.cpp
          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\bin\HostX86\x86\CL.exe /c /ZI /JMC /nologo /W3 /WX- /diagnostics:column /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _LIB /D _UNICODE /D UNICODE /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /permissive- /Yu"pch.h" /Fp"Debug\StaticLibrary.pch" /Fo"Debug\\" /Fd"C:\Users\user\OneDrive\Рабочий стол\HKV-2025\HKV-2025\Debug\StaticLibrary.pdb" /external:W3 /Gd /TP /analyze- /FC /errorReport:prompt StaticLibrary.cpp
          StaticLibrary.cpp
-     1>C:\Users\user\OneDrive\Рабочий стол\HKV-2025\StaticLibrary\StaticLibrary.cpp(93,17): warning C4297: 'power': function assumed not to throw an exception but does
-         (compiling source file '/StaticLibrary.cpp')
-             C:\Users\user\OneDrive\Рабочий стол\HKV-2025\StaticLibrary\StaticLibrary.cpp(93,17):
-             The function is extern "C" and /EHc was specified
-         
-     1>C:\Users\user\OneDrive\Рабочий стол\HKV-2025\StaticLibrary\StaticLibrary.cpp(102,19): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+     1>C:\Users\user\OneDrive\Рабочий стол\HKV-2025\StaticLibrary\StaticLibrary.cpp(87,19): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
          (compiling source file '/StaticLibrary.cpp')
          
        Lib:
@@ -33,10 +28,9 @@ Build succeeded.
 
        "C:\Users\user\OneDrive\Рабочий стол\HKV-2025\StaticLibrary\StaticLibrary.vcxproj" (Rebuild target) (1) ->
        (ClCompile target) -> 
-         C:\Users\user\OneDrive\Рабочий стол\HKV-2025\StaticLibrary\StaticLibrary.cpp(93,17): warning C4297: 'power': function assumed not to throw an exception but does
-         C:\Users\user\OneDrive\Рабочий стол\HKV-2025\StaticLibrary\StaticLibrary.cpp(102,19): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+         C:\Users\user\OneDrive\Рабочий стол\HKV-2025\StaticLibrary\StaticLibrary.cpp(87,19): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
 
-    2 Warning(s)
+    1 Warning(s)
     0 Error(s)
 
-Time Elapsed 00:00:01.46
+Time Elapsed 00:00:01.71

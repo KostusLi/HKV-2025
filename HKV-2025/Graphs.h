@@ -2,7 +2,6 @@
 #include "FST.h"
 #define N_GRAPHS 27
 
-// ����� ��������� 
 #define GRAPH_SEPARATORS 2,\
 	FST::NODE(19,\
 			FST::RELATION(';',1), FST::RELATION('=',1),\

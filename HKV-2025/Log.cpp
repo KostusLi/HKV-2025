@@ -21,7 +21,7 @@ namespace Log
 		stream.stream = new std::ofstream;
 		stream.stream->open(logfile);
 		if (!stream.stream->is_open())
-			throw ERROR_THROW(103); // ошибка при создании файла протокола
+			throw ERROR_THROW(103);
 		wcscpy_s(stream.logfile, logfile);
 		return stream;
 	}
@@ -36,10 +36,10 @@ namespace Log
 		*log.stream << "\n----------- Протокол ------------ Дата: " << buffer << " ------------ \n\n";
 	}
 
-	void writeLine(std::ostream* stream, char* c, ...)		// вывести в протокол конкатенацию строк
+	void writeLine(std::ostream* stream, char* c, ...)
 	{
-		char** ptr = &c;			// указатель для доступа к параметрам
-		char* result;				// строка результата
+		char** ptr = &c;			
+		char* result;				
 		result = new char[15];
 		int size = 0;
 
@@ -48,7 +48,7 @@ namespace Log
 			size_t slen = strlen(*ptr);
 			result = (char*)realloc(result, size + slen);
 			result[size] = '\0';
-			size += slen; // size - ПОЛНЫЙ размер буфера
+			size += slen;
 			strcat_s(result, size + 1, *ptr);
 			ptr++;
 		}
