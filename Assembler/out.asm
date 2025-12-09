@@ -30,7 +30,7 @@ ExitProcess PROTO:DWORD
 		LTRL3 sdword 4
 		LTRL4 sdword -4
 		LTRL5 byte 'result of division: ', 0
-		LTRL6 byte '----------------------', 0
+		LTRL6 byte '======================', 0
 		LTRL7 byte '(', 0
 		LTRL8 byte '>=', 0
 		LTRL9 byte ') :', 0
@@ -81,100 +81,100 @@ ExitProcess PROTO:DWORD
 .data
 		temp sdword ?
 		buffer byte 256 dup(0)
-		minres dword 0
-		standstr dword ?
+		underprivilegedres dword 0
+		castlestr dword ?
 		templestr dword ?
 		templeabc dword 0
 		templeabcd dword 0
 		templef dword 0
 		temples dword 0
 		templefinish dword 0
-		standstroka dword ?
-		standstrochka dword ?
-		standmh dword ?
-		standmi dword ?
-		standmiv dword ?
-		standdsa dword ?
-		standytr dword ?
-		standasd dword 0
-		standx dword 0
-		standu dword 0
-		standv dword 0
-		standr dword 0
-		standc dword ?
-		stande dword 0
-		standk dword 0
-		standlen dword ?
-		standnumb dword 0
-		standremainder dword 0
-		standresult dword 0
-		standsdv dword 0
-		standname dword ?
-		standsurname dword ?
-		standim dword 0
-		standfrigh dword 0
-		standbip dword 0
-		standcup dword 0
-		standpoi dword 0
-		standisi dword 0
-		standab dword 0
+		castlestroka dword ?
+		castlestrochka dword ?
+		castlemh dword ?
+		castlemi dword ?
+		castlemiv dword ?
+		castledsa dword ?
+		castleytr dword ?
+		castleasd dword 0
+		castlex dword 0
+		castleu dword 0
+		castlev dword 0
+		castler dword 0
+		castlec dword ?
+		castlee dword 0
+		castlek dword 0
+		castlelen dword ?
+		castlenumb dword 0
+		castleremainder dword 0
+		castleresult dword 0
+		castlesdv dword 0
+		castlename dword ?
+		castlesurname dword ?
+		castleim dword 0
+		castlefrigh dword 0
+		castlebip dword 0
+		castlecup dword 0
+		castlepoi dword 0
+		castleisi dword 0
+		castleab dword 0
 .code
 
-;----------- min ------------
-min PROC,
-	minx : sdword, miny : sdword  
+;----------- underprivileged ------------
+underprivileged PROC,
+	underprivilegedx : sdword, underprivilegedy : sdword  
 ; --- save registers ---
 push ebx
 push edx
 ; ----------------------
-mov edx, minx
-cmp edx, miny
+mov edx, underprivilegedx
+cmp edx, underprivilegedy
 
 jg right1
 jl wrong1
 right1:
-push minx
+push underprivilegedx
 
 pop ebx
-mov minres, ebx
+mov underprivilegedres, ebx
 
 jmp next1
 wrong1:
-push miny
+push underprivilegedy
 
 pop ebx
-mov minres, ebx
+mov underprivilegedres, ebx
 
 next1:
 ; --- restore registers ---
 pop edx
 pop ebx
 ; -------------------------
-mov eax, minres
+mov eax, underprivilegedres
 ret
-min ENDP
+underprivileged ENDP
 ;------------------------------
 
 
-;----------- stand ------------
-stand PROC,
-	standa : dword, standb : dword  
+;----------- castle ------------
+castle PROC,
+	castlea : dword, castleb : dword  
 ; --- save registers ---
 push ebx
 push edx
 ; ----------------------
 
-push standb
-push standa
+push castleb
+push castlea
 push offset buffer
 call consolidate
-mov standstr, eax
+mov castlestr, eax
 
 push offset LTRL1
 call confessionscroll
 
 
-push standstr
+push castlestr
 call confessionscroll
 
 push offset newline
@@ -185,7 +185,7 @@ pop edx
 pop ebx
 ; -------------------------
 ret
-stand ENDP
+castle ENDP
 ;------------------------------
 
 
@@ -270,10 +270,10 @@ right2:
 mov templestr, offset LTRL10
 jmp next2
 wrong2:
-mov standstr, offset LTRL11
+mov castlestr, offset LTRL11
 next2:
 
-push standstr
+push castlestr
 call confessionscroll
 
 push offset newline
@@ -290,19 +290,19 @@ call confessionscroll
 push offset LTRL12
 call confessionscroll
 
-mov standstroka, offset LTRL13
+mov castlestroka, offset LTRL13
 
-push standstroka
+push castlestroka
 call confessionscroll
 
 push offset newline
 call confessionscroll
 
 
-push standstroka
+push castlestroka
 push offset buffer
 call oblivion
-mov standstrochka, eax
+mov castlestrochka, eax
 
 push offset LTRL6
 call confessionscroll
@@ -310,19 +310,19 @@ call confessionscroll
 push offset newline
 call confessionscroll
 
-mov standmh, offset LTRL14
-mov standmi, offset LTRL15
-mov standmiv, offset LTRL16
+mov castlemh, offset LTRL14
+mov castlemi, offset LTRL15
+mov castlemiv, offset LTRL16
 
-push standmh
+push castlemh
 call confessionscroll
 
 
-push standmi
+push castlemi
 call confessionscroll
 
 
-push standmiv
+push castlemiv
 call confessionscroll
 
 push offset newline
@@ -335,23 +335,23 @@ call confessionscroll
 push offset newline
 call confessionscroll
 
-mov standdsa, offset LTRL11
-mov standytr, offset LTRL11
+mov castledsa, offset LTRL11
+mov castleytr, offset LTRL11
 
 push offset LTRL17
 call confessionscroll
 
 
-push standytr
-push standdsa
+push castleytr
+push castledsa
 push offset buffer
 call comparescrolls
 push eax
 
 pop ebx
-mov standasd, ebx
+mov castleasd, ebx
 
-mov edx, standasd
+mov edx, castleasd
 cmp edx, LTRL18
 
 jz right3
@@ -390,10 +390,10 @@ call fortune
 push eax
 
 pop ebx
-mov standx, ebx
+mov castlex, ebx
 
 
-push standx
+push castlex
 call confessionsquire
 
 push offset newline
@@ -409,19 +409,19 @@ call confessionscroll
 push LTRL23
 
 pop ebx
-mov standu, ebx
+mov castleu, ebx
 
 push LTRL24
 
 pop ebx
-mov standv, ebx
+mov castlev, ebx
 
 
 push offset LTRL25
 call confessionscroll
 
-push standu
-push standv
+push castleu
+push castlev
 push LTRL2
 pop ebx
 pop eax
@@ -453,7 +453,7 @@ push eax
 
 push LTRL26
 push LTRL23
-call min
+call underprivileged
 push eax
 pop ebx
 pop eax
@@ -461,10 +461,10 @@ add eax, ebx
 push eax
 
 pop ebx
-mov standr, ebx
+mov castler, ebx
 
 
-push standr
+push castler
 call confessionsquire
 
 push offset newline
@@ -477,22 +477,22 @@ call confessionscroll
 push offset newline
 call confessionscroll
 
-mov standc, offset LTRL27
+mov castlec, offset LTRL27
 
 push offset LTRL28
 call confessionscroll
 
 
-push standc
+push castlec
 push offset buffer
 call transmute
 push eax
 
 pop ebx
-mov stande, ebx
+mov castlee, ebx
 
 
-push stande
+push castlee
 call confessionsquire
 
 push offset newline
@@ -510,7 +510,7 @@ cmp eax, LTRL29
 je case1_1
 cmp eax, LTRL31
 je case1_2
-cmp eax, stande
+cmp eax, castlee
 je case1_3
 jmp switch_end1
 
@@ -539,22 +539,22 @@ push offset newline
 call confessionscroll
 
 switch_end1:
-mov standlen, offset LTRL34
+mov castlelen, offset LTRL34
 
-push standlen
+push castlelen
 push offset buffer
 call filament
 push eax
 
 pop ebx
-mov standk, ebx
+mov castlek, ebx
 
 
 push offset LTRL35
 call confessionscroll
 
 
-push standk
+push castlek
 call confessionsquire
 
 push offset newline
@@ -570,9 +570,9 @@ call confessionscroll
 push LTRL36
 
 pop ebx
-mov standnumb, ebx
+mov castlenumb, ebx
 
-push standnumb
+push castlenumb
 push LTRL37
 pop ebx
 pop eax
@@ -582,14 +582,14 @@ idiv ebx
 push edx
 
 pop ebx
-mov standremainder, ebx
+mov castleremainder, ebx
 
 
 push offset LTRL38
 call confessionscroll
 
 
-push standremainder
+push castleremainder
 call confessionsquire
 
 push offset newline
@@ -605,14 +605,14 @@ call confessionscroll
 push LTRL37
 
 pop ebx
-mov standsdv, ebx
+mov castlesdv, ebx
 
 
 push offset LTRL39
 call confessionscroll
 
 
-push standresult
+push castleresult
 call confessionsquire
 
 push offset newline
@@ -625,36 +625,36 @@ call confessionscroll
 push offset newline
 call confessionscroll
 
-mov standname, offset LTRL40
-mov standsurname, offset LTRL41
+mov castlename, offset LTRL40
+mov castlesurname, offset LTRL41
 push LTRL42
 
 pop ebx
-mov standim, ebx
+mov castleim, ebx
 
 
-push standim
+push castleim
 call confessionsquire
 
 push offset newline
 call confessionscroll
 
-push standim
-push stande
+push castleim
+push castlee
 pop ebx
 pop eax
 add eax, ebx
 push eax
 
 pop ebx
-mov stande, ebx
+mov castlee, ebx
 
 
 push offset LTRL43
 call confessionscroll
 
 
-push stande
+push castlee
 call confessionsquire
 
 push offset newline
@@ -676,10 +676,10 @@ add eax, ebx
 push eax
 
 pop ebx
-mov stande, ebx
+mov castlee, ebx
 
 
-push stande
+push castlee
 call confessionsquire
 
 push offset newline
@@ -698,42 +698,42 @@ add eax, ebx
 push eax
 
 pop ebx
-mov standfrigh, ebx
+mov castlefrigh, ebx
 
 
-push standfrigh
+push castlefrigh
 call confessionsquire
 
 push offset newline
 call confessionscroll
 
-push standfrigh
+push castlefrigh
 pop eax
 not eax
 push eax
 
 pop ebx
-mov standbip, ebx
+mov castlebip, ebx
 
 
-push standbip
+push castlebip
 call confessionsquire
 
 push offset newline
 call confessionscroll
 
-push standfrigh
-push standbip
+push castlefrigh
+push castlebip
 pop ebx
 pop eax
 or eax, ebx
 push eax
 
 pop ebx
-mov standcup, ebx
+mov castlecup, ebx
 
 
-push standcup
+push castlecup
 call confessionsquire
 
 push offset newline
@@ -742,24 +742,24 @@ call confessionscroll
 push LTRL3
 
 pop ebx
-mov standpoi, ebx
+mov castlepoi, ebx
 
 push LTRL3
 
 pop ebx
-mov standisi, ebx
+mov castleisi, ebx
 
-mov edx, standpoi
-cmp edx, standisi
+mov edx, castlepoi
+cmp edx, castleisi
 
 jz right4
 jl right4
 jnz wrong4
 right4:
 
-push standsurname
-push standname
-call stand
+push castlesurname
+push castlename
+call castle
 
 jmp next4
 wrong4:
@@ -778,27 +778,27 @@ call confessionscroll
 push LTRL2
 
 pop ebx
-mov standab, ebx
+mov castleab, ebx
 
 
 push offset LTRL47
 call confessionscroll
 
-mov edx, standab
+mov edx, castleab
 cmp edx, LTRL22
 
 jnz cycle5
 jmp cyclenext5
 cycle5:
 
-push standab
+push castleab
 call confessionsquire
 
 
 push offset LTRL48
 call confessionscroll
 
-push standab
+push castleab
 push LTRL2
 pop ebx
 pop eax
@@ -806,18 +806,18 @@ add eax, ebx
 push eax
 
 pop ebx
-mov standab, ebx
+mov castleab, ebx
 
-mov edx, standab
+mov edx, castleab
 cmp edx, LTRL22
 
 jnz cycle5
 cyclenext5:
 
-push standab
+push castleab
 call confessionsquire
 
-mov edx, standab
+mov edx, castleab
 cmp edx, LTRL49
 
 jnz cycle6
@@ -827,7 +827,7 @@ cycle6:
 push offset LTRL50
 call confessionscroll
 
-push standab
+push castleab
 push LTRL18
 pop ebx
 pop eax
@@ -835,9 +835,9 @@ add eax, ebx
 push eax
 
 pop ebx
-mov standab, ebx
+mov castleab, ebx
 
-mov edx, standab
+mov edx, castleab
 cmp edx, LTRL49
 
 jnz cycle6

@@ -1,5 +1,5 @@
 
------------ Ïðîòîêîë ------------ Äàòà: 08.12.2025 20:39:01 ------------ 
+----------- Ïðîòîêîë ------------ Äàòà: 08.12.2025 23:37:16 ------------ 
 
 
 ----- Ïàðàìåòðû --------
@@ -7,7 +7,7 @@
 -out: ../Assembler/out.asm
 -log: in.txt.log
 ---- Èñõîäíûå äàííûå ------
-Êîëè÷åñòâî ñèìâîëîâ: 3868
+Êîëè÷åñòâî ñèìâîëîâ: 3894
 Ïðîèãíîðèðîâàíî:   0
 Êîëè÷åñòâî ñòðîê: 224
 
@@ -752,14 +752,14 @@
 ---------------------------- ÒÀÁËÈÖÀ ÈÄÅÍÒÈÔÈÊÀÒÎÐÎÂ ------------------------
 
 |  N  |ÑÒÐÎÊÀ Â ÒË| ÒÈÏ ÈÄÅÍÒÈÔÈÊÀÒÎÐÀ |        ÈÌß             	| ÇÍÀ×ÅÍÈÅ (ÏÀÐÀÌÅÒÐÛ)
-|   0 |      2    | squire  function   |                               min | P0:squire | P1:squire |
-|   1 |      5    | squire parameter   |                              minx |
-|   2 |      8    | squire parameter   |                              miny |
-|   3 |     13    | squire  variable   |                            minres |0
-|   4 |     41    | hollow  function   |                             stand | P0:scroll | P1:scroll |
-|   5 |     44    | scroll parameter   |                            standa |
-|   6 |     47    | scroll parameter   |                            standb |
-|   7 |     52    | scroll  variable   |                          standstr |[0]
+|   0 |      2    | squire  function   |                   underprivileged | P0:squire | P1:squire |
+|   1 |      5    | squire parameter   |                  underprivilegedx |
+|   2 |      8    | squire parameter   |                  underprivilegedy |
+|   3 |     13    | squire  variable   |                underprivilegedres |0
+|   4 |     41    | hollow  function   |                            castle | P0:scroll | P1:scroll |
+|   5 |     44    | scroll parameter   |                           castlea |
+|   6 |     47    | scroll parameter   |                           castleb |
+|   7 |     52    | scroll  variable   |                         castlestr |[0]
 |   8 |     56    | scroll  LIB FUNC   |                       consolidate | P0:scroll | P1:scroll |
 |   9 |     64    | scroll   literal   |                             LTRL1 |[8]Result: 
 |  10 |     78    | scroll  variable   |                         templestr |[0]
@@ -772,45 +772,45 @@
 |  17 |    100    | squire  variable   |                           temples |0
 |  18 |    106    | squire  variable   |                      templefinish |0
 |  19 |    115    | scroll   literal   |                             LTRL5 |[20]result of division: 
-|  20 |    123    | scroll   literal   |                             LTRL6 |[22]----------------------
+|  20 |    123    | scroll   literal   |                             LTRL6 |[22]======================
 |  21 |    128    | scroll   literal   |                             LTRL7 |[1](
 |  22 |    134    | scroll   literal   |                             LTRL8 |[2]>=
 |  23 |    140    | scroll   literal   |                             LTRL9 |[3]) :
 |  24 |    151    | scroll   literal   |                            LTRL10 |[4]True
 |  25 |    158    | scroll   literal   |                            LTRL11 |[5]False
 |  26 |    173    | scroll   literal   |                            LTRL12 |[16]Copited string: 
-|  27 |    177    | scroll  variable   |                       standstroka |[0]
+|  27 |    177    | scroll  variable   |                      castlestroka |[0]
 |  28 |    179    | scroll   literal   |                            LTRL13 |[6]lipupu
-|  29 |    188    | scroll  variable   |                     standstrochka |[0]
+|  29 |    188    | scroll  variable   |                    castlestrochka |[0]
 |  30 |    192    | scroll  LIB FUNC   |                          oblivion | P0:scroll |
-|  31 |    204    |   rune  variable   |                           standmh |[0]
+|  31 |    204    |   rune  variable   |                          castlemh |[0]
 |  32 |    206    |   rune   literal   |                            LTRL14 |[1]H
-|  33 |    210    |   rune  variable   |                           standmi |[0]
+|  33 |    210    |   rune  variable   |                          castlemi |[0]
 |  34 |    212    |   rune   literal   |                            LTRL15 |[1]i
-|  35 |    216    |   rune  variable   |                          standmiv |[0]
+|  35 |    216    |   rune  variable   |                         castlemiv |[0]
 |  36 |    218    |   rune   literal   |                            LTRL16 |[1]!
-|  37 |    238    | scroll  variable   |                          standdsa |[0]
-|  38 |    244    | scroll  variable   |                          standytr |[0]
+|  37 |    238    | scroll  variable   |                         castledsa |[0]
+|  38 |    244    | scroll  variable   |                         castleytr |[0]
 |  39 |    249    | scroll   literal   |                            LTRL17 |[9]Compare: 
-|  40 |    253    | squire  variable   |                          standasd |0
+|  40 |    253    | squire  variable   |                         castleasd |0
 |  41 |    257    | squire  LIB FUNC   |                    comparescrolls | P0:scroll | P1:scroll |
 |  42 |    267    | squire   literal   |                            LTRL18 |1
 |  43 |    272    | scroll   literal   |                            LTRL19 |[22]The lines are the same
 |  44 |    278    | scroll   literal   |                            LTRL20 |[26]The lines are not the same
 |  45 |    290    | scroll   literal   |                            LTRL21 |[15]Random number: 
-|  46 |    294    | squire  variable   |                            standx |0
+|  46 |    294    | squire  variable   |                           castlex |0
 |  47 |    298    | squire  LIB FUNC   |                           fortune | P0:squire | P1:squire |
 |  48 |    302    | squire   literal   |                            LTRL22 |10
-|  49 |    317    | squire  variable   |                            standu |0
+|  49 |    317    | squire  variable   |                           castleu |0
 |  50 |    319    | squire   literal   |                            LTRL23 |5
-|  51 |    323    | squire  variable   |                            standv |0
+|  51 |    323    | squire  variable   |                           castlev |0
 |  52 |    325    | squire   literal   |                            LTRL24 |7
-|  53 |    329    | squire  variable   |                            standr |0
+|  53 |    329    | squire  variable   |                           castler |0
 |  54 |    332    | scroll   literal   |                            LTRL25 |[24]Arithmetic expression:  
 |  55 |    354    | squire   literal   |                            LTRL26 |8
-|  56 |    369    | scroll  variable   |                            standc |[0]
+|  56 |    369    | scroll  variable   |                           castlec |[0]
 |  57 |    371    | scroll   literal   |                            LTRL27 |[3]123
-|  58 |    375    | squire  variable   |                            stande |0
+|  58 |    375    | squire  variable   |                           castlee |0
 |  59 |    378    | scroll   literal   |                            LTRL28 |[33]Converting a string to a number: 
 |  60 |    382    | squire  LIB FUNC   |                         transmute | P0:scroll |
 |  61 |    399    | squire   literal   |                            LTRL29 |23
@@ -818,35 +818,35 @@
 |  63 |    412    | squire   literal   |                            LTRL31 |6
 |  64 |    415    | scroll   literal   |                            LTRL32 |[7]shut up
 |  65 |    424    | scroll   literal   |                            LTRL33 |[1]g
-|  66 |    432    | squire  variable   |                            standk |0
-|  67 |    436    | scroll  variable   |                          standlen |[0]
+|  66 |    432    | squire  variable   |                           castlek |0
+|  67 |    436    | scroll  variable   |                         castlelen |[0]
 |  68 |    438    | scroll   literal   |                            LTRL34 |[9]I love SE
 |  69 |    442    | squire  LIB FUNC   |                          filament | P0:scroll |
 |  70 |    448    | scroll   literal   |                            LTRL35 |[13]Line length: 
-|  71 |    462    | squire  variable   |                         standnumb |0
+|  71 |    462    | squire  variable   |                        castlenumb |0
 |  72 |    464    | squire   literal   |                            LTRL36 |127
-|  73 |    468    | squire  variable   |                    standremainder |0
+|  73 |    468    | squire  variable   |                   castleremainder |0
 |  74 |    474    | squire   literal   |                            LTRL37 |3
 |  75 |    477    | scroll   literal   |                            LTRL38 |[34]Remainder after division 54 by 3: 
-|  76 |    491    | squire  variable   |                       standresult |0
-|  77 |    495    | squire  variable   |                          standsdv |0
+|  76 |    491    | squire  variable   |                      castleresult |0
+|  77 |    495    | squire  variable   |                         castlesdv |0
 |  78 |    500    | scroll   literal   |                            LTRL39 |[35]Number after shifted to the left : 
-|  79 |    514    | scroll  variable   |                         standname |[0]
+|  79 |    514    | scroll  variable   |                        castlename |[0]
 |  80 |    516    | scroll   literal   |                            LTRL40 |[11]KostusLi - 
-|  81 |    520    | scroll  variable   |                      standsurname |[0]
+|  81 |    520    | scroll  variable   |                     castlesurname |[0]
 |  82 |    522    | scroll   literal   |                            LTRL41 |[13]David goggins
-|  83 |    526    | squire  variable   |                           standim |37
+|  83 |    526    | squire  variable   |                          castleim |37
 |  84 |    528    | squire   literal   |                            LTRL42 |37
 |  85 |    542    | scroll   literal   |                            LTRL43 |[83]Sum of octal(o45) and decimal(123): 
 |  86 |    551    | squire   literal   |                            LTRL44 |83
 |  87 |    554    | squire   literal   |                            LTRL45 |45
-|  88 |    566    | squire  variable   |                        standfrigh |0
-|  89 |    583    | squire  variable   |                          standbip |0
-|  90 |    595    | squire  variable   |                          standcup |0
-|  91 |    608    | squire  variable   |                          standpoi |0
-|  92 |    614    | squire  variable   |                          standisi |0
+|  88 |    566    | squire  variable   |                       castlefrigh |0
+|  89 |    583    | squire  variable   |                         castlebip |0
+|  90 |    595    | squire  variable   |                         castlecup |0
+|  91 |    608    | squire  variable   |                         castlepoi |0
+|  92 |    614    | squire  variable   |                         castleisi |0
 |  93 |    636    | scroll   literal   |                            LTRL46 |[5]Error
-|  94 |    647    | squire  variable   |                           standab |0
+|  94 |    647    | squire  variable   |                          castleab |0
 |  95 |    652    | scroll   literal   |                            LTRL47 |[20]Cycle from 2 to 10: 
 |  96 |    665    | scroll   literal   |                            LTRL48 |[1] 
 |  97 |    681    | squire   literal   |                            LTRL49 |20
@@ -7943,14 +7943,14 @@
 ---------------------------- ÒÀÁËÈÖÀ ÈÄÅÍÒÈÔÈÊÀÒÎÐÎÂ ------------------------
 
 |  N  |ÑÒÐÎÊÀ Â ÒË| ÒÈÏ ÈÄÅÍÒÈÔÈÊÀÒÎÐÀ |        ÈÌß             	| ÇÍÀ×ÅÍÈÅ (ÏÀÐÀÌÅÒÐÛ)
-|0    |  2        | squire  function   |  min                              | P0:squire | P1:squire |
-|1    |  5        | squire parameter   |  minx                             |
-|2    |  8        | squire parameter   |  miny                             |
-|3    |  13       | squire  variable   |  minres                           |0
-|4    |  41       | hollow  function   |  stand                            | P0:scroll | P1:scroll |
-|5    |  44       | scroll parameter   |  standa                           |
-|6    |  47       | scroll parameter   |  standb                           |
-|7    |  52       | scroll  variable   |  standstr                         |[0]
+|0    |  2        | squire  function   |  underprivileged                  | P0:squire | P1:squire |
+|1    |  5        | squire parameter   |  underprivilegedx                 |
+|2    |  8        | squire parameter   |  underprivilegedy                 |
+|3    |  13       | squire  variable   |  underprivilegedres               |0
+|4    |  41       | hollow  function   |  castle                           | P0:scroll | P1:scroll |
+|5    |  44       | scroll parameter   |  castlea                          |
+|6    |  47       | scroll parameter   |  castleb                          |
+|7    |  52       | scroll  variable   |  castlestr                        |[0]
 |8    |  56       | scroll  LIB FUNC   |  consolidate                      | P0:scroll | P1:scroll |
 |9    |  64       | scroll   literal   |  LTRL1                            |[8]Result: 
 |10   |  78       | scroll  variable   |  templestr                        |[0]
@@ -7963,45 +7963,45 @@
 |17   |  100      | squire  variable   |  temples                          |0
 |18   |  106      | squire  variable   |  templefinish                     |0
 |19   |  115      | scroll   literal   |  LTRL5                            |[20]result of division: 
-|20   |  123      | scroll   literal   |  LTRL6                            |[22]----------------------
+|20   |  123      | scroll   literal   |  LTRL6                            |[22]======================
 |21   |  128      | scroll   literal   |  LTRL7                            |[1](
 |22   |  134      | scroll   literal   |  LTRL8                            |[2]>=
 |23   |  140      | scroll   literal   |  LTRL9                            |[3]) :
 |24   |  151      | scroll   literal   |  LTRL10                           |[4]True
 |25   |  158      | scroll   literal   |  LTRL11                           |[5]False
 |26   |  173      | scroll   literal   |  LTRL12                           |[16]Copited string: 
-|27   |  177      | scroll  variable   |  standstroka                      |[0]
+|27   |  177      | scroll  variable   |  castlestroka                     |[0]
 |28   |  179      | scroll   literal   |  LTRL13                           |[6]lipupu
-|29   |  188      | scroll  variable   |  standstrochka                    |[0]
+|29   |  188      | scroll  variable   |  castlestrochka                   |[0]
 |30   |  192      | scroll  LIB FUNC   |  oblivion                         | P0:scroll |
-|31   |  204      |   rune  variable   |  standmh                          |[0]
+|31   |  204      |   rune  variable   |  castlemh                         |[0]
 |32   |  206      |   rune   literal   |  LTRL14                           |[1]H
-|33   |  210      |   rune  variable   |  standmi                          |[0]
+|33   |  210      |   rune  variable   |  castlemi                         |[0]
 |34   |  212      |   rune   literal   |  LTRL15                           |[1]i
-|35   |  216      |   rune  variable   |  standmiv                         |[0]
+|35   |  216      |   rune  variable   |  castlemiv                        |[0]
 |36   |  218      |   rune   literal   |  LTRL16                           |[1]!
-|37   |  238      | scroll  variable   |  standdsa                         |[0]
-|38   |  244      | scroll  variable   |  standytr                         |[0]
+|37   |  238      | scroll  variable   |  castledsa                        |[0]
+|38   |  244      | scroll  variable   |  castleytr                        |[0]
 |39   |  249      | scroll   literal   |  LTRL17                           |[9]Compare: 
-|40   |  253      | squire  variable   |  standasd                         |0
+|40   |  253      | squire  variable   |  castleasd                        |0
 |41   |  257      | squire  LIB FUNC   |  comparescrolls                   | P0:scroll | P1:scroll |
 |42   |  267      | squire   literal   |  LTRL18                           |1
 |43   |  272      | scroll   literal   |  LTRL19                           |[22]The lines are the same
 |44   |  278      | scroll   literal   |  LTRL20                           |[26]The lines are not the same
 |45   |  290      | scroll   literal   |  LTRL21                           |[15]Random number: 
-|46   |  294      | squire  variable   |  standx                           |0
+|46   |  294      | squire  variable   |  castlex                          |0
 |47   |  298      | squire  LIB FUNC   |  fortune                          | P0:squire | P1:squire |
 |48   |  302      | squire   literal   |  LTRL22                           |10
-|49   |  317      | squire  variable   |  standu                           |0
+|49   |  317      | squire  variable   |  castleu                          |0
 |50   |  319      | squire   literal   |  LTRL23                           |5
-|51   |  323      | squire  variable   |  standv                           |0
+|51   |  323      | squire  variable   |  castlev                          |0
 |52   |  325      | squire   literal   |  LTRL24                           |7
-|53   |  329      | squire  variable   |  standr                           |0
+|53   |  329      | squire  variable   |  castler                          |0
 |54   |  332      | scroll   literal   |  LTRL25                           |[24]Arithmetic expression:  
 |55   |  351      | squire   literal   |  LTRL26                           |8
-|56   |  367      | scroll  variable   |  standc                           |[0]
+|56   |  367      | scroll  variable   |  castlec                          |[0]
 |57   |  369      | scroll   literal   |  LTRL27                           |[3]123
-|58   |  373      | squire  variable   |  stande                           |0
+|58   |  373      | squire  variable   |  castlee                          |0
 |59   |  376      | scroll   literal   |  LTRL28                           |[33]Converting a string to a number: 
 |60   |  380      | squire  LIB FUNC   |  transmute                        | P0:scroll |
 |61   |  397      | squire   literal   |  LTRL29                           |23
@@ -8009,35 +8009,35 @@
 |63   |  410      | squire   literal   |  LTRL31                           |6
 |64   |  413      | scroll   literal   |  LTRL32                           |[7]shut up
 |65   |  422      | scroll   literal   |  LTRL33                           |[1]g
-|66   |  430      | squire  variable   |  standk                           |0
-|67   |  434      | scroll  variable   |  standlen                         |[0]
+|66   |  430      | squire  variable   |  castlek                          |0
+|67   |  434      | scroll  variable   |  castlelen                        |[0]
 |68   |  436      | scroll   literal   |  LTRL34                           |[9]I love SE
 |69   |  440      | squire  LIB FUNC   |  filament                         | P0:scroll |
 |70   |  446      | scroll   literal   |  LTRL35                           |[13]Line length: 
-|71   |  460      | squire  variable   |  standnumb                        |0
+|71   |  460      | squire  variable   |  castlenumb                       |0
 |72   |  462      | squire   literal   |  LTRL36                           |127
-|73   |  466      | squire  variable   |  standremainder                   |0
+|73   |  466      | squire  variable   |  castleremainder                  |0
 |74   |  471      | squire   literal   |  LTRL37                           |3
 |75   |  475      | scroll   literal   |  LTRL38                           |[34]Remainder after division 54 by 3: 
-|76   |  489      | squire  variable   |  standresult                      |0
-|77   |  493      | squire  variable   |  standsdv                         |0
+|76   |  489      | squire  variable   |  castleresult                     |0
+|77   |  493      | squire  variable   |  castlesdv                        |0
 |78   |  498      | scroll   literal   |  LTRL39                           |[35]Number after shifted to the left : 
-|79   |  512      | scroll  variable   |  standname                        |[0]
+|79   |  512      | scroll  variable   |  castlename                       |[0]
 |80   |  514      | scroll   literal   |  LTRL40                           |[11]KostusLi - 
-|81   |  518      | scroll  variable   |  standsurname                     |[0]
+|81   |  518      | scroll  variable   |  castlesurname                    |[0]
 |82   |  520      | scroll   literal   |  LTRL41                           |[13]David goggins
-|83   |  524      | squire  variable   |  standim                          |37
+|83   |  524      | squire  variable   |  castleim                         |37
 |84   |  526      | squire   literal   |  LTRL42                           |37
 |85   |  540      | scroll   literal   |  LTRL43                           |[83]Sum of octal(o45) and decimal(123): 
 |86   |  549      | squire   literal   |  LTRL44                           |83
 |87   |  550      | squire   literal   |  LTRL45                           |45
-|88   |  562      | squire  variable   |  standfrigh                       |0
-|89   |  577      | squire  variable   |  standbip                         |0
-|90   |  589      | squire  variable   |  standcup                         |0
-|91   |  602      | squire  variable   |  standpoi                         |0
-|92   |  608      | squire  variable   |  standisi                         |0
+|88   |  562      | squire  variable   |  castlefrigh                      |0
+|89   |  577      | squire  variable   |  castlebip                        |0
+|90   |  589      | squire  variable   |  castlecup                        |0
+|91   |  602      | squire  variable   |  castlepoi                        |0
+|92   |  608      | squire  variable   |  castleisi                        |0
 |93   |  630      | scroll   literal   |  LTRL46                           |[5]Error
-|94   |  641      | squire  variable   |  standab                          |0
+|94   |  641      | squire  variable   |  castleab                         |0
 |95   |  646      | scroll   literal   |  LTRL47                           |[20]Cycle from 2 to 10: 
 |96   |  659      | scroll   literal   |  LTRL48                           |[1] 
 |97   |  675      | squire   literal   |  LTRL49                           |20

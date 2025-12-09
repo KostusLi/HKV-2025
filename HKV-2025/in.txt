@@ -1,4 +1,4 @@
-squire action min(squire x, squire y)
+squire action underprivileged(squire x, squire y)
 [
 	elder squire  res;
 	check: x > y #
@@ -7,7 +7,7 @@ squire action min(squire x, squire y)
 	comeback res;
 ]
 
-hollow action stand(scroll a, scroll b)
+hollow action castle(scroll a, scroll b)
 [
 	elder scroll str;
 	str = consolidate(a, b);
@@ -32,7 +32,7 @@ temple[
 	confession "result of division: "; 
 	confession finish;
 	newleaf;
-	confession "----------------------";
+	confession "======================";
 	newleaf;
 	
 	confession "("; confession abc; confession ">="; confession abcd; confession ") :";
@@ -41,7 +41,7 @@ temple[
 	backup [str="False";]#
 	confession str;
 	newleaf;
-	confession "----------------------";
+	confession "======================";
 	newleaf;
 
 
@@ -51,7 +51,7 @@ temple[
 	newleaf;
 	elder scroll strochka;
 	strochka = oblivion(stroka);
-	confession "----------------------";
+	confession "======================";
 	newleaf;
 
 
@@ -62,7 +62,7 @@ temple[
 	confession mi;
 	confession miv;
 	newleaf;
-	confession "----------------------";
+	confession "======================";
 	newleaf;
 
 
@@ -75,7 +75,7 @@ temple[
 	charge [confession "The lines are the same";]
 	backup [confession "The lines are not the same";]#
 	newleaf;
-	confession "----------------------";
+	confession "======================";
 	newleaf;
 	
 
@@ -85,17 +85,17 @@ temple[
 	x = fortune(1, 10);
 	confession x;
 	newleaf;
-	confession "----------------------";
+	confession "======================";
 	newleaf;
 	
 	elder squire  u = 5;
 	elder squire  v = 7;
 	elder squire  r;
 	confession "Arithmetic expression:  ";
-	r=u+v*2-(4+4)/2 + min(5, 8);
+	r=u+v*2-(4+4)/2 + underprivileged(5, 8);
 	confession r;
 	newleaf;
-	confession "----------------------";
+	confession "======================";
 	newleaf;
 
 
@@ -105,7 +105,7 @@ temple[
     	e = transmute(c);
     	confession e;
     	newleaf;
-	confession "----------------------";
+	confession "======================";
 	newleaf;
 
 	
@@ -130,7 +130,7 @@ temple[
     	confession "Line length: ";
 	confession k;
     	newleaf;
-	confession "----------------------";
+	confession "======================";
 	newleaf;
 
         
@@ -140,7 +140,7 @@ temple[
 	confession "Remainder after division 54 by 3: ";
 	confession remainder;
 	newleaf;
-	confession "----------------------";
+	confession "======================";
 	newleaf;
 
 
@@ -149,7 +149,7 @@ temple[
 	confession "Number after shifted to the left : "; 
 	confession result;
    	newleaf;
-	confession "----------------------";
+	confession "======================";
 	newleaf;
 	
 	
@@ -181,9 +181,9 @@ temple[
 	elder squire poi = 4;
 	elder squire isi = 4;
 	check: poi @ isi #
-	charge [stand(name,surname);]
+	charge [castle(name,surname);]
 	backup [confession "Error";]#
-	confession "----------------------";
+	confession "======================";
 	newleaf;
 
 
