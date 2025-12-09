@@ -51,7 +51,7 @@
     <ClCompile Include="SemanticAnalyze.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="PolishNotation.cpp">
+    <ClCompile Include="TheWingedHussars.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Generator.cpp">
@@ -101,7 +101,7 @@
     <ClInclude Include="SemanticAnalyze.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="PolishNotation.h">
+    <ClInclude Include="TheWingedHussars.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Generator.h">

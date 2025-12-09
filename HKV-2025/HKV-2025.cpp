@@ -1,6 +1,24 @@
 ﻿#include <iostream>
 #include "stdafx.h"
 
+#define A \
+    "       #       " \
+    "      # #      " \
+    "     #   #     " \
+    "    #     #    " \
+    "   #=======#   " \
+    "  #         #  " \
+    " #           # " \
+    "#             #"
+
+#define V \
+    "     #       #     " \
+    "      #     #      " \
+    "       #   #       " \
+    "        # #        " \
+    "         #         "
+
+using namespace std;
 
 int wmain(int argc, wchar_t* argv[])
 {
@@ -20,6 +38,8 @@ int wmain(int argc, wchar_t* argv[])
 
 	setlocale(LC_ALL, "Russian");
 	Log::LOG log;
+
+	cout << A << V << endl;
 
 	try
 	{
@@ -58,7 +78,7 @@ int wmain(int argc, wchar_t* argv[])
 			return 0;
 		}
 		else Log::writeLine(&std::cout, TEMPLE_TRIUMPH, "");
-		bool sem_ok = Semantic::semanticsCheck(tables, log);					//выполнить семантический анализ
+		bool sem_ok = Semantic::AnalyzeScrolls(tables, log);					//выполнить семантический анализ
 		if (!sem_ok)
 		{
 			Log::writeLine(log.stream, SOVET_KRASH, "");
@@ -66,7 +86,7 @@ int wmain(int argc, wchar_t* argv[])
 			return 0;
 		}
 		else Log::writeLine(&std::cout, SOVET_TRIUMPH, "");
-		bool polish_ok = Polish::PolishNotation(tables, log);					//выполнить преобразование выражений в ПОЛИЗ
+		bool polish_ok = Polish::TheWingedHussars(tables, log);					//выполнить преобразование выражений в ПОЛИЗ
 		if (!polish_ok)
 		{
 			Log::writeLine(log.stream, BRAND_KRASH, "");

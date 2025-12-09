@@ -7,7 +7,7 @@
 
 namespace Semantic
 {
-	bool Semantic::semanticsCheck(Lexer::LEX& tables, Log::LOG& log)
+	bool Semantic::AnalyzeScrolls(Lexer::LEX& tables, Log::LOG& log)
 	{
 		bool sem_ok = true;
 

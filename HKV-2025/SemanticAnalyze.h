@@ -3,5 +3,5 @@
 
 namespace Semantic
 {
-	bool semanticsCheck(Lexer::LEX& tables, Log::LOG& log);
+	bool AnalyzeScrolls(Lexer::LEX& tables, Log::LOG& log);
 };

@@ -139,7 +139,7 @@
     <ClCompile Include="LT.cpp" />
     <ClCompile Include="MFST.cpp" />
     <ClCompile Include="Parm.cpp" />
-    <ClCompile Include="PolishNotation.cpp" />
+    <ClCompile Include="TheWingedHussars.cpp" />
     <ClCompile Include="SemanticAnalyze.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -156,7 +156,7 @@
     <ClInclude Include="LT.h" />
     <ClInclude Include="MFST.h" />
     <ClInclude Include="Parm.h" />
-    <ClInclude Include="PolishNotation.h" />
+    <ClInclude Include="TheWingedHussars.h" />
     <ClInclude Include="SemanticAnalyze.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>

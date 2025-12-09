@@ -7,7 +7,7 @@
 #include "IT.h"
 #include "LT.h"
 #include "LexAnalysis.h"
-#include "PolishNotation.h"
+#include "TheWingedHussars.h"
 #include "GRB.h"
 #include "Graphs.h"
 #include "MFST.h"

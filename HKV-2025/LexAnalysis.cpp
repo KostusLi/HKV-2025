@@ -66,7 +66,7 @@ namespace Lexer
 
 	char* getScopeName(IT::IdTable idtable, char* prevword)
 	{
-		char* a = new char[5];
+		char* a = new char[7];
 		a[0] = 't';
 		a[1] = 'e';
 		a[2] = 'm';
@@ -363,7 +363,7 @@ namespace Lexer
 			isFunc = false;
 			int idxTI = NULLIDX_TI;
 
-			std::cout << "[LEXDBG_TOKEN] word=" << curword << " line=" << curline << std::endl;
+			/*std::cout << "[LEXDBG_TOKEN] word=" << curword << " line=" << curline << std::endl;*/
 
 			if (!strcmp(curword, "bitand") || !strcmp(curword, "bitor") || !strcmp(curword, "bitnot"))
 			{
@@ -415,8 +415,14 @@ namespace Lexer
 						}
 						case LEX_LEFTBRACE:
 						{
-							if (i > 0 && *in.words[i - 1].word == LEX_BACKUP || *in.words[i - 1].word == LEX_CHARGE || *in.words[i - 1].word == LEX_PATROL)
+							if (i == 0)
+							{
 								break;
+							}
+							if (i > 0 && *in.words[i - 1].word == LEX_BACKUP || *in.words[i - 1].word == LEX_CHARGE || *in.words[i - 1].word == LEX_PATROL)
+							{
+								break;
+							}
 							char* functionname = new char[MAXSIZE_ID];
 							char* scopename = getScopeName(tables.idtable, in.words[i - 1].word);
 							if (scopename == nullptr)  break;
