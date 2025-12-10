@@ -11,38 +11,36 @@ hollow action castle(scroll a, scroll b)
 [
 	elder scroll str;
 	str = consolidate(a, b);
-        confession "Result: ";
+        confession "Resultiik: ";
 	confession str;
 	newleaf;
 	comeback;
 ]
 
 temple[
-
-
 	elder scroll str;
-	elder squire abc = 2;
-	elder squire abcd = 4;
+	elder squire abc = 3;
+	elder squire abcd = 6;
 
 
-	elder squire f = -4;
-	elder squire s = 2;
+	elder squire f = -8;
+	elder squire s = 4;
 	elder squire finish;
 	finish = f / s;
-	confession "result of division: "; 
+	confession "Finishing result of tournoment: "; 
 	confession finish;
 	newleaf;
 	
 	confession "("; confession abc; confession ">="; confession abcd; confession ") :";
 	check: abc ~ abcd #
-	charge [str="True";
+	charge [str="Faith";
 	]
-	backup [str="False";]#
+	backup [str="Exile";]#
 	confession str;
 	newleaf;
 
 
-	confession "Copited string: ";
+	confession "scroll copied: ";
 	elder scroll stroka = "lipupu";
 	confession stroka;
 	newleaf;
@@ -50,9 +48,9 @@ temple[
 	strochka = oblivion(stroka);
 
 
-	elder rune mh = 'H';
-	elder rune mi = 'i';
-	elder rune miv = '!';
+	elder rune mh = 'B';
+	elder rune mi = 'r';
+	elder rune miv = 'o';
 	confession mh;
 	confession mi;
 	confession miv;
@@ -60,14 +58,14 @@ temple[
 
 
 	elder scroll dsa = "F";
-	elder scroll ytr = "False";
-	confession "Compare: ";
+	elder scroll ytr = "Faith";
+	confession "Compare scrolls: ";
 	elder squire  asd;
 	asd=comparescrolls(dsa,ytr);
 	check: asd & 1 #
-	charge [confession "The lines are the same";
+	charge [confession "Scrolls faith";
 	]
-	backup [confession "The lines are not the same";
+	backup [confession "Scrolls exile";
 ]#
 	newleaf;
 
@@ -76,7 +74,7 @@ temple[
 	confession dsa;
 	newleaf;
 
-	confession "Random number: ";
+	confession "Fortune of squires: ";
 	elder squire x;
 	x = fortune(1, 10);
 	confession x;
@@ -85,15 +83,15 @@ temple[
 	elder squire  u = 5;
 	elder squire  v = 7;
 	elder squire  r;
-	confession "Arithmetic expression:  ";
+	confession "Wisdomers are learned expressions:  ";
 	r=u+v*2-(4+4)/2 + bastard(5, 8);
 	confession r;
 	newleaf;
 
 
-	elder scroll c = "123";
+	elder scroll c = "34";
 	elder squire e;	
-    	confession "Converting a string to a number: ";
+    	confession "Transmutation from scroll to squire: ";
     	e = transmute(c);
     	confession e;
     	newleaf;
@@ -115,9 +113,9 @@ temple[
 	]
 
 	elder squire k;
-	elder scroll len="I love SE";
+	elder scroll len="Charge, my battle brothers!";
 	k = filament(len);
-    	confession "Line length: ";
+    	confession "The filament of me scroll: ";
 	confession k;
     	newleaf;
 
@@ -138,7 +136,7 @@ temple[
 	confession im;
 	newleaf;
 	e = im + e;
-	confession "Sum of octal(o45) and decimal(123): ";
+	confession "Commutation of octal(o45) and decimal(123): ";
 	confession e;
 	newleaf;
 	e=o123 + (45 - 5);
@@ -169,7 +167,7 @@ temple[
 
 
  	elder squire kni = 2;
-	confession "Cycle from 2 to 10: ";
+	confession "Patrol from 2 to 10: ";
 	check: kni ! 10 #
 	patrol [
 		confession kni;
@@ -201,5 +199,5 @@ temple[
 		escape;
 		]
 	]
-]
+
 

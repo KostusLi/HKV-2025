@@ -3,30 +3,62 @@
   "WorkspaceRootPath": "C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{BB1EDE4C-079C-4613-AA6A-906D30E8DFB6}|..\\DirectivesOfKings\\DirectivesOfKings.vcxproj|C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\DirectivesOfKings\\DirectivesOfKing.asm||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{81B43BFD-E068-437D-A6D3-1066299EC70F}|HKV-2025.vcxproj|C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\Parm.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{81B43BFD-E068-437D-A6D3-1066299EC70F}|HKV-2025.vcxproj|solutionrelative:Parm.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{81B43BFD-E068-437D-A6D3-1066299EC70F}|HKV-2025.vcxproj|C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\Error.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{81B43BFD-E068-437D-A6D3-1066299EC70F}|HKV-2025.vcxproj|solutionrelative:Error.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{81B43BFD-E068-437D-A6D3-1066299EC70F}|HKV-2025.vcxproj|C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\Generator.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{81B43BFD-E068-437D-A6D3-1066299EC70F}|HKV-2025.vcxproj|solutionrelative:Generator.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D204D997-55D2-45DA-AABB-B69AEB41F061}|..\\Arsenal\\Arsenal.vcxproj|C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\Arsenal\\Arsenal.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{81B43BFD-E068-437D-A6D3-1066299EC70F}|HKV-2025.vcxproj|C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\GRB.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{81B43BFD-E068-437D-A6D3-1066299EC70F}|HKV-2025.vcxproj|solutionrelative:GRB.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{81B43BFD-E068-437D-A6D3-1066299EC70F}|HKV-2025.vcxproj|C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\LT.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{81B43BFD-E068-437D-A6D3-1066299EC70F}|HKV-2025.vcxproj|solutionrelative:LT.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{81B43BFD-E068-437D-A6D3-1066299EC70F}|HKV-2025.vcxproj|C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\IT.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{81B43BFD-E068-437D-A6D3-1066299EC70F}|HKV-2025.vcxproj|solutionrelative:IT.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BB1EDE4C-079C-4613-AA6A-906D30E8DFB6}|..\\DirectivesOfKings\\DirectivesOfKings.vcxproj|C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\DirectivesOfKings\\DirectivesOfKing.asm||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{81B43BFD-E068-437D-A6D3-1066299EC70F}|HKV-2025.vcxproj|C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\MFST.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{81B43BFD-E068-437D-A6D3-1066299EC70F}|HKV-2025.vcxproj|solutionrelative:MFST.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{81B43BFD-E068-437D-A6D3-1066299EC70F}|HKV-2025.vcxproj|C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\Graphs.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{81B43BFD-E068-437D-A6D3-1066299EC70F}|HKV-2025.vcxproj|solutionrelative:Graphs.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{81B43BFD-E068-437D-A6D3-1066299EC70F}|HKV-2025.vcxproj|C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\PolishNotation.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{81B43BFD-E068-437D-A6D3-1066299EC70F}|HKV-2025.vcxproj|solutionrelative:PolishNotation.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{81B43BFD-E068-437D-A6D3-1066299EC70F}|HKV-2025.vcxproj|C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\Error.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{81B43BFD-E068-437D-A6D3-1066299EC70F}|HKV-2025.vcxproj|solutionrelative:Error.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{81B43BFD-E068-437D-A6D3-1066299EC70F}|HKV-2025.vcxproj|C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\In.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{81B43BFD-E068-437D-A6D3-1066299EC70F}|HKV-2025.vcxproj|solutionrelative:In.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{81B43BFD-E068-437D-A6D3-1066299EC70F}|HKV-2025.vcxproj|C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\FST.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{81B43BFD-E068-437D-A6D3-1066299EC70F}|HKV-2025.vcxproj|solutionrelative:FST.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{81B43BFD-E068-437D-A6D3-1066299EC70F}|HKV-2025.vcxproj|C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\GeneratorScript.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{81B43BFD-E068-437D-A6D3-1066299EC70F}|HKV-2025.vcxproj|solutionrelative:GeneratorScript.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{81B43BFD-E068-437D-A6D3-1066299EC70F}|HKV-2025.vcxproj|C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\Error.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{81B43BFD-E068-437D-A6D3-1066299EC70F}|HKV-2025.vcxproj|solutionrelative:Error.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D204D997-55D2-45DA-AABB-B69AEB41F061}|..\\Arsenal\\Arsenal.vcxproj|C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\Arsenal\\Arsenal.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{81B43BFD-E068-437D-A6D3-1066299EC70F}|HKV-2025.vcxproj|C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\Parm.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{81B43BFD-E068-437D-A6D3-1066299EC70F}|HKV-2025.vcxproj|solutionrelative:Parm.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{81B43BFD-E068-437D-A6D3-1066299EC70F}|HKV-2025.vcxproj|C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\Generator.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{81B43BFD-E068-437D-A6D3-1066299EC70F}|HKV-2025.vcxproj|solutionrelative:Generator.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{81B43BFD-E068-437D-A6D3-1066299EC70F}|HKV-2025.vcxproj|C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\Generator.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -37,16 +69,8 @@
       "RelativeMoniker": "D:0:0:{81B43BFD-E068-437D-A6D3-1066299EC70F}|HKV-2025.vcxproj|solutionrelative:HKV-2025.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{81B43BFD-E068-437D-A6D3-1066299EC70F}|HKV-2025.vcxproj|C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\Graphs.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{81B43BFD-E068-437D-A6D3-1066299EC70F}|HKV-2025.vcxproj|solutionrelative:Graphs.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{81B43BFD-E068-437D-A6D3-1066299EC70F}|HKV-2025.vcxproj|C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\MFST.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{81B43BFD-E068-437D-A6D3-1066299EC70F}|HKV-2025.vcxproj|solutionrelative:MFST.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{81B43BFD-E068-437D-A6D3-1066299EC70F}|HKV-2025.vcxproj|C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\MFST.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{81B43BFD-E068-437D-A6D3-1066299EC70F}|HKV-2025.vcxproj|solutionrelative:MFST.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{81B43BFD-E068-437D-A6D3-1066299EC70F}|HKV-2025.vcxproj|C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\FST.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -69,20 +93,12 @@
       "RelativeMoniker": "D:0:0:{81B43BFD-E068-437D-A6D3-1066299EC70F}|HKV-2025.vcxproj|solutionrelative:LexAnalysis.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{81B43BFD-E068-437D-A6D3-1066299EC70F}|HKV-2025.vcxproj|C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\IT.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{81B43BFD-E068-437D-A6D3-1066299EC70F}|HKV-2025.vcxproj|solutionrelative:IT.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{81B43BFD-E068-437D-A6D3-1066299EC70F}|HKV-2025.vcxproj|C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\LexAnalysis.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{81B43BFD-E068-437D-A6D3-1066299EC70F}|HKV-2025.vcxproj|solutionrelative:LexAnalysis.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{81B43BFD-E068-437D-A6D3-1066299EC70F}|HKV-2025.vcxproj|C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\Log.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{81B43BFD-E068-437D-A6D3-1066299EC70F}|HKV-2025.vcxproj|solutionrelative:Log.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{81B43BFD-E068-437D-A6D3-1066299EC70F}|HKV-2025.vcxproj|C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\In.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{81B43BFD-E068-437D-A6D3-1066299EC70F}|HKV-2025.vcxproj|solutionrelative:In.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{81B43BFD-E068-437D-A6D3-1066299EC70F}|HKV-2025.vcxproj|C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\In.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -101,10 +117,6 @@
       "RelativeMoniker": "D:0:0:{81B43BFD-E068-437D-A6D3-1066299EC70F}|HKV-2025.vcxproj|solutionrelative:Log.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{81B43BFD-E068-437D-A6D3-1066299EC70F}|HKV-2025.vcxproj|C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\PolishNotation.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{81B43BFD-E068-437D-A6D3-1066299EC70F}|HKV-2025.vcxproj|solutionrelative:PolishNotation.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{81B43BFD-E068-437D-A6D3-1066299EC70F}|HKV-2025.vcxproj|C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\Parm.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{81B43BFD-E068-437D-A6D3-1066299EC70F}|HKV-2025.vcxproj|solutionrelative:Parm.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
@@ -119,18 +131,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{81B43BFD-E068-437D-A6D3-1066299EC70F}|HKV-2025.vcxproj|C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\SemanticAnalyze.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{81B43BFD-E068-437D-A6D3-1066299EC70F}|HKV-2025.vcxproj|solutionrelative:SemanticAnalyze.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{81B43BFD-E068-437D-A6D3-1066299EC70F}|HKV-2025.vcxproj|C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\Error.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{81B43BFD-E068-437D-A6D3-1066299EC70F}|HKV-2025.vcxproj|solutionrelative:Error.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{81B43BFD-E068-437D-A6D3-1066299EC70F}|HKV-2025.vcxproj|C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\GeneratorScript.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{81B43BFD-E068-437D-A6D3-1066299EC70F}|HKV-2025.vcxproj|solutionrelative:GeneratorScript.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{81B43BFD-E068-437D-A6D3-1066299EC70F}|HKV-2025.vcxproj|C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\FST.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{81B43BFD-E068-437D-A6D3-1066299EC70F}|HKV-2025.vcxproj|solutionrelative:FST.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -140,7 +140,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 8,
           "Children": [
             {
               "$type": "Bookmark",
@@ -152,20 +152,163 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "DirectivesOfKing.asm",
               "DocumentMoniker": "C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\DirectivesOfKings\\DirectivesOfKing.asm",
               "RelativeDocumentMoniker": "..\\DirectivesOfKings\\DirectivesOfKing.asm",
               "ToolTip": "C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\DirectivesOfKings\\DirectivesOfKing.asm",
               "RelativeToolTip": "..\\DirectivesOfKings\\DirectivesOfKing.asm",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAoAAAAAAAAAA==",
+              "ViewState": "AgIAAP0CAAAAAAAAAAAowBMDAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
               "WhenOpened": "2025-12-10T15:24:58.247Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Error.cpp",
+              "DocumentMoniker": "C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\Error.cpp",
+              "RelativeDocumentMoniker": "Error.cpp",
+              "ToolTip": "C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\Error.cpp",
+              "RelativeToolTip": "Error.cpp",
+              "ViewState": "AgIAADMAAAAAAAAAAAAAAEQAAABTAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-12-07T18:29:02.006Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "LT.h",
+              "DocumentMoniker": "C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\LT.h",
+              "RelativeDocumentMoniker": "LT.h",
+              "ToolTip": "C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\LT.h",
+              "RelativeToolTip": "LT.h",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAABoAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-12-07T18:25:53.925Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Error.h",
+              "DocumentMoniker": "C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\Error.h",
+              "RelativeDocumentMoniker": "Error.h",
+              "ToolTip": "C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\Error.h",
+              "RelativeToolTip": "Error.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-12-07T18:39:02.768Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "GeneratorScript.h",
+              "DocumentMoniker": "C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\GeneratorScript.h",
+              "RelativeDocumentMoniker": "GeneratorScript.h",
+              "ToolTip": "C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\GeneratorScript.h",
+              "RelativeToolTip": "GeneratorScript.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-12-08T14:01:00.021Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "FST.h",
+              "DocumentMoniker": "C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\FST.h",
+              "RelativeDocumentMoniker": "FST.h",
+              "ToolTip": "C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\FST.h",
+              "RelativeToolTip": "FST.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-12-08T17:13:09.931Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "GRB.cpp",
+              "DocumentMoniker": "C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\GRB.cpp",
+              "RelativeDocumentMoniker": "GRB.cpp",
+              "ToolTip": "C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\GRB.cpp",
+              "RelativeToolTip": "GRB.cpp",
+              "ViewState": "AgIAAHsAAAAAAAAAAAAAAJAAAABCAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-12-07T16:50:28.361Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "In.h",
+              "DocumentMoniker": "C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\In.h",
+              "RelativeDocumentMoniker": "In.h",
+              "ToolTip": "C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\In.h",
+              "RelativeToolTip": "In.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-12-07T18:41:47.028Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "IT.h",
+              "DocumentMoniker": "C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\IT.h",
+              "RelativeDocumentMoniker": "IT.h",
+              "ToolTip": "C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\IT.h",
+              "RelativeToolTip": "IT.h",
+              "ViewState": "AgIAAD4AAAAAAAAAAIA2wCgAAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-12-07T18:25:56.143Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "PolishNotation.cpp",
+              "DocumentMoniker": "C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\PolishNotation.cpp",
+              "RelativeDocumentMoniker": "PolishNotation.cpp",
+              "ToolTip": "C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\PolishNotation.cpp",
+              "RelativeToolTip": "PolishNotation.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACgAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-12-08T16:50:13.156Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Graphs.h",
+              "DocumentMoniker": "C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\Graphs.h",
+              "RelativeDocumentMoniker": "Graphs.h",
+              "ToolTip": "C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\Graphs.h",
+              "RelativeToolTip": "Graphs.h",
+              "ViewState": "AgIAADMAAAAAAAAAAAAAAD4BAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-12-07T16:47:16.864Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 4,
+              "Title": "MFST.h",
+              "DocumentMoniker": "C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\MFST.h",
+              "RelativeDocumentMoniker": "MFST.h",
+              "ToolTip": "C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\MFST.h",
+              "RelativeToolTip": "MFST.h",
+              "ViewState": "AgIAADMAAAAAAAAAAAAAABwAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-12-08T20:16:56.349Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
               "Title": "Arsenal.cpp",
               "DocumentMoniker": "C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\Arsenal\\Arsenal.cpp",
               "RelativeDocumentMoniker": "..\\Arsenal\\Arsenal.cpp",
@@ -178,81 +321,31 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "GRB.cpp",
-              "DocumentMoniker": "C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\GRB.cpp",
-              "RelativeDocumentMoniker": "GRB.cpp",
-              "ToolTip": "C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\GRB.cpp",
-              "RelativeToolTip": "GRB.cpp",
-              "ViewState": "AgIAAGwAAAAAAAAAAAAAAIUAAAAtAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-12-07T16:50:28.361Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 13,
-              "Title": "GRB.h",
-              "DocumentMoniker": "C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\GRB.h",
-              "RelativeDocumentMoniker": "GRB.h",
-              "ToolTip": "C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\GRB.h",
-              "RelativeToolTip": "GRB.h",
-              "ViewState": "AgIAABIAAAAAAAAAAAAAACkAAAAcAAAAAAAAAA==",
+              "Title": "Parm.h",
+              "DocumentMoniker": "C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\Parm.h",
+              "RelativeDocumentMoniker": "Parm.h",
+              "ToolTip": "C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\Parm.h",
+              "RelativeToolTip": "Parm.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-12-08T14:51:07.236Z"
+              "WhenOpened": "2025-12-07T18:38:09.548Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "FST.cpp",
-              "DocumentMoniker": "C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\FST.cpp",
-              "RelativeDocumentMoniker": "FST.cpp",
-              "ToolTip": "C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\FST.cpp",
-              "RelativeToolTip": "FST.cpp",
-              "ViewState": "AgIAAEUAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-12-07T18:34:21.39Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "Graphs.h",
-              "DocumentMoniker": "C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\Graphs.h",
-              "RelativeDocumentMoniker": "Graphs.h",
-              "ToolTip": "C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\Graphs.h",
-              "RelativeToolTip": "Graphs.h",
-              "ViewState": "AgIAAH8AAAAAAAAAAIA2wJEAAAASAAAAAAAAAA==",
+              "DocumentIndex": 14,
+              "Title": "Generator.h",
+              "DocumentMoniker": "C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\Generator.h",
+              "RelativeDocumentMoniker": "Generator.h",
+              "ToolTip": "C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\Generator.h",
+              "RelativeToolTip": "Generator.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-12-07T16:47:16.864Z"
+              "WhenOpened": "2025-12-07T21:37:38.626Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Error.cpp",
-              "DocumentMoniker": "C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\Error.cpp",
-              "RelativeDocumentMoniker": "Error.cpp",
-              "ToolTip": "C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\Error.cpp",
-              "RelativeToolTip": "Error.cpp",
-              "ViewState": "AgIAABgAAAAAAAAAAAAAAB4AAAAnAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-12-07T18:29:02.006Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "HKV-2025.cpp",
-              "DocumentMoniker": "C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\HKV-2025.cpp",
-              "RelativeDocumentMoniker": "HKV-2025.cpp",
-              "ToolTip": "C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\HKV-2025.cpp",
-              "RelativeToolTip": "HKV-2025.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADAAAAASAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-12-07T18:41:29.055Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 15,
               "Title": "Generator.cpp",
               "DocumentMoniker": "C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\Generator.cpp",
               "RelativeDocumentMoniker": "Generator.cpp",
@@ -264,58 +357,43 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Generator.h",
-              "DocumentMoniker": "C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\Generator.h",
-              "RelativeDocumentMoniker": "Generator.h",
-              "ToolTip": "C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\Generator.h",
-              "RelativeToolTip": "Generator.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAnAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-12-07T21:37:38.626Z",
-              "EditorCaption": ""
+              "DocumentIndex": 16,
+              "Title": "HKV-2025.cpp",
+              "DocumentMoniker": "C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\HKV-2025.cpp",
+              "RelativeDocumentMoniker": "HKV-2025.cpp",
+              "ToolTip": "C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\HKV-2025.cpp",
+              "RelativeToolTip": "HKV-2025.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADAAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-12-07T18:41:29.055Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "LT.h",
-              "DocumentMoniker": "C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\LT.h",
-              "RelativeDocumentMoniker": "LT.h",
-              "ToolTip": "C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\LT.h",
-              "RelativeToolTip": "LT.h",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAAABYAAAASAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-12-07T18:25:53.925Z",
-              "EditorCaption": ""
+              "DocumentIndex": 18,
+              "Title": "FST.cpp",
+              "DocumentMoniker": "C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\FST.cpp",
+              "RelativeDocumentMoniker": "FST.cpp",
+              "ToolTip": "C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\FST.cpp",
+              "RelativeToolTip": "FST.cpp",
+              "ViewState": "AgIAAEUAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-12-07T18:34:21.39Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Parm.h",
-              "DocumentMoniker": "C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\Parm.h",
-              "RelativeDocumentMoniker": "Parm.h",
-              "ToolTip": "C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\Parm.h",
-              "RelativeToolTip": "Parm.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 19,
+              "Title": "GRB.h",
+              "DocumentMoniker": "C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\GRB.h",
+              "RelativeDocumentMoniker": "GRB.h",
+              "ToolTip": "C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\GRB.h",
+              "RelativeToolTip": "GRB.h",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAACkAAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-12-07T18:38:09.548Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-08T14:51:07.236Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "MFST.h",
-              "DocumentMoniker": "C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\MFST.h",
-              "RelativeDocumentMoniker": "MFST.h",
-              "ToolTip": "C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\MFST.h",
-              "RelativeToolTip": "MFST.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-12-08T20:16:56.349Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 17,
               "Title": "MFST.cpp",
               "DocumentMoniker": "C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\MFST.cpp",
               "RelativeDocumentMoniker": "MFST.cpp",
@@ -327,7 +405,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 21,
               "Title": "LT.cpp",
               "DocumentMoniker": "C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\LT.cpp",
               "RelativeDocumentMoniker": "LT.cpp",
@@ -339,7 +417,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 24,
               "Title": "Log.h",
               "DocumentMoniker": "C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\Log.h",
               "RelativeDocumentMoniker": "Log.h",
@@ -351,19 +429,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
-              "Title": "In.h",
-              "DocumentMoniker": "C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\In.h",
-              "RelativeDocumentMoniker": "In.h",
-              "ToolTip": "C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\In.h",
-              "RelativeToolTip": "In.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAVAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-12-07T18:41:47.028Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 23,
               "Title": "LexAnalysis.h",
               "DocumentMoniker": "C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\LexAnalysis.h",
               "RelativeDocumentMoniker": "LexAnalysis.h",
@@ -375,7 +441,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 20,
               "Title": "IT.cpp",
               "DocumentMoniker": "C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\IT.cpp",
               "RelativeDocumentMoniker": "IT.cpp",
@@ -387,7 +453,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 22,
               "Title": "LexAnalysis.cpp",
               "DocumentMoniker": "C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\LexAnalysis.cpp",
               "RelativeDocumentMoniker": "LexAnalysis.cpp",
@@ -399,19 +465,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "IT.h",
-              "DocumentMoniker": "C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\IT.h",
-              "RelativeDocumentMoniker": "IT.h",
-              "ToolTip": "C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\IT.h",
-              "RelativeToolTip": "IT.h",
-              "ViewState": "AgIAABEAAAAAAAAAAIA2wCUAAAAnAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-12-07T18:25:56.143Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 25,
               "Title": "In.cpp",
               "DocumentMoniker": "C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\In.cpp",
               "RelativeDocumentMoniker": "In.cpp",
@@ -423,7 +477,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 26,
               "Title": "SemanticAnalyze.cpp",
               "DocumentMoniker": "C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\SemanticAnalyze.cpp",
               "RelativeDocumentMoniker": "SemanticAnalyze.cpp",
@@ -435,7 +489,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 27,
               "Title": "GeneratorScript.cpp",
               "DocumentMoniker": "C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\GeneratorScript.cpp",
               "RelativeDocumentMoniker": "GeneratorScript.cpp",
@@ -447,7 +501,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 28,
               "Title": "Log.cpp",
               "DocumentMoniker": "C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\Log.cpp",
               "RelativeDocumentMoniker": "Log.cpp",
@@ -459,19 +513,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
-              "Title": "PolishNotation.cpp",
-              "DocumentMoniker": "C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\PolishNotation.cpp",
-              "RelativeDocumentMoniker": "PolishNotation.cpp",
-              "ToolTip": "C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\PolishNotation.cpp",
-              "RelativeToolTip": "PolishNotation.cpp",
-              "ViewState": "AgIAABUAAAAAAAAAAAAAACgAAAAuAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-12-08T16:50:13.156Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 29,
               "Title": "Parm.cpp",
               "DocumentMoniker": "C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\Parm.cpp",
               "RelativeDocumentMoniker": "Parm.cpp",
@@ -483,7 +525,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 30,
               "Title": "stdafx.h",
               "DocumentMoniker": "C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\stdafx.h",
               "RelativeDocumentMoniker": "stdafx.h",
@@ -495,7 +537,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 31,
               "Title": "PolishNotation.h",
               "DocumentMoniker": "C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\PolishNotation.h",
               "RelativeDocumentMoniker": "PolishNotation.h",
@@ -507,7 +549,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 32,
               "Title": "SemanticAnalyze.h",
               "DocumentMoniker": "C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\SemanticAnalyze.h",
               "RelativeDocumentMoniker": "SemanticAnalyze.h",
@@ -516,42 +558,6 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2025-12-09T11:06:32.787Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 30,
-              "Title": "Error.h",
-              "DocumentMoniker": "C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\Error.h",
-              "RelativeDocumentMoniker": "Error.h",
-              "ToolTip": "C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\Error.h",
-              "RelativeToolTip": "Error.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAhAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-12-07T18:39:02.768Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 31,
-              "Title": "GeneratorScript.h",
-              "DocumentMoniker": "C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\GeneratorScript.h",
-              "RelativeDocumentMoniker": "GeneratorScript.h",
-              "ToolTip": "C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\GeneratorScript.h",
-              "RelativeToolTip": "GeneratorScript.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-12-08T14:01:00.021Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 32,
-              "Title": "FST.h",
-              "DocumentMoniker": "C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\FST.h",
-              "RelativeDocumentMoniker": "FST.h",
-              "ToolTip": "C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\FST.h",
-              "RelativeToolTip": "FST.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAQAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-12-08T17:13:09.931Z"
             }
           ]
         }

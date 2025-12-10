@@ -25,52 +25,52 @@ ExitProcess PROTO:DWORD
 
 .const
 		newline byte 13, 10, 0
-		LTRL1 byte 'Result: ', 0
-		LTRL2 sdword 2
-		LTRL3 sdword 4
-		LTRL4 sdword -4
-		LTRL5 byte 'result of division: ', 0
-		LTRL6 byte '(', 0
-		LTRL7 byte '>=', 0
-		LTRL8 byte ') :', 0
-		LTRL9 byte 'True', 0
-		LTRL10 byte 'False', 0
-		LTRL11 byte 'Copited string: ', 0
-		LTRL12 byte 'lipupu', 0
-		LTRL13 byte 'H', 0
-		LTRL14 byte 'i', 0
-		LTRL15 byte '!', 0
-		LTRL16 byte 'F', 0
-		LTRL17 byte 'Compare: ', 0
-		LTRL18 sdword 1
-		LTRL19 byte 'The lines are the same', 0
-		LTRL20 byte 'The lines are not the same', 0
-		LTRL21 byte 'Random number: ', 0
-		LTRL22 sdword 10
-		LTRL23 sdword 5
-		LTRL24 sdword 7
-		LTRL25 byte 'Arithmetic expression:  ', 0
-		LTRL26 sdword 8
-		LTRL27 byte '123', 0
-		LTRL28 byte 'Converting a string to a number: ', 0
-		LTRL29 sdword 23
-		LTRL30 byte 'Domain expension', 0
-		LTRL31 sdword 6
-		LTRL32 byte 'shut up', 0
-		LTRL33 byte 'g', 0
-		LTRL34 byte 'I love SE', 0
-		LTRL35 byte 'Line length: ', 0
-		LTRL36 sdword 127
-		LTRL37 sdword 3
+		LTRL1 byte 'Resultiik: ', 0
+		LTRL2 sdword 3
+		LTRL3 sdword 6
+		LTRL4 sdword -8
+		LTRL5 sdword 4
+		LTRL6 byte 'Finishing result of tournoment: ', 0
+		LTRL7 byte '(', 0
+		LTRL8 byte '>=', 0
+		LTRL9 byte ') :', 0
+		LTRL10 byte 'Faith', 0
+		LTRL11 byte 'Exile', 0
+		LTRL12 byte 'scroll copied: ', 0
+		LTRL13 byte 'lipupu', 0
+		LTRL14 byte 'B', 0
+		LTRL15 byte 'r', 0
+		LTRL16 byte 'o', 0
+		LTRL17 byte 'F', 0
+		LTRL18 byte 'Compare scrolls: ', 0
+		LTRL19 sdword 1
+		LTRL20 byte 'Scrolls faith', 0
+		LTRL21 byte 'Scrolls exile', 0
+		LTRL22 byte 'Fortune of squires: ', 0
+		LTRL23 sdword 10
+		LTRL24 sdword 5
+		LTRL25 sdword 7
+		LTRL26 byte 'Wisdomers are learned expressions:  ', 0
+		LTRL27 sdword 2
+		LTRL28 sdword 8
+		LTRL29 byte '34', 0
+		LTRL30 byte 'Transmutation from scroll to squire: ', 0
+		LTRL31 sdword 23
+		LTRL32 byte 'Domain expension', 0
+		LTRL33 byte 'shut up', 0
+		LTRL34 byte 'g', 0
+		LTRL35 byte 'Charge, my battle brothers!', 0
+		LTRL36 byte 'The filament of me scroll: ', 0
+		LTRL37 sdword 127
 		LTRL38 byte 'Remainder after division 54 by 3: ', 0
 		LTRL39 byte 'KostusLi - ', 0
 		LTRL40 byte 'David goggins', 0
 		LTRL41 sdword 37
-		LTRL42 byte 'Sum of octal(o45) and decimal(123): ', 0
+		LTRL42 byte 'Commutation of octal(o45) and decimal(123): ', 0
 		LTRL43 sdword 83
 		LTRL44 sdword 45
 		LTRL45 byte 'Error', 0
-		LTRL46 byte 'Cycle from 2 to 10: ', 0
+		LTRL46 byte 'Patrol from 2 to 10: ', 0
 		LTRL47 byte ' ', 0
 		LTRL48 sdword 20
 		LTRL49 byte 'hi', 0
@@ -205,7 +205,7 @@ push LTRL4
 pop ebx
 mov templef, ebx
 
-push LTRL2
+push LTRL5
 
 pop ebx
 mov temples, ebx
@@ -222,7 +222,7 @@ pop ebx
 mov templefinish, ebx
 
 
-push offset LTRL5
+push offset LTRL6
 call confessionscroll
 
 
@@ -233,7 +233,7 @@ push offset newline
 call confessionscroll
 
 
-push offset LTRL6
+push offset LTRL7
 call confessionscroll
 
 
@@ -241,7 +241,7 @@ push templeabc
 call confessionsquire
 
 
-push offset LTRL7
+push offset LTRL8
 call confessionscroll
 
 
@@ -249,7 +249,7 @@ push templeabcd
 call confessionsquire
 
 
-push offset LTRL8
+push offset LTRL9
 call confessionscroll
 
 mov edx, templeabc
@@ -259,10 +259,10 @@ jz right2
 jg right2
 jnz wrong2
 right2:
-mov templestr, offset LTRL9
+mov templestr, offset LTRL10
 jmp next2
 wrong2:
-mov castlestr, offset LTRL10
+mov castlestr, offset LTRL11
 next2:
 
 push castlestr
@@ -272,10 +272,10 @@ push offset newline
 call confessionscroll
 
 
-push offset LTRL11
+push offset LTRL12
 call confessionscroll
 
-mov castlestroka, offset LTRL12
+mov castlestroka, offset LTRL13
 
 push castlestroka
 call confessionscroll
@@ -288,9 +288,9 @@ push castlestroka
 push offset buffer
 call oblivion
 mov castlestrochka, eax
-mov castlemh, offset LTRL13
-mov castlemi, offset LTRL14
-mov castlemiv, offset LTRL15
+mov castlemh, offset LTRL14
+mov castlemi, offset LTRL15
+mov castlemiv, offset LTRL16
 
 push castlemh
 call confessionscroll
@@ -306,10 +306,10 @@ call confessionscroll
 push offset newline
 call confessionscroll
 
-mov castledsa, offset LTRL16
+mov castledsa, offset LTRL17
 mov castleytr, offset LTRL10
 
-push offset LTRL17
+push offset LTRL18
 call confessionscroll
 
 
@@ -323,19 +323,19 @@ pop ebx
 mov castleasd, ebx
 
 mov edx, castleasd
-cmp edx, LTRL18
+cmp edx, LTRL19
 
 jz right3
 jnz wrong3
 right3:
 
-push offset LTRL19
+push offset LTRL20
 call confessionscroll
 
 jmp next3
 wrong3:
 
-push offset LTRL20
+push offset LTRL21
 call confessionscroll
 
 next3:
@@ -352,12 +352,12 @@ push offset newline
 call confessionscroll
 
 
-push offset LTRL21
+push offset LTRL22
 call confessionscroll
 
 
-push LTRL22
-push LTRL18
+push LTRL23
+push LTRL19
 push offset buffer
 call fortune
 push eax
@@ -372,23 +372,23 @@ call confessionsquire
 push offset newline
 call confessionscroll
 
-push LTRL23
+push LTRL24
 
 pop ebx
 mov castleu, ebx
 
-push LTRL24
+push LTRL25
 
 pop ebx
 mov castlev, ebx
 
 
-push offset LTRL25
+push offset LTRL26
 call confessionscroll
 
 push castleu
 push castlev
-push LTRL2
+push LTRL27
 pop ebx
 pop eax
 imul eax, ebx
@@ -397,13 +397,13 @@ pop ebx
 pop eax
 add eax, ebx
 push eax
-push LTRL3
-push LTRL3
+push LTRL5
+push LTRL5
 pop ebx
 pop eax
 add eax, ebx
 push eax
-push LTRL2
+push LTRL27
 pop ebx
 pop eax
 cdq
@@ -417,8 +417,8 @@ neg eax
 bk: 
 push eax
 
-push LTRL26
-push LTRL23
+push LTRL28
+push LTRL24
 call bastard
 push eax
 pop ebx
@@ -436,9 +436,9 @@ call confessionsquire
 push offset newline
 call confessionscroll
 
-mov castlec, offset LTRL27
+mov castlec, offset LTRL29
 
-push offset LTRL28
+push offset LTRL30
 call confessionscroll
 
 
@@ -457,10 +457,10 @@ call confessionsquire
 push offset newline
 call confessionscroll
 
-mov eax, LTRL29
-cmp eax, LTRL29
-je case1_1
+mov eax, LTRL31
 cmp eax, LTRL31
+je case1_1
+cmp eax, LTRL3
 je case1_2
 cmp eax, castlee
 je case1_3
@@ -468,7 +468,7 @@ jmp switch_end1
 
 case1_1:
 
-push offset LTRL30
+push offset LTRL32
 call confessionscroll
 
 push offset newline
@@ -476,7 +476,7 @@ call confessionscroll
 
 case1_2:
 
-push offset LTRL32
+push offset LTRL33
 call confessionscroll
 
 push offset newline
@@ -484,14 +484,14 @@ call confessionscroll
 
 case1_3:
 
-push offset LTRL33
+push offset LTRL34
 call confessionscroll
 
 push offset newline
 call confessionscroll
 
 switch_end1:
-mov castlelen, offset LTRL34
+mov castlelen, offset LTRL35
 
 push castlelen
 push offset buffer
@@ -502,7 +502,7 @@ pop ebx
 mov castlek, ebx
 
 
-push offset LTRL35
+push offset LTRL36
 call confessionscroll
 
 
@@ -512,13 +512,13 @@ call confessionsquire
 push offset newline
 call confessionscroll
 
-push LTRL36
+push LTRL37
 
 pop ebx
 mov castlenumb, ebx
 
 push castlenumb
-push LTRL37
+push LTRL2
 pop ebx
 pop eax
 cdq
@@ -577,7 +577,7 @@ call confessionscroll
 
 push LTRL43
 push LTRL44
-push LTRL23
+push LTRL24
 pop ebx
 pop eax
 sub eax, ebx
@@ -600,13 +600,13 @@ call confessionsquire
 push offset newline
 call confessionscroll
 
-push LTRL23
-push LTRL37
+push LTRL24
+push LTRL2
 pop ebx
 pop eax
 and eax, ebx
 push eax
-push LTRL2
+push LTRL27
 pop ebx
 pop eax
 add eax, ebx
@@ -654,12 +654,12 @@ call confessionsquire
 push offset newline
 call confessionscroll
 
-push LTRL3
+push LTRL5
 
 pop ebx
 mov castlepoi, ebx
 
-push LTRL3
+push LTRL5
 
 pop ebx
 mov castleisi, ebx
@@ -683,7 +683,7 @@ push offset LTRL45
 call confessionscroll
 
 next4:
-push LTRL2
+push LTRL27
 
 pop ebx
 mov castlekni, ebx
@@ -693,7 +693,7 @@ push offset LTRL46
 call confessionscroll
 
 mov edx, castlekni
-cmp edx, LTRL22
+cmp edx, LTRL23
 
 jnz cycle5
 jmp cyclenext5
@@ -707,7 +707,7 @@ push offset LTRL47
 call confessionscroll
 
 push castlekni
-push LTRL2
+push LTRL27
 pop ebx
 pop eax
 add eax, ebx
@@ -717,7 +717,7 @@ pop ebx
 mov castlekni, ebx
 
 mov edx, castlekni
-cmp edx, LTRL22
+cmp edx, LTRL23
 
 jnz cycle5
 cyclenext5:
@@ -736,7 +736,7 @@ push offset LTRL49
 call confessionscroll
 
 push castlekni
-push LTRL18
+push LTRL19
 pop ebx
 pop eax
 add eax, ebx

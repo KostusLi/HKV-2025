@@ -84,10 +84,9 @@ namespace GRB
 			Rule::Chain(1, TS('x'))
 		),
 
-		Rule(NS('V'), GRB_ERROR_SERIES + 12, 4,
+		Rule(NS('V'), GRB_ERROR_SERIES + 12, 3,
 			Rule::Chain(1, TS('l')),
 			Rule::Chain(1, TS('i')),
-			Rule::Chain(1, TS('h')),
 			Rule::Chain(1, TS('k'))
 		),
 
@@ -103,7 +102,7 @@ namespace GRB
 			Rule::Chain(2, TS('j'), NS('W'))
 		),
 
-		Rule(NS('K'), GRB_ERROR_SERIES + 14, 20,
+		Rule(NS('K'), GRB_ERROR_SERIES + 14, 16,
 			Rule::Chain(7, TS('n'), TS('t'), TS('i'), TS('='), NS('W'), TS(';'), NS('K')),
 			Rule::Chain(5, TS('n'), TS('t'), TS('i'), TS(';'), NS('K')),
 			Rule::Chain(5, TS('i'), TS('='), NS('W'), TS(';'), NS('K')),
@@ -112,12 +111,8 @@ namespace GRB
 			Rule::Chain(3, TS('^'), TS(';'), NS('K')),
 			Rule::Chain(5, TS('?'), NS('Z'), TS('#'), NS('R'), NS('K')),
 			Rule::Chain(4, TS('i'), NS('F'), TS(';'), NS('K')),
-			Rule::Chain(9, TS('q'), TS('('), NS('W'), TS(')'), TS('['), NS('J'), TS(']'), TS(';'), NS('K')),
-			Rule::Chain(8, TS('q'), TS('('), NS('W'), TS(')'), TS('['), NS('J'), TS(']'), TS(';')),
 			Rule::Chain(8, TS('q'), TS('('), NS('W'), TS(')'), TS('['), NS('J'), TS(']'), NS('K')),
 			Rule::Chain(7, TS('q'), TS('('), NS('W'), TS(')'), TS('['), NS('J'), TS(']')),
-			Rule::Chain(3, TS('g'), TS(';'), NS('K')),
-			Rule::Chain(2, TS('g'), TS(';')),
 
 			Rule::Chain(6, TS('n'), TS('t'), TS('i'), TS('='), NS('W'), TS(';')),
 			Rule::Chain(4, TS('i'), TS('='), NS('W'), TS(';')),
@@ -140,11 +135,15 @@ namespace GRB
 			Rule::Chain(3, TS('i'), NS('F'), TS(';'))
 		),
 
-		Rule(NS('J'), GRB_ERROR_SERIES + 16, 4,
+		Rule(NS('J'), GRB_ERROR_SERIES + 16, 8,
+			Rule::Chain(8, TS('v'), NS('V'), TS('['), NS('K'), TS('g'), TS(';'), TS(']'), NS('J')),
+			Rule::Chain(7, TS('v'), NS('V'), TS('['), NS('K'), TS('g'), TS(';'), TS(']')),
 			Rule::Chain(6, TS('v'), NS('V'), TS('['), NS('K'), TS(']'), NS('J')),
 			Rule::Chain(5, TS('v'), NS('V'), TS('['), NS('K'), TS(']')),
 			Rule::Chain(5, TS('d'), TS('['), NS('K'), TS(']'), NS('J')),
-			Rule::Chain(4, TS('d'), TS('['), NS('K'), TS(']'))
+			Rule::Chain(4, TS('d'), TS('['), NS('K'), TS(']')),
+			Rule::Chain(7, TS('d'), TS('['), NS('K'), TS('g'), TS(';'), TS(']'), NS('J')),
+			Rule::Chain(6, TS('d'), TS('['), NS('K'), TS('g'), TS(';'), TS(']'))
 		)
 	);
 
