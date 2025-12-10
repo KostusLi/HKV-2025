@@ -1,0 +1,24 @@
+﻿Build started 10.12.2025 18:53:19.
+Logging verbosity is set to: Normal.     1>Project "C:\Users\user\OneDrive\Рабочий стол\HKV-2025\DirectivesOfKings\DirectivesOfKings.vcxproj" on node 2 (Build target(s)).
+     1>PrepareForBuild:
+         Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
+       InitializeBuildStatus:
+         Creating "Debug\Directiv.bb1ede4c.tlog\unsuccessfulbuild" because "AlwaysCreate" was specified.
+         Touching "Debug\Directiv.bb1ede4c.tlog\unsuccessfulbuild".
+       _MASM:
+         Assembling DirectivesOfKing.asm...
+         cmd.exe /C "C:\Users\user\AppData\Local\Temp\tmp01d13c3ca81a4e67bfec18eb2db17430.cmd"
+         ml.exe /c /nologo /Zi /Fo"Debug\DirectivesOfKing.obj" /W3 /errorReport:prompt  /TaDirectivesOfKing.asm
+       Link:
+         C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\bin\HostX86\x86\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\user\OneDrive\Рабочий стол\HKV-2025\HKV-2025\Debug\DirectivesOfKings.exe" /INCREMENTAL /ILK:"Debug\DirectivesOfKings.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\user\OneDrive\Рабочий стол\HKV-2025\HKV-2025\Debug\DirectivesOfKings.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\user\OneDrive\Рабочий стол\HKV-2025\HKV-2025\Debug\DirectivesOfKings.lib" /MACHINE:X86 Debug\DirectivesOfKing.obj
+         DirectivesOfKings.vcxproj -> C:\Users\user\OneDrive\Рабочий стол\HKV-2025\HKV-2025\Debug\DirectivesOfKings.exe
+       FinalizeBuildStatus:
+         Deleting file "Debug\Directiv.bb1ede4c.tlog\unsuccessfulbuild".
+         Touching "Debug\Directiv.bb1ede4c.tlog\DirectivesOfKings.lastbuildstate".
+     1>Done Building Project "C:\Users\user\OneDrive\Рабочий стол\HKV-2025\DirectivesOfKings\DirectivesOfKings.vcxproj" (Build target(s)).
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:00.70

@@ -35,7 +35,8 @@ temple[
 	
 	confession "("; confession abc; confession ">="; confession abcd; confession ") :";
 	check: abc ~ abcd #
-	charge [str="True";]
+	charge [str="True";
+	]
 	backup [str="False";]#
 	confession str;
 	newleaf;
@@ -64,8 +65,10 @@ temple[
 	elder squire  asd;
 	asd=comparescrolls(dsa,ytr);
 	check: asd & 1 #
-	charge [confession "The lines are the same";]
-	backup [confession "The lines are not the same";]#
+	charge [confession "The lines are the same";
+	]
+	backup [confession "The lines are not the same";
+]#
 	newleaf;
 
 
@@ -174,6 +177,7 @@ temple[
 		kni = kni + 2;
 	]#
 	confession kni;
+
 	check: kni ! 20 #
 	patrol [
 	    confession "hi";

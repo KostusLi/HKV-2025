@@ -1,0 +1,35 @@
+﻿Build started 10.12.2025 18:22:10.
+Logging verbosity is set to: Normal.     1>Project "C:\Users\user\OneDrive\Рабочий стол\HKV-2025\Arsenal\Arsenal.vcxproj" on node 2 (Rebuild target(s)).
+     1>PrepareForBuild:
+         Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
+         Creating directory "Debug\Arsenal.tlog\".
+       InitializeBuildStatus:
+         Creating "Debug\Arsenal.tlog\unsuccessfulbuild" because "AlwaysCreate" was specified.
+         Touching "Debug\Arsenal.tlog\unsuccessfulbuild".
+       ClCompile:
+         C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\bin\HostX86\x86\CL.exe /c /ZI /JMC /nologo /W3 /WX- /diagnostics:column /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _LIB /D _UNICODE /D UNICODE /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /permissive- /Yc"pch.h" /Fp"Debug\Arsenal.pch" /Fo"Debug\\" /Fd"C:\Users\user\OneDrive\Рабочий стол\HKV-2025\HKV-2025\Debug\Arsenal.pdb" /external:W3 /Gd /TP /analyze- /FC /errorReport:prompt pch.cpp
+         pch.cpp
+         C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\bin\HostX86\x86\CL.exe /c /ZI /JMC /nologo /W3 /WX- /diagnostics:column /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _LIB /D _UNICODE /D UNICODE /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /permissive- /Yu"pch.h" /Fp"Debug\Arsenal.pch" /Fo"Debug\\" /Fd"C:\Users\user\OneDrive\Рабочий стол\HKV-2025\HKV-2025\Debug\Arsenal.pdb" /external:W3 /Gd /TP /analyze- /FC /errorReport:prompt Arsenal.cpp
+         Arsenal.cpp
+     1>C:\Users\user\OneDrive\Рабочий стол\HKV-2025\Arsenal\Arsenal.cpp(87,19): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+         (compiling source file '/Arsenal.cpp')
+         
+       Lib:
+         C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\bin\HostX86\x86\Lib.exe /OUT:"C:\Users\user\OneDrive\Рабочий стол\HKV-2025\HKV-2025\Debug\Arsenal.lib" /NOLOGO /MACHINE:X86 Debug\Arsenal.obj
+         Debug\pch.obj
+         Arsenal.vcxproj -> C:\Users\user\OneDrive\Рабочий стол\HKV-2025\HKV-2025\Debug\Arsenal.lib
+       FinalizeBuildStatus:
+         Deleting file "Debug\Arsenal.tlog\unsuccessfulbuild".
+         Touching "Debug\Arsenal.tlog\Arsenal.lastbuildstate".
+     1>Done Building Project "C:\Users\user\OneDrive\Рабочий стол\HKV-2025\Arsenal\Arsenal.vcxproj" (Rebuild target(s)).
+
+Build succeeded.
+
+       "C:\Users\user\OneDrive\Рабочий стол\HKV-2025\Arsenal\Arsenal.vcxproj" (Rebuild target) (1) ->
+       (ClCompile target) -> 
+         C:\Users\user\OneDrive\Рабочий стол\HKV-2025\Arsenal\Arsenal.cpp(87,19): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+
+    1 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:01.37
