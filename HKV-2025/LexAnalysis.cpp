@@ -415,8 +415,51 @@ namespace Lexer
 						}
 						case LEX_LEFTBRACE:
 						{
-							if (i > 0 && *in.words[i - 1].word == LEX_BACKUP || *in.words[i - 1].word == LEX_CHARGE || *in.words[i - 1].word == LEX_PATROL)
-								break;
+							// 1. Простые операторы: charge, backup, patrol.
+							// Используем strcmp для сравнения строк!
+							if (i > 0 && (strcmp(in.words[i - 1].word, "backup") == 0 ||
+								strcmp(in.words[i - 1].word, "charge") == 0 ||
+								strcmp(in.words[i - 1].word, "patrol") == 0))
+							{
+								break; // Это оператор, область видимости НЕ создаем
+							}
+
+							// 2. Оператор path (формат: path значение [ )
+							// Слово "path" находится за 2 позиции до скобки
+							if (i > 1 && strcmp(in.words[i - 2].word, "path") == 0)
+							{
+								break; // Это path, область видимости НЕ создаем
+							}
+
+							// 3. Оператор council (формат: council (...) [ )
+							// Перед скобкой всегда стоит закрывающая круглая скобка ')'
+							if (i > 0 && strcmp(in.words[i - 1].word, ")") == 0)
+							{
+								int k = i - 1;
+								int balance = 0;
+								bool isCouncil = false;
+
+								// Идем назад, пропуская все внутри скобок (...), чтобы найти слово перед '('
+								while (k >= 0)
+								{
+									if (strcmp(in.words[k].word, ")") == 0) balance++;
+									else if (strcmp(in.words[k].word, "(") == 0) balance--;
+
+									if (balance == 0) // Нашли парную открывающую '('
+									{
+										// Проверяем слово перед '('
+										if (k > 0 && strcmp(in.words[k - 1].word, "council") == 0)
+										{
+											isCouncil = true;
+										}
+										break;
+									}
+									k--;
+								}
+								if (isCouncil) break; // Это council, область видимости НЕ создаем
+							}
+
+							// Стандартная логика: создание новой области видимости (для temple и функций)
 							char* functionname = new char[MAXSIZE_ID];
 							char* scopename = getScopeName(tables.idtable, in.words[i - 1].word);
 							if (scopename == nullptr)  break;
@@ -426,7 +469,16 @@ namespace Lexer
 						}
 						case LEX_BRACELET:
 						{
-							if (*in.words[i + 1].word == LEX_ID_TYPE || *in.words[i + 1].word == LEX_HOLLOW || *in.words[i + 1].word == LEX_TEMPLE)
+							// Смотрим на следующее слово за закрывающей скобкой
+							char* nextWord = in.words[i + 1].word;
+
+							// Проверяем, не является ли это path или tiresome
+							// (они начинаются на 'p' и 't', что совпадает с кодами лексем HOLLOW и ID_TYPE)
+							bool isPathOrTiresome = (strcmp(nextWord, "path") == 0) || (strcmp(nextWord, "tiresome") == 0);
+
+							// Закрываем scope, только если это НЕ path и НЕ tiresome
+							if (!isPathOrTiresome &&
+								(*nextWord == LEX_ID_TYPE || *nextWord == LEX_HOLLOW || *nextWord == LEX_TEMPLE))
 							{
 								if (!scopes.empty())
 									scopes.pop();

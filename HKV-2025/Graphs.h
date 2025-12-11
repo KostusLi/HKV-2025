@@ -47,7 +47,7 @@
 
 #define GRAPH_SCROLL_LITERAL 3,\
 	FST::NODE(1, FST::RELATION('\"', 1)),\
-	FST::NODE(88, \
+	FST::NODE(90, \
 			FST::RELATION('a', 1), FST::RELATION('b', 1), FST::RELATION('c', 1), FST::RELATION('d', 1),\
 			FST::RELATION('e', 1), FST::RELATION('f', 1), FST::RELATION('g', 1), FST::RELATION('h', 1),\
 			FST::RELATION('i', 1), FST::RELATION('j', 1), FST::RELATION('k', 1), FST::RELATION('l', 1),\
@@ -70,7 +70,8 @@
 			FST::RELATION('=', 1), FST::RELATION(':', 1), FST::RELATION(')', 1), FST::RELATION('(', 1),\
 			FST::RELATION('}', 1), FST::RELATION('{', 1), FST::RELATION(']', 1), FST::RELATION('[', 1),\
 			FST::RELATION('!', 1), FST::RELATION('?', 1), FST::RELATION('#', 1), FST::RELATION('&', 1),\
-			FST::RELATION('>', 1), FST::RELATION('<', 1), FST::RELATION('[', 1), FST::RELATION(']', 1), FST::RELATION('%', 1),\
+			FST::RELATION('>', 1), FST::RELATION('<', 1), FST::RELATION('[', 1), FST::RELATION(']', 1), \
+			FST::RELATION('%', 1), FST::RELATION('|', 1), FST::RELATION('~', 1),\
 			FST::RELATION('\"', 2)), \
 	FST::NODE()
 

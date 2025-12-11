@@ -1,152 +1,202 @@
---------------------------------------------------------------------------------------------------------
-|  N  |Stroke in TL|ID type                   |Name                         |Variable (parameters)        |
---------------------------------------------------------------------------------------------------------
-|0    |2           |squire function           |maxthree                       |P0:squire, P1:squire, P2:squire |
-|1    |5           |squire parameter          |a                              |0                              |
-|2    |8           |squire parameter          |b                              |0                              |
-|3    |11          |squire parameter          |c1                             |0                              |
-|4    |16          |squire variable           |maxthree_temp                  |0                              |
-|5    |36          |scroll function           |unitescrolls                   |P0:scroll, P1:scroll           |
-|6    |39          |scroll parameter          |s1                             |[0]                            |
-|7    |42          |scroll parameter          |s2                             |[0]                            |
-|8    |47          |scroll variable           |unitescrolls_result            |[0]                            |
-|9    |51          |squire variable           |unitescrolls_len1              |0                              |
-|10   |75          |hollow function           |greet                          |P0:scroll                      |
-|11   |78          |scroll parameter          |name1                          |[0]                            |
-|12   |83          |scroll variable           |greet_hello                    |[0]                            |
-|13   |86          |scroll literal            |LTRL1                          |[11]Greetings,                 |
-|14   |107         |squire variable           |temple_x                       |0                              |
-|15   |108         |squire literal            |LTRL2                          |10                             |
-|16   |113         |squire variable           |temple_y                       |0                              |
-|17   |114         |squire literal            |LTRL3                          |25                             |
-|18   |119         |squire variable           |temple_z                       |0                              |
-|19   |120         |squire literal            |LTRL4                          |5                              |
-|20   |125         |squire variable           |temple_maxval                  |0                              |
-|21   |129         |scroll variable           |temple_name1                   |[0]                            |
-|22   |130         |scroll literal            |LTRL5                          |[10]Sir Arthur                 |
-|23   |135         |scroll variable           |temple_title1                  |[0]                            |
-|24   |136         |scroll literal            |LTRL6                          |[10] the Brave                 |
-|25   |141         |scroll variable           |temple_fulltitle               |[0]                            |
-|26   |145         |rune variable             |temple_sym                     |[0]                            |
-|27   |146         |rune literal              |LTRL7                          |[1]a                           |
-|28   |156         |honor variable            |temple_equalcheck              |[0]                            |
-|29   |157         |honor literal             |LTRL8                          |[0]                            |
-|30   |188         |scroll literal            |LTRL9                          |[14]Titles differ.             |
-|31   |194         |squire variable           |temple_charge1_bim             |0                              |
-|32   |202         |scroll literal            |LTRL10                         |[17]Titles are equal.          |
-|33   |227         |squire literal            |LTRL11                         |12                             |
-|34   |228         |squire literal            |LTRL12                         |44                             |
-|35   |229         |squire literal            |LTRL13                         |33                             |
-|36   |240         |squire variable           |temple_bitor                   |0                              |
-|37   |244         |squire variable           |temple_bitand                  |0                              |
-|38   |248         |squire variable           |temple_bitnot                  |0                              |
-|39   |284         |squire variable           |temple_t                       |0                              |
-|40   |288         |squire literal            |LTRL14                         |42                             |
-|41   |307         |squire literal            |LTRL15                         |1                              |
-|42   |310         |scroll literal            |LTRL16                         |[15]Path one taken.            |
-|43   |316         |squire literal            |LTRL17                         |2                              |
-|44   |319         |scroll literal            |LTRL18                         |[15]Path two taken.            |
-|45   |327         |scroll literal            |LTRL19                         |[29]No matching path -- tiresome. |
-|46   |334         |scroll literal            |LTRL20                         |[21]End of demonstration.      |
---------------------------------------------------------------------------------------------------------
+squire action bastard(squire x, squire y)
+[
+	elder squire  res;
+	check: x > y #
+	charge [res = x;]
+	backup [res = y;]#
+	comeback res;
+]
+
+hollow action castle(scroll a, scroll b)
+[
+	elder scroll str;
+	str = consolidate(a, b);
+        confession "Resultiik: ";
+	confession str;
+	newleaf;
+	comeback;
+]
+
+temple[
+	elder scroll gigik;
+	elder squire abc = 3;
+	elder squire abcd = 6;
 
 
------------------  ЛЕКСЕМЫ СООТВЕТСТВУЮЩИЕ ИСХОДНОМУ КОДУ ---------------------
+	elder squire f = -8;
+	elder squire s = 4;
+	elder squire finish;
+	finish = f / s;
+	confession "Finishing result of tournoment: "; 
+	confession finish;
+	newleaf;
+	
+	confession "("; confession abc; confession ">="; confession abcd; confession ") :";
+	check: abc ~ abcd #
+	charge [gigik="Faith";]
+	backup [gigik="Exile";]#
+	confession gigik;
+	newleaf;
 
-1   | ati[0][ti[1],ti[2],ti[3]]
-2   | {
-3   | eti[4];
-4   | q[4]i[1]i[2]z=;
-5   | q[4]i[4]i[3]z=;
-6   | i[4]r;
-7   | }
-8   | ati[5][ti[6],ti[7]]
-9   | {
-10  | eti[8];
-11  | eti[9];
-12  | q[9]i[6]n=;
-13  | ui[9];
-14  | ^;
-15  | q[8]i[6]i[7]y=;
-16  | i[8]r;
-17  | }
-18  | ahi[10][ti[11]]
-19  | {
-20  | eti[12];
-21  | q[12]l[13]=;
-22  | q[12]i[12]i[11]y=;
-23  | ui[12];
-24  | ^;
-25  | r;
-26  | }
-28  | m
-29  | {
-30  | etq[14]l[15]=;
-31  | etq[16]l[17]=;
-32  | etq[18]l[19]=;
-33  | eti[20];
-35  | etq[21]l[22]=;
-36  | etq[23]l[24]=;
-37  | eti[25];
-38  | etq[26]l[27]=;
-39  | ui[26];
-40  | ^;
-42  | etq[28]l[29]=;
-44  | i[21]i[10];
-46  | q[25]i[21]i[23]i[5]=;
-47  | ui[25];
-48  | ^;
-50  | q[28]i[21]i[23]x=;
-52  | c[i[28]l[29]!]
-53  | {
-54  | ul[30];
-55  | ^;
-56  | etq[31]l[15]=;
-57  | }
-58  | b
-59  | {
-60  | ul[32];
-61  | ^;
-62  | }
-64  | w[i[14]i[16]@]
-65  | {
-66  | q[14]i[14]l[19]+=;
-67  | ui[14];
-68  | ^;
-69  | }
-70  | q[20]l[33]l[34]l[35]i[0]=;
-71  | ui[20];
-72  | ^;
-73  | eti[36];
-74  | eti[37];
-75  | eti[38];
-77  | q[36]i[14]i[18]|=;
-78  | ui[36];
-79  | ^;
-80  | q[37]i[14]i[18]&=;
-81  | ui[37];
-82  | ^;
-83  | q[38]i[14]~=;
-84  | ui[38];
-85  | ^;
-86  | etq[39]i[14]i[16]+l[40]*i[14]i[16]z+=;
-87  | ui[39];
-88  | ^;
-91  | s[i[14]]
-92  | {
-93  | pl[41]{
-94  | ul[42];
-95  | ^;
-96  | }
-97  | pl[43]{
-98  | ul[44];
-99  | ^;
-100 | }
-101 | d{
-102 | ul[45];
-103 | ^;
-104 | }
-105 | }
-106 | ul[46];
-107 | ^;
-108 | }$
+
+	confession "scroll copied: ";
+	elder scroll stroka = "lipupu";
+	confession stroka;
+	newleaf;
+	elder scroll strochka;
+	strochka = oblivion(stroka);
+
+
+	elder rune mh = 'B';
+	elder rune mi = 'r';
+	elder rune miv = 'o';
+	confession mh;
+	confession mi;
+	confession miv;
+	newleaf;
+
+
+	elder scroll dsa = "F";
+	elder scroll ytr = "Faith";
+	confession "Compare scrolls: ";
+	elder squire  asd;
+	asd=comparescrolls(dsa,ytr);
+	check: asd & 1 #
+	charge [confession "Scrolls faith";
+	]
+	backup [confession "Scrolls exile";
+]#
+	newleaf;
+
+
+	dsa = ytr;
+	confession dsa;
+	newleaf;
+
+	confession "Fortune of squires: ";
+	elder squire sir;
+	sir = fortune(1, 10);
+	confession sir;
+	newleaf;
+	
+	elder squire  u = 5;
+	elder squire  v = 7;
+	elder squire  r;
+	confession "Wisdomers are learned expressions:  ";
+	r=u+v*2-(4+4)/2 + bastard(5, 8);
+	confession r;
+	newleaf;
+
+
+	elder scroll c = "34";
+	elder squire e;	
+    	confession "Transmutation from scroll to squire: ";
+    	e = transmute(c);
+    	confession e;
+    	newleaf;
+
+	
+	council(34)[
+	path 23[
+	    confession "Domain expension";
+	    newleaf;
+	]
+	path 6[
+	    confession "shut up";
+	    newleaf;
+	]
+	path e[
+  	confession "g";
+	newleaf;
+	]
+	]
+
+	elder squire k;
+	elder scroll len="Charge, my battle brothers!";
+	k = filament(len);
+    	confession "The filament of me scroll: ";
+	confession k;
+    	newleaf;
+
+        
+    	elder squire numb = 127;
+	elder squire remainder;
+	remainder = numb % 3;
+	confession "Remainder after division 54 by 3: ";
+	confession remainder;
+	newleaf;
+	
+	
+	elder scroll name ="KostusLi - ";
+	elder scroll surname ="David goggins";
+		
+
+	elder squire im = o45;
+	confession im;
+	newleaf;
+	e = im + e;
+	confession "Commutation of octal(o45) and decimal(123): ";
+	confession e;
+	newleaf;
+	e=o123 + (45 - 5);
+	confession e;
+	newleaf;
+
+	elder squire frigh = (5 bitand 3)+2;
+	confession frigh;
+	newleaf;
+	elder squire bip = bitnot frigh;
+	confession bip;
+	newleaf;
+	elder squire cup = frigh bitor bip;
+	confession cup;
+	newleaf;
+
+
+	elder squire poi = 4;
+	elder squire isi = 4;
+	check: poi @ isi #
+	charge [
+		castle(name,surname);
+	]
+
+	backup [
+		confession "Error";
+	]#
+
+
+ 	elder squire kni = 2;
+	confession "Patrol from 2 to 10: ";
+	check: kni ! 10 #
+	patrol [
+		confession kni;
+		confession " ";
+		kni = kni + 2;
+	]#
+	confession kni;
+
+	check: kni ! 20 #
+	patrol [
+	    confession "hi";
+	    kni = kni + 1;
+	]#
+	newleaf;
+
+	council('a')[
+		path 'a'[
+		confession "Choose 3";
+		newleaf;
+		]
+		path 'g'[
+		confession "Choose 1";
+		newleaf;
+		escape;
+		]
+		tiresome[
+		confession "have not path";
+		newleaf;
+		escape;
+		]
+	]
+
+]

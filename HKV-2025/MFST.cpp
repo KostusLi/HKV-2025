@@ -146,11 +146,54 @@ namespace MFST
 			rc_step = step(log);
 		switch (rc_step)
 		{
-		case LENTA_END:         MFST_TRACE4(log, "------>LENTA_END")
+		/*case LENTA_END:         MFST_TRACE4(log, "------>LENTA_END")
 			* log.stream << "-------------------------------------------------------------------------------------" << std::endl;
 			sprintf_s(buf, MFST_DIAGN_MAXSIZE, "%d:всего строк %d, синтаксический анализ выполнен без ошибок ", 0, lenta_size);
 			*log.stream << std::setw(4) << std::left << 0 << ":всего строк " << lenta_size << ", синтаксический анализ выполнен без ошибок " << std::endl;
 			rc = true;
+			break;*/
+		case LENTA_END:
+			MFST_TRACE4(log, "------>LENTA_END")
+
+				if (st.size() > 1) // ≈сли стек не пуст (ошибка: код закончилс€ неожиданно)
+				{
+					rc = false;
+					lenta_position--; // ќткатываемс€ на последний существующий символ дл€ корректного номера строки
+
+					bool isTempleBroken = false;
+					// ѕробегаем по стеку и ищем ']', который закрывает temple
+					// st.c - это доступ к внутреннему контейнеру твоего стека (благодар€ my_stack_SHORT)
+					for (int k = 0; k < st.size(); k++)
+					{
+						if (st.c[k] == GRB::Rule::Chain::T(']'))
+						{
+							isTempleBroken = true;
+							break;
+						}
+					}
+
+					*log.stream << "-------------------------------------------------------------------------------------" << std::endl;
+
+					if (isTempleBroken)
+					{
+						// ≈сли нашли забытый ']', принудительно кидаем ошибку 600 (ѕадение ’рама)
+						sprintf_s(buf, MFST_DIAGN_MAXSIZE, "ќшибка 600: строка %d, %s", lex.lextable.table[lenta_size - 1].sn, Error::GetError(600).message);
+						*log.stream << buf << std::endl;
+					}
+					else
+					{
+						// »наче выводим ошибку того правила, на котором остановились (как было раньше)
+						savediagnois(NS_NORULE);
+						*log.stream << getDiagnosis(0, buf) << std::endl;
+					}
+				}
+				else
+				{
+					*log.stream << "-------------------------------------------------------------------------------------" << std::endl;
+					sprintf_s(buf, MFST_DIAGN_MAXSIZE, "%d:всего строк %d, синтаксический анализ выполнен без ошибок ", 0, lenta_size);
+					*log.stream << std::setw(4) << std::left << 0 << ":всего строк " << lenta_size << ", синтаксический анализ выполнен без ошибок " << std::endl;
+					rc = true;
+				}
 			break;
 		case NS_NORULE:         MFST_TRACE4(log, "------>NS_NORULE")
 			* log.stream << "-------------------------------------------------------------------------------------" << std::endl;

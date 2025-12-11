@@ -11,10 +11,17 @@ namespace Polish
         switch (e.lexema)
         {
         case LEX_LEFTHESIS: case LEX_RIGHTTHESIS: return 0;
-        case LEX_BITOR: case LEX_BITAND: return 1;
-        case LEX_PLUS: case LEX_MINUS: return 1;
-        case LEX_BITNOT: return 2;
-        case LEX_STAR: case LEX_DIRSLASH: case LEX_PERSENT: return 2;
+
+        case LEX_BITOR: return 1;                  // Самый низкий (ИЛИ)
+
+        case LEX_BITAND: return 2;                 // Чуть выше (И)
+
+        case LEX_PLUS: case LEX_MINUS: return 3;   // Арифметика (сложение/вычитание)
+
+        case LEX_STAR: case LEX_DIRSLASH: case LEX_PERSENT: return 4; // Арифметика (умножение/деление)
+
+        case LEX_BITNOT: return 5;                 // Унарное НЕ (самый высокий)
+
         default: return -1;
         }
     }

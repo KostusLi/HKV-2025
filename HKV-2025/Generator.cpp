@@ -169,7 +169,7 @@ namespace Gener
 		return str;
 	}
 
-	string genConditionCode(Lexer::LEX& tables, int i, string& cyclecode)
+	/*string genConditionCode(Lexer::LEX& tables, int i, string& cyclecode)
 	{
 		string str;
 		conditionnum++;
@@ -211,6 +211,85 @@ namespace Gener
 			str = str + "\njmp cyclenext" + itoS(conditionnum);
 		}
 		else if (!r || !w)  str = str + "\njmp next" + itoS(conditionnum);
+		return str;
+	}*/
+
+	string genConditionCode(Lexer::LEX& tables, int i, string& cyclecode)
+	{
+		string str;
+		conditionnum++;
+		cyclecode.clear();
+		IT::Entry lft = ITENTRY(i + 1);
+		IT::Entry rgt = ITENTRY(i + 3);
+		bool w = false, r = false, c = false;
+		string wstr, rstr;
+
+		// Определяем наличие блоков charge (r), backup (w), patrol (c)
+		for (int j = i + 5; LEXEMA(j) != LEX_STENKA; j++)
+		{
+			if (LEXEMA(j) == LEX_CHARGE) r = true;
+			if (LEXEMA(j) == LEX_BACKUP) w = true;
+			if (LEXEMA(j) == LEX_PATROL) c = true;
+		}
+
+		str = str + "mov edx, " + lft.id + "\ncmp edx, " + rgt.id + "\n";
+
+		// ПОЛНОСТЬЮ ОБНОВЛЕННАЯ ЛОГИКА ПЕРЕХОДОВ
+		switch (LEXEMA(i + 2))
+		{
+			// > (MORE)
+			// Если истина: JG (Greater), Если ложь: JLE (Less or Equal)
+		case LEX_MORE:       rstr = "jg";  wstr = "jle"; break;
+
+			// < (LESS)
+			// Если истина: JL (Less), Если ложь: JGE (Greater or Equal)
+		case LEX_LESS:       rstr = "jl";  wstr = "jge"; break;
+
+			// == (EQUALS) (&)
+			// Если истина: JE (Equal), Если ложь: JNE (Not Equal)
+		case LEX_EQUALS:     rstr = "je";  wstr = "jne"; break;
+
+			// != (NOTEQUALS) (!)
+			// Если истина: JNE (Not Equal), Если ложь: JE (Equal)
+		case LEX_NOTEQUALS:  rstr = "jne"; wstr = "je";  break;
+
+			// >= (MOREEQUALS) (~)
+			// Если истина: JGE (Greater or Equal), Если ложь: JL (Less)
+		case LEX_MOREEQUALS: rstr = "jge"; wstr = "jl";  break;
+
+			// <= (LESSEQUALS) (@)
+			// Если истина: JLE (Less or Equal), Если ложь: JG (Greater)
+		case LEX_LESSEQUALS: rstr = "jle"; wstr = "jg";  break;
+		}
+
+		// Генерация прыжков
+
+		// 1. Блок Цикла (patrol)
+		if (c)
+		{
+			str = str + "\n" + rstr + " cycle" + itoS(conditionnum);
+			cyclecode = str; // Сохраняем код для повторной вставки в конце цикла
+			str = str + "\njmp cyclenext" + itoS(conditionnum); // Если условие не выполнилось - выход
+		}
+		else
+		{
+			// 2. Блок Условия (check)
+
+			// Если условие ИСТИННО и есть блок charge -> прыгаем в charge
+			if (r) str = str + "\n" + rstr + " right" + itoS(conditionnum);
+
+			// Если условие ЛОЖНО и есть блок backup -> прыгаем в backup
+			if (w) str = str + "\n" + wstr + " wrong" + itoS(conditionnum);
+
+			// ВАЖНО: Защита от "проваливания"
+			// Если условие ЛОЖНО, но блока backup НЕТ, мы должны перепрыгнуть через charge (в next)
+			// Иначе программа выполнит charge, даже если условие ложно.
+			if (!w)
+			{
+				str = str + "\n" + wstr + " next" + itoS(conditionnum);
+			}
+		}
+
 		return str;
 	}
 
