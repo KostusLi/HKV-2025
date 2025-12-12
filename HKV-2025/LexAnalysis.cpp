@@ -66,7 +66,7 @@ namespace Lexer
 
 	char* getScopeName(IT::IdTable idtable, char* prevword)
 	{
-		char* a = new char[5];
+		char* a = new char[7];
 		a[0] = 't';
 		a[1] = 'e';
 		a[2] = 'm';
@@ -76,6 +76,8 @@ namespace Lexer
 		a[6] = '\0';
 		if (strcmp(prevword, MAIN) == 0)
 			return a;
+
+
 		for (int i = idtable.size - 1; i >= 0; i--)
 			if (idtable.table[i].idtype == IT::IDTYPE::F)
 				return idtable.table[i].id;
@@ -324,15 +326,34 @@ namespace Lexer
 
 		int i = tables.lextable.size;
 
+
+		if (i > 1 && itentry->idtype == IT::IDTYPE::V && tables.lextable.table[i - 1].lexema !=LEX_ID_TYPE && tables.lextable.table[i - 1].lexema != LEX_ELDER)
+		{
+			Log::writeError(log.stream, Error::GetError(300, line, 0));
+			lex_ok = false;
+		}
+		if (i > 1 && itentry->idtype == IT::IDTYPE::V && tables.lextable.table[i - 1].lexema != LEX_ID_TYPE)
+		{
+			Log::writeError(log.stream, Error::GetError(303, line, 0));
+			lex_ok = false;
+		}
 		if (i > 1 && itentry->idtype == IT::IDTYPE::V && tables.lextable.table[i - 2].lexema != LEX_ELDER)
 		{
 			Log::writeError(log.stream, Error::GetError(304, line, 0));
 			lex_ok = false;
 		}
-		if (i > 1 && itentry->idtype == IT::IDTYPE::F && tables.lextable.table[i - 1].lexema != LEX_ACTION)
+		if (itentry->idtype == IT::IDTYPE::F)
 		{
-			Log::writeError(log.stream, Error::GetError(303, line, 0));
-			lex_ok = false;
+			if (i > 0 && tables.lextable.table[i - 1].lexema != LEX_ACTION)
+			{
+				Log::writeError(log.stream, Error::GetError(323, line, 0));
+				lex_ok = false;
+			}
+			else if (i < 2 || (tables.lextable.table[i - 2].lexema != LEX_ID_TYPE && tables.lextable.table[i - 2].lexema != LEX_HOLLOW))
+			{
+				Log::writeError(log.stream, Error::GetError(303, line, 0));
+				lex_ok = false;
+			}
 		}
 		if (itentry->iddatatype == IT::IDDATATYPE::INDIGENT)
 		{
@@ -353,6 +374,7 @@ namespace Lexer
 		char curword[STR_MAXSIZE], nextword[STR_MAXSIZE];
 		int curline;
 		std::stack <char*> scopes;
+		std::stack <bool> scopePushed;
 
 		for (int i = 0; i < In::InWord::size; i++)
 		{

@@ -146,6 +146,11 @@ namespace Semantic
 									break;
 
 								IT::IDDATATYPE ctype = tables.idtable.table[tables.lextable.table[j].idxTI].iddatatype;
+								if (paramscount > 3)
+								{
+									Log::writeError(log.stream, Error::GetError(307, tables.lextable.table[i].sn, 0));
+									sem_ok = false;
+								}
 								if (ctype != e.value.params.types[paramscount - 1] && paramscount<=e.value.params.count)
 								{
 									Log::writeError(log.stream, Error::GetError(309, tables.lextable.table[i].sn, 0));
@@ -159,11 +164,6 @@ namespace Semantic
 						if (paramscount != e.value.params.count)
 						{
 							Log::writeError(log.stream, Error::GetError(308, tables.lextable.table[i].sn, 0));
-							sem_ok = false;
-						}
-						if (paramscount > 3)
-						{
-							Log::writeError(log.stream, Error::GetError(307, tables.lextable.table[i].sn, 0));
 							sem_ok = false;
 						}
 					}
@@ -241,7 +241,7 @@ namespace Semantic
 							if (defaultFound)
 							{
 								sem_ok = false;
-								Log::writeError(log.stream, Error::GetError(321, tables.lextable.table[j].sn, 0));
+								Log::writeError(log.stream, Error::GetError(322, tables.lextable.table[j].sn, 0));
 							}
 							defaultFound = true;
 						}
@@ -250,7 +250,6 @@ namespace Semantic
 				break;
 			}
 			case LEX_MORE:	case LEX_LESS: case LEX_EQUALS:   case LEX_NOTEQUALS:	case LEX_MOREEQUALS:	case LEX_LESSEQUALS:
-			case LEX_BITAND: case LEX_BITOR:
 			{
 				bool flag = true;
 				if (i > 1 && tables.lextable.table[i - 1].idxTI != NULLIDX_TI)

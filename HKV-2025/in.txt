@@ -17,11 +17,11 @@ squire action calctax(squire income, squire rate)
 temple
 [
     proclaim("KINGDOM STATUS REPORT");
-
     elder squire gold = 100;
     elder squire taxrate = 15;
     elder squire tax;
     
+
     tax = calctax(gold, taxrate);
     
     confession "Base Gold: "; confession gold; newleaf;
@@ -44,13 +44,15 @@ temple
     proclaim("WEAPONRY SELECTION");
     
     elder squire weap;
-    weap = fortune(1, 4); 
+    weap = fortune(1, 3); 
     
+    elder scroll piligrim = "Dragonborn";
     confession "Blacksmith forged weapon ID: "; confession weap; newleaf;
 
     council(weap)[
         path 1 [
             confession "We have a Sword!"; newleaf;
+	    piligrim  = "Scout of the Earth";
             escape;
         ]
         path 2 [
@@ -68,6 +70,8 @@ temple
     ]
 
     newleaf;
+    confession piligrim;
+    newleaf;
     proclaim("MAGIC AND RUNES");
 
     elder squire mana = o12; 
@@ -82,7 +86,7 @@ temple
     newleaf;
 
     confession "Mana (octal o12 -> dec): "; confession mana; newleaf;
-    
+
     elder squire power = 5; 
     elder squire artifact = 3;   
     elder squire combined;
@@ -95,5 +99,10 @@ temple
 
     elder squire cursed = bitnot power;
     confession "Bitwise NOT (~5): "; confession cursed; newleaf;
+
+
+    elder rune runic = 'A';
+    elder rune ranik = 'u';
+    confession runic; confession ranik; newleaf;
 
 ]

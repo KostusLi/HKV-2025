@@ -38,25 +38,28 @@ ExitProcess PROTO:DWORD
 		LTRL11 sdword 1
 		LTRL12 byte 'Army is ready!', 0
 		LTRL13 byte 'WEAPONRY SELECTION', 0
-		LTRL14 sdword 4
+		LTRL14 sdword 3
 		LTRL15 byte 'Blacksmith forged weapon ID: ', 0
 		LTRL16 byte 'We have a Sword!', 0
 		LTRL17 sdword 2
 		LTRL18 byte 'We have a Bow!', 0
-		LTRL19 sdword 3
-		LTRL20 byte 'We have an Axe!', 0
-		LTRL21 byte 'Peasants will fight with forks...', 0
-		LTRL22 byte 'MAGIC AND RUNES', 0
+		LTRL19 byte 'We have an Axe!', 0
+		LTRL20 byte 'Peasants will fight with forks...', 0
+		LTRL21 byte 'MAGIC AND RUNES', 0
+		LTRL22 byte 'Dragonborn', 0
 		LTRL23 sdword 10
 		LTRL24 sdword 8
 		LTRL25 sdword 7
 		LTRL26 sdword 14
 		LTRL27 sdword 20
 		LTRL28 sdword 6
-		LTRL29 byte 'Mana (octal o12 -> dec): ', 0
-		LTRL30 byte 'Bitwise AND (5 & 3): ', 0
-		LTRL31 byte 'Bitwise OR (5 | 3): ', 0
-		LTRL32 byte 'Bitwise NOT (~5): ', 0
+		LTRL29 sdword 4
+		LTRL30 byte 'Mana (octal o12 -> dec): ', 0
+		LTRL31 byte 'Bitwise AND (5 & 3): ', 0
+		LTRL32 byte 'Bitwise OR (5 | 3): ', 0
+		LTRL33 byte 'Bitwise NOT (~5): ', 0
+		LTRL34 byte 'A', 0
+		LTRL35 byte 'u', 0
 .data
 		temp sdword ?
 		buffer byte 256 dup(0)
@@ -67,6 +70,7 @@ ExitProcess PROTO:DWORD
 		templeknights dword 0
 		templemaxkni dword 0
 		templeweap dword 0
+		calctaxpiligrim dword ?
 		calctaxmana dword 0
 		calctaxcost dword 0
 		calctaxitemi dword 0
@@ -77,6 +81,8 @@ ExitProcess PROTO:DWORD
 		calctaxartifact dword 0
 		calctaxcombined dword 0
 		calctaxcursed dword 0
+		calctaxrunic dword ?
+		calctaxranik dword ?
 .code
 
 ;----------- proclaim ------------
@@ -265,7 +271,7 @@ cmp eax, LTRL11
 je case1_1
 cmp eax, LTRL17
 je case1_2
-cmp eax, LTRL19
+cmp eax, LTRL14
 je case1_3
 jmp default1
 
@@ -291,7 +297,7 @@ jmp switch_end1
 
 case1_3:
 
-push offset LTRL20
+push offset LTRL19
 call confessionscroll
 
 push offset newline
@@ -301,7 +307,7 @@ jmp switch_end1
 
 default1:
 
-push offset LTRL21
+push offset LTRL20
 call confessionscroll
 
 push offset newline
@@ -314,9 +320,10 @@ push offset newline
 call confessionscroll
 
 
-push offset LTRL22
+push offset LTRL21
 call proclaim
 
+mov calctaxpiligrim, offset LTRL22
 push LTRL23
 
 pop ebx
@@ -348,7 +355,7 @@ pop ebx
 pop eax
 add eax, ebx
 push eax
-push LTRL14
+push LTRL29
 push LTRL17
 pop ebx
 pop eax
@@ -389,7 +396,7 @@ push offset newline
 call confessionscroll
 
 
-push offset LTRL29
+push offset LTRL30
 call confessionscroll
 
 
@@ -404,7 +411,7 @@ push LTRL9
 pop ebx
 mov calctaxpower, ebx
 
-push LTRL19
+push LTRL14
 
 pop ebx
 mov calctaxartifact, ebx
@@ -420,7 +427,7 @@ pop ebx
 mov calctaxcombined, ebx
 
 
-push offset LTRL30
+push offset LTRL31
 call confessionscroll
 
 
@@ -441,7 +448,7 @@ pop ebx
 mov calctaxcombined, ebx
 
 
-push offset LTRL31
+push offset LTRL32
 call confessionscroll
 
 
@@ -460,12 +467,25 @@ pop ebx
 mov calctaxcursed, ebx
 
 
-push offset LTRL32
+push offset LTRL33
 call confessionscroll
 
 
 push calctaxcursed
 call confessionsquire
+
+push offset newline
+call confessionscroll
+
+mov calctaxrunic, offset LTRL34
+mov calctaxranik, offset LTRL35
+
+push calctaxrunic
+call confessionscroll
+
+
+push calctaxranik
+call confessionscroll
 
 push offset newline
 call confessionscroll
