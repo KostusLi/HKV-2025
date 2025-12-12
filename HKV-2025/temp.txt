@@ -1,202 +1,64 @@
-squire action bastard(squire x, squire y)
-[
-	elder squire  res;
-	check: x > y #
-	charge [res = x;]
-	backup [res = y;]#
-	comeback res;
-]
+    newleaf;
+    proclaim("SCROLL ARCHIVE");
 
-hollow action castle(scroll a, scroll b)
-[
-	elder scroll str;
-	str = consolidate(a, b);
-        confession "Resultiik: ";
-	confession str;
-	newleaf;
-	comeback;
-]
+    elder scroll partone = "Royal ";
+    elder scroll parttwo = "Decree";
+    elder scroll fulldoc;
+    
+    fulldoc = consolidate(partone, parttwo);
+    confession fulldoc; newleaf;
 
-temple[
-	elder scroll gigik;
-	elder squire abc = 3;
-	elder squire abcd = 6;
+    elder squire len;
+    len = filament(fulldoc);
+    confession "Length of decree: "; confession len; newleaf;
 
+    elder scroll numstr = "123";
+    elder squire numval;
+    numval = transmute(numstr);
+    confession "String 123 to Squire: "; confession numval; newleaf;
 
-	elder squire f = -8;
-	elder squire s = 4;
-	elder squire finish;
-	finish = f / s;
-	confession "Finishing result of tournoment: "; 
-	confession finish;
-	newleaf;
-	
-	confession "("; confession abc; confession ">="; confession abcd; confession ") :";
-	check: abc ~ abcd #
-	charge [gigik="Faith";]
-	backup [gigik="Exile";]#
-	confession gigik;
-	newleaf;
+    elder scroll original = "Ancient Secret";
+    elder scroll copy;
+    copy = oblivion(original);
+    confession "Copy of scroll: "; confession copy; newleaf;
 
+    elder squire issame;
+    issame = comparescrolls(original, copy);
 
-	confession "scroll copied: ";
-	elder scroll stroka = "lipupu";
-	confession stroka;
-	newleaf;
-	elder scroll strochka;
-	strochka = oblivion(stroka);
+    check: issame & 1 #
+    charge [ confession "Copy is perfect"; newleaf; ]
+    backup [ confession "Copy failed"; newleaf; ]#
 
+    newleaf;
+    proclaim("FINAL BATTLE CALCULATION");
 
-	elder rune mh = 'B';
-	elder rune mi = 'r';
-	elder rune miv = 'o';
-	confession mh;
-	confession mi;
-	confession miv;
-	newleaf;
+    elder squire damage = 50;
+    elder squire hp = 100;
+    
+    damage = damage * 2;
 
+    check: damage > hp #
+    charge [
+        confession "Hero wins with critical hit!";
+    ]
+    backup [
+        confession "Hero needs to run!";
+    ]#
+    newleaf;
 
-	elder scroll dsa = "F";
-	elder scroll ytr = "Faith";
-	confession "Compare scrolls: ";
-	elder squire  asd;
-	asd=comparescrolls(dsa,ytr);
-	check: asd & 1 #
-	charge [confession "Scrolls faith";
-	]
-	backup [confession "Scrolls exile";
-]#
-	newleaf;
+    proclaim("COMPLEX PRIORITY TEST");
 
-
-	dsa = ytr;
-	confession dsa;
-	newleaf;
-
-	confession "Fortune of squires: ";
-	elder squire sir;
-	sir = fortune(1, 10);
-	confession sir;
-	newleaf;
-	
-	elder squire  u = 5;
-	elder squire  v = 7;
-	elder squire  r;
-	confession "Wisdomers are learned expressions:  ";
-	r=u+v*2-(4+4)/2 + bastard(5, 8);
-	confession r;
-	newleaf;
-
-
-	elder scroll c = "34";
-	elder squire e;	
-    	confession "Transmutation from scroll to squire: ";
-    	e = transmute(c);
-    	confession e;
-    	newleaf;
-
-	
-	council(34)[
-	path 23[
-	    confession "Domain expension";
-	    newleaf;
-	]
-	path 6[
-	    confession "shut up";
-	    newleaf;
-	]
-	path e[
-  	confession "g";
-	newleaf;
-	]
-	]
-
-	elder squire k;
-	elder scroll len="Charge, my battle brothers!";
-	k = filament(len);
-    	confession "The filament of me scroll: ";
-	confession k;
-    	newleaf;
-
-        
-    	elder squire numb = 127;
-	elder squire remainder;
-	remainder = numb % 3;
-	confession "Remainder after division 54 by 3: ";
-	confession remainder;
-	newleaf;
-	
-	
-	elder scroll name ="KostusLi - ";
-	elder scroll surname ="David goggins";
-		
-
-	elder squire im = o45;
-	confession im;
-	newleaf;
-	e = im + e;
-	confession "Commutation of octal(o45) and decimal(123): ";
-	confession e;
-	newleaf;
-	e=o123 + (45 - 5);
-	confession e;
-	newleaf;
-
-	elder squire frigh = (5 bitand 3)+2;
-	confession frigh;
-	newleaf;
-	elder squire bip = bitnot frigh;
-	confession bip;
-	newleaf;
-	elder squire cup = frigh bitor bip;
-	confession cup;
-	newleaf;
-
-
-	elder squire poi = 4;
-	elder squire isi = 4;
-	check: poi @ isi #
-	charge [
-		castle(name,surname);
-	]
-
-	backup [
-		confession "Error";
-	]#
-
-
- 	elder squire kni = 2;
-	confession "Patrol from 2 to 10: ";
-	check: kni ! 10 #
-	patrol [
-		confession kni;
-		confession " ";
-		kni = kni + 2;
-	]#
-	confession kni;
-
-	check: kni ! 20 #
-	patrol [
-	    confession "hi";
-	    kni = kni + 1;
-	]#
-	newleaf;
-
-	council('a')[
-		path 'a'[
-		confession "Choose 3";
-		newleaf;
-		]
-		path 'g'[
-		confession "Choose 1";
-		newleaf;
-		escape;
-		]
-		tiresome[
-		confession "have not path";
-		newleaf;
-		escape;
-		]
-	]
-
-]
+    
+    elder squire vala = 5;
+    elder squire valb = 3;
+    elder squire complexres;
+    
+    complexres = vala + valb * 2 bitand 12 bitor 1;
+    
+    confession "Calc: 5 + 3 * 2 bitand 12 bitor 1"; newleaf;
+    confession "Expected: 9"; newleaf;
+    confession "Result: "; confession complexres; newleaf;
+    
+    elder squire nottest;
+    nottest = bitnot 0 + 5;
+    confession "Calc: bitnot 0 + 5 (Expect 4): "; confession nottest; newleaf;

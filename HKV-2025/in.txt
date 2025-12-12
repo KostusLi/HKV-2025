@@ -25,12 +25,6 @@ temple
     tax = calctax(gold, taxrate);
     
     confession "Base Gold: "; confession gold; newleaf;
-    confession "Tax collected: "; confession tax; newleaf;
-    
-    gold = gold + tax - 50; 
-    confession "Treasury after expenses: "; confession gold; newleaf;
-
-    newleaf;
     proclaim("ARMY TRAINING");
 
     elder squire knights = 0;
@@ -101,70 +95,5 @@ temple
 
     elder squire cursed = bitnot power;
     confession "Bitwise NOT (~5): "; confession cursed; newleaf;
-
-    newleaf;
-    proclaim("SCROLL ARCHIVE");
-
-    elder scroll partone = "Royal ";
-    elder scroll parttwo = "Decree";
-    elder scroll fulldoc;
-    
-    fulldoc = consolidate(partone, parttwo);
-    confession fulldoc; newleaf;
-
-    elder squire len;
-    len = filament(fulldoc);
-    confession "Length of decree: "; confession len; newleaf;
-
-    elder scroll numstr = "123";
-    elder squire numval;
-    numval = transmute(numstr);
-    confession "String 123 to Squire: "; confession numval; newleaf;
-
-    elder scroll original = "Ancient Secret";
-    elder scroll copy;
-    copy = oblivion(original);
-    confession "Copy of scroll: "; confession copy; newleaf;
-
-    elder squire issame;
-    issame = comparescrolls(original, copy);
-
-    check: issame & 1 #
-    charge [ confession "Copy is perfect"; newleaf; ]
-    backup [ confession "Copy failed"; newleaf; ]#
-
-    newleaf;
-    proclaim("FINAL BATTLE CALCULATION");
-
-    elder squire damage = 50;
-    elder squire hp = 100;
-    
-    damage = damage * 2;
-
-    check: damage > hp #
-    charge [
-        confession "Hero wins with critical hit!";
-    ]
-    backup [
-        confession "Hero needs to run!";
-    ]#
-    newleaf;
-
-    proclaim("COMPLEX PRIORITY TEST");
-
-    
-    elder squire vala = 5;
-    elder squire valb = 3;
-    elder squire complexres;
-    
-    complexres = vala + valb * 2 bitand 12 bitor 1;
-    
-    confession "Calc: 5 + 3 * 2 bitand 12 bitor 1"; newleaf;
-    confession "Expected: 9"; newleaf;
-    confession "Result: "; confession complexres; newleaf;
-    
-    elder squire nottest;
-    nottest = bitnot 0 + 5;
-    confession "Calc: bitnot 0 + 5 (Expect 4): "; confession nottest; newleaf;
 
 ]
