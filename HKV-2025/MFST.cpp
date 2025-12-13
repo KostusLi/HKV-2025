@@ -90,7 +90,12 @@ namespace MFST
 				rc = TS_OK;
 				MFST_TRACE3(log)
 			}
-			else { MFST_TRACE4(log, "TS_NOK/NS_NORULECHАIN") rc = reststate(log) ? TS_NOK : NS_NORULECHAIN; }; //нет правил для цепочки
+			else { 
+				MFST_TRACE4(log, "TS_NOK/NS_NORULECHАIN")
+				
+
+				rc = reststate(log) ? TS_NOK : NS_NORULECHAIN; 
+			}; //нет правил для цепочки
 		}
 		else { rc = LENTA_END; MFST_TRACE4(log, "LENTA_END") };
 		return rc;

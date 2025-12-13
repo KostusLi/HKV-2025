@@ -327,17 +327,17 @@ namespace Lexer
 		int i = tables.lextable.size;
 
 
-		if (i > 1 && itentry->idtype == IT::IDTYPE::V && tables.lextable.table[i - 1].lexema !=LEX_ID_TYPE && tables.lextable.table[i - 1].lexema != LEX_ELDER)
+		if (i > 1 && itentry->idtype == IT::IDTYPE::V && tables.lextable.table[i - 1].lexema !=LEX_ID_TYPE && tables.lextable.table[i - 1].lexema != LEX_ELDER && tables.lextable.table[i - 1].lexema != LEX_ACTION)
 		{
 			Log::writeError(log.stream, Error::GetError(300, line, 0));
 			lex_ok = false;
 		}
-		if (i > 1 && itentry->idtype == IT::IDTYPE::V && tables.lextable.table[i - 1].lexema != LEX_ID_TYPE)
+		if (i > 1 && itentry->idtype == IT::IDTYPE::V && tables.lextable.table[i - 1].lexema != LEX_ID_TYPE && tables.lextable.table[i - 1].lexema != LEX_ACTION)
 		{
 			Log::writeError(log.stream, Error::GetError(303, line, 0));
 			lex_ok = false;
 		}
-		if (i > 1 && itentry->idtype == IT::IDTYPE::V && tables.lextable.table[i - 2].lexema != LEX_ELDER)
+		if (i > 1 && itentry->idtype == IT::IDTYPE::V && tables.lextable.table[i - 2].lexema != LEX_ELDER && tables.lextable.table[i - 1].lexema != LEX_ACTION)
 		{
 			Log::writeError(log.stream, Error::GetError(304, line, 0));
 			lex_ok = false;
@@ -355,7 +355,7 @@ namespace Lexer
 				lex_ok = false;
 			}
 		}
-		if (itentry->iddatatype == IT::IDDATATYPE::INDIGENT)
+		if (itentry->iddatatype == IT::IDDATATYPE::INDIGENT && tables.lextable.table[i - 1].lexema != LEX_ACTION)
 		{
 			Log::writeError(log.stream, Error::GetError(300, line, 0));
 			lex_ok = false;
@@ -437,73 +437,69 @@ namespace Lexer
 						}
 						case LEX_LEFTBRACE:
 						{
-							// 1. Простые операторы: charge, backup, patrol.
-							// Используем strcmp для сравнения строк!
+							bool shouldPushScope = true;
+
+							// 1. Простые операторы: charge, backup, patrol
 							if (i > 0 && (strcmp(in.words[i - 1].word, "backup") == 0 ||
 								strcmp(in.words[i - 1].word, "charge") == 0 ||
 								strcmp(in.words[i - 1].word, "patrol") == 0))
 							{
-								break; // Это оператор, область видимости НЕ создаем
+								shouldPushScope = false;
 							}
-
-							// 2. Оператор path (формат: path значение [ )
-							// Слово "path" находится за 2 позиции до скобки
-							if (i > 1 && strcmp(in.words[i - 2].word, "path") == 0)
+							// 2. Оператор path
+							else if (i > 1 && strcmp(in.words[i - 2].word, "path") == 0)
 							{
-								break; // Это path, область видимости НЕ создаем
+								shouldPushScope = false;
 							}
-
-							// 3. Оператор council (формат: council (...) [ )
-							// Перед скобкой всегда стоит закрывающая круглая скобка ')'
-							if (i > 0 && strcmp(in.words[i - 1].word, ")") == 0)
+							// 3. Оператор council
+							else if (i > 0 && strcmp(in.words[i - 1].word, ")") == 0)
 							{
 								int k = i - 1;
 								int balance = 0;
 								bool isCouncil = false;
-
-								// Идем назад, пропуская все внутри скобок (...), чтобы найти слово перед '('
 								while (k >= 0)
 								{
 									if (strcmp(in.words[k].word, ")") == 0) balance++;
 									else if (strcmp(in.words[k].word, "(") == 0) balance--;
-
-									if (balance == 0) // Нашли парную открывающую '('
+									if (balance == 0)
 									{
-										// Проверяем слово перед '('
-										if (k > 0 && strcmp(in.words[k - 1].word, "council") == 0)
-										{
-											isCouncil = true;
-										}
+										if (k > 0 && strcmp(in.words[k - 1].word, "council") == 0) isCouncil = true;
 										break;
 									}
 									k--;
 								}
-								if (isCouncil) break; // Это council, область видимости НЕ создаем
+								if (isCouncil) shouldPushScope = false;
 							}
 
-							// Стандартная логика: создание новой области видимости (для temple и функций)
-							char* functionname = new char[MAXSIZE_ID];
-							char* scopename = getScopeName(tables.idtable, in.words[i - 1].word);
-							if (scopename == nullptr)  break;
-							strcpy_s(functionname, MAXSIZE_ID, scopename);
-							scopes.push(functionname);
+							// Записываем решение в стек
+							scopePushed.push(shouldPushScope);
+
+							if (shouldPushScope)
+							{
+								char* functionname = new char[MAXSIZE_ID];
+								char* scopename = getScopeName(tables.idtable, in.words[i - 1].word);
+								if (scopename != nullptr) {
+									strcpy_s(functionname, MAXSIZE_ID, scopename);
+									scopes.push(functionname);
+								}
+							}
 							break;
 						}
 						case LEX_BRACELET:
 						{
-							// Смотрим на следующее слово за закрывающей скобкой
-							char* nextWord = in.words[i + 1].word;
-
-							// Проверяем, не является ли это path или tiresome
-							// (они начинаются на 'p' и 't', что совпадает с кодами лексем HOLLOW и ID_TYPE)
-							bool isPathOrTiresome = (strcmp(nextWord, "path") == 0) || (strcmp(nextWord, "tiresome") == 0);
-
-							// Закрываем scope, только если это НЕ path и НЕ tiresome
-							if (!isPathOrTiresome &&
-								(*nextWord == LEX_ID_TYPE || *nextWord == LEX_HOLLOW || *nextWord == LEX_TEMPLE))
+							if (!scopePushed.empty())
 							{
-								if (!scopes.empty())
-									scopes.pop();
+								bool wasPushed = scopePushed.top();
+								scopePushed.pop();
+
+								if (wasPushed)
+								{
+									if (!scopes.empty())
+									{
+										delete[] scopes.top(); // Очистка памяти
+										scopes.pop();
+									}
+								}
 							}
 							break;
 						}
@@ -561,6 +557,18 @@ namespace Lexer
 						idxTI = NULLDX_TI;
 						if (*nextword == LEX_LEFTHESIS)
 							isFunc = true;
+
+						bool isKnownGlobalFunc = false;
+						int globalSearchIdx = IT::isId(tables.idtable, curword);
+						if (globalSearchIdx != NULLIDX_TI)
+						{
+							if (tables.idtable.table[globalSearchIdx].idtype == IT::IDTYPE::F ||
+								tables.idtable.table[globalSearchIdx].idtype == IT::IDTYPE::S)
+							{
+								isKnownGlobalFunc = true;
+							}
+						}
+
 						char* idtype = (isFunc && i > 1) ?
 							in.words[i - 2].word : in.words[i - 1].word;
 						if (!isFunc && !scopes.empty())

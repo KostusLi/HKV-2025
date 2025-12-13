@@ -1,4 +1,4 @@
-#include "stdafx.h"
+п»ї#include "stdafx.h"
 #define GRB_ERROR_SERIES 600
 
 typedef short GRBALPHABET;
@@ -7,191 +7,155 @@ namespace GRB
 {
 	Greibach greibach(NS('S'), TS('$'), 17,
 
-		// S - Стартовый символ (temple)
-		// Ошибка 600: Нарушена структура программы
-		Rule(NS('S'), GRB_ERROR_SERIES + 0, 3,
-			Rule::Chain(6, TS('t'), TS('f'), TS('i'), NS('P'), NS('T'), NS('S')), // Функция (action)
-			Rule::Chain(6, TS('p'), TS('f'), TS('i'), NS('P'), NS('G'), NS('S')), // Процедура (hollow action)
-			Rule::Chain(4, TS('m'), TS('['), NS('K'), TS(']'))                    // Главный вход (temple)
-		),
+	Rule(NS('S'), GRB_ERROR_SERIES, 3,						// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ	
+		Rule::Chain(6, TS('t'), TS('f'), TS('i'), NS('P'), NS('T'), NS('S')),
+		Rule::Chain(6, TS('p'), TS('f'), TS('i'), NS('P'), NS('G'), NS('S')),
+		Rule::Chain(4, TS('m'), TS('['), NS('K'), TS(']'))
+	),
 
-		// T - Тело функции (возвращает значение)
-		// Ошибка 602: Нарушена целостность тела функции
-		Rule(NS('T'), GRB_ERROR_SERIES + 2, 2,
-			Rule::Chain(5, TS('['), TS('e'), NS('V'), TS(';'), TS(']')),          // return value;
-			Rule::Chain(6, TS('['), NS('K'), TS('e'), NS('V'), TS(';'), TS(']'))  // code... return value;
-		),
+	Rule(NS('T'), GRB_ERROR_SERIES + 2, 2,					// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+		Rule::Chain(5, TS('['), TS('e'), NS('V'), TS(';'), TS(']')),
+		Rule::Chain(6, TS('['), NS('K'), TS('e'), NS('V'), TS(';'), TS(']'))
+	),
 
-		// G - Тело процедуры (void)
-		// Ошибка 603: Нарушена целостность тела процедуры
-		Rule(NS('G'), GRB_ERROR_SERIES + 3, 2,
-			Rule::Chain(4, TS('['), TS('e'), TS(';'), TS(']')),                   // return;
-			Rule::Chain(5, TS('['), NS('K'), TS('e'), TS(';'), TS(']'))           // code... return;
-		),
+	Rule(NS('G'), GRB_ERROR_SERIES + 3, 2,					// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+		Rule::Chain(4, TS('['), TS('e'), TS(';'), TS(']')),
+		Rule::Chain(5, TS('['), NS('K'), TS('e'), TS(';'), TS(']'))
+	),
 
-		// P - Параметры функций
-		// Ошибка 601: Не найден список параметров
-		Rule(NS('P'), GRB_ERROR_SERIES + 1, 2,
-			Rule::Chain(3, TS('('), NS('E'), TS(')')), // (param1, param2)
-			Rule::Chain(2, TS('('), TS(')'))           // ()
-		),
+	Rule(NS('P'), GRB_ERROR_SERIES + 1, 2,					// пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ	
+		Rule::Chain(3, TS('('), NS('E'), TS(')')),
+		Rule::Chain(2, TS('('), TS(')'))
+	),
 
-		// E - Перечисление параметров (внутри P)
-		// Ошибка 604: Ошибка в списке параметров
-		Rule(NS('E'), GRB_ERROR_SERIES + 4, 2,
-			Rule::Chain(4, TS('t'), TS('i'), TS(','), NS('E')), // type id, ...
-			Rule::Chain(2, TS('t'), TS('i'))                    // type id
-		),
+	Rule(NS('E'), GRB_ERROR_SERIES + 4, 2,					// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ						
+		Rule::Chain(4, TS('t'), TS('i'), TS(','), NS('E')),
+		Rule::Chain(2, TS('t'), TS('i'))
+	),
 
-		// F - Вызов функции (аргументы)
-		// Ошибка 605: Ошибка при вызове функции
-		Rule(NS('F'), GRB_ERROR_SERIES + 5, 2,
-			Rule::Chain(3, TS('('), NS('N'), TS(')')), // (arg1, arg2)
-			Rule::Chain(2, TS('('), TS(')'))           // ()
-		),
+	Rule(NS('F'), GRB_ERROR_SERIES + 5, 2,					// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ						
+		Rule::Chain(3, TS('('), NS('N'), TS(')')),
+		Rule::Chain(2, TS('('), TS(')'))
+	),
 
-		// N - Перечисление аргументов (внутри F)
-		// Ошибка 606: Ошибка в списке аргументов
-		Rule(NS('N'), GRB_ERROR_SERIES + 6, 4,
-			Rule::Chain(1, TS('i')),                   // id
-			Rule::Chain(1, TS('l')),                   // literal
-			Rule::Chain(3, TS('i'), TS(','), NS('N')), // id, ...
-			Rule::Chain(3, TS('l'), TS(','), NS('N'))  // literal, ...
-		),
+	Rule(NS('N'), GRB_ERROR_SERIES + 6, 4,					// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ		
+		Rule::Chain(1, TS('i')),
+		Rule::Chain(1, TS('l')),
+		Rule::Chain(3, TS('i'), TS(','), NS('N')),
+		Rule::Chain(3, TS('l'), TS(','), NS('N'))
+	),
 
-		// K - Основной блок кода (Statement List)
-		// Ошибка 614: Недопустимая синтаксическая форма (общая ошибка оператора)
-		Rule(NS('K'), GRB_ERROR_SERIES + 14, 16,
-			// Объявление и инициализация: elder type id = expr;
-			Rule::Chain(7, TS('n'), TS('t'), TS('i'), TS('='), NS('W'), TS(';'), NS('K')),
-			Rule::Chain(6, TS('n'), TS('t'), TS('i'), TS('='), NS('W'), TS(';')),
+	Rule(NS('R'), GRB_ERROR_SERIES + 7, 5,					// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ/пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ	
+		Rule::Chain(3, TS('r'), NS('Y'), TS('#')),
+		Rule::Chain(3, TS('w'), NS('Y'), TS('#')),
+		Rule::Chain(3, TS('c'), NS('Y'), TS('#')),
+		Rule::Chain(5, TS('r'), NS('Y'), TS('w'), NS('Y'), TS('#')),
+		Rule::Chain(5, TS('w'), NS('Y'), TS('r'), NS('Y'), TS('#'))
+	),
 
-			// Объявление без инициализации: elder type id;
-			Rule::Chain(5, TS('n'), TS('t'), TS('i'), TS(';'), NS('K')),
-			Rule::Chain(4, TS('n'), TS('t'), TS('i'), TS(';')),
+	Rule(NS('Y'), GRB_ERROR_SERIES + 8, 1,					// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ/пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ			
+		Rule::Chain(3, TS('['), NS('X'), TS(']'))
+	),
 
-			// Присваивание: id = expr;
-			Rule::Chain(5, TS('i'), TS('='), NS('W'), TS(';'), NS('K')),
-			Rule::Chain(4, TS('i'), TS('='), NS('W'), TS(';')),
+	Rule(NS('Z'), GRB_ERROR_SERIES + 9, 3,					// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ/пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ	
+		Rule::Chain(3, TS('i'), NS('L'), TS('i')),
+		Rule::Chain(3, TS('i'), NS('L'), TS('l')),
+		Rule::Chain(3, TS('l'), NS('L'), TS('i'))
+	),
 
-			// Вывод: confession ...;
-			Rule::Chain(4, TS('o'), NS('V'), TS(';'), NS('K')),
-			Rule::Chain(3, TS('o'), NS('V'), TS(';')),
+	Rule(NS('L'), GRB_ERROR_SERIES + 10, 6,					// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ		
+		Rule::Chain(1, TS('<')),
+		Rule::Chain(1, TS('>')),
+		Rule::Chain(1, TS('&')),
+		Rule::Chain(1, TS('!')),
+		Rule::Chain(1, TS('~')),
+		Rule::Chain(1, TS('@'))
+	),
 
-			// Новая строка: newleaf;
-			Rule::Chain(3, TS('^'), TS(';'), NS('K')),
-			Rule::Chain(2, TS('^'), TS(';')),
+	Rule(NS('A'), GRB_ERROR_SERIES + 11, 7,					// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+		Rule::Chain(1, TS('+')),
+		Rule::Chain(1, TS('-')),
+		Rule::Chain(1, TS('*')),
+		Rule::Chain(1, TS('/')),
+		Rule::Chain(1, TS('%')),
+		Rule::Chain(1, TS('z')),
+		Rule::Chain(1, TS('x'))
+	),
 
-			// Управляющие конструкции: check ... # ...
-			// Ошибка 607 (в R) или 609 (в Z)
-			Rule::Chain(5, TS('?'), NS('Z'), TS('#'), NS('R'), NS('K')),
-			Rule::Chain(4, TS('?'), NS('Z'), TS('#'), NS('R')),
+	Rule(NS('V'), GRB_ERROR_SERIES + 12, 4,					// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ. пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+		Rule::Chain(1, TS('l')),
+		Rule::Chain(1, TS('i')),
+		Rule::Chain(1, TS('h')),
+		Rule::Chain(1, TS('k'))
+	),
 
-			// Вызов функции как процедура: func();
-			Rule::Chain(4, TS('i'), NS('F'), TS(';'), NS('K')),
-			Rule::Chain(3, TS('i'), NS('F'), TS(';')),
+	Rule(NS('W'), GRB_ERROR_SERIES + 13, 9,					// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+		Rule::Chain(1, TS('i')),
+		Rule::Chain(1, TS('l')),
+		Rule::Chain(3, TS('('), NS('W'), TS(')')),
+		Rule::Chain(5, TS('('), NS('W'), TS(')'), NS('A'), NS('W')),
+		Rule::Chain(2, TS('i'), NS('F')),
+		Rule::Chain(3, TS('i'), NS('A'), NS('W')),
+		Rule::Chain(3, TS('l'), NS('A'), NS('W')),
+		Rule::Chain(4, TS('i'), NS('F'), NS('A'), NS('W')),
+		Rule::Chain(2, TS('j'), NS('W'))
+	),
 
-			// Council (switch)
-			Rule::Chain(8, TS('q'), TS('('), NS('W'), TS(')'), TS('['), NS('J'), TS(']'), NS('K')),
-			Rule::Chain(7, TS('q'), TS('('), NS('W'), TS(')'), TS('['), NS('J'), TS(']'))
-		),
+	Rule(NS('K'), GRB_ERROR_SERIES + 14, 20,				// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+		Rule::Chain(7, TS('n'), TS('t'), TS('i'), TS('='), NS('W'), TS(';'), NS('K')),	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ + пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ)
+		Rule::Chain(5, TS('n'), TS('t'), TS('i'), TS(';'), NS('K')),	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+		Rule::Chain(5, TS('i'), TS('='), NS('W'), TS(';'), NS('K')),	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 
-		// R - Ветвления и Циклы (продолжение после check condition #)
-		// Ошибка 607: Ошибка в построении Патруля или Атаки
-		Rule(NS('R'), GRB_ERROR_SERIES + 7, 3,
-			// IF-ELSE: charge [...] backup [...] #
-			Rule::Chain(5, TS('w'), NS('Y'), TS('r'), NS('Y'), TS('#')),
+		Rule::Chain(4, TS('o'), NS('V'), TS(';'), NS('K')),				// пїЅпїЅпїЅпїЅпїЅ
+		Rule::Chain(3, TS('^'), TS(';'), NS('K')),						// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+		Rule::Chain(5, TS('?'), NS('Z'), TS('#'), NS('R'), NS('K')),	// condition
+		Rule::Chain(4, TS('i'), NS('F'), TS(';'), NS('K')),				// пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+		Rule::Chain(9, TS('q'), TS('('), NS('W'), TS(')'), TS('['), NS('J'), TS(']'), TS(';'), NS('K')), // switch (...)
+		Rule::Chain(8, TS('q'), TS('('), NS('W'), TS(')'), TS('['), NS('J'), TS(']'), TS(';')), // switch (...)
+		Rule::Chain(8, TS('q'), TS('('), NS('W'), TS(')'), TS('['), NS('J'), TS(']'), NS('K')), // switch (...) Р±РµР· ;
+		Rule::Chain(7, TS('q'), TS('('), NS('W'), TS(')'), TS('['), NS('J'), TS(']')), // switch (...) Р±РµР· ; (РєРѕРЅРµС†)
+		Rule::Chain(3, TS('g'), TS(';'), NS('K')),                         // escape;
+		Rule::Chain(2, TS('g'), TS(';')),
 
-			// IF (без else): charge [...] # (если нужно, раскомментируй)
-			 Rule::Chain(3, TS('w'), NS('Y'), TS('#')), 
+		Rule::Chain(6, TS('n'), TS('t'), TS('i'), TS('='), NS('W'), TS(';')),
+		Rule::Chain(4, TS('i'), TS('='), NS('W'), TS(';')),			// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+		Rule::Chain(4, TS('n'), TS('t'), TS('i'), TS(';')),			// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+		Rule::Chain(3, TS('o'), NS('V'), TS(';')),					// пїЅпїЅпїЅпїЅпїЅ
+		Rule::Chain(2, TS('^'), TS(';')),							// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+		Rule::Chain(4, TS('?'), NS('Z'), TS('#'), NS('R')),			// condition
+		Rule::Chain(3, TS('i'), NS('F'), TS(';'))					// пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+	),
 
-			// WHILE: patrol [...] #
-			Rule::Chain(3, TS('c'), NS('Y'), TS('#'))
-		),
+	Rule(NS('X'), GRB_ERROR_SERIES + 15, 8,				// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ/пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ	
+		Rule::Chain(5, TS('i'), TS('='), NS('W'), TS(';'), NS('X')),	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+		Rule::Chain(4, TS('o'), NS('V'), TS(';'), NS('X')),				// пїЅпїЅпїЅпїЅпїЅ
+		Rule::Chain(3, TS('^'), TS(';'), NS('X')),						// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+		Rule::Chain(4, TS('i'), NS('F'), TS(';'), NS('X')),				// пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 
-		// Y - Блок кода в фигурных скобках (scope)
-		// Ошибка 608: Нарушение в теле Патруля или Атаки
-		Rule(NS('Y'), GRB_ERROR_SERIES + 8, 1,
-			Rule::Chain(3, TS('['), NS('K'), TS(']'))
-		),
+		Rule::Chain(4, TS('i'), TS('='), NS('W'), TS(';')),			// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+		Rule::Chain(3, TS('o'), NS('V'), TS(';')),					// пїЅпїЅпїЅпїЅпїЅ
+		Rule::Chain(2, TS('^'), TS(';')),							// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+		Rule::Chain(3, TS('i'), NS('F'), TS(';'))					// пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+	),
 
-		// Z - Условие сравнения
-		// Ошибка 609: Неверное условие
-		// ТЕПЕРЬ ПОДДЕРЖИВАЕТ ВЫРАЖЕНИЯ: (a+b) > (c*2)
-		Rule(NS('Z'), GRB_ERROR_SERIES + 9, 2,
-			Rule::Chain(3, TS('i'), NS('L'), NS('W')),
-			Rule::Chain(3, TS('l'), NS('L'), NS('W'))
-		),
+	Rule(NS('J'), GRB_ERROR_SERIES + 16, 6,
+			// path val [ code ] break; J (СЂРµРєСѓСЂСЃРёСЏ)
+			Rule::Chain(8, TS('v'), NS('V'), TS('['), NS('X'), TS('g'), TS(';'), TS(']'), NS('J')),
+			// path val [ code ] break; (РєРѕРЅРµС†)
+			Rule::Chain(7, TS('v'), NS('V'), TS('['), NS('X'), TS('g'), TS(';'), TS(']')),
 
-		// L - Операторы сравнения
-		// Ошибка 610: Неверный оператор сравнения
-		Rule(NS('L'), GRB_ERROR_SERIES + 10, 6,
-			Rule::Chain(1, TS('<')),
-			Rule::Chain(1, TS('>')),
-			Rule::Chain(1, TS('&')), // ==
-			Rule::Chain(1, TS('!')), // !=
-			Rule::Chain(1, TS('~')), // >=
-			Rule::Chain(1, TS('@'))  // <=
-		),
+			Rule::Chain(6, TS('v'), NS('V'), TS('['), NS('X'), TS(']'), NS('J')),
+			// path val [ code ] break; (РєРѕРЅРµС†)
+			Rule::Chain(5, TS('v'), NS('V'), TS('['), NS('X'), TS(']')),
 
-		// W - Выражения (Expression)
-		// Ошибка 613: Ошибка в арифметическом выражении
-		Rule(NS('W'), GRB_ERROR_SERIES + 13, 9,
-			// Приоритет: сначала сложные, чтобы жадный алгоритм пытался взять больше
-			Rule::Chain(5, TS('('), NS('W'), TS(')'), NS('A'), NS('W')), // (W) op W
-			Rule::Chain(3, TS('('), NS('W'), TS(')')),                   // (W)
-
-			Rule::Chain(3, TS('i'), NS('A'), NS('W')), // id op W
-			Rule::Chain(3, TS('l'), NS('A'), NS('W')), // lit op W
-			Rule::Chain(4, TS('i'), NS('F'), NS('A'), NS('W')), // func() op W
-
-			Rule::Chain(2, TS('i'), NS('F')),          // func()
-
-			Rule::Chain(2, TS('j'), NS('W')),          // bitnot W
-
-			Rule::Chain(1, TS('i')),                   // id
-			Rule::Chain(1, TS('l'))                    // lit
-		),
-
-		// A - Арифметические операторы
-		// Ошибка 611: Неверный арифметический оператор
-		Rule(NS('A'), GRB_ERROR_SERIES + 11, 7,
-			Rule::Chain(1, TS('+')),
-			Rule::Chain(1, TS('-')),
-			Rule::Chain(1, TS('*')),
-			Rule::Chain(1, TS('/')),
-			Rule::Chain(1, TS('%')),
-			Rule::Chain(1, TS('z')), // bitand
-			Rule::Chain(1, TS('x'))  // bitor
-		),
-
-		// V - Операнд для вывода (confession)
-		// Ошибка 612: Ожидается Род или Литерал
-		Rule(NS('V'), GRB_ERROR_SERIES + 12, 3,
-			Rule::Chain(1, TS('l')), // literal
-			Rule::Chain(1, TS('i')), // id
-			Rule::Chain(1, TS('k'))  // ??? возможно octal literal, если он отдельным токеном
-		),
-
-		// J - Тело Council (switch cases)
-		// Ошибка 616: Ошибка в конструкции council-path
-		Rule(NS('J'), GRB_ERROR_SERIES + 16, 6,
-			// path val [ code ] break; J (рекурсия)
-			Rule::Chain(8, TS('v'), NS('V'), TS('['), NS('K'), TS('g'), TS(';'), TS(']'), NS('J')),
-			// path val [ code ] break; (конец)
-			Rule::Chain(7, TS('v'), NS('V'), TS('['), NS('K'), TS('g'), TS(';'), TS(']')),
-
-			Rule::Chain(6, TS('v'), NS('V'), TS('['), NS('K'), TS(']'), NS('J')),
-			// path val [ code ] break; (конец)
-			Rule::Chain(5, TS('v'), NS('V'), TS('['), NS('K'), TS(']')),
-
-			// tiresome [ code ] break; (default, рекурсия если стоит не последним, но обычно default последний)
-			Rule::Chain(7, TS('d'), TS('['), NS('K'), TS('g'), TS(';'), TS(']'), NS('J')),
-			Rule::Chain(6, TS('d'), TS('['), NS('K'), TS('g'), TS(';'), TS(']'))
+			// tiresome [ code ] break; (default, СЂРµРєСѓСЂСЃРёСЏ РµСЃР»Рё СЃС‚РѕРёС‚ РЅРµ РїРѕСЃР»РµРґРЅРёРј, РЅРѕ РѕР±С‹С‡РЅРѕ default РїРѕСЃР»РµРґРЅРёР№)
+			Rule::Chain(7, TS('d'), TS('['), NS('X'), TS('g'), TS(';'), TS(']'), NS('J')),
+			Rule::Chain(6, TS('d'), TS('['), NS('X'), TS('g'), TS(';'), TS(']'))
 		)
-	);
+);
 
-	// Реализация методов GRB (остается старой, только конструкторы)
+
+	// Р РµР°Р»РёР·Р°С†РёСЏ РјРµС‚РѕРґРѕРІ GRB (РѕСЃС‚Р°РµС‚СЃСЏ СЃС‚Р°СЂРѕР№, С‚РѕР»СЊРєРѕ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂС‹)
 	Rule::Chain::Chain(short psize, GRBALPHABET s, ...)
 	{
 		nt = new GRBALPHABET[size = psize];

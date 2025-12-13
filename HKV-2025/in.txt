@@ -20,7 +20,6 @@ temple
     elder squire gold = 100;
     elder squire taxrate = 15;
     elder squire tax;
-    
 
     tax = calctax(gold, taxrate);
     
@@ -38,6 +37,10 @@ temple
         knights = knights + 1;
     ]#
     
+    check: gold ~ 100#
+    charge [confession "Knight is so Rish"; newleaf;]
+    backup [confession "Khinght so boring("; newleaf;]#
+
     confession "Army is ready!"; newleaf;
 
     newleaf;

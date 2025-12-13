@@ -72,7 +72,7 @@ namespace Error
 		ERROR_ENTRY(612, "{ ПАДЕНИЕ ХРАМА }: Неверное Выражение. Ожидается Род или Литерал"),
 		ERROR_ENTRY(613, "{ ПАДЕНИЕ ХРАМА }: Ошибка в Арифметическом Выражении"),
 		ERROR_ENTRY(614, "{ ПАДЕНИЕ ХРАМА }: Недопустимая Синтаксическая Форма"),
-		ERROR_ENTRY(615, "{ ПАДЕНИЕ ХРАМА }: Недопустимая Форма в Теле Патруля или Атаки"),
+		ERROR_ENTRY(615, "{ ПАДЕНИЕ ХРАМА }: Недопустимая Форма в Теле Патруля/Атаки/Совета"),
 		ERROR_ENTRY(616, "{ ПАДЕНИЕ ХРАМА }: Ошибка в Конструкции council-path (Совет-Путь)"),
 		ERROR_ENTRY_NODEF(617),ERROR_ENTRY_NODEF(618), ERROR_ENTRY_NODEF(619),
 		ERROR_ENTRY_NODEF10(620), ERROR_ENTRY_NODEF10(630), ERROR_ENTRY_NODEF10(640), ERROR_ENTRY_NODEF10(650),

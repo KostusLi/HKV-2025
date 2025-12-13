@@ -36,30 +36,33 @@ ExitProcess PROTO:DWORD
 		LTRL9 sdword 5
 		LTRL10 byte 'Training knight number: ', 0
 		LTRL11 sdword 1
-		LTRL12 byte 'Army is ready!', 0
-		LTRL13 byte 'WEAPONRY SELECTION', 0
-		LTRL14 sdword 3
-		LTRL15 byte 'Blacksmith forged weapon ID: ', 0
-		LTRL16 byte 'We have a Sword!', 0
-		LTRL17 sdword 2
-		LTRL18 byte 'We have a Bow!', 0
-		LTRL19 byte 'We have an Axe!', 0
-		LTRL20 byte 'Peasants will fight with forks...', 0
-		LTRL21 byte 'MAGIC AND RUNES', 0
-		LTRL22 byte 'Dragonborn', 0
-		LTRL23 sdword 10
-		LTRL24 sdword 8
-		LTRL25 sdword 7
-		LTRL26 sdword 14
-		LTRL27 sdword 20
-		LTRL28 sdword 6
-		LTRL29 sdword 4
-		LTRL30 byte 'Mana (octal o12 -> dec): ', 0
-		LTRL31 byte 'Bitwise AND (5 & 3): ', 0
-		LTRL32 byte 'Bitwise OR (5 | 3): ', 0
-		LTRL33 byte 'Bitwise NOT (~5): ', 0
-		LTRL34 byte 'A', 0
-		LTRL35 byte 'u', 0
+		LTRL12 byte 'Knight is so Rish', 0
+		LTRL13 byte 'Khinght so boring(', 0
+		LTRL14 byte 'Army is ready!', 0
+		LTRL15 byte 'WEAPONRY SELECTION', 0
+		LTRL16 sdword 3
+		LTRL17 byte 'Dragonborn', 0
+		LTRL18 byte 'Blacksmith forged weapon ID: ', 0
+		LTRL19 byte 'We have a Sword!', 0
+		LTRL20 byte 'Scout of the Earth', 0
+		LTRL21 sdword 2
+		LTRL22 byte 'We have a Bow!', 0
+		LTRL23 byte 'We have an Axe!', 0
+		LTRL24 byte 'Peasants will fight with forks...', 0
+		LTRL25 byte 'MAGIC AND RUNES', 0
+		LTRL26 sdword 10
+		LTRL27 sdword 8
+		LTRL28 sdword 7
+		LTRL29 sdword 14
+		LTRL30 sdword 20
+		LTRL31 sdword 6
+		LTRL32 sdword 4
+		LTRL33 byte 'Mana (octal o12 -> dec): ', 0
+		LTRL34 byte 'Bitwise AND (5 & 3): ', 0
+		LTRL35 byte 'Bitwise OR (5 | 3): ', 0
+		LTRL36 byte 'Bitwise NOT (~5): ', 0
+		LTRL37 byte 'A', 0
+		LTRL38 byte 'u', 0
 .data
 		temp sdword ?
 		buffer byte 256 dup(0)
@@ -70,19 +73,19 @@ ExitProcess PROTO:DWORD
 		templeknights dword 0
 		templemaxkni dword 0
 		templeweap dword 0
-		calctaxpiligrim dword ?
-		calctaxmana dword 0
-		calctaxcost dword 0
-		calctaxitemi dword 0
-		calctaxitemik dword 0
-		calctaxitemif dword 0
-		calctaxresik dword 0
-		calctaxpower dword 0
-		calctaxartifact dword 0
-		calctaxcombined dword 0
-		calctaxcursed dword 0
-		calctaxrunic dword ?
-		calctaxranik dword ?
+		templepiligrim dword ?
+		templemana dword 0
+		templecost dword 0
+		templeitemi dword 0
+		templeitemik dword 0
+		templeitemif dword 0
+		templeresik dword 0
+		templepower dword 0
+		templeartifact dword 0
+		templecombined dword 0
+		templecursed dword 0
+		templerunic dword ?
+		templeranik dword ?
 .code
 
 ;----------- proclaim ------------
@@ -231,6 +234,12 @@ cmp edx, templemaxkni
 
 jle cycle1
 cyclenext1:
+mov edx, templegold
+cmp edx, LTRL3
+
+jge right2
+jl wrong2
+right2:
 
 push offset LTRL12
 call confessionscroll
@@ -238,15 +247,32 @@ call confessionscroll
 push offset newline
 call confessionscroll
 
+jmp next2
+wrong2:
+
+push offset LTRL13
+call confessionscroll
+
+push offset newline
+call confessionscroll
+
+next2:
+
+push offset LTRL14
+call confessionscroll
+
+push offset newline
+call confessionscroll
+
 push offset newline
 call confessionscroll
 
 
-push offset LTRL13
+push offset LTRL15
 call proclaim
 
 
-push LTRL14
+push LTRL16
 push LTRL11
 push offset buffer
 call fortune
@@ -255,8 +281,9 @@ push eax
 pop ebx
 mov templeweap, ebx
 
+mov templepiligrim, offset LTRL17
 
-push offset LTRL15
+push offset LTRL18
 call confessionscroll
 
 
@@ -269,25 +296,26 @@ call confessionscroll
 mov eax, templeweap
 cmp eax, LTRL11
 je case1_1
-cmp eax, LTRL17
+cmp eax, LTRL21
 je case1_2
-cmp eax, LTRL14
+cmp eax, LTRL16
 je case1_3
 jmp default1
 
 case1_1:
 
-push offset LTRL16
+push offset LTRL19
 call confessionscroll
 
 push offset newline
 call confessionscroll
 
+mov templepiligrim, offset LTRL20
 jmp switch_end1
 
 case1_2:
 
-push offset LTRL18
+push offset LTRL22
 call confessionscroll
 
 push offset newline
@@ -297,7 +325,7 @@ jmp switch_end1
 
 case1_3:
 
-push offset LTRL19
+push offset LTRL23
 call confessionscroll
 
 push offset newline
@@ -307,7 +335,7 @@ jmp switch_end1
 
 default1:
 
-push offset LTRL20
+push offset LTRL24
 call confessionscroll
 
 push offset newline
@@ -320,43 +348,49 @@ push offset newline
 call confessionscroll
 
 
-push offset LTRL21
+push templepiligrim
+call confessionscroll
+
+push offset newline
+call confessionscroll
+
+
+push offset LTRL25
 call proclaim
-
-mov calctaxpiligrim, offset LTRL22
-push LTRL23
-
-pop ebx
-mov calctaxmana, ebx
-
-push LTRL24
-
-pop ebx
-mov calctaxcost, ebx
-
-push LTRL25
-
-pop ebx
-mov calctaxitemi, ebx
 
 push LTRL26
 
 pop ebx
-mov calctaxitemik, ebx
+mov templemana, ebx
 
 push LTRL27
 
 pop ebx
-mov calctaxitemif, ebx
+mov templecost, ebx
+
+push LTRL28
+
+pop ebx
+mov templeitemi, ebx
+
+push LTRL29
+
+pop ebx
+mov templeitemik, ebx
+
+push LTRL30
+
+pop ebx
+mov templeitemif, ebx
 
 push LTRL9
-push LTRL28
+push LTRL31
 pop ebx
 pop eax
 add eax, ebx
 push eax
-push LTRL29
-push LTRL17
+push LTRL32
+push LTRL21
 pop ebx
 pop eax
 sub eax, ebx
@@ -368,8 +402,8 @@ pop ebx
 pop eax
 imul eax, ebx
 push eax
-push calctaxitemik
-push calctaxitemi
+push templeitemik
+push templeitemi
 pop ebx
 pop eax
 cdq
@@ -379,28 +413,28 @@ pop ebx
 pop eax
 add eax, ebx
 push eax
-push calctaxitemif
+push templeitemif
 pop ebx
 pop eax
 add eax, ebx
 push eax
 
 pop ebx
-mov calctaxresik, ebx
+mov templeresik, ebx
 
 
-push calctaxresik
+push templeresik
 call confessionsquire
 
 push offset newline
 call confessionscroll
 
 
-push offset LTRL30
+push offset LTRL33
 call confessionscroll
 
 
-push calctaxmana
+push templemana
 call confessionsquire
 
 push offset newline
@@ -409,82 +443,82 @@ call confessionscroll
 push LTRL9
 
 pop ebx
-mov calctaxpower, ebx
+mov templepower, ebx
 
-push LTRL14
+push LTRL16
 
 pop ebx
-mov calctaxartifact, ebx
+mov templeartifact, ebx
 
-push calctaxpower
-push calctaxartifact
+push templepower
+push templeartifact
 pop ebx
 pop eax
 and eax, ebx
 push eax
 
 pop ebx
-mov calctaxcombined, ebx
+mov templecombined, ebx
 
 
-push offset LTRL31
+push offset LTRL34
 call confessionscroll
 
 
-push calctaxcombined
+push templecombined
 call confessionsquire
 
 push offset newline
 call confessionscroll
 
-push calctaxpower
-push calctaxartifact
+push templepower
+push templeartifact
 pop ebx
 pop eax
 or eax, ebx
 push eax
 
 pop ebx
-mov calctaxcombined, ebx
+mov templecombined, ebx
 
 
-push offset LTRL32
+push offset LTRL35
 call confessionscroll
 
 
-push calctaxcombined
+push templecombined
 call confessionsquire
 
 push offset newline
 call confessionscroll
 
-push calctaxpower
+push templepower
 pop eax
 not eax
 push eax
 
 pop ebx
-mov calctaxcursed, ebx
+mov templecursed, ebx
 
 
-push offset LTRL33
+push offset LTRL36
 call confessionscroll
 
 
-push calctaxcursed
+push templecursed
 call confessionsquire
 
 push offset newline
 call confessionscroll
 
-mov calctaxrunic, offset LTRL34
-mov calctaxranik, offset LTRL35
+mov templerunic, offset LTRL37
+mov templeranik, offset LTRL38
 
-push calctaxrunic
+push templerunic
 call confessionscroll
 
 
-push calctaxranik
+push templeranik
 call confessionscroll
 
 push offset newline
