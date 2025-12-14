@@ -20,7 +20,6 @@ temple
     elder squire gold = 100;
     elder squire taxrate = 15;
     elder squire tax;
-
     tax = calctax(gold, taxrate);
     
     confession "Base Gold: "; confession gold; newleaf;
@@ -38,10 +37,10 @@ temple
     ]#
     
     check: gold ~ 100#
-    charge [confession "Knight is so Rish"; newleaf;]
+    charge [confession "Knight is so Rish"; gold = 120; newleaf;]
     backup [confession "Khinght so boring("; newleaf;]#
 
-    confession "Army is ready!"; newleaf;
+    confession "Army is ready!"; newleaf; confession gold; newleaf; 
 
     newleaf;
     proclaim("WEAPONRY SELECTION");

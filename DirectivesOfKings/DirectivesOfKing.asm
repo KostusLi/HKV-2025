@@ -37,32 +37,33 @@ ExitProcess PROTO:DWORD
 		LTRL10 byte 'Training knight number: ', 0
 		LTRL11 sdword 1
 		LTRL12 byte 'Knight is so Rish', 0
-		LTRL13 byte 'Khinght so boring(', 0
-		LTRL14 byte 'Army is ready!', 0
-		LTRL15 byte 'WEAPONRY SELECTION', 0
-		LTRL16 sdword 3
-		LTRL17 byte 'Dragonborn', 0
-		LTRL18 byte 'Blacksmith forged weapon ID: ', 0
-		LTRL19 byte 'We have a Sword!', 0
-		LTRL20 byte 'Scout of the Earth', 0
-		LTRL21 sdword 2
-		LTRL22 byte 'We have a Bow!', 0
-		LTRL23 byte 'We have an Axe!', 0
-		LTRL24 byte 'Peasants will fight with forks...', 0
-		LTRL25 byte 'MAGIC AND RUNES', 0
-		LTRL26 sdword 10
-		LTRL27 sdword 8
-		LTRL28 sdword 7
-		LTRL29 sdword 14
-		LTRL30 sdword 20
-		LTRL31 sdword 6
-		LTRL32 sdword 4
-		LTRL33 byte 'Mana (octal o12 -> dec): ', 0
-		LTRL34 byte 'Bitwise AND (5 & 3): ', 0
-		LTRL35 byte 'Bitwise OR (5 | 3): ', 0
-		LTRL36 byte 'Bitwise NOT (~5): ', 0
-		LTRL37 byte 'A', 0
-		LTRL38 byte 'u', 0
+		LTRL13 sdword 120
+		LTRL14 byte 'Khinght so boring(', 0
+		LTRL15 byte 'Army is ready!', 0
+		LTRL16 byte 'WEAPONRY SELECTION', 0
+		LTRL17 sdword 3
+		LTRL18 byte 'Dragonborn', 0
+		LTRL19 byte 'Blacksmith forged weapon ID: ', 0
+		LTRL20 byte 'We have a Sword!', 0
+		LTRL21 byte 'Scout of the Earth', 0
+		LTRL22 sdword 2
+		LTRL23 byte 'We have a Bow!', 0
+		LTRL24 byte 'We have an Axe!', 0
+		LTRL25 byte 'Peasants will fight with forks...', 0
+		LTRL26 byte 'MAGIC AND RUNES', 0
+		LTRL27 sdword 10
+		LTRL28 sdword 8
+		LTRL29 sdword 7
+		LTRL30 sdword 14
+		LTRL31 sdword 20
+		LTRL32 sdword 6
+		LTRL33 sdword 4
+		LTRL34 byte 'Mana (octal o12 -> dec): ', 0
+		LTRL35 byte 'Bitwise AND (5 & 3): ', 0
+		LTRL36 byte 'Bitwise OR (5 | 3): ', 0
+		LTRL37 byte 'Bitwise NOT (~5): ', 0
+		LTRL38 byte 'A', 0
+		LTRL39 byte 'u', 0
 .data
 		temp sdword ?
 		buffer byte 256 dup(0)
@@ -244,19 +245,16 @@ right2:
 push offset LTRL12
 call confessionscroll
 
+push LTRL13
+
+pop ebx
+mov templegold, ebx
+
 push offset newline
 call confessionscroll
 
 jmp next2
 wrong2:
-
-push offset LTRL13
-call confessionscroll
-
-push offset newline
-call confessionscroll
-
-next2:
 
 push offset LTRL14
 call confessionscroll
@@ -264,15 +262,30 @@ call confessionscroll
 push offset newline
 call confessionscroll
 
+next2:
+
+push offset LTRL15
+call confessionscroll
+
 push offset newline
 call confessionscroll
 
 
-push offset LTRL15
+push templegold
+call confessionsquire
+
+push offset newline
+call confessionscroll
+
+push offset newline
+call confessionscroll
+
+
+push offset LTRL16
 call proclaim
 
 
-push LTRL16
+push LTRL17
 push LTRL11
 push offset buffer
 call fortune
@@ -281,9 +294,9 @@ push eax
 pop ebx
 mov templeweap, ebx
 
-mov templepiligrim, offset LTRL17
+mov templepiligrim, offset LTRL18
 
-push offset LTRL18
+push offset LTRL19
 call confessionscroll
 
 
@@ -296,34 +309,24 @@ call confessionscroll
 mov eax, templeweap
 cmp eax, LTRL11
 je case1_1
-cmp eax, LTRL21
+cmp eax, LTRL22
 je case1_2
-cmp eax, LTRL16
+cmp eax, LTRL17
 je case1_3
 jmp default1
 
 case1_1:
 
-push offset LTRL19
+push offset LTRL20
 call confessionscroll
 
 push offset newline
 call confessionscroll
 
-mov templepiligrim, offset LTRL20
+mov templepiligrim, offset LTRL21
 jmp switch_end1
 
 case1_2:
-
-push offset LTRL22
-call confessionscroll
-
-push offset newline
-call confessionscroll
-
-jmp switch_end1
-
-case1_3:
 
 push offset LTRL23
 call confessionscroll
@@ -333,9 +336,19 @@ call confessionscroll
 
 jmp switch_end1
 
-default1:
+case1_3:
 
 push offset LTRL24
+call confessionscroll
+
+push offset newline
+call confessionscroll
+
+jmp switch_end1
+
+default1:
+
+push offset LTRL25
 call confessionscroll
 
 push offset newline
@@ -355,42 +368,42 @@ push offset newline
 call confessionscroll
 
 
-push offset LTRL25
+push offset LTRL26
 call proclaim
-
-push LTRL26
-
-pop ebx
-mov templemana, ebx
 
 push LTRL27
 
 pop ebx
-mov templecost, ebx
+mov templemana, ebx
 
 push LTRL28
 
 pop ebx
-mov templeitemi, ebx
+mov templecost, ebx
 
 push LTRL29
 
 pop ebx
-mov templeitemik, ebx
+mov templeitemi, ebx
 
 push LTRL30
+
+pop ebx
+mov templeitemik, ebx
+
+push LTRL31
 
 pop ebx
 mov templeitemif, ebx
 
 push LTRL9
-push LTRL31
+push LTRL32
 pop ebx
 pop eax
 add eax, ebx
 push eax
-push LTRL32
-push LTRL21
+push LTRL33
+push LTRL22
 pop ebx
 pop eax
 sub eax, ebx
@@ -430,7 +443,7 @@ push offset newline
 call confessionscroll
 
 
-push offset LTRL33
+push offset LTRL34
 call confessionscroll
 
 
@@ -445,7 +458,7 @@ push LTRL9
 pop ebx
 mov templepower, ebx
 
-push LTRL16
+push LTRL17
 
 pop ebx
 mov templeartifact, ebx
@@ -461,7 +474,7 @@ pop ebx
 mov templecombined, ebx
 
 
-push offset LTRL34
+push offset LTRL35
 call confessionscroll
 
 
@@ -482,7 +495,7 @@ pop ebx
 mov templecombined, ebx
 
 
-push offset LTRL35
+push offset LTRL36
 call confessionscroll
 
 
@@ -501,7 +514,7 @@ pop ebx
 mov templecursed, ebx
 
 
-push offset LTRL36
+push offset LTRL37
 call confessionscroll
 
 
@@ -511,8 +524,8 @@ call confessionsquire
 push offset newline
 call confessionscroll
 
-mov templerunic, offset LTRL37
-mov templeranik, offset LTRL38
+mov templerunic, offset LTRL38
+mov templeranik, offset LTRL39
 
 push templerunic
 call confessionscroll

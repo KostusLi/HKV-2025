@@ -609,10 +609,10 @@ namespace Lexer
 						else
 						{
 							int i = tables.lextable.size - 1;
-							if (i > 0 && tables.lextable.table[i - 1].lexema == LEX_ELDER || tables.lextable.table[i].lexema == LEX_ELDER
-								|| tables.lextable.table[i - 1].lexema == LEX_ACTION || tables.lextable.table[i].lexema == LEX_ACTION
-								|| tables.lextable.table[i - 1].lexema == LEX_ID_TYPE || tables.lextable.table[i].lexema == LEX_ID_TYPE
-								|| tables.lextable.table[i - 1].lexema == LEX_HOLLOW || tables.lextable.table[i].lexema == LEX_HOLLOW)
+							if (i > 0 &&  tables.lextable.table[i].lexema == LEX_ELDER
+								 || tables.lextable.table[i].lexema == LEX_ACTION
+								 || tables.lextable.table[i].lexema == LEX_ID_TYPE
+								 || tables.lextable.table[i].lexema == LEX_HOLLOW) //вот тут проверка на 305 tables.lextable.table[i - 1].lexema == LEX_ELDER || tables.lextable.table[i - 1].lexema == LEX_ACTION || tables.lextable.table[i - 1].lexema == LEX_ID_TYPE || tables.lextable.table[i - 1].lexema == LEX_HOLLOW
 							{
 								Log::writeError(log.stream, Error::GetError(305, curline, 0));
 								std::cout << "[LEXDBG] duplicate id near declaration, word=" << curword << " line=" << curline << std::endl;
