@@ -169,51 +169,6 @@ namespace Gener
 		return str;
 	}
 
-	/*string genConditionCode(Lexer::LEX& tables, int i, string& cyclecode)
-	{
-		string str;
-		conditionnum++;
-		cyclecode.clear();
-		IT::Entry lft = ITENTRY(i + 1);
-		IT::Entry rgt = ITENTRY(i + 3);
-		bool w = false, r = false, c = false;
-		string wstr, rstr, rstr2;
-
-		for (int j = i + 5; LEXEMA(j) != LEX_STENKA; j++)
-		{
-			if (LEXEMA(j) == LEX_CHARGE) r = true;
-			if (LEXEMA(j) == LEX_BACKUP) w = true;
-			if (LEXEMA(j) == LEX_PATROL) c = true;
-		}
-		str = str + "mov edx, " + lft.id + "\ncmp edx, " + rgt.id + "\n";
-		switch (LEXEMA(i + 2))
-		{
-		case LEX_MORE:  rstr = "jg";  wstr = "jl";  break;
-		case LEX_LESS:   rstr = "jl";  wstr = "jg";  break;
-		case LEX_EQUALS:    rstr = "jz";  wstr = "jnz";  break;
-		case LEX_NOTEQUALS:   rstr = "jnz";  wstr = "jz";  break;
-		case LEX_MOREEQUALS:   rstr = "jz"; rstr2 = "jg";  wstr = "jnz";  break;
-		case LEX_LESSEQUALS:   rstr = "jz"; rstr2 = "jl";  wstr = "jnz";  break;
-		}
-
-		if (LEXEMA(i + 2) == LEX_MORE || LEXEMA(i + 2) == LEX_LESS || LEXEMA(i + 2) == LEX_EQUALS || LEXEMA(i + 2) == LEX_NOTEQUALS) {
-			if (!c && r) str = str + "\n" + rstr + " right" + itoS(conditionnum);
-			if (!c && w) str = str + "\n" + wstr + " wrong" + itoS(conditionnum);
-		}
-		if (LEXEMA(i + 2) == LEX_MOREEQUALS || LEXEMA(i + 2) == LEX_LESSEQUALS) {
-			if (!c && r) str = str + "\n" + rstr + " right" + itoS(conditionnum) + "\n" + rstr2 + " right" + itoS(conditionnum);
-			if (!c && w) str = str + "\n" + wstr + " wrong" + itoS(conditionnum);
-		}
-		if (c)
-		{
-			str = str + "\n" + rstr + " cycle" + itoS(conditionnum);
-			cyclecode = str;
-			str = str + "\njmp cyclenext" + itoS(conditionnum);
-		}
-		else if (!r || !w)  str = str + "\njmp next" + itoS(conditionnum);
-		return str;
-	}*/
-
 	string genConditionCode(Lexer::LEX& tables, int i, string& cyclecode)
 	{
 		string str;

@@ -1,0 +1,121 @@
+hollow action proclaim(scroll title)
+[
+    confession "--- ";
+    confession title;
+    confession " ---";
+    newleaf;
+    comeback;
+]
+
+squire action calctax(squire income, squire rate)
+[
+    elder squire result;
+    result = (income * rate) / 100;
+    comeback result;
+]
+
+temple
+[
+    proclaim("KINGDOM STATUS REPORT";
+    elder squire gold = 100;
+    elder squire taxrate = 15;
+    elder squire tax;
+    tax = calctax(gold, taxrate);
+    
+    confession "Base Gold: "; confession gold; newleaf;
+    proclaim("ARMY TRAINING");
+
+    elder squire knights = 0;
+    elder squire maxkni = 5;
+
+    check: knights @ maxkni #
+    patrol [
+        confession "Training knight number: "; 
+        confession knights; 
+        newleaf;
+        knights = knights + 1;
+	gold = gold+10;
+    ]#
+    
+    confession gold;
+    newleaf;
+
+    check: gold ~ 100#
+    charge [confession "Knight are so Rich!!)))"; gold = 120; newleaf;]
+    backup [confession "Knight are so boring(((";]#
+
+    confession "Army is ready!"; newleaf; confession gold; newleaf; 
+
+    newleaf;
+    proclaim("WEAPONRY SELECTION");
+    
+    elder squire weap;
+    weap = fortune(1, 3); 
+    
+    elder scroll piligrim = "Dragonborn";
+    confession "Blacksmith forged weapon ID: "; confession weap; newleaf;
+
+    council(weap)[
+        path 1 [
+            confession "We have a Sword!"; newleaf;
+	    piligrim  = "Scout of the Earth";
+            escape;
+        ]
+        path 2 [
+            confession "We have a Bow!"; newleaf;
+	    weap = 8;
+            escape;
+        ]
+        tiresome [
+            confession "Peasants will fight with forks..."; newleaf;
+            escape;
+        ]
+        path 3 [
+            confession "We have an Axe!"; newleaf;
+            escape;
+        ]
+    ]
+
+    newleaf;
+    confession piligrim;
+    newleaf;
+    confession weap;
+    newleaf;
+    proclaim("MAGIC AND RUNES");
+
+    elder squire mana = o12; 
+    elder squire cost = 8;
+    
+    elder squire itemi = 7;
+    elder squire itemik = 14;
+    elder squire itemif = 20;
+
+    elder squire resik = (5 + 6)*(4 - 2)+itemik/itemi + itemif;
+    confession resik;
+    newleaf;
+
+    elder squire resultichek = (10 bitand 8) + 6 * 2 - bitnot -6;
+    confession resultichek;
+    newleaf;
+
+    confession "Mana (octal o12 -> dec): "; confession mana; newleaf;
+
+    elder squire power = 5; 
+    elder squire artifact = 3;   
+    elder squire combined;
+    
+    combined = power bitand artifact;
+    confession "Bitwise AND (5 & 3): "; confession combined; newleaf;
+    
+    combined = power bitor artifact;
+    confession "Bitwise OR (5 | 3): "; confession combined; newleaf;
+
+    elder squire cursed = bitnot power;
+    confession "Bitwise NOT (~5): "; confession cursed; newleaf;
+
+
+    elder rune runic = 'A';
+    elder rune ranik = 'u';
+    confession runic; confession ranik; newleaf;
+
+]

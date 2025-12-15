@@ -26,6 +26,17 @@ namespace In
 				break;
 			if (in.code[uch] == IN::Q)   // ковычка 
 				isLiteral = !isLiteral;
+
+			if (!isLiteral && uch == '/' && instream.peek() == '/')
+			{
+				// Пока не конец файла и следующий символ не перенос строки
+				while (!instream.eof() && instream.peek() != IN_CODE_ENDL)
+				{
+					instream.get(); // "Съедаем" символы комментария
+				}
+				continue;
+			}
+
 			switch (in.code[uch])
 			{
 			case IN::N: // новая строка 

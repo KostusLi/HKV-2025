@@ -4,6 +4,7 @@
 #include "LexAnalysis.h"
 #include "SemanticAnalyze.h"
 #include <set>
+#include <string> // Добавлено для формирования ключей set
 
 namespace Semantic
 {
@@ -22,18 +23,24 @@ namespace Semantic
 					sem_ok = false;
 					Log::writeError(log.stream, Error::GetError(303, tables.lextable.table[i].sn, 0));
 				}
+				break; // Добавлен break для безопасности
 			}
-			case LEX_DIRSLASH:
+			case LEX_DIRSLASH: // Деление
+			case LEX_PERSENT:  // Остаток от деления (Добавил проверку на 0 для %)
 			{
+				// Проверка деления на ноль (литерал или переменную, если возможно отследить)
 				int k = i;
+				// Проверка: x / y (если y - переменная)
 				if (tables.lextable.table[i + 1].lexema == LEX_ID)
 				{
+					// Простая эвристика: ищем объявление переменной выше по коду
 					for (k; k > 0; k--)
 					{
 						if (tables.lextable.table[k].lexema == LEX_ID)
 						{
 							if (tables.idtable.table[tables.lextable.table[k].idxTI].id == tables.idtable.table[tables.lextable.table[i + 1].idxTI].id)
 							{
+								// Если нашли объявление и там инициализация нулем (elder squire y = 0;)
 								if (tables.lextable.table[k + 2].lexema == LEX_LITERAL && tables.idtable.table[tables.lextable.table[k + 2].idxTI].value.vint == 0)
 								{
 									sem_ok = false;
@@ -43,12 +50,14 @@ namespace Semantic
 						}
 					}
 				}
+				// Проверка: x / 0 (литерал)
 				if (tables.lextable.table[i + 1].lexema == LEX_LITERAL)
 				{
-					if (tables.idtable.table[tables.lextable.table[i + 1].idxTI].value.vint == 0)
+					if (tables.idtable.table[tables.lextable.table[i + 1].idxTI].iddatatype == IT::IDDATATYPE::SQUIRE &&
+						tables.idtable.table[tables.lextable.table[i + 1].idxTI].value.vint == 0)
 					{
 						sem_ok = false;
-						Log::writeError(log.stream, Error::GetError(318, tables.lextable.table[k].sn, 0));
+						Log::writeError(log.stream, Error::GetError(318, tables.lextable.table[i].sn, 0));
 					}
 				}
 				break;
@@ -69,7 +78,8 @@ namespace Semantic
 							if (!ignore)
 							{
 								IT::IDDATATYPE righttype = tables.idtable.table[tables.lextable.table[k].idxTI].iddatatype;
-								if (lefttype != righttype)
+								// Разрешаем присваивать результат функций, если типы совпадают (грубая проверка)
+								if (righttype != IT::IDDATATYPE::INDIGENT && lefttype != righttype)
 								{
 									Log::writeError(log.stream, Error::GetError(314, tables.lextable.table[k].sn, 0));
 									sem_ok = false;
@@ -87,10 +97,11 @@ namespace Semantic
 								continue;
 							}
 						}
+						// Запрет арифметики для строк
 						if (lefttype == IT::IDDATATYPE::SCROLL)
 						{
 							char l = tables.lextable.table[k].lexema;
-							if (l == LEX_PLUS || l == LEX_MINUS || l == LEX_STAR)
+							if (l == LEX_PLUS || l == LEX_MINUS || l == LEX_STAR || l == LEX_DIRSLASH || l == LEX_PERSENT || l == LEX_BITAND || l == LEX_BITOR || l == LEX_BITNOT)
 							{
 								Log::writeError(log.stream, Error::GetError(316, tables.lextable.table[k].sn, 0));
 								sem_ok = false;
@@ -106,6 +117,7 @@ namespace Semantic
 			{
 				IT::Entry e = tables.idtable.table[tables.lextable.table[i].idxTI];
 
+				// Проверка возвращаемого значения (comeback)
 				if (i > 0 && tables.lextable.table[i - 1].lexema == LEX_ACTION)
 				{
 					if (e.idtype == IT::IDTYPE::F)
@@ -118,6 +130,7 @@ namespace Semantic
 								int next = tables.lextable.table[k + 1].idxTI;
 								if (next != NULLIDX_TI)
 								{
+									// Проверка совместимости типа возврата
 									if (tables.idtable.table[next].iddatatype != e.iddatatype)
 									{
 										Log::writeError(log.stream, Error::GetError(315, tables.lextable.table[k].sn, 0));
@@ -127,11 +140,11 @@ namespace Semantic
 								}
 								break;
 							}
-
 							if (k == tables.lextable.size) break;
 						}
 					}
 				}
+				// Проверка параметров при вызове функции
 				if (tables.lextable.table[i + 1].lexema == LEX_LEFTHESIS && tables.lextable.table[i - 1].lexema != LEX_ACTION)
 				{
 					if (e.idtype == IT::IDTYPE::F || e.idtype == IT::IDTYPE::S)
@@ -151,7 +164,7 @@ namespace Semantic
 									Log::writeError(log.stream, Error::GetError(307, tables.lextable.table[i].sn, 0));
 									sem_ok = false;
 								}
-								if (ctype != e.value.params.types[paramscount - 1] && paramscount<=e.value.params.count)
+								if (ctype != e.value.params.types[paramscount - 1] && paramscount <= e.value.params.count)
 								{
 									Log::writeError(log.stream, Error::GetError(309, tables.lextable.table[i].sn, 0));
 									sem_ok = false;
@@ -210,6 +223,8 @@ namespace Semantic
 				if (bodyBegin != -1 && rightThesis != -1)
 				{
 					bool defaultFound = false;
+					std::set<std::string> seenPaths; // Сет для хранения значений path, чтобы искать дубликаты
+
 					int depth = 0;
 					for (int j = bodyBegin; j < tables.lextable.size; j++)
 					{
@@ -221,6 +236,8 @@ namespace Semantic
 							if (depth == 0)
 								break;
 						}
+
+						// Проверка PATH
 						if (tables.lextable.table[j].lexema == LEX_PATH)
 						{
 							if (j + 1 >= tables.lextable.size || tables.lextable.table[j + 1].idxTI == NULLIDX_TI)
@@ -229,13 +246,34 @@ namespace Semantic
 								Log::writeError(log.stream, Error::GetError(321, tables.lextable.table[j].sn, 0));
 								continue;
 							}
-							IT::IDDATATYPE caseType = tables.idtable.table[tables.lextable.table[j + 1].idxTI].iddatatype;
+
+							IT::Entry* pathVal = &tables.idtable.table[tables.lextable.table[j + 1].idxTI];
+							IT::IDDATATYPE caseType = pathVal->iddatatype;
+
+							// 1. Проверка типов
 							if (exprType != IT::IDDATATYPE::INDIGENT && caseType != exprType)
 							{
 								sem_ok = false;
 								Log::writeError(log.stream, Error::GetError(321, tables.lextable.table[j].sn, 0));
 							}
+
+							// 2. Проверка дубликатов path (НОВОЕ)
+							std::string key;
+							if (caseType == IT::IDDATATYPE::SQUIRE)
+								key = "int_" + std::to_string(pathVal->value.vint);
+							else if (caseType == IT::IDDATATYPE::SCROLL || caseType == IT::IDDATATYPE::RUNE)
+								key = "str_" + std::string(pathVal->value.vstr.str);
+
+							if (seenPaths.count(key))
+							{
+								sem_ok = false;
+								// Используем 322 (дубликат tiresome) или создаем новую, но 322 логически подходит как "Повтор метки"
+								Log::writeError(log.stream, Error::GetError(325, tables.lextable.table[j].sn, 0));
+							}
+							seenPaths.insert(key);
 						}
+
+						// Проверка TIRESOME (default)
 						if (tables.lextable.table[j].lexema == LEX_TIRESOME)
 						{
 							if (defaultFound)
@@ -249,14 +287,19 @@ namespace Semantic
 				}
 				break;
 			}
+
+			// Проверка операций сравнения, а также БИТОВЫХ операций (Добавлены LEX_BITAND, LEX_BITOR, LEX_PERSENT)
 			case LEX_MORE:	case LEX_LESS: case LEX_EQUALS:   case LEX_NOTEQUALS:	case LEX_MOREEQUALS:	case LEX_LESSEQUALS:
+			case LEX_BITAND: case LEX_BITOR:
 			{
 				bool flag = true;
+				// Проверяем левый операнд
 				if (i > 1 && tables.lextable.table[i - 1].idxTI != NULLIDX_TI)
 				{
 					if (tables.idtable.table[tables.lextable.table[i - 1].idxTI].iddatatype != IT::IDDATATYPE::SQUIRE)
 						flag = false;
 				}
+				// Проверяем правый операнд
 				if (tables.lextable.table[i + 1].idxTI != NULLIDX_TI)
 				{
 					if (tables.idtable.table[tables.lextable.table[i + 1].idxTI].iddatatype != IT::IDDATATYPE::SQUIRE)
@@ -264,11 +307,13 @@ namespace Semantic
 				}
 				if (!flag)
 				{
+					// Используем 317 (Неверное условие) или 314 (Несовместимые типы)
 					Log::writeError(log.stream, Error::GetError(317, tables.lextable.table[i].sn, 0));
 					sem_ok = false;
 				}
 				break;
 			}
+			// Унарный bitnot
 			case LEX_BITNOT:
 			{
 				bool flag = true;

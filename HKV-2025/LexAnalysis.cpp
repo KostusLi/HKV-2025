@@ -385,14 +385,14 @@ namespace Lexer
 			isFunc = false;
 			int idxTI = NULLIDX_TI;
 
-			std::cout << "[LEXDBG_TOKEN] word=" << curword << " line=" << curline << std::endl;
+			//std::cout << "[LEXDBG_TOKEN] word=" << curword << " line=" << curline << std::endl;
 
 			if (!strcmp(curword, "bitand") || !strcmp(curword, "bitor") || !strcmp(curword, "bitnot"))
 			{
 				char lexema = LEX_BITAND;
 				if (!strcmp(curword, "bitor")) lexema = LEX_BITOR;
 				if (!strcmp(curword, "bitnot")) lexema = LEX_BITNOT;
-				std::cout << "[LEXDBG] direct keyword match: " << curword << " -> " << lexema << " line=" << curline << std::endl;
+				//std::cout << "[LEXDBG] direct keyword match: " << curword << " -> " << lexema << " line=" << curline << std::endl;
 				LT::Entry* ltentry = new LT::Entry(lexema, curline, NULLIDX_TI);
 				LT::Add(tables.lextable, *ltentry);
 				continue;
@@ -404,6 +404,13 @@ namespace Lexer
 				if (FST::execute(fst))
 				{
 					char lexema = graphs[j].lexema;
+					
+					if (forbiddenNames.count(curword) > 0 && tables.lextable.table[i - 1].lexema == LEX_ID_TYPE && lexema!=LEX_ACTION)
+					{
+						Log::writeError(log.stream, Error::GetError(205, curline, 0));
+						lex_ok = false;
+					}
+
 					switch (lexema)
 					{
 					case LEX_TEMPLE:
@@ -555,24 +562,45 @@ namespace Lexer
 					{
 						char id[STR_MAXSIZE] = "";
 						idxTI = NULLDX_TI;
+
+						if (forbiddenNames.count(curword) > 0)
+						{
+							Log::writeError(log.stream, Error::GetError(205, curline, 0));
+							lex_ok = false;
+						}
+
 						if (*nextword == LEX_LEFTHESIS)
 							isFunc = true;
 
-						bool isKnownGlobalFunc = false;
-						int globalSearchIdx = IT::isId(tables.idtable, curword);
-						if (globalSearchIdx != NULLIDX_TI)
+						if (!isFunc)
 						{
-							if (tables.idtable.table[globalSearchIdx].idtype == IT::IDTYPE::F ||
-								tables.idtable.table[globalSearchIdx].idtype == IT::IDTYPE::S)
+							bool isStd = (getStandFunction(curword) != IT::STDFNC::F_FOLK);
+							bool isUserFunc = false;
+							int idx = IT::isId(tables.idtable, curword);
+							// Проверяем, существует ли этот ID в таблице как функция
+							if (idx != NULLIDX_TI && (tables.idtable.table[idx].idtype == IT::IDTYPE::F || tables.idtable.table[idx].idtype == IT::IDTYPE::S))
 							{
-								isKnownGlobalFunc = true;
+								isUserFunc = true;
 							}
+
+							if (isStd && tables.lextable.table[i - 1].lexema == LEX_ID_TYPE)
+							{
+								Log::writeError(log.stream, Error::GetError(205, curline, 0));
+							}
+
+							if (isStd || isUserFunc)
+							{
+								Log::writeError(log.stream, Error::GetError(324, curline, 0));
+								lex_ok = false;
+							}
+
 						}
 
 						char* idtype = (isFunc && i > 1) ?
 							in.words[i - 2].word : in.words[i - 1].word;
 						if (!isFunc && !scopes.empty())
 							strncpy_s(id, scopes.top(), MAXSIZE_ID);
+
 						strncat(id, curword, MAXSIZE_ID);
 						if (isLiteral(curword))
 							strcpy_s(id, curword);

@@ -63,7 +63,7 @@ namespace GRB
 		Rule::Chain(3, TS('l'), NS('L'), TS('i'))
 	),
 
-	Rule(NS('L'), GRB_ERROR_SERIES + 10, 6,					// �������� �������� ��������		
+	Rule(NS('L'), GRB_ERROR_SERIES + 10, 6,	
 		Rule::Chain(1, TS('<')),
 		Rule::Chain(1, TS('>')),
 		Rule::Chain(1, TS('&')),

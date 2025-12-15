@@ -11,7 +11,7 @@
 ".model flat, stdcall\n"\
 "includelib libucrt.lib\n"\
 "includelib kernel32.lib\n"\
-"includelib \"../HKV-2025/Debug/Arsenal.lib\"\n"\
+"includelib \"Arsenal.lib\"\n"\
 "ExitProcess PROTO:DWORD \n"\
 ".stack 4096\n"
 

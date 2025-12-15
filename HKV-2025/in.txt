@@ -34,11 +34,15 @@ temple
         confession knights; 
         newleaf;
         knights = knights + 1;
+	gold = gold+10;
     ]#
     
+    confession gold;
+    newleaf;
+
     check: gold ~ 100#
-    charge [confession "Knight is so Rish"; gold = 120; newleaf;]
-    backup [confession "Khinght so boring("; newleaf;]#
+    charge [confession "Knight are so Rich!!)))"; gold = 120; newleaf;]
+    backup [confession "Knight are so boring(((";]#
 
     confession "Army is ready!"; newleaf; confession gold; newleaf; 
 
@@ -51,6 +55,8 @@ temple
     elder scroll piligrim = "Dragonborn";
     confession "Blacksmith forged weapon ID: "; confession weap; newleaf;
 
+
+    //демонстрация switch
     council(weap)[
         path 1 [
             confession "We have a Sword!"; newleaf;
@@ -59,20 +65,24 @@ temple
         ]
         path 2 [
             confession "We have a Bow!"; newleaf;
-            escape;
-        ]
-        path 3 [
-            confession "We have an Axe!"; newleaf;
+	    weap = 8;
             escape;
         ]
         tiresome [
             confession "Peasants will fight with forks..."; newleaf;
             escape;
         ]
+        path 3 [
+            confession "We have an Axe!"; newleaf;
+            escape;
+        ]
     ]
+
 
     newleaf;
     confession piligrim;
+    newleaf;
+    confession weap;
     newleaf;
     proclaim("MAGIC AND RUNES");
 
@@ -85,6 +95,10 @@ temple
 
     elder squire resik = (5 + 6)*(4 - 2)+itemik/itemi + itemif;
     confession resik;
+    newleaf;
+
+    elder squire resultichek = (10 bitand 8) + 6 * 2 - bitnot -6;
+    confession resultichek;
     newleaf;
 
     confession "Mana (octal o12 -> dec): "; confession mana; newleaf;

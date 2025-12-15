@@ -1,0 +1,62 @@
+﻿Build started 15.12.2025 18:32:57.
+Logging verbosity is set to: Normal.     1>Project "C:\Users\user\OneDrive\Рабочий стол\HKV-2025\HKV-2025\HKV-2025.vcxproj" on node 3 (Rebuild target(s)).
+     1>PrepareForBuild:
+         Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
+         Creating directory "HKV-2025\Release\HKV-2025.tlog\".
+       InitializeBuildStatus:
+         Creating "HKV-2025\Release\HKV-2025.tlog\unsuccessfulbuild" because "AlwaysCreate" was specified.
+         Touching "HKV-2025\Release\HKV-2025.tlog\unsuccessfulbuild".
+       ClCompile:
+         C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\bin\HostX86\x86\CL.exe /c /Zi /nologo /W3 /WX- /diagnostics:column /sdl /O2 /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /permissive- /Fo"HKV-2025\Release\\" /Fd"HKV-2025\Release\vc143.pdb" /external:W3 /Gd /TP /analyze- /FC /errorReport:prompt Error.cpp FST.cpp Generator.cpp GeneratorScript.cpp GRB.cpp "HKV-2025.cpp" In.cpp IT.cpp LexAnalysis.cpp Log.cpp LT.cpp MFST.cpp Parm.cpp PolishNotation.cpp SemanticAnalyze.cpp
+         Error.cpp
+         FST.cpp
+         Generator.cpp
+         GeneratorScript.cpp
+         GRB.cpp
+         HKV-2025.cpp
+         In.cpp
+         IT.cpp
+         LexAnalysis.cpp
+         Log.cpp
+         LT.cpp
+         MFST.cpp
+     1>C:\Users\user\OneDrive\Рабочий стол\HKV-2025\HKV-2025\MFST.cpp(181,24): warning C4018: '<': signed/unsigned mismatch
+         Parm.cpp
+         PolishNotation.cpp
+         SemanticAnalyze.cpp
+       Link:
+         C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\bin\HostX86\x86\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\user\OneDrive\Рабочий стол\HKV-2025\HKV-2025\Release\HKV-2025.exe" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\user\OneDrive\Рабочий стол\HKV-2025\HKV-2025\Release\HKV-2025.pdb" /SUBSYSTEM:CONSOLE /OPT:REF /OPT:ICF /LTCG:incremental /LTCGOUT:"HKV-2025\Release\HKV-2025.iobj" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\user\OneDrive\Рабочий стол\HKV-2025\HKV-2025\Release\HKV-2025.lib" /MACHINE:X86 /SAFESEH "HKV-2025\Release\Error.obj"
+         "HKV-2025\Release\FST.obj"
+         "HKV-2025\Release\Generator.obj"
+         "HKV-2025\Release\GeneratorScript.obj"
+         "HKV-2025\Release\GRB.obj"
+         "HKV-2025\Release\HKV-2025.obj"
+         "HKV-2025\Release\In.obj"
+         "HKV-2025\Release\IT.obj"
+         "HKV-2025\Release\LexAnalysis.obj"
+         "HKV-2025\Release\Log.obj"
+         "HKV-2025\Release\LT.obj"
+         "HKV-2025\Release\MFST.obj"
+         "HKV-2025\Release\Parm.obj"
+         "HKV-2025\Release\PolishNotation.obj"
+         "HKV-2025\Release\SemanticAnalyze.obj"
+         Generating code
+         Previous IPDB not found, fall back to full compilation.
+         All 1542 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+         Finished generating code
+         HKV-2025.vcxproj -> C:\Users\user\OneDrive\Рабочий стол\HKV-2025\HKV-2025\Release\HKV-2025.exe
+       FinalizeBuildStatus:
+         Deleting file "HKV-2025\Release\HKV-2025.tlog\unsuccessfulbuild".
+         Touching "HKV-2025\Release\HKV-2025.tlog\HKV-2025.lastbuildstate".
+     1>Done Building Project "C:\Users\user\OneDrive\Рабочий стол\HKV-2025\HKV-2025\HKV-2025.vcxproj" (Rebuild target(s)).
+
+Build succeeded.
+
+       "C:\Users\user\OneDrive\Рабочий стол\HKV-2025\HKV-2025\HKV-2025.vcxproj" (Rebuild target) (1) ->
+       (ClCompile target) -> 
+         C:\Users\user\OneDrive\Рабочий стол\HKV-2025\HKV-2025\MFST.cpp(181,24): warning C4018: '<': signed/unsigned mismatch
+
+    1 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:15.93

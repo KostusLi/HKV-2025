@@ -4,6 +4,7 @@
 #include "In.h"
 #include "Log.h"
 #include "FST.h"
+#include <unordered_set>
 
 #define TYPE_DIGIT	"squire"
 #define TYPE_STRING	"scroll"
@@ -22,6 +23,15 @@
 
 namespace Lexer
 {
+
+	static const std::unordered_set<std::string> forbiddenNames = {
+	"elder", "squire", "scroll", "rune", "hollow",
+	"action", "temple", "check", "charge", "backup",
+	"patrol", "council", "path", "tiresome", "escape",
+	"comeback", "confession", "newleaf",
+	"bitand", "bitor", "bitnot"
+	};
+
 	struct LEX
 	{
 		LT::LexTable lextable;

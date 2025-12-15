@@ -1,0 +1,5 @@
+HKV-2025 -in:in.txt -out:out.asm -log:log.txt
+
+ml /c /coff /Zi out.asm
+
+link out.obj Arsenal.lib kernel32.lib ucrtd.lib vcruntimed.lib msvcprtd.lib /subsystem:console /machine:x86 /debug
