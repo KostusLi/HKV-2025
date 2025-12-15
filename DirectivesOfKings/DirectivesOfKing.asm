@@ -65,6 +65,8 @@ ExitProcess PROTO:DWORD
 		LTRL38 byte 'Bitwise NOT (~5): ', 0
 		LTRL39 byte 'A', 0
 		LTRL40 byte 'u', 0
+		LTRL41 byte 'Scroll to squire:', 0
+		LTRL42 byte '200', 0
 .data
 		temp sdword ?
 		buffer byte 256 dup(0)
@@ -89,6 +91,9 @@ ExitProcess PROTO:DWORD
 		templecursed dword 0
 		templerunic dword ?
 		templeranik dword ?
+		templeoverflow dword 0
+		templenumbers dword ?
+		templeover dword 0
 .code
 
 ;----------- proclaim ------------
@@ -134,12 +139,14 @@ push calctaxrate
 pop ebx
 pop eax
 imul eax, ebx
+movsx eax, al
 push eax
 push LTRL3
 pop ebx
 pop eax
 cdq
 idiv ebx
+movsx eax, al
 push eax
 
 pop ebx
@@ -175,6 +182,7 @@ mov templetaxrate, ebx
 push templetaxrate
 push templegold
 call calctax
+movsx eax, al
 push eax
 
 pop ebx
@@ -227,6 +235,7 @@ push LTRL11
 pop ebx
 pop eax
 add eax, ebx
+movsx eax, al
 push eax
 
 pop ebx
@@ -237,6 +246,7 @@ push LTRL12
 pop ebx
 pop eax
 add eax, ebx
+movsx eax, al
 push eax
 
 pop ebx
@@ -305,6 +315,7 @@ push LTRL18
 push LTRL11
 push offset buffer
 call fortune
+movsx eax, al
 push eax
 
 pop ebx
@@ -429,19 +440,19 @@ push LTRL32
 pop ebx
 pop eax
 add eax, ebx
+movsx eax, al
 push eax
 push LTRL33
 push LTRL23
 pop ebx
 pop eax
 sub eax, ebx
-jnc bk
-neg eax
-bk: 
+movsx eax, al
 push eax
 pop ebx
 pop eax
 imul eax, ebx
+movsx eax, al
 push eax
 push templeitemik
 push templeitemi
@@ -449,15 +460,18 @@ pop ebx
 pop eax
 cdq
 idiv ebx
+movsx eax, al
 push eax
 pop ebx
 pop eax
 add eax, ebx
+movsx eax, al
 push eax
 push templeitemif
 pop ebx
 pop eax
 add eax, ebx
+movsx eax, al
 push eax
 
 pop ebx
@@ -475,27 +489,29 @@ push LTRL25
 pop ebx
 pop eax
 and eax, ebx
+movsx eax, al
 push eax
 push LTRL32
 push LTRL23
 pop ebx
 pop eax
 imul eax, ebx
+movsx eax, al
 push eax
 pop ebx
 pop eax
 add eax, ebx
+movsx eax, al
 push eax
 push LTRL34
 pop eax
 not eax
+movsx eax, al
 push eax
 pop ebx
 pop eax
 sub eax, ebx
-jnc bkm
-neg eax
-bkm: 
+movsx eax, al
 push eax
 
 pop ebx
@@ -534,6 +550,7 @@ push templeartifact
 pop ebx
 pop eax
 and eax, ebx
+movsx eax, al
 push eax
 
 pop ebx
@@ -555,6 +572,7 @@ push templeartifact
 pop ebx
 pop eax
 or eax, ebx
+movsx eax, al
 push eax
 
 pop ebx
@@ -574,6 +592,7 @@ call confessionscroll
 push templepower
 pop eax
 not eax
+movsx eax, al
 push eax
 
 pop ebx
@@ -602,6 +621,55 @@ call confessionscroll
 
 push offset newline
 call confessionscroll
+
+push LTRL3
+push LTRL3
+push LTRL18
+pop ebx
+pop eax
+imul eax, ebx
+movsx eax, al
+push eax
+pop ebx
+pop eax
+add eax, ebx
+movsx eax, al
+push eax
+push LTRL3
+pop ebx
+pop eax
+sub eax, ebx
+movsx eax, al
+push eax
+
+pop ebx
+mov templeoverflow, ebx
+
+
+push templeoverflow
+call confessionsquire
+
+push offset newline
+call confessionscroll
+
+
+push offset LTRL41
+call confessionscroll
+
+mov templenumbers, offset LTRL42
+
+push templenumbers
+push offset buffer
+call transmute
+movsx eax, al
+push eax
+
+pop ebx
+mov templeover, ebx
+
+
+push templeover
+call confessionsquire
 
 push 0
 call ExitProcess

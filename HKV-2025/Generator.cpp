@@ -67,6 +67,10 @@ namespace Gener
 					if (ITENTRY(j).idtype == IT::IDTYPE::F || ITENTRY(j).idtype == IT::IDTYPE::S)
 					{
 						str = str + genCallFuncCode(tables, log, j);
+						if (ITENTRY(j).iddatatype == IT::IDDATATYPE::SQUIRE) //это я добавил для провери воврата функции целочисленного типа
+						{
+							str = str + "movsx eax, al\n";
+						}
 						str = str + "push eax\n";
 						while (LEXEMA(j) != LEX_RIGHTTHESIS) j++;
 						break;
@@ -75,21 +79,21 @@ namespace Gener
 					break;
 				}
 				case LEX_PLUS:
-					str = str + "pop ebx\npop eax\nadd eax, ebx\npush eax\n"; break;
+					str = str + "pop ebx\npop eax\nadd eax, ebx\nmovsx eax, al\npush eax\n"; break;
 				case LEX_MINUS:
-					str = str + "pop ebx\npop eax\nsub eax, ebx\njnc b" + numberOfPoints + "\n" + "neg eax\n" + "b" + numberOfPoints + ": \n" + "push eax\n"; numberOfPoints = numberOfPoints + "m"; break;
+					str = str + "pop ebx\npop eax\nsub eax, ebx\nmovsx eax, al\npush eax\n"; break;
 				case LEX_STAR:
-					str = str + "pop ebx\npop eax\nimul eax, ebx\npush eax\n"; break;
+					str = str + "pop ebx\npop eax\nimul eax, ebx\nmovsx eax, al\npush eax\n"; break;
 				case LEX_DIRSLASH:
-					str = str + "pop ebx\npop eax\ncdq\nidiv ebx\npush eax\n"; break;
+					str = str + "pop ebx\npop eax\ncdq\nidiv ebx\nmovsx eax, al\npush eax\n"; break;
 				case LEX_PERSENT:
-					str = str + "pop ebx\npop eax\ncdq\nmov edx,0\nidiv ebx\npush edx\n"; break;
+					str = str + "pop ebx\npop eax\ncdq\nidiv ebx\nmovsx edx, dl\npush edx\n"; break;
 				case LEX_BITAND:
-					str = str + "pop ebx\npop eax\nand eax, ebx\npush eax\n"; break;
+					str = str + "pop ebx\npop eax\nand eax, ebx\nmovsx eax, al\npush eax\n"; break;
 				case LEX_BITOR:
-					str = str + "pop ebx\npop eax\nor eax, ebx\npush eax\n"; break;
+					str = str + "pop ebx\npop eax\nor eax, ebx\nmovsx eax, al\npush eax\n"; break;
 				case LEX_BITNOT:
-					str = str + "pop eax\nnot eax\npush eax\n"; break;
+					str = str + "pop eax\nnot eax\nmovsx eax, al\npush eax\n"; break; //все операторы арифметических выражений также обрезаем на всякий
 				}
 			}
 			str = str + "\npop ebx\nmov " + e1.id + ", ebx\n";

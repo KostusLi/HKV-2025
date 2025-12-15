@@ -121,4 +121,13 @@ temple
     elder rune ranik = 'u';
     confession runic; confession ranik; newleaf;
 
+
+   //проверяем, как у нас работает переполнение
+	elder squire overflow = 100 + 100 *3 - 100;
+	confession overflow;
+	newleaf;
+	confession "Scroll to squire:";
+	elder scroll numbers= "200";
+	elder squire over = transmute(numbers);
+	confession over;
 ]

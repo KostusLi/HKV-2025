@@ -13,3 +13,4 @@
 #include "MFST.h"
 #include "SemanticAnalyze.h"
 #include "Generator.h"
+#include "Visualizer.h"

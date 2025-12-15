@@ -1,16 +1,16 @@
-﻿Build started 15.12.2025 16:54:09.
+﻿Build started 15.12.2025 21:55:24.
 Logging verbosity is set to: Normal.     1>Project "C:\Users\user\OneDrive\Рабочий стол\HKV-2025\DirectivesOfKings\DirectivesOfKings.vcxproj" on node 2 (Build target(s)).
      1>PrepareForBuild:
          Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
        InitializeBuildStatus:
-         Creating "Debug\Directiv.bb1ede4c.tlog\unsuccessfulbuild" because "AlwaysCreate" was specified.
          Touching "Debug\Directiv.bb1ede4c.tlog\unsuccessfulbuild".
        _MASM:
          Assembling DirectivesOfKing.asm...
-         cmd.exe /C "C:\Users\user\AppData\Local\Temp\tmpee6da40b2c724b1a9079fac3912221e3.cmd"
+         cmd.exe /C "C:\Users\user\AppData\Local\Temp\tmp7db820b0b1184eeba0dad0b821091439.cmd"
          ml.exe /c /nologo /Zi /Fo"Debug\DirectivesOfKing.obj" /W3 /errorReport:prompt  /TaDirectivesOfKing.asm
        Link:
          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\bin\HostX86\x86\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\user\OneDrive\Рабочий стол\HKV-2025\HKV-2025\Debug\DirectivesOfKings.exe" /INCREMENTAL /ILK:"Debug\DirectivesOfKings.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\user\OneDrive\Рабочий стол\HKV-2025\HKV-2025\Debug\DirectivesOfKings.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\user\OneDrive\Рабочий стол\HKV-2025\HKV-2025\Debug\DirectivesOfKings.lib" /MACHINE:X86 Debug\DirectivesOfKing.obj
+     1>LINK : warning LNK4098: defaultlib 'libucrt.lib' conflicts with use of other libs; use /NODEFAULTLIB:library
          DirectivesOfKings.vcxproj -> C:\Users\user\OneDrive\Рабочий стол\HKV-2025\HKV-2025\Debug\DirectivesOfKings.exe
        FinalizeBuildStatus:
          Deleting file "Debug\Directiv.bb1ede4c.tlog\unsuccessfulbuild".
@@ -18,7 +18,12 @@ Logging verbosity is set to: Normal.     1>Project "C:\Users\user\OneDrive\Ра�
      1>Done Building Project "C:\Users\user\OneDrive\Рабочий стол\HKV-2025\DirectivesOfKings\DirectivesOfKings.vcxproj" (Build target(s)).
 
 Build succeeded.
-    0 Warning(s)
+
+       "C:\Users\user\OneDrive\Рабочий стол\HKV-2025\DirectivesOfKings\DirectivesOfKings.vcxproj" (Build target) (1) ->
+       (Link target) -> 
+         LINK : warning LNK4098: defaultlib 'libucrt.lib' conflicts with use of other libs; use /NODEFAULTLIB:library
+
+    1 Warning(s)
     0 Error(s)
 
-Time Elapsed 00:00:00.63
+Time Elapsed 00:00:01.20

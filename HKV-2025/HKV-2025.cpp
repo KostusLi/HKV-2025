@@ -59,7 +59,33 @@ int wmain(int argc, wchar_t* argv[])
 			Log::writeLine(&std::cout, TEMPLE_KRASH, STOP_ORDER, "");
 			return 0;
 		}
-		else Log::writeLine(&std::cout, TEMPLE_TRIUMPH, "");
+		else { 
+		Log::writeLine(&std::cout, TEMPLE_TRIUMPH, ""); 
+		Visualizer::TreeBuilder treeBuilder;
+
+		// Проходим по сохраненным шагам вывода
+		for (int i = 0; i < mfst.deducation.size; i++)
+		{
+			// Получаем правило по индексу
+			short nrule = mfst.deducation.nrules[i];
+			short nchain = mfst.deducation.nrulechains[i];
+
+			// Получаем строковое представление правила (например, S->pfiPGS)
+			// Для этого используем getCRule из GRB, но нам нужно немного модифицировать доступ 
+			// или использовать буфер.
+			// В GRB.cpp у тебя есть метод getCRule. 
+			// Давай получим правило напрямую через грамматику.
+
+			GRB::Rule rule = GRB::getGreibach().getRule(nrule);
+			char rbuf[300];
+			rule.getCRule(rbuf, nchain); // Получили строку вида "S->pfiPGS"
+
+			treeBuilder.processRule(std::string(rbuf));
+		}
+
+		treeBuilder.generateGraphImage("parse_tree.dot", "parse_tree.png");
+		
+		}
 		bool sem_ok = Semantic::semanticsCheck(tables, log);					//выполнить семантический анализ
 		if (!sem_ok)
 		{

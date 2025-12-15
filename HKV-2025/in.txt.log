@@ -1,5 +1,5 @@
 
------------ Протокол ------------ Дата: 15.12.2025 21:21:24 ------------ 
+----------- Протокол ------------ Дата: 15.12.2025 22:35:30 ------------ 
 
 
 ----- Параметры --------
@@ -7,9 +7,9 @@
 -out: ../DirectivesOfKings/DirectivesOfKing.asm
 -log: in.txt.log
 ---- Исходные данные ------
-Количество символов: 2844
+Количество символов: 3048
 Проигнорировано:   0
-Количество строк: 124
+Количество строк: 133
 
 ------------------------------ ЧЛЕНЫ ОТРЯДА, ЗАМЕЧЕННОГО РАЗВЕДЧИКАМИ  ------------------------
 
@@ -464,7 +464,45 @@
 |447 |    ;       |  122  |             |
 |448 |    ^       |  122  |             |
 |449 |    ;       |  122  |             |
-|450 |    ]       |  124  |             |
+|450 |    n       |  126  |             |
+|451 |    t       |  126  |             |
+|452 |    i       |  126  |      67     |
+|453 |    =       |  126  |             |
+|454 |    l       |  126  |       8     |
+|455 |    +       |  126  |             |
+|456 |    l       |  126  |       8     |
+|457 |    *       |  126  |             |
+|458 |    l       |  126  |      30     |
+|459 |    -       |  126  |             |
+|460 |    l       |  126  |       8     |
+|461 |    ;       |  126  |             |
+|462 |    o       |  127  |             |
+|463 |    i       |  127  |      67     |
+|464 |    ;       |  127  |             |
+|465 |    ^       |  128  |             |
+|466 |    ;       |  128  |             |
+|467 |    o       |  129  |             |
+|468 |    l       |  129  |      68     |
+|469 |    ;       |  129  |             |
+|470 |    n       |  130  |             |
+|471 |    t       |  130  |             |
+|472 |    i       |  130  |      69     |
+|473 |    =       |  130  |             |
+|474 |    l       |  130  |      70     |
+|475 |    ;       |  130  |             |
+|476 |    n       |  131  |             |
+|477 |    t       |  131  |             |
+|478 |    i       |  131  |      71     |
+|479 |    =       |  131  |             |
+|480 |    i       |  131  |      72     |
+|481 |    (       |  131  |             |
+|482 |    i       |  131  |      69     |
+|483 |    )       |  131  |             |
+|484 |    ;       |  131  |             |
+|485 |    o       |  132  |             |
+|486 |    i       |  132  |      71     |
+|487 |    ;       |  132  |             |
+|488 |    ]       |  133  |             |
 ---------------------------- ТУРНИРНАЯ ТАБЛИЦА ------------------------
 
 |  №№ |СТРОКА В ТТ| ОПИСАНИЕ УЧАСТНИКА |       РОДОВОЕ ИМЯ                 | РОДОВОЕ ДЕРЕВО (ТЕКУЩЕЕ ПОКОЛЕНИЕ)
@@ -535,6 +573,12 @@
 |  64   |   434     |   rune   literal   |                            LTRL39 |[1]A
 |  65   |   438     |   rune  variable   |                       templeranik |[0]
 |  66   |   440     |   rune   literal   |                            LTRL40 |[1]u
+|  67   |   452     | squire  variable   |                    templeoverflow |0
+|  68   |   468     | scroll   literal   |                            LTRL41 |[17]Scroll to squire:
+|  69   |   472     | scroll  variable   |                     templenumbers |[0]
+|  70   |   474     | scroll   literal   |                            LTRL42 |[3]200
+|  71   |   478     | squire  variable   |                        templeover |0
+|  72   |   480     | squire  KNIGHTFUN  |                         transmute | P0:scroll |
 
 -------------------------------------------------------------------------
 
@@ -636,7 +680,14 @@
 120 | nti[63]=l[64];
 121 | nti[65]=l[66];
 122 | oi[63];oi[65];^;
-124 | ]
+126 | nti[67]=l[8]+l[8]*l[30]-l[8];
+127 | oi[67];
+128 | ^;
+129 | ol[68];
+130 | nti[69]=l[70];
+131 | nti[71]=i[72](i[69]);
+132 | oi[71];
+133 | ]
 -------------------------------------------------------------------------
 
 Шаг :Закон               Очередь                       Свиток              
@@ -5499,77 +5550,213 @@
 3151:K->oV;K             oi;^;nti=l;nti=l;oi;oi;^;     K]$                 
 3152: SAVESTATE:          221
 3152:                    oi;^;nti=l;nti=l;oi;oi;^;     oV;K]$              
-3153:                    i;^;nti=l;nti=l;oi;oi;^;]     V;K]$               
-3154:V->i                i;^;nti=l;nti=l;oi;oi;^;]     V;K]$               
+3153:                    i;^;nti=l;nti=l;oi;oi;^;n     V;K]$               
+3154:V->i                i;^;nti=l;nti=l;oi;oi;^;n     V;K]$               
 3155: SAVESTATE:          222
-3155:                    i;^;nti=l;nti=l;oi;oi;^;]     i;K]$               
-3156:                    ;^;nti=l;nti=l;oi;oi;^;]      ;K]$                
-3157:                    ^;nti=l;nti=l;oi;oi;^;]       K]$                 
-3158:K->^;K              ^;nti=l;nti=l;oi;oi;^;]       K]$                 
+3155:                    i;^;nti=l;nti=l;oi;oi;^;n     i;K]$               
+3156:                    ;^;nti=l;nti=l;oi;oi;^;nt     ;K]$                
+3157:                    ^;nti=l;nti=l;oi;oi;^;nti     K]$                 
+3158:K->^;K              ^;nti=l;nti=l;oi;oi;^;nti     K]$                 
 3159: SAVESTATE:          223
-3159:                    ^;nti=l;nti=l;oi;oi;^;]       ^;K]$               
-3160:                    ;nti=l;nti=l;oi;oi;^;]        ;K]$                
-3161:                    nti=l;nti=l;oi;oi;^;]         K]$                 
-3162:K->nti=W;K          nti=l;nti=l;oi;oi;^;]         K]$                 
+3159:                    ^;nti=l;nti=l;oi;oi;^;nti     ^;K]$               
+3160:                    ;nti=l;nti=l;oi;oi;^;nti=     ;K]$                
+3161:                    nti=l;nti=l;oi;oi;^;nti=l     K]$                 
+3162:K->nti=W;K          nti=l;nti=l;oi;oi;^;nti=l     K]$                 
 3163: SAVESTATE:          224
-3163:                    nti=l;nti=l;oi;oi;^;]         nti=W;K]$           
-3164:                    ti=l;nti=l;oi;oi;^;]          ti=W;K]$            
-3165:                    i=l;nti=l;oi;oi;^;]           i=W;K]$             
-3166:                    =l;nti=l;oi;oi;^;]            =W;K]$              
-3167:                    l;nti=l;oi;oi;^;]             W;K]$               
-3168:W->l                l;nti=l;oi;oi;^;]             W;K]$               
+3163:                    nti=l;nti=l;oi;oi;^;nti=l     nti=W;K]$           
+3164:                    ti=l;nti=l;oi;oi;^;nti=l+     ti=W;K]$            
+3165:                    i=l;nti=l;oi;oi;^;nti=l+l     i=W;K]$             
+3166:                    =l;nti=l;oi;oi;^;nti=l+l*     =W;K]$              
+3167:                    l;nti=l;oi;oi;^;nti=l+l*l     W;K]$               
+3168:W->l                l;nti=l;oi;oi;^;nti=l+l*l     W;K]$               
 3169: SAVESTATE:          225
-3169:                    l;nti=l;oi;oi;^;]             l;K]$               
-3170:                    ;nti=l;oi;oi;^;]              ;K]$                
-3171:                    nti=l;oi;oi;^;]               K]$                 
-3172:K->nti=W;K          nti=l;oi;oi;^;]               K]$                 
+3169:                    l;nti=l;oi;oi;^;nti=l+l*l     l;K]$               
+3170:                    ;nti=l;oi;oi;^;nti=l+l*l-     ;K]$                
+3171:                    nti=l;oi;oi;^;nti=l+l*l-l     K]$                 
+3172:K->nti=W;K          nti=l;oi;oi;^;nti=l+l*l-l     K]$                 
 3173: SAVESTATE:          226
-3173:                    nti=l;oi;oi;^;]               nti=W;K]$           
-3174:                    ti=l;oi;oi;^;]                ti=W;K]$            
-3175:                    i=l;oi;oi;^;]                 i=W;K]$             
-3176:                    =l;oi;oi;^;]                  =W;K]$              
-3177:                    l;oi;oi;^;]                   W;K]$               
-3178:W->l                l;oi;oi;^;]                   W;K]$               
+3173:                    nti=l;oi;oi;^;nti=l+l*l-l     nti=W;K]$           
+3174:                    ti=l;oi;oi;^;nti=l+l*l-l;     ti=W;K]$            
+3175:                    i=l;oi;oi;^;nti=l+l*l-l;o     i=W;K]$             
+3176:                    =l;oi;oi;^;nti=l+l*l-l;oi     =W;K]$              
+3177:                    l;oi;oi;^;nti=l+l*l-l;oi;     W;K]$               
+3178:W->l                l;oi;oi;^;nti=l+l*l-l;oi;     W;K]$               
 3179: SAVESTATE:          227
-3179:                    l;oi;oi;^;]                   l;K]$               
-3180:                    ;oi;oi;^;]                    ;K]$                
-3181:                    oi;oi;^;]                     K]$                 
-3182:K->oV;K             oi;oi;^;]                     K]$                 
+3179:                    l;oi;oi;^;nti=l+l*l-l;oi;     l;K]$               
+3180:                    ;oi;oi;^;nti=l+l*l-l;oi;^     ;K]$                
+3181:                    oi;oi;^;nti=l+l*l-l;oi;^;     K]$                 
+3182:K->oV;K             oi;oi;^;nti=l+l*l-l;oi;^;     K]$                 
 3183: SAVESTATE:          228
-3183:                    oi;oi;^;]                     oV;K]$              
-3184:                    i;oi;^;]                      V;K]$               
-3185:V->i                i;oi;^;]                      V;K]$               
+3183:                    oi;oi;^;nti=l+l*l-l;oi;^;     oV;K]$              
+3184:                    i;oi;^;nti=l+l*l-l;oi;^;o     V;K]$               
+3185:V->i                i;oi;^;nti=l+l*l-l;oi;^;o     V;K]$               
 3186: SAVESTATE:          229
-3186:                    i;oi;^;]                      i;K]$               
-3187:                    ;oi;^;]                       ;K]$                
-3188:                    oi;^;]                        K]$                 
-3189:K->oV;K             oi;^;]                        K]$                 
+3186:                    i;oi;^;nti=l+l*l-l;oi;^;o     i;K]$               
+3187:                    ;oi;^;nti=l+l*l-l;oi;^;ol     ;K]$                
+3188:                    oi;^;nti=l+l*l-l;oi;^;ol;     K]$                 
+3189:K->oV;K             oi;^;nti=l+l*l-l;oi;^;ol;     K]$                 
 3190: SAVESTATE:          230
-3190:                    oi;^;]                        oV;K]$              
-3191:                    i;^;]                         V;K]$               
-3192:V->i                i;^;]                         V;K]$               
+3190:                    oi;^;nti=l+l*l-l;oi;^;ol;     oV;K]$              
+3191:                    i;^;nti=l+l*l-l;oi;^;ol;n     V;K]$               
+3192:V->i                i;^;nti=l+l*l-l;oi;^;ol;n     V;K]$               
 3193: SAVESTATE:          231
-3193:                    i;^;]                         i;K]$               
-3194:                    ;^;]                          ;K]$                
-3195:                    ^;]                           K]$                 
-3196:K->^;K              ^;]                           K]$                 
+3193:                    i;^;nti=l+l*l-l;oi;^;ol;n     i;K]$               
+3194:                    ;^;nti=l+l*l-l;oi;^;ol;nt     ;K]$                
+3195:                    ^;nti=l+l*l-l;oi;^;ol;nti     K]$                 
+3196:K->^;K              ^;nti=l+l*l-l;oi;^;ol;nti     K]$                 
 3197: SAVESTATE:          232
-3197:                    ^;]                           ^;K]$               
-3198:                    ;]                            ;K]$                
-3199:                    ]                             K]$                 
-3200: TNS_NORULECHAIN/NS_NORULE
-3200: RESSTATE            
-3200:                    ^;]                           K]$                 
-3201:K->^;               ^;]                           K]$                 
-3202: SAVESTATE:          232
-3202:                    ^;]                           ^;]$                
-3203:                    ;]                            ;]$                 
-3204:                    ]                             ]$                  
-3205:                                                  $                   
-3206: LENTA_END           
-3207: ------>LENTA_END    
+3197:                    ^;nti=l+l*l-l;oi;^;ol;nti     ^;K]$               
+3198:                    ;nti=l+l*l-l;oi;^;ol;nti=     ;K]$                
+3199:                    nti=l+l*l-l;oi;^;ol;nti=l     K]$                 
+3200:K->nti=W;K          nti=l+l*l-l;oi;^;ol;nti=l     K]$                 
+3201: SAVESTATE:          233
+3201:                    nti=l+l*l-l;oi;^;ol;nti=l     nti=W;K]$           
+3202:                    ti=l+l*l-l;oi;^;ol;nti=l;     ti=W;K]$            
+3203:                    i=l+l*l-l;oi;^;ol;nti=l;n     i=W;K]$             
+3204:                    =l+l*l-l;oi;^;ol;nti=l;nt     =W;K]$              
+3205:                    l+l*l-l;oi;^;ol;nti=l;nti     W;K]$               
+3206:W->l                l+l*l-l;oi;^;ol;nti=l;nti     W;K]$               
+3207: SAVESTATE:          234
+3207:                    l+l*l-l;oi;^;ol;nti=l;nti     l;K]$               
+3208:                    +l*l-l;oi;^;ol;nti=l;nti=     ;K]$                
+3209: TS_NOK/NS_NORULECHАIN
+3209: RESSTATE            
+3209:                    l+l*l-l;oi;^;ol;nti=l;nti     W;K]$               
+3210:W->lAW              l+l*l-l;oi;^;ol;nti=l;nti     W;K]$               
+3211: SAVESTATE:          234
+3211:                    l+l*l-l;oi;^;ol;nti=l;nti     lAW;K]$             
+3212:                    +l*l-l;oi;^;ol;nti=l;nti=     AW;K]$              
+3213:A->+                +l*l-l;oi;^;ol;nti=l;nti=     AW;K]$              
+3214: SAVESTATE:          235
+3214:                    +l*l-l;oi;^;ol;nti=l;nti=     +W;K]$              
+3215:                    l*l-l;oi;^;ol;nti=l;nti=i     W;K]$               
+3216:W->l                l*l-l;oi;^;ol;nti=l;nti=i     W;K]$               
+3217: SAVESTATE:          236
+3217:                    l*l-l;oi;^;ol;nti=l;nti=i     l;K]$               
+3218:                    *l-l;oi;^;ol;nti=l;nti=i(     ;K]$                
+3219: TS_NOK/NS_NORULECHАIN
+3219: RESSTATE            
+3219:                    l*l-l;oi;^;ol;nti=l;nti=i     W;K]$               
+3220:W->lAW              l*l-l;oi;^;ol;nti=l;nti=i     W;K]$               
+3221: SAVESTATE:          236
+3221:                    l*l-l;oi;^;ol;nti=l;nti=i     lAW;K]$             
+3222:                    *l-l;oi;^;ol;nti=l;nti=i(     AW;K]$              
+3223:A->*                *l-l;oi;^;ol;nti=l;nti=i(     AW;K]$              
+3224: SAVESTATE:          237
+3224:                    *l-l;oi;^;ol;nti=l;nti=i(     *W;K]$              
+3225:                    l-l;oi;^;ol;nti=l;nti=i(i     W;K]$               
+3226:W->l                l-l;oi;^;ol;nti=l;nti=i(i     W;K]$               
+3227: SAVESTATE:          238
+3227:                    l-l;oi;^;ol;nti=l;nti=i(i     l;K]$               
+3228:                    -l;oi;^;ol;nti=l;nti=i(i)     ;K]$                
+3229: TS_NOK/NS_NORULECHАIN
+3229: RESSTATE            
+3229:                    l-l;oi;^;ol;nti=l;nti=i(i     W;K]$               
+3230:W->lAW              l-l;oi;^;ol;nti=l;nti=i(i     W;K]$               
+3231: SAVESTATE:          238
+3231:                    l-l;oi;^;ol;nti=l;nti=i(i     lAW;K]$             
+3232:                    -l;oi;^;ol;nti=l;nti=i(i)     AW;K]$              
+3233:A->-                -l;oi;^;ol;nti=l;nti=i(i)     AW;K]$              
+3234: SAVESTATE:          239
+3234:                    -l;oi;^;ol;nti=l;nti=i(i)     -W;K]$              
+3235:                    l;oi;^;ol;nti=l;nti=i(i);     W;K]$               
+3236:W->l                l;oi;^;ol;nti=l;nti=i(i);     W;K]$               
+3237: SAVESTATE:          240
+3237:                    l;oi;^;ol;nti=l;nti=i(i);     l;K]$               
+3238:                    ;oi;^;ol;nti=l;nti=i(i);o     ;K]$                
+3239:                    oi;^;ol;nti=l;nti=i(i);oi     K]$                 
+3240:K->oV;K             oi;^;ol;nti=l;nti=i(i);oi     K]$                 
+3241: SAVESTATE:          241
+3241:                    oi;^;ol;nti=l;nti=i(i);oi     oV;K]$              
+3242:                    i;^;ol;nti=l;nti=i(i);oi;     V;K]$               
+3243:V->i                i;^;ol;nti=l;nti=i(i);oi;     V;K]$               
+3244: SAVESTATE:          242
+3244:                    i;^;ol;nti=l;nti=i(i);oi;     i;K]$               
+3245:                    ;^;ol;nti=l;nti=i(i);oi;]     ;K]$                
+3246:                    ^;ol;nti=l;nti=i(i);oi;]      K]$                 
+3247:K->^;K              ^;ol;nti=l;nti=i(i);oi;]      K]$                 
+3248: SAVESTATE:          243
+3248:                    ^;ol;nti=l;nti=i(i);oi;]      ^;K]$               
+3249:                    ;ol;nti=l;nti=i(i);oi;]       ;K]$                
+3250:                    ol;nti=l;nti=i(i);oi;]        K]$                 
+3251:K->oV;K             ol;nti=l;nti=i(i);oi;]        K]$                 
+3252: SAVESTATE:          244
+3252:                    ol;nti=l;nti=i(i);oi;]        oV;K]$              
+3253:                    l;nti=l;nti=i(i);oi;]         V;K]$               
+3254:V->l                l;nti=l;nti=i(i);oi;]         V;K]$               
+3255: SAVESTATE:          245
+3255:                    l;nti=l;nti=i(i);oi;]         l;K]$               
+3256:                    ;nti=l;nti=i(i);oi;]          ;K]$                
+3257:                    nti=l;nti=i(i);oi;]           K]$                 
+3258:K->nti=W;K          nti=l;nti=i(i);oi;]           K]$                 
+3259: SAVESTATE:          246
+3259:                    nti=l;nti=i(i);oi;]           nti=W;K]$           
+3260:                    ti=l;nti=i(i);oi;]            ti=W;K]$            
+3261:                    i=l;nti=i(i);oi;]             i=W;K]$             
+3262:                    =l;nti=i(i);oi;]              =W;K]$              
+3263:                    l;nti=i(i);oi;]               W;K]$               
+3264:W->l                l;nti=i(i);oi;]               W;K]$               
+3265: SAVESTATE:          247
+3265:                    l;nti=i(i);oi;]               l;K]$               
+3266:                    ;nti=i(i);oi;]                ;K]$                
+3267:                    nti=i(i);oi;]                 K]$                 
+3268:K->nti=W;K          nti=i(i);oi;]                 K]$                 
+3269: SAVESTATE:          248
+3269:                    nti=i(i);oi;]                 nti=W;K]$           
+3270:                    ti=i(i);oi;]                  ti=W;K]$            
+3271:                    i=i(i);oi;]                   i=W;K]$             
+3272:                    =i(i);oi;]                    =W;K]$              
+3273:                    i(i);oi;]                     W;K]$               
+3274:W->i                i(i);oi;]                     W;K]$               
+3275: SAVESTATE:          249
+3275:                    i(i);oi;]                     i;K]$               
+3276:                    (i);oi;]                      ;K]$                
+3277: TS_NOK/NS_NORULECHАIN
+3277: RESSTATE            
+3277:                    i(i);oi;]                     W;K]$               
+3278:W->iF               i(i);oi;]                     W;K]$               
+3279: SAVESTATE:          249
+3279:                    i(i);oi;]                     iF;K]$              
+3280:                    (i);oi;]                      F;K]$               
+3281:F->(N)              (i);oi;]                      F;K]$               
+3282: SAVESTATE:          250
+3282:                    (i);oi;]                      (N);K]$             
+3283:                    i);oi;]                       N);K]$              
+3284:N->i                i);oi;]                       N);K]$              
+3285: SAVESTATE:          251
+3285:                    i);oi;]                       i);K]$              
+3286:                    );oi;]                        );K]$               
+3287:                    ;oi;]                         ;K]$                
+3288:                    oi;]                          K]$                 
+3289:K->oV;K             oi;]                          K]$                 
+3290: SAVESTATE:          252
+3290:                    oi;]                          oV;K]$              
+3291:                    i;]                           V;K]$               
+3292:V->i                i;]                           V;K]$               
+3293: SAVESTATE:          253
+3293:                    i;]                           i;K]$               
+3294:                    ;]                            ;K]$                
+3295:                    ]                             K]$                 
+3296: TNS_NORULECHAIN/NS_NORULE
+3296: RESSTATE            
+3296:                    i;]                           V;K]$               
+3297: TNS_NORULECHAIN/NS_NORULE
+3297: RESSTATE            
+3297:                    oi;]                          K]$                 
+3298:K->oV;              oi;]                          K]$                 
+3299: SAVESTATE:          252
+3299:                    oi;]                          oV;]$               
+3300:                    i;]                           V;]$                
+3301:V->i                i;]                           V;]$                
+3302: SAVESTATE:          253
+3302:                    i;]                           i;]$                
+3303:                    ;]                            ;]$                 
+3304:                    ]                             ]$                  
+3305:                                                  $                   
+3306: LENTA_END           
+3307: ------>LENTA_END    
 -------------------------------------------------------------------------------------
-0   :всего строк 451, синтаксический анализ выполнен без ошибок 
+0   :всего строк 489, синтаксический анализ выполнен без ошибок 
 0   : S->pfiPGS           
 3   : P->(E)              
 4   : E->ti               
@@ -5801,7 +5988,28 @@
 443 : V->i                
 445 : K->oV;K             
 446 : V->i                
-448 : K->^;               
+448 : K->^;K              
+450 : K->nti=W;K          
+454 : W->lAW              
+455 : A->+                
+456 : W->lAW              
+457 : A->*                
+458 : W->lAW              
+459 : A->-                
+460 : W->l                
+462 : K->oV;K             
+463 : V->i                
+465 : K->^;K              
+467 : K->oV;K             
+468 : V->l                
+470 : K->nti=W;K          
+474 : W->l                
+476 : K->nti=W;K          
+480 : W->iF               
+481 : F->(N)              
+482 : N->i                
+485 : K->oV;              
+486 : V->i                
 --------------------СВОД КОНЕЧНЫХ СВИТКОВ И ТАБЛИЦ РОДОВ-------------------
 ------------------------------ ЧЛЕНЫ ОТРЯДА, ЗАМЕЧЕННОГО РАЗВЕДЧИКАМИ  ------------------------
 
@@ -6248,7 +6456,45 @@
 |439 | ;          |  122  |             |
 |440 | ^          |  122  |             |
 |441 | ;          |  122  |             |
-|442 | ]          |  124  |             |
+|442 | n          |  126  |             |
+|443 | t          |  126  |             |
+|444 | i          |  126  |67           |
+|445 | =          |  126  |             |
+|446 | l          |  126  |8            |
+|447 | l          |  126  |8            |
+|448 | l          |  126  |30           |
+|449 | *          |  126  |             |
+|450 | +          |  126  |             |
+|451 | l          |  126  |8            |
+|452 | -          |  126  |             |
+|453 | ;          |  126  |             |
+|454 | o          |  127  |             |
+|455 | i          |  127  |67           |
+|456 | ;          |  127  |             |
+|457 | ^          |  128  |             |
+|458 | ;          |  128  |             |
+|459 | o          |  129  |             |
+|460 | l          |  129  |68           |
+|461 | ;          |  129  |             |
+|462 | n          |  130  |             |
+|463 | t          |  130  |             |
+|464 | i          |  130  |69           |
+|465 | =          |  130  |             |
+|466 | l          |  130  |70           |
+|467 | ;          |  130  |             |
+|468 | n          |  131  |             |
+|469 | t          |  131  |             |
+|470 | i          |  131  |71           |
+|471 | =          |  131  |             |
+|472 | i          |  131  |72           |
+|473 | (          |  131  |             |
+|474 | i          |  131  |69           |
+|475 | )          |  131  |             |
+|476 | ;          |  131  |             |
+|477 | o          |  132  |             |
+|478 | i          |  132  |71           |
+|479 | ;          |  132  |             |
+|480 | ]          |  133  |             |
 ---------------------------- ТУРНИРНАЯ ТАБЛИЦА ------------------------
 
 |  №№ |СТРОКА В ТТ| ОПИСАНИЕ УЧАСТНИКА |       РОДОВОЕ ИМЯ                 | РОДОВОЕ ДЕРЕВО (ТЕКУЩЕЕ ПОКОЛЕНИЕ)
@@ -6319,6 +6565,12 @@
 |64     |  426      |   rune   literal   |  LTRL39                           |[1]A
 |65     |  430      |   rune  variable   |  templeranik                      |[0]
 |66     |  432      |   rune   literal   |  LTRL40                           |[1]u
+|67     |  444      | squire  variable   |  templeoverflow                   |0
+|68     |  460      | scroll   literal   |  LTRL41                           |[17]Scroll to squire:
+|69     |  464      | scroll  variable   |  templenumbers                    |[0]
+|70     |  466      | scroll   literal   |  LTRL42                           |[3]200
+|71     |  470      | squire  variable   |  templeover                       |0
+|72     |  472      | squire  KNIGHTFUN  |  transmute                        | P0:scroll |
 
 -------------------------------------------------------------------------
 
@@ -6420,7 +6672,14 @@
 120 | nti[63]=l[64];
 121 | nti[65]=l[66];
 122 | oi[63];oi[65];^;
-124 | ]
+126 | nti[67]=l[8]l[8]l[30]*+l[8]-;
+127 | oi[67];
+128 | ^;
+129 | ol[68];
+130 | nti[69]=l[70];
+131 | nti[71]=i[72](i[69]);
+132 | oi[71];
+133 | ]
 -------------------------------------------------------------------------
 
 [32mПРОГРАММА УСПЕШНО ЗАВЕРШЕНА! Слава Империи![0m
