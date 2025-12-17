@@ -3,6 +3,14 @@
   "WorkspaceRootPath": "C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{81B43BFD-E068-437D-A6D3-1066299EC70F}|HKV-2025.vcxproj|C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\LexAnalysis.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{81B43BFD-E068-437D-A6D3-1066299EC70F}|HKV-2025.vcxproj|solutionrelative:LexAnalysis.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{81B43BFD-E068-437D-A6D3-1066299EC70F}|HKV-2025.vcxproj|C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\Generator.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{81B43BFD-E068-437D-A6D3-1066299EC70F}|HKV-2025.vcxproj|solutionrelative:Generator.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{81B43BFD-E068-437D-A6D3-1066299EC70F}|HKV-2025.vcxproj|C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\Visualizer.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{81B43BFD-E068-437D-A6D3-1066299EC70F}|HKV-2025.vcxproj|solutionrelative:Visualizer.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
@@ -23,19 +31,11 @@
       "RelativeMoniker": "D:0:0:{81B43BFD-E068-437D-A6D3-1066299EC70F}|HKV-2025.vcxproj|solutionrelative:stdafx.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{81B43BFD-E068-437D-A6D3-1066299EC70F}|HKV-2025.vcxproj|C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\LexAnalysis.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{81B43BFD-E068-437D-A6D3-1066299EC70F}|HKV-2025.vcxproj|solutionrelative:LexAnalysis.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{BB1EDE4C-079C-4613-AA6A-906D30E8DFB6}|..\\DirectivesOfKings\\DirectivesOfKings.vcxproj|C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\DirectivesOfKings\\DirectivesOfKing.asm||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{81B43BFD-E068-437D-A6D3-1066299EC70F}|HKV-2025.vcxproj|C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\IT.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{81B43BFD-E068-437D-A6D3-1066299EC70F}|HKV-2025.vcxproj|solutionrelative:IT.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{81B43BFD-E068-437D-A6D3-1066299EC70F}|HKV-2025.vcxproj|C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\Generator.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{81B43BFD-E068-437D-A6D3-1066299EC70F}|HKV-2025.vcxproj|solutionrelative:Generator.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{81B43BFD-E068-437D-A6D3-1066299EC70F}|HKV-2025.vcxproj|C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\In.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -152,11 +152,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 12,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "DirectivesOfKing.asm",
               "DocumentMoniker": "C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\DirectivesOfKings\\DirectivesOfKing.asm",
               "RelativeDocumentMoniker": "..\\DirectivesOfKings\\DirectivesOfKing.asm",
@@ -177,32 +177,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "HKV-2025.cpp",
-              "DocumentMoniker": "C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\HKV-2025.cpp",
-              "RelativeDocumentMoniker": "HKV-2025.cpp",
-              "ToolTip": "C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\HKV-2025.cpp",
-              "RelativeToolTip": "HKV-2025.cpp",
-              "ViewState": "AgIAAD8AAAAAAAAAAAAEwE8AAAAOAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-12-12T20:49:01.291Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "SemanticAnalyze.cpp",
-              "DocumentMoniker": "C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\SemanticAnalyze.cpp",
-              "RelativeDocumentMoniker": "SemanticAnalyze.cpp",
-              "ToolTip": "C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\SemanticAnalyze.cpp",
-              "RelativeToolTip": "SemanticAnalyze.cpp",
-              "ViewState": "AgIAAAABAAAAAAAAAAAEwBUBAAAHAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-12-08T16:34:22.595Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "Visualizer.h",
               "DocumentMoniker": "C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\Visualizer.h",
               "RelativeDocumentMoniker": "Visualizer.h",
@@ -210,12 +185,11 @@
               "RelativeToolTip": "Visualizer.h",
               "ViewState": "AgIAACEAAAAAAAAAAAAAACEAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-12-15T19:05:42.74Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-15T19:05:42.74Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "Visualizer.cpp",
               "DocumentMoniker": "C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\Visualizer.cpp",
               "RelativeDocumentMoniker": "Visualizer.cpp",
@@ -264,7 +238,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "stdafx.h",
               "DocumentMoniker": "C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\stdafx.h",
               "RelativeDocumentMoniker": "stdafx.h",
@@ -288,7 +262,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "GRB.cpp",
               "DocumentMoniker": "C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\GRB.cpp",
               "RelativeDocumentMoniker": "GRB.cpp",
@@ -296,32 +270,57 @@
               "RelativeToolTip": "GRB.cpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAEEAAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-12-07T16:50:28.361Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-07T16:50:28.361Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "LexAnalysis.cpp",
-              "DocumentMoniker": "C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\LexAnalysis.cpp",
-              "RelativeDocumentMoniker": "LexAnalysis.cpp",
-              "ToolTip": "C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\LexAnalysis.cpp",
-              "RelativeToolTip": "LexAnalysis.cpp",
-              "ViewState": "AgIAAFoBAAAAAAAAAAAUwG4BAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-12-07T16:50:31.696Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 1,
               "Title": "Generator.cpp",
               "DocumentMoniker": "C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\Generator.cpp",
               "RelativeDocumentMoniker": "Generator.cpp",
               "ToolTip": "C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\Generator.cpp",
               "RelativeToolTip": "Generator.cpp",
-              "ViewState": "AgIAADYAAAAAAAAAAAAUwF8AAACIAAAAAAAAAA==",
+              "ViewState": "AgIAAD8AAAAAAAAAAAAUwF8AAACIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-12-07T16:50:35.302Z"
+              "WhenOpened": "2025-12-07T16:50:35.302Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "LexAnalysis.cpp",
+              "DocumentMoniker": "C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\LexAnalysis.cpp",
+              "RelativeDocumentMoniker": "LexAnalysis.cpp",
+              "ToolTip": "C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\LexAnalysis.cpp",
+              "RelativeToolTip": "LexAnalysis.cpp",
+              "ViewState": "AgIAADICAAAAAAAAAAAUwEkCAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-12-07T16:50:31.696Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "SemanticAnalyze.cpp",
+              "DocumentMoniker": "C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\SemanticAnalyze.cpp",
+              "RelativeDocumentMoniker": "SemanticAnalyze.cpp",
+              "ToolTip": "C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\SemanticAnalyze.cpp",
+              "RelativeToolTip": "SemanticAnalyze.cpp",
+              "ViewState": "AgIAAAABAAAAAAAAAAAEwBUBAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-12-08T16:34:22.595Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "HKV-2025.cpp",
+              "DocumentMoniker": "C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\HKV-2025.cpp",
+              "RelativeDocumentMoniker": "HKV-2025.cpp",
+              "ToolTip": "C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\HKV-2025.cpp",
+              "RelativeToolTip": "HKV-2025.cpp",
+              "ViewState": "AgIAAD8AAAAAAAAAAAAEwE8AAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-12-12T20:49:01.291Z"
             },
             {
               "$type": "Document",
@@ -349,7 +348,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "IT.cpp",
               "DocumentMoniker": "C:\\Users\\user\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\HKV-2025\\HKV-2025\\IT.cpp",
               "RelativeDocumentMoniker": "IT.cpp",
